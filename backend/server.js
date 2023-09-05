@@ -1,6 +1,3 @@
-// const dbConnect = require('./db/dbConnect');
-
-// dbConnect();
 require('dotenv').config();
 const mongoose = require('mongoose');
 const connectDB = require('./db/dbConnect');
