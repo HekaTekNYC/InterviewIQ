@@ -4,10 +4,11 @@ import Public from './components/Public'
 import Login from './features/auth/Login';
 import DashLayout from './components/DashLayout'
 import Welcome from './features/auth/Welcome'
-// import NotesList from './features/notes/NotesList'
+import NotesList from './features/notes/NotesList'
 import UsersList from './features/users/UsersList'
 
 function App() {
+  console.log('Rendering App component');
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -18,9 +19,9 @@ function App() {
 
           <Route index element={<Welcome />} />
 
-          {/* <Route path="notes">
+          <Route path="notes">
             <Route index element={<NotesList />} />
-          </Route> */}
+          </Route>
 
           <Route path="users">
             <Route index element={<UsersList />} />
