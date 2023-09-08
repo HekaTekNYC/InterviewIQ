@@ -12,7 +12,7 @@ module.exports = {
   /** "entry"
    * the entry point
    */
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
     /** "path"
      * the folder path of the output file
@@ -28,11 +28,12 @@ module.exports = {
    * for browser (client side). Default is "web"
    */
   target: 'web',
+  
   devServer: {
     /** "port"
      * port of dev server
      */
-    port: '9500',
+    port: '3500',
     /** "static"
      * This property tells Webpack what static file it should serve
      */
@@ -60,6 +61,11 @@ module.exports = {
      */
     extensions: ['.js', '.jsx', '.json'],
   },
+//   plugins: [
+//     new webpack.ProvidePlugin({
+//        "React": "react",
+//     }),
+//  ],
   module: {
     /** "rules"
      * This says - "Hey webpack compiler, when you come across a path that resolves to a '.js or .jsx'
@@ -69,10 +75,53 @@ module.exports = {
      */
     rules: [
       {
-        test: /\.(js|jsx)$/, //kind of file extension this rule should look for and apply in test
+        test: /\.js$|jsx/, //kind of file extension this rule should look for and apply in test
+        loader: 'babel-loader',
         exclude: /node_modules/, //folder to be excluded
-        use: 'babel-loader', //loader which we are going to use
+          // for styles//loader which we are going to use
+        
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
     ],
   },
 };
+
+// const path = require("path");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
+// module.exports = {
+//   mode: "development",
+//   entry: "/src/index.js", // main js
+//   output: {
+//     path: path.resolve(__dirname, "dist"), // output folder
+//     publicPath: "/",
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /\.?js$/,
+//         exclude: /node_modules/,
+//         use: {
+//           loader: "babel-loader",
+//           options: {
+//             presets: ["@babel/preset-env", "@babel/preset-react"],
+//           },
+//         },
+//       },
+//       {
+//         test: /\.css$/,
+//         use: [
+//           "style-loader",
+//           "css-loader", // for styles
+//         ],
+//       },
+//     ],
+//   },
+//   plugins: [
+//     new HtmlWebpackPlugin({
+//       template: "./src/index.html", // base html
+//     }),
+//   ],
+// };
