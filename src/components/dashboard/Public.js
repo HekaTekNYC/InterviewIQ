@@ -6,7 +6,7 @@ const Public = () => {
   const content = (
       <section className="public">
           <header>
-              <h1>Welcome to <span className="nowrap">Dan D. Repairs!</span></h1>
+              <h1>Welcome to <span className="nowrap">InterviewIQ</span></h1>
           </header>
           <main className="public__main">
               <p>Located in Beautiful Downtown Foo City, Dan D. Repairs  provides a trained staff ready to meet your tech repair needs.</p>
