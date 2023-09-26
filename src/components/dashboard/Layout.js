@@ -6,4 +6,4 @@ function Layout() {
   return <Outlet />
 }
 
-export default Layout
+export default Layout;

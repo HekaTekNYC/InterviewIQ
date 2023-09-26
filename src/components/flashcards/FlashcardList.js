@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  retrieveFlashcards,
-  findFlashcardsByCategory,
-  deleteAllFlashcards,
-} from "../actions/flashcardAction";
+// import {
+//   retrieveFlashcards,
+//   findFlashcardsByCategory,
+//   deleteAllFlashcards,
+// } from "../../actions/action.js";
+
+import  { retrieveFlashcard, findFlashcardsByCategory, deleteAllFlashcards }  from '../../actions/action'
 
 const FlashcardList = () => {
   const [currentFlashcard, setCurrentFlashcard] = useState(null);

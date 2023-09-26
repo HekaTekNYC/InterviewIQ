@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createFlashcard } from "../actions/flashcardAction";
+import { createFlashcard } from '../../actions/action'
 
 const AddFlashcard = () => {
   const initialFlashcardState = {
@@ -28,7 +28,7 @@ const AddFlashcard = () => {
   };
 
   const saveFlashcard = () => {
-    const { term, definition } = Flashcard;
+    const { term, definition } = flashcard;
     // do we need to capitilize flashcard?
 
     dispatch(createFlashcard(term, definition))
@@ -106,7 +106,7 @@ const AddFlashcard = () => {
             required
             value={flashcard.expandedDef}
             onChange={handleInputChange}
-            name="expanded definition"
+            name="expandedDef"
           />
         </div>
         <div className="form-group">
@@ -134,27 +134,26 @@ const AddFlashcard = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="hint1">Hint 1</label>
+          <label htmlFor="Hint1">Hint 1</label>
           <input
             type="text"
             className="form-control"
             id="hint1"
-            required
             value={flashcard.hint1}
             onChange={handleInputChange}
             name="hint1"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="Hint 2">Hint 2</label>
+          <label htmlFor="Hint2">Hint 2</label>
           <input
             type="text"
             className="form-control"
-            id="Hint 2"
-            required
+            id="Hint2"
+            
             value={flashcard.hint2}
             onChange={handleInputChange}
-            name="Hint 2"
+            name="Hint2"
           />
         </div>
         

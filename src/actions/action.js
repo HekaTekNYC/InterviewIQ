@@ -5,13 +5,13 @@ import {
   DELETE_FLASHCARD,
   DELETE_ALL_FLASHCARDS,
 } from "./types";
+import FlashcardService from "../services/flashcardService";
 
 
-import FlashcardDataService from "../services/flash";
 
-export const createFlashcard = (title, description) => async (dispatch) => {
+export const createFlashcard = (term, definition) => async (dispatch) => {
   try {
-    const res = await FlashcardDataService.create({ title, description });
+    const res = await FlashcardService.create({ term, definition});
 
     dispatch({
       type: CREATE_FLASHCARD,
@@ -26,7 +26,7 @@ export const createFlashcard = (title, description) => async (dispatch) => {
 
 export const retrieveFlashcard = () => async (dispatch) => {
   try {
-    const res = await FlashcardDataService.getAll();
+    const res = await FlashcardService.getAll();
 
     dispatch({
       type: RETRIEVE_FLASHCARD,
@@ -39,7 +39,7 @@ export const retrieveFlashcard = () => async (dispatch) => {
 
 export const updateFlashcard = (id, data) => async (dispatch) => {
   try {
-    const res = await FlashcardDataService.update(id, data);
+    const res = await FlashcardService.update(id, data);
 
     dispatch({
       type: UPDATE_FLASHCARD,
@@ -54,7 +54,7 @@ export const updateFlashcard = (id, data) => async (dispatch) => {
 
 export const deleteFlashcard = (id) => async (dispatch) => {
   try {
-    await FlashcardDataService.remove(id);
+    await FlashcardService.remove(id);
 
     dispatch({
       type: DELETE_FLASHCARD,
@@ -67,7 +67,7 @@ export const deleteFlashcard = (id) => async (dispatch) => {
 
 export const deleteAllFlashcards= () => async (dispatch) => {
   try {
-    const res = await FlashcardDataService.removeAll();
+    const res = await FlashcardService.removeAll();
 
     dispatch({
       type: DELETE_ALL_FLASHCARDS,
@@ -80,9 +80,9 @@ export const deleteAllFlashcards= () => async (dispatch) => {
   }
 };
 
-export const findFlashcardsByTitle = (title) => async (dispatch) => {
+export const findFlashcardsByCategory = (category) => async (dispatch) => {
   try {
-    const res = await FlashcardDataService.findByTitle(title);
+    const res = await FlashcardService.findByCategory(category);
 
     dispatch({
       type: RETRIEVE_FLASHCARDS,
@@ -92,3 +92,6 @@ export const findFlashcardsByTitle = (title) => async (dispatch) => {
     console.log(err);
   }
 };
+
+
+// export default flashcardAction;
