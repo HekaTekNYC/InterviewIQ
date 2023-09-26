@@ -1,3 +1,51 @@
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/dashboard/Layout'
+import Public from './components/dashboard/Public'
+import Login from './features/auth/Login';
+import DashLayout from './components/dashboard/DashLayout'
+import Welcome from './features/auth/Welcome'
+import FlashcardList from './components/flashcards/FlashcardList';
+import AddFlashcard from './components/flashcards/AddFlashcard';
+import EditFlashcard from './components/flashcards/EditFlashcard';
+import UsersList from './features/users/UsersList'
+
+function App() {
+
+  console.log('Rendering App component');
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Public />} />
+        <Route path="login" element={<Login />} />
+
+        <Route path="dash" element={<DashLayout />}>
+
+          <Route index element={<Welcome />} />
+
+          <Route path="search">
+            <Route index element={<FlashcardList />} />
+          </Route>
+          <Route path="addflashcard">
+            <Route index element={<AddFlashcard />} />
+          </Route>
+          <Route path="editflashcard">
+            <Route index element={<EditFlashcard />} />
+          </Route>
+
+          <Route path="users">
+            <Route index element={<UsersList />} />
+          </Route>
+
+        </Route>{/* End Dash */}
+
+      </Route>
+    </Routes>
+  );
+}
+
+export default App;
+
+
 // import React, { useState, useEffect, useRef } from 'react';
 // import FlashcardList from './FlashcardList';
 // import './App.css'
@@ -83,46 +131,5 @@
 
 // export default App;
 
-
-
-
-import { Routes, Route } from 'react-router-dom'
-import Layout from './components/dashboard/Layout'
-import Public from './components/dashboard/Public'
-import Login from './features/auth/Login';
-import DashLayout from './components/dashboard/DashLayout'
-import Welcome from './features/auth/Welcome'
-import NotesList from './features/notes/NotesList'
-import UsersList from './features/users/UsersList'
-
-function App() {
-
-  console.log('Rendering App component');
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Public />} />
-        <Route path="login" element={<Login />} />
-
-        <Route path="dash" element={<DashLayout />}>
-
-          <Route index element={<Welcome />} />
-
-          <Route path="notes">
-            <Route index element={<NotesList />} />
-          </Route>
-
-          <Route path="users">
-            <Route index element={<UsersList />} />
-          </Route>
-
-        </Route>{/* End Dash */}
-
-      </Route>
-    </Routes>
-  );
-}
-
-export default App;
 
 // do it for the add yuh!
