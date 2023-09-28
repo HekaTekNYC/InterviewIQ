@@ -104,7 +104,7 @@ function App() {
             <Route index element={<FlashcardPage />} />
           </Route>
           <Route path="addFlashcard">
-            <Route index element={<addFlashcard />} />
+            <Route index element={<AddFlashcard />} />
           </Route>
           <Route path="users">
             <Route index element={<UsersList />} />
