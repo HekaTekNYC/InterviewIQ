@@ -37,5 +37,6 @@ const FlashcardService = {
   removeAll,
   findByTitle
 };
+console.log(`this is my flashcard service:`, FlashcardService)
 
 export default FlashcardService;

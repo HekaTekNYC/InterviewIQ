@@ -8,36 +8,108 @@ import FlashcardList from './components/flashcards/FlashcardList';
 import AddFlashcard from './components/flashcards/AddFlashcard';
 import EditFlashcard from './components/flashcards/EditFlashcard';
 import UsersList from './features/users/UsersList'
+import api from './http-common';
+import FlashcardPage from './pages/FlashcardPage';
 
 function App() {
+  // const [flashcards, setFlashcards] = useState([])
+  // const [search, setSearch] = useState('');
+  // const [searchResults, setSearchResults] = useState([]);
+  // const [flashcardTerm, setFlashcardTerm] = useState('');
+  // const [flashcardBody, setFlashcardBody] = useState('');
+  // const [editTerm, setEditTerm] = useState('');
+  // const [editBody, setEditBody] = useState('');
+  // const history = useHistory();
 
-  console.log('Rendering App component');
+  // useEffect(() => {
+  //   const fetchFlashcards = async () => {
+  //     try {
+  //       //this is how we define how to use axios 
+  //       const response = await api.get('/flashcards');
+  //       setFlashcards(response.data);
+  //     } catch (err) {
+  //       if (err.response) {
+  //         // Not in the 200 response range 
+  //         console.log(err.response.data);
+  //         console.log(err.response.status);
+  //         console.log(err.response.headers);
+  //       } else {
+  //         console.log(`Error: ${err.message}`);
+  //       }
+  //     }
+  //   }
+
+  //   fetchFlashcards(); 
+  // }, []) 
+
+  // useEffect(() => {
+  //   const filteredResults = flashcards.filter((flashcard) =>
+  //     ((flashcard.body).toLowerCase()).includes(search.toLowerCase())
+  //     || ((flashcard.term).toLowerCase()).includes(search.toLowerCase()));
+
+  //   setSearchResults(filteredResults.reverse());
+  // }, [flashcards, search])
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const id = flashcards.length ? flashcards[flashcards.length - 1].id + 1 : 1;
+  //   const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+  //   const newFlashcard = { id, term: flashcardTerm, datetime, body: flashcardBody };
+  //   try {
+  //     const response = await api.flashcard('/flashcard', newFlashcard);
+  //     const allFlashcards = [...flashcards, response.data];
+  //     setFlashcards(allFlashcards);
+  //     setFlashcardTerm('');
+  //     setFlashcardBody('');
+  //     history.push('/');
+  //   } catch (err) {
+  //     console.log(`Error: ${err.message}`);
+  //   }
+  // }
+
+  // const handleEdit = async (id) => {
+  //   const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+  //   const updatedFlashcard = { id, term: editTerm, datetime, body: editBody };
+  //   try {
+  //     const response = await api.put(`/flashcards/${id}`, updatedFlashcard);
+  //     setFlashcards(flashcards.map(flashcard => flashcard.id === id ? { ...response.data } : flashcard));
+  //     setEditTerm('');
+  //     setEditBody('');
+  //     history.push('/');
+  //   } catch (err) {
+  //     console.log(`Error: ${err.message}`);
+  //   }
+  // }
+
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await api.delete(`/flashcards/${id}`);
+  //     const flashcardsList = flashcards.filter(flashcard => flashcard.id !== id);
+  //     setFlashcards(flashcardsList);
+  //     history.push('/');
+  //   } catch (err) {
+  //     console.log(`Error: ${err.message}`);
+  //   }
+  // }
+
+  // console.log('Rendering App component');
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
-
         <Route path="dash" element={<DashLayout />}>
-
           <Route index element={<Welcome />} />
-
-          <Route path="search">
-            <Route index element={<FlashcardList />} />
+          <Route path="flashcardPage">
+            <Route index element={<FlashcardPage />} />
           </Route>
-          <Route path="addflashcard">
-            <Route index element={<AddFlashcard />} />
+          <Route path="addFlashcard">
+            <Route index element={<addFlashcard />} />
           </Route>
-          <Route path="editflashcard">
-            <Route index element={<EditFlashcard />} />
-          </Route>
-
           <Route path="users">
             <Route index element={<UsersList />} />
           </Route>
-
         </Route>{/* End Dash */}
-
       </Route>
     </Routes>
   );
