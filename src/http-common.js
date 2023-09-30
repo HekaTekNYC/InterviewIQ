@@ -1,8 +1,20 @@
-import axios from "axios";
+const axios = require('axios');
 
-export default axios.create({
-  baseURL: "http://localhost:3500/",
+const http = axios.create({
+  baseURL: 'http://localhost:3500/',
   headers: {
-    "Content-type": "application/json"
-  }
+    'Content-type': 'application/json',
+  },
 });
+
+module.exports = http;
+
+
+// import axios from "axios";
+
+// export default axios.create({
+//   baseURL: "http://localhost:3500/",
+//   headers: {
+//     "Content-type": "application/json"
+//   }
+// });

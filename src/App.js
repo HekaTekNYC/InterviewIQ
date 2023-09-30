@@ -100,7 +100,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="dash" element={<DashLayout />}>
           <Route index element={<Welcome />} />
-          <Route path="flashcardPage">
+          <Route path="flashcard">
             <Route index element={<FlashcardPage />} />
           </Route>
           <Route path="addFlashcard">

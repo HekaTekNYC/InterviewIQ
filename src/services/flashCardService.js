@@ -1,7 +1,10 @@
-import http from "../http-common";
+// import http from "../http-common";
+
+//this all corresponds with the http-common file. So if our endpoints in there are correct it correlates with this
+const http = require('../http-common')
 
 const getAll = () => {
-  return http.get("/flashcards");
+  return http.get("/flashcard");
 };
 
 const get = id => {
@@ -9,7 +12,7 @@ const get = id => {
 };
 
 const create = data => {
-  return http.post("/flashcards", data);
+  return http.post("/dash/AddFlashcard", data);
 };
 
 const update = (id, data) => {
@@ -17,7 +20,7 @@ const update = (id, data) => {
 };
 
 const remove = id => {
-  return http.delete(`/flashcards/${id}`);
+  return http.delete(`/flashcard/${id}`);
 };
 
 const removeAll = () => {
@@ -39,4 +42,4 @@ const FlashcardService = {
 };
 console.log(`this is my flashcard service:`, FlashcardService)
 
-export default FlashcardService;
+module.exports = FlashcardService;
