@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import Layout from './components/dashboard/Layout'
-import Public from './components/dashboard/Public'
+// import Layout from './components/dashboard/Layout'
+// import Public from './components/dashboard/Public'
 import ShowFlashcardList from './components/flashcard/ShowFlashcardList'
 import CreateFlashcard from './components/flashcard/CreateFlashcard'
 import UpdateFlashcard from './components/flashcard/UpdateFlashcard'
@@ -14,7 +14,7 @@ import Flashcard from './components/flashcard/Flashcard'
 // import AddFlashcard from './components/flashcards/AddFlashcard';
 // import EditFlashcard from './components/flashcards/EditFlashcard';
 // import UsersList from './features/users/UsersList'
-import api from './http-common';
+// import api from './http-common';
 // import FlashcardPage from './pages/FlashcardPage';
 
 function App() {
