@@ -1,11 +1,57 @@
-import React, { useState, useEffect, useRef } from 'react';
-import FlashcardList from './FlashcardList';
-import './App.css'
-import axios from 'axios'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/dashboard/Layout'
+import Public from './components/dashboard/Public'
+import ShowFlashcardList from './components/flashcard/ShowFlashcardList'
+import CreateFlashcard from './components/flashcard/CreateFlashcard'
+import UpdateFlashcard from './components/flashcard/UpdateFlashcard'
+import Flashcard from './components/flashcard/Flashcard'
+
+
+// import Login from './features/auth/Login';
+// import DashLayout from './components/dashboard/DashLayout'
+// import Welcome from './features/auth/Welcome'
+// import FlashcardList from './components/flashcards/FlashcardList';
+// import AddFlashcard from './components/flashcards/AddFlashcard';
+// import EditFlashcard from './components/flashcards/EditFlashcard';
+// import UsersList from './features/users/UsersList'
+import api from './http-common';
+// import FlashcardPage from './pages/FlashcardPage';
 
 function App() {
-  const [flashcards, setFlashcards] = useState([])
-  const [categories, setCategories] = useState([])
+
+  return (
+
+  <Router>
+    <div>
+      <Routes>
+        <Route exact path='/' element={<ShowFlashcardList />} />
+        <Route path='/create-flashcard' element={<CreateFlashcard />} />
+        <Route exact path='/update-flashcard' element={<UpdateFlashcard />} />
+        <Route path='/edit-flashcard/:id' element={<Flashcard />} />
+        
+      </Routes>
+    </div>
+  </Router>
+   
+  );
+}
+
+export default App;
+
+
+
+
+
+
+// This is our old info that sat right under function App() {};
+  // const [flashcards, setFlashcards] = useState([])
+  // const [search, setSearch] = useState('');
+  // const [searchResults, setSearchResults] = useState([]);
+  // const [flashcardTerm, setFlashcardTerm] = useState('');
+  // const [flashcardBody, setFlashcardBody] = useState('');
+  // const [editTerm, setEditTerm] = useState('');
+  // const [editBody, setEditBody] = useState('');
+  // const history = useHistory();
 
   const categoryEl = useRef()
   const amountEl = useRef()
@@ -55,45 +101,62 @@ function App() {
     })
   }
 
-  return (
-    <>
-      <form className="header" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
-          <select id="category" ref={categoryEl}>
-            {categories.map(category => {
-              return <option value={category.id} key={category.id}>{category.name}</option>
-            })}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="amount">Number of Questions</label>
-          <input type="number" id="amount" min="1" step="1" defaultValue={10} ref={amountEl} />
-        </div>
-        <div className="form-group">
-          <button className="btn">Generate</button>
-        </div>
-      </form>
-      <div className="container">
-        <FlashcardList flashcards={flashcards} />
-      </div>
-    </>
-  );
-}
+  // const handleEdit = async (id) => {
+  //   const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+  //   const updatedFlashcard = { id, term: editTerm, datetime, body: editBody };
+  //   try {
+  //     const response = await api.put(`/flashcards/${id}`, updatedFlashcard);
+  //     setFlashcards(flashcards.map(flashcard => flashcard.id === id ? { ...response.data } : flashcard));
+  //     setEditTerm('');
+  //     setEditBody('');
+  //     history.push('/');
+  //   } catch (err) {
+  //     console.log(`Error: ${err.message}`);
+  //   }
+  // }
 
-export default App;
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await api.delete(`/flashcards/${id}`);
+  //     const flashcardsList = flashcards.filter(flashcard => flashcard.id !== id);
+  //     setFlashcards(flashcardsList);
+  //     history.push('/');
+  //   } catch (err) {
+  //     console.log(`Error: ${err.message}`);
+  //   }
+  // }
+
+  // console.log('Rendering App component');
+
+  //return (
+  //   <Routes>
+  //   <Route path="/" element={<Layout />}>
+  //     <Route index element={<Public />} />
+  //     <Route path="login" element={<Login />} />
+  //     <Route path="dash" element={<DashLayout />}>
+  //       <Route index element={<Welcome />} />
+  //       <Route path="flashcard">
+  //         <Route index element={<FlashcardPage />} />
+  //       </Route>
+  //       <Route path="addFlashcard">
+  //         <Route index element={<AddFlashcard />} />
+  //       </Route>
+  //       <Route path="users">
+  //         <Route index element={<UsersList />} />
+  //       </Route>
+  //     </Route>
+  //   </Route>
+  // </Routes>
+  // )
 
 
+//older info 
 
-
-// import { Routes, Route } from 'react-router-dom'
-// import Layout from './components/Layout'
-// import Public from './components/Public'
-// import Login from './features/auth/Login';
-// import DashLayout from './components/DashLayout'
-// import Welcome from './features/auth/Welcome'
-// import NotesList from './features/notes/NotesList'
-// import UsersList from './features/users/UsersList'
+// import React, { useState, useEffect, useRef } from 'react';
+// import FlashcardList from './FlashcardList';
+// import './App.css'
+// import axios from 'axios'
+import { createFlashcard } from './actions/action';
 
 // function App() {
 //   console.log('Rendering App component');
