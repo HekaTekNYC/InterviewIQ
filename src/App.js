@@ -11,19 +11,15 @@ import Flashcard from './components/flashcard/Flashcard'
 function App() {
   
   return (
-    
-    <Router>
     <div>
       <Routes>
         <Route exact path='/' element={<ShowFlashcardList />} />
         <Route path='/create-flashcard' element={<CreateFlashcard />} />
-        <Route exact path='/update-flashcard' element={<UpdateFlashcard />} />
+        <Route path='/update-flashcard' element={<UpdateFlashcard />} />
         <Route path='/edit-flashcard/:id' element={<Flashcard />} />
         
       </Routes>
-    </div>
-  </Router>
-   
+  </div>
    );
   }
   

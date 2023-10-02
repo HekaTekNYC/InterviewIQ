@@ -107,7 +107,7 @@ const CreateFlashcard = (props) => {
 
               <div className='form-group'>
                 <input
-                  type='date'
+                  type='text'
                   placeholder='Hint 1'
                   name='hint1'
                   className='form-control'
