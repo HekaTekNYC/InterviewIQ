@@ -19,9 +19,9 @@ function ShowFlashcardList() {
   }, []);
 
   const flashcardList =
-   flashcards.length === 0
+    flashcards.length === 0
       ? 'there is no flashcard record!'
-      : flashcards.map((flashcard, k) => <FlashCard flashcard={flashcard} key={k} />);
+      : flashcards.map((flashcard, k) => <Flashcard flashcard={flashcard} key={k} />); 
 
   return (
     <div className='ShowFlashcardList'>
