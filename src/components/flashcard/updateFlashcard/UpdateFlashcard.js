@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../../index.css';
+import '../../../index.css';
 import './updateFlashcard.styles.css'
 
 function UpdateFlashcard(props) {
