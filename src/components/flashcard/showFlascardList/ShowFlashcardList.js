@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../../index.css'
+import './showFlashcardList.styles.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Flashcard from './Flashcard';
+import Flashcard from '../flashcardComponent/Flashcard';
 
 function ShowFlashcardList() {
   const [flashcards, setFlashcards] = useState([]);
@@ -23,9 +24,10 @@ function ShowFlashcardList() {
       ? 'there is no flashcard record!'
       : flashcards.map((flashcard, k) => <Flashcard flashcard={flashcard} key={k} />); 
 
-  return (
+  return ( 
     <div className='ShowFlashcardList'>
-      <div className='container'>
+      {/* <div className='container'> */}
+      <div className='container mx-auto px-4'>
         <div className='row'>
           <div className='col-md-12'>
             <br />
