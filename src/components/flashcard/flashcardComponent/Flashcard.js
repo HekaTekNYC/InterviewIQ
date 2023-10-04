@@ -12,7 +12,7 @@ const Flashcard = (props) => {
         alt='Flashcard'
         height={200}
       />
-      <div className='desc'>
+      <div className='desc hover:bg-sky-700'>
         <h2>
           <Link to={`/show-flashcard/${flashcard._id}`}>{flashcard.term}</Link>
         </h2>
