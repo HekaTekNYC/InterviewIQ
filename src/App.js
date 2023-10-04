@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
 // import Layout from './components/dashboard/Layout'
 // import Public from './components/dashboard/Public'
-import ShowFlashcardList from './components/flashcard/ShowFlashcardList'
+import ShowFlashcardList from './components/flashcard/showFlashcardList/ShowFlashcardList'
 import CreateFlashcard from './components/flashcard/createFlashcard/CreateFlashcard'
-import UpdateFlashcard from './components/flashcard/UpdateFlashcard'
-import Flashcard from './components/flashcard/Flashcard'
+import UpdateFlashcard from './components/flashcard/updateFlashcard/UpdateFlashcard'
+import Flashcard from './components/flashcard/flashcardComponent/Flashcard'
 
 
 

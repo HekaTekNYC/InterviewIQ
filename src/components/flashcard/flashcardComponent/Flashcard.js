@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../index.css';
+import '../../../index.css';
 
 const Flashcard = (props) => {
   const flashcard = props.flashcard;
