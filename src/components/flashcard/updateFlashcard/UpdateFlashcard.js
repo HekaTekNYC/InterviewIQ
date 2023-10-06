@@ -3,6 +3,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../../../index.css';
 import './updateFlashcard.styles.css'
+import { Label, TextInput } from 'flowbite-react';
+
 
 function UpdateFlashcard(props) {
   const [flashcard, setFlashcard] = useState({
@@ -77,10 +79,14 @@ function UpdateFlashcard(props) {
           </div>
         </div>
 
+        
+
         <div className='col-md-8 m-auto'>
-          <form noValidate onSubmit={onSubmit}>
+          {/* <form noValidate onSubmit={onSubmit}> */}
+          <div className="flex max-w-md flex-col gap-4">
             <div className='form-group'>
-              <label htmlFor='term'>Term</label>
+          <Label htmlFor="disabledInput1">
+              Term</Label>
               <input
                 type='text'
                 placeholder='Term'
@@ -162,9 +168,10 @@ function UpdateFlashcard(props) {
             >
               Update Flashcard
             </button>
-          </form>
+          {/* </form> */}
         </div>
       </div>
+    </div>
     </div>
   );
 }

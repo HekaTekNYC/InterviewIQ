@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-// import Layout from './components/dashboard/Layout'
-// import Public from './components/dashboard/Public'
+import NavBar from './components/navBar/NavBar'
 import ShowFlashcardList from './components/flashcard/showFlashcardList/ShowFlashcardList'
 import CreateFlashcard from './components/flashcard/createFlashcard/CreateFlashcard'
 import UpdateFlashcard from './components/flashcard/updateFlashcard/UpdateFlashcard'
@@ -11,7 +10,8 @@ import Flashcard from './components/flashcard/flashcardComponent/Flashcard'
 function App() {
   
   return (
-    <div>
+    <div className="App">
+      <NavBar/>
       <Routes>
         <Route exact path='/' element={<ShowFlashcardList />} />
         <Route path='/create-flashcard' element={<CreateFlashcard />} />

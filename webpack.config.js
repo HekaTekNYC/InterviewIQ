@@ -3,18 +3,19 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js", 
+  entry: "/src/index.js", 
   output: {
     path: path.join(__dirname, "/dist"),
     publicPath: "/",
     filename: "main.js",
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: "public/index.html", // to import index.html file inside index.js
     }),
   ],
-
+  
   devServer: {
     port: 3030, // you can change the port
   },
@@ -29,7 +30,7 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/, // styles files
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", "sass-loader",  "postcss-loader"],
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/, // to import images and fonts
@@ -37,6 +38,7 @@ module.exports = {
         options: { limit: false },
       },
     ],
+    
   },
 };
 

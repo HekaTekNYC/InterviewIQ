@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './createFlashcard.styles.css'
 import '../../../index.css'
+import { Button } from 'flowbite-react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -48,27 +49,24 @@ const CreateFlashcard = (props) => {
   };
 
   return (
-    <div className='CreateFlashcard'>
-      {/* <div className='container mx-auto px-4'> */}
+    <div className='CreateFlashcard flex items-center'>
       <div className=''>
-        {/* <div className='row'> */}
         <div className=''>
-          {/* <div className='col-md-8 m-auto'> */}
           <div className=''>
             <br />
-            {/* <Link to='/' className='btn btn-outline-warning float-left'> */}
-            <Link to='/' className=''>
+            <Link to='/' className='text-'>
               Show Flashcard List
             </Link>
           </div>
-          {/* <div className='col-md-8 m-auto'> */}
+
+          <div>
+      <Button className='color-purple'>Click me</Button>
+    </div>
           <div className=''>
-            {/* <h1 className='display-4 text-center'>Add Flashcard</h1> */}
             <h1 className=''>Add Flashcard</h1>
             <p className=''>Create new flashcard</p>
 
             <form noValidate onSubmit={onSubmit}>
-              {/* <div className='form-group'> */}
               <div className=''>
                 <input
                   type='text'
@@ -82,74 +80,59 @@ const CreateFlashcard = (props) => {
               </div>
               <br />
 
-              {/* <div className='form-group'> */}
               <div className=''>
                 <input
                   type='text'
                   placeholder='Definition'
                   name='definition'
-                  // className='form-control'
                   className=''
                   value={flashcard.definition}
                   onChange={onChange}
                 />
               </div>
 
-              {/* <div className='form-group'> */}
               <div className=''>
                 <input
                   type='text'
                   placeholder='Category'
                   name='category'
-                  // className='form-control'
                   className=''
                   value={flashcard.category}
                   onChange={onChange}
                 />
               </div>
 
-              {/* <div className='form-group'> */}
               <div className=''>
                 <input
                   type='text'
                   placeholder='Expanded Definition'
                   name='expandedDef'
-                  // className='form-control'
                   className=''
                   value={flashcard.expandedDef}
                   onChange={onChange}
                 />
               </div>
 
-              {/* <div className='form-group'> */}
               <div className=''>
                 <input
                   type='text'
                   placeholder='Hint 1'
                   name='hint1'
-                  // className='form-control'
                   className=''
                   value={flashcard.hint1}
                   onChange={onChange}
                 />
               </div>
-              {/* <div className='form-group'> */}
               <div className=''>
                 <input
                   type='text'
                   placeholder='Hint 2'
                   name='hint2'
-                  // className='form-control'
                   className=''
                   value={flashcard.hint2}
                   onChange={onChange}
                 />
               </div>
-
-              {/* <input
-                type='submit'
-                className='btn btn-outline-warning btn-block mt-4'
-              /> */}
               <input
                 type='submit'
                 className=''
