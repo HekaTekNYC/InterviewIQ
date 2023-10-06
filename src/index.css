@@ -2,7 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* @layer base {
+  @font-face {
+    font-family: 'Satoshi';
+    src: url() format('woff2')
+  }
+  // 'indigo-theme': {
+//   '50':  '#f7f9fb',
+//   '100': '#e5eefc',
+//   '200': '#ccd4fb',
+//   '300': '#a8b0f4',
+//   '400': '#8d88ec',
+//   '500': '#7764e7',
+//   '600': '#6347db',
+//   '700': '#4c36be',
+//   '800': '#352591',
+//   '900': '#1e195c',
+// },
+} */
 * {
     margin: 0;
     padding: 0;
