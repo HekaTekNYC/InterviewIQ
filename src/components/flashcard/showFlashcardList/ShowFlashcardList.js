@@ -4,6 +4,37 @@ import './showFlashcardList.styles.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Flashcard from '../flashcardComponent/Flashcard';
+import { Button } from 'flowbite-react';
+// 'use client';
+
+
+// export default function DisabledInputs() {
+//   return (
+//     <div className="flex max-w-md flex-col gap-4">
+//       <Label htmlFor="disabledInput1">
+//         API token
+//       </Label>
+//       <TextInput
+//         disabled
+//         id="disabledInput1"
+//         placeholder="Disabled input"
+//         type="text"
+//       />
+//       <Label htmlFor="disabledInput2">
+//         Personal access token
+//       </Label>
+//       <TextInput
+//         disabled
+//         id="disabledInput2"
+//         placeholder="Disabled readonly input"
+//         readOnly
+//         type="text"
+//       />
+//     </div>
+//   )
+// }
+
+
 
 function ShowFlashcardList() {
   const [flashcards, setFlashcards] = useState([]);
@@ -25,32 +56,37 @@ function ShowFlashcardList() {
       : flashcards.map((flashcard, k) => <Flashcard flashcard={flashcard} key={k} />); 
 
   return ( 
-    <div className='ShowFlashcardList'>
-      {/* <div className='container'> */}
-      <div className='container mx-auto px-4'>
+
+
+
+    <div className='ShowFlashcardList  '> 
+       {/* <div className='container'>  */}
+       <div className='container mx-auto px-4'>
         <div className='row'>
           <div className='col-md-12'>
             <br />
-            <h2 className='display-4 text-center'>Flashcard List</h2>
+            <h2 className='display-4 text-center text-violet-500'>Flashcard List</h2>
           </div>
 
           <div className='col-md-11'>
+          <Button color="purple">
             <Link
               to='/create-flashcard'
-              className='btn btn-outline-warning float-right'
+              className='btn btn-outline-warning '
             >
               + Add New Flashcard
             </Link>
+            </Button>
             <br />
             <br />
             <hr />
           </div>
         </div>
+        
 
-        <div className='list'>{flashcardList}</div>
+        <div className='list '>{flashcardList}</div>
       </div>
-    </div>
-  );
-}
-
+    </div> 
+  )
+  }
 export default ShowFlashcardList;
