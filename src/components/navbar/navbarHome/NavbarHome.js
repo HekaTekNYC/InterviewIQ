@@ -8,10 +8,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-blue-400 to-blue-600 p-4 rounded-b-sm shadow-md">
+    <nav className="bg-gradient-to-r from-blue-400 to-blue-600 p-4 rounded-b-sm shadow-lg">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="text-white font-semibold text-xl">InterviewIQ</div>
+          {/* the line below is where we would put in tailwind to move the words to the right  */}
           <div className="hidden md:flex space-x-4">
             {/* The text shows up Peach because we have clicked on it before. Celeste/Youtube guy set it up in index.css file.*/}
             <a href="#" className="text-white hover:text-gray-300">Flashcards</a>
