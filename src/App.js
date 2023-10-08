@@ -1,9 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-// import NavBar from './components/navBar/NavBar'
+
+import Home from './pages/Home'
 import ShowFlashcardList from './components/flashcard/showFlashcardList/ShowFlashcardList'
 import CreateFlashcard from './components/flashcard/createFlashcard/CreateFlashcard'
 import UpdateFlashcard from './components/flashcard/updateFlashcard/UpdateFlashcard'
 import Flashcard from './components/flashcard/flashcardComponent/Flashcard'
+// import FlashcardCategoriesList from '../components/flashcard/flashcardCategories/FlashcardCategoriesList'
 
 
 
@@ -13,7 +15,9 @@ function App() {
     <div className="App">
       {/* <NavBar/> */}
       <Routes>
-        <Route exact path='/' element={<ShowFlashcardList />} />
+        <Route exact path='/' element={<Home/>} />
+        <Route exact path='/show-flashcard-list' element={<ShowFlashcardList/>} />
+        {/* <Route exact path='/flashcard-categories-list' element={<FlashcardCategoriesList/>} /> */}
         <Route path='/create-flashcard' element={<CreateFlashcard />} />
         <Route path='/update-flashcard' element={<UpdateFlashcard />} />
         <Route path='/edit-flashcard/:id' element={<Flashcard />} />
