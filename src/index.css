@@ -34,18 +34,19 @@ a {
 
 a,
 a:visited {
-  color: rgb(177, 93, 254);
+  color: rgb(229, 132, 142);
 }
 
 a:hover,
 a:focus-visible {
-  color: #6e15ea;
+  color: #1c0deeb5;
 } 
 
 .card-container {
-  width: 250px;
-  border: 1px solid rgba(0, 0, 0.125);
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgb(202, 201, 201);
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
 }

@@ -4,35 +4,6 @@ import './showFlashcardList.styles.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Flashcard from '../flashcardComponent/Flashcard';
-import { Button } from 'flowbite-react';
-// 'use client';
-
-
-// export default function DisabledInputs() {
-//   return (
-//     <div className="flex max-w-md flex-col gap-4">
-//       <Label htmlFor="disabledInput1">
-//         API token
-//       </Label>
-//       <TextInput
-//         disabled
-//         id="disabledInput1"
-//         placeholder="Disabled input"
-//         type="text"
-//       />
-//       <Label htmlFor="disabledInput2">
-//         Personal access token
-//       </Label>
-//       <TextInput
-//         disabled
-//         id="disabledInput2"
-//         placeholder="Disabled readonly input"
-//         readOnly
-//         type="text"
-//       />
-//     </div>
-//   )
-// }
 
 
 
@@ -56,11 +27,8 @@ function ShowFlashcardList() {
       : flashcards.map((flashcard, k) => <Flashcard flashcard={flashcard} key={k} />); 
 
   return ( 
-
-
-
+    
     <div className='ShowFlashcardList  '> 
-       {/* <div className='container'>  */}
        <div className='container mx-auto px-4'>
         <div className='row'>
           <div className='col-md-12'>
