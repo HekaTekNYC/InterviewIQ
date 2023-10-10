@@ -12,7 +12,7 @@ function ShowFlashcardList() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3500/api/flashcards')
+      .get('http://localhost:3500/flashcards')
       .then((res) => {
         setFlashcards(res.data);
       })
