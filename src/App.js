@@ -1,7 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-
 import Home from './pages/Home'
-// import ShowFlashcardList from './components/flashcard/showFlashcardList/ShowFlashcardList'
 import CreateFlashcard from './components/flashcard/createFlashcard/CreateFlashcard'
 import UpdateFlashcard from './components/flashcard/updateFlashcard/UpdateFlashcard'
 import Flashcard from './components/flashcard/flashcardComponent/Flashcard'
@@ -15,7 +13,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Home/>} />
         {/* <Route exact path='/show-flashcard-list' element={<ShowFlashcardList/>} /> */}
-        {/* <Route exact path='/flashcard-categories-list' element={<FlashcardCategoriesList/>} /> */}
+        {/* <Route exact path='/subcategories-list' element={<ShowSubCardList/>} /> */}
         <Route path='/create-flashcard' element={<CreateFlashcard />} />
         <Route path='/update-flashcard' element={<UpdateFlashcard />} />
         <Route path='/edit-flashcard/:id' element={<Flashcard />} />
