@@ -1,16 +1,21 @@
-import React from 'react';
-import '../../../index.css';
+import React from "react";
 
-function CategoryCard({ category }) {
+const CategoryCard = (props) => {
   return (
-    <div className="flex justify-center items-center text-xl mt-4 card-container rounded-lg drop-shadow-md p-4 m-2 hover:shadow-x1 bg-blue-100">
-      <h3>{category.name}</h3>
-    </div>
+    <li className="user-item">
+      <Card className="user-item__content">
+        <Link to={`/${props.id}/categories`}>
+          <div className="user-item__info">
+            <h2>{props.name}</h2>
+            <h3>
+              {props.categoryCount}{" "}
+              {props.categoryCount === 1 ? "Category" : "Categories"}
+            </h3>
+          </div>
+        </Link>
+      </Card>
+    </li>
   );
-}
+};
 
 export default CategoryCard;
-
-
-
-

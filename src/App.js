@@ -1,29 +1,55 @@
-import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import CreateFlashcard from './components/flashcard/createFlashcard/CreateFlashcard'
-import UpdateFlashcard from './components/flashcard/updateFlashcard/UpdateFlashcard'
-import Flashcard from './components/flashcard/flashcardComponent/Flashcard'
-
+import { Routes, Route, Navigate } from "react-router-dom";
+import Home from "./pages/Home";
+import "./pages/home.styles.css";
+import CategoryList from "./components/categories/categoryList/CategoryList";
+import CreateFlashcard from "./components/flashcard/createFlashcard/CreateFlashcard";
+import UpdateFlashcard from "./components/flashcard/updateFlashcard/UpdateFlashcard";
+import Flashcard from "./components/flashcard/flashcardComponent/Flashcard";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
-  
   return (
-    <div className="App">
-      {/* <NavBar/> */}
+    <div>
       <Routes>
-        <Route exact path='/' element={<Home/>} />
-        {/* <Route exact path='/show-flashcard-list' element={<ShowFlashcardList/>} /> */}
-        {/* <Route exact path='/subcategories-list' element={<ShowSubCardList/>} /> */}
-        <Route path='/create-flashcard' element={<CreateFlashcard />} />
-        <Route path='/update-flashcard' element={<UpdateFlashcard />} />
-        <Route path='/edit-flashcard/:id' element={<Flashcard />} />
-        
+        <Route path="/" element={<Home />} />
+        <Route path="/:categoryId/categories" element={<CategoryList />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-  </div>
-   );
-  }
-  
-  export default App;
-  
+    </div>
+  );
+}
 
+export default App;
 
+// import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
+// import Home from "./pages/Home";
+// import "./pages/home.styles.css";
+// import CreateFlashcard from "./components/flashcard/createFlashcard/CreateFlashcard";
+// import UpdateFlashcard from "./components/flashcard/updateFlashcard/UpdateFlashcard";
+// import Flashcard from "./components/flashcard/flashcardComponent/Flashcard";
+// import Login from "./components/Login";
+// import Register from "./components/Register";
+
+// function App() {
+//   return (
+//     <div>
+//       {/* <NavBar/> */}
+//       <Router>
+//         <Route path="/" exact>
+//           <Home />
+//           <Navigate replace to="/home" />
+//         </Route>
+
+//         {/* <Route path="/create-flashcard" element={<CreateFlashcard />} />
+//         <Route path="/update-flashcard" element={<UpdateFlashcard />} />
+//         <Route path="/edit-flashcard/:id" element={<Flashcard />} /> */}
+//       </Router>
+//     </div>
+//   );
+// }
+
+// export default App;
