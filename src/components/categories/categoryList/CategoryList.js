@@ -3,28 +3,24 @@ import CategoryCard from "../categoryCard/CategoryCard";
 import "../../../index.css";
 import "./categoryList.styles.css";
 
-function CategoryList(props) {
-  if (!props.categories || props.categories.length === 0) {
-    return (
-      <div className="center">
-        <h2>Loading...</h2>
-      </div>
-    );
-  }
-
+const CategoryList = ({ categories }) => {
+  // handleclick needs to go here
   return (
-    <ul className="categories-list">
-      {props.categories.map((category) => (
-        <CategoryCard
-          key={category._id} // Use a unique identifier as the key
-          id={category._id}
-          name={category.name}
-          categoryCount={props.categories.length}
-        />
-      ))}
-    </ul>
+    <>
+      <div className="grid grid-cols-3 gap-4">
+        {categories.map((category) => (
+          <div key={category._id}>
+            <CategoryCard
+              id={category._id}
+              name={category.name}
+              categoryCount={category.subcategories.length}
+            />{" "}
+          </div>
+        ))}
+      </div>
+    </>
   );
-}
+};
 
 export default CategoryList;
 
