@@ -1,28 +1,55 @@
 import React from "react";
 import CategoryCard from "../categoryCard/CategoryCard";
+import { Link } from "react-router-dom";
 import "../../../index.css";
 import "./categoryList.styles.css";
 
 const CategoryList = ({ categories }) => {
-  // handleclick needs to go here
+  if (!categories || !Array.isArray(categories)) {
+    return <div>No categories to display</div>;
+  }
   return (
-    <>
-      <div className="grid grid-cols-3 gap-4">
-        {categories.map((category) => (
-          <div key={category._id}>
-            <CategoryCard
-              id={category._id}
-              name={category.name}
-              categoryCount={category.subcategories.length}
-            />{" "}
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="grid grid-cols-3 gap-4">
+      {categories.map((category, key) => (
+        <Link to={"/api/subcategories/"} key={category._id}>
+          <CategoryCard
+            id={category._id}
+            name={category.name}
+            categoryCount={category.length}
+          />
+        </Link>
+      ))}
+    </div>
   );
 };
 
 export default CategoryList;
+
+// import React from "react";
+// import CategoryCard from "../categoryCard/CategoryCard";
+// import "../../../index.css";
+// import "./categoryList.styles.css";
+
+// const CategoryList = ({ categories }) => {
+//   // handleclick needs to go here
+//   return (
+//     <>
+//       <div className="grid grid-cols-3 gap-4">
+//         {categories.map((category) => (
+//           <div key={category._id}>
+//             <CategoryCard
+//               id={category._id}
+//               name={category.name}
+//               categoryCount={category.subcategories.length}
+//             />{" "}
+//           </div>
+//         ))}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default CategoryList;
 
 // import React from "react";
 // import CategoryCard from "../categoryCard/CategoryCard";

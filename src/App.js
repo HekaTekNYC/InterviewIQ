@@ -2,9 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import "./pages/home.styles.css";
 import CategoryList from "./components/categories/categoryList/CategoryList";
-import CreateFlashcard from "./components/flashcard/createFlashcard/CreateFlashcard";
-import UpdateFlashcard from "./components/flashcard/updateFlashcard/UpdateFlashcard";
-import Flashcard from "./components/flashcard/flashcardComponent/Flashcard";
+import SubList from "./components/subcategories/subList/subList";
 import Login from "./components/Login";
 import Register from "./components/Register";
 
@@ -14,10 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:categoryId/categories" element={<CategoryList />} />
-        {/* <Route
-          path="/:categoryId/subcategories"
-          element={<SubcategoryList />}
-        /> */}
+        <Route path="/api/subcategories" element={<SubList />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
