@@ -1,16 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import NavbarHome from "../components/navbar/navbarHome/NavbarHome";
 import CategoryList from "../components/categories/categoryList/CategoryList";
 import ErrorModal from "../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../shared/components/hooks/httpHook";
-// import ShowSubCardList from "../components/subcategories/showSubCardList/showSubCardList";
-// import Login from "../components/Login";
-// import Register from "../components/Register";
 
 const Home = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [loadedCategories, setLoadedCategories] = useState([]);
+  const [Categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -24,7 +21,7 @@ const Home = () => {
 
         console.log("Categories before setting state:", categories);
 
-        setLoadedCategories(categories);
+        setCategories(responseData);
       } catch (err) {
         // Handle errors
       }
@@ -34,9 +31,9 @@ const Home = () => {
 
   return (
     <>
-      <NavbarHome />
-      {/* <Login /> */}
-
+      {" "}
+      <NavbarHome />{" "}
+      {/* <Login /> /} {/ <div className="flex justify-center items-center text-xl mt-4 card-container rounded-lg drop-shadow-md p-4 m-2 hover:shadow-x1 bg-blue-100"> <h3>{category.name}</h3> </div> */}
       {/* <div className='bg-gradient-to-r from-blue-200 to-blue-100'> */}
       <div className="bg-white-200">
         <div className="py-20 p-4 header-container flex-row">
@@ -49,9 +46,7 @@ const Home = () => {
               <LoadingSpinner />
             </div>
           )}
-          {!isLoading && loadedCategories && (
-            <CategoryList categories={loadedCategories} />
-          )}
+          {!isLoading && Categories && <CategoryList categories={Categories} />}
         </div>
       </div>
     </>

@@ -1,0 +1,5 @@
+.categories-list {
+  list-style: none; /* Add this line to remove bullet points */
+  margin: 0;
+  padding: 0;
+}
