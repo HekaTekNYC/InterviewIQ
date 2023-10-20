@@ -32,14 +32,10 @@ a {
   text-decoration: none;
 }
 
-a,
-a:visited {
-  color: rgb(229, 132, 142);
-}
 
 a:hover,
 a:focus-visible {
-  color: #1c0deeb5;
+  color: #49494ab5;
 } 
 
 .card-container {
@@ -51,3 +47,7 @@ a:focus-visible {
   overflow: hidden;
 }
 
+/* a,
+a:visited {
+  color: rgb(42, 179, 228);
+} */

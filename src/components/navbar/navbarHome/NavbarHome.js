@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; 
+import Login  from './LogIn'
+
 
 const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -8,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-blue-400 to-blue-600 p-4 rounded-b-sm shadow-lg">
+    <nav className="bg-gradient-to-r from-blue-600 to-blue-700 p-3 rounded-b-sm shadow-xl">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="text-white font-semibold text-xl">InterviewIQ</div>
@@ -31,7 +34,9 @@ const Navbar = () => {
           </div>
           <div className="flex items-center">
             {/* We can wrap this in the <Link> tag and route it over to the users page when we build it */}
-            <i className="fas fa-user text-white hover:text-gray-300 cursor-pointer"></i>
+            <Link to={'./Login'}>
+              <i className="fas fa-user text-white hover:text-gray-300 cursor-pointer"></i>
+            </Link>
           </div>
           <div className="md:hidden">
             {/* Mobile navigation button (e.g., for mobile responsiveness) */}

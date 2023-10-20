@@ -7,8 +7,8 @@ const CategoryCard = (props) => {
     <div className="bg-white p-4 m-2 rounded-lg shadow-md hover:shadow-x1">
       <Link to={`/${props.id}/categories`}>
         <div className="user-item__info">
-          <h2 className="text-lg">{props.name}</h2>
-          <h3>
+          <h2 className="text-lg text-gray-700">{props.name}</h2>
+          <h3 className="text-gray-700">
             {props.categoryCount}{" "}
             {props.categoryCount === 1 ? "Category" : "Categories"}
           </h3>

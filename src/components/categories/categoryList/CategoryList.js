@@ -4,6 +4,9 @@ import "../../../index.css";
 import "./categoryList.styles.css";
 
 const CategoryList = ({ categories }) => {
+  if (!categories || categories.length === 0) {
+    return <p>No categories available</p>;
+  }
   // handleclick needs to go here
   return (
     <>
