@@ -37,7 +37,7 @@ const Home = () => {
       {/* <div className='bg-gradient-to-r from-blue-200 to-blue-100'> */}
       <div className="bg-white-200">
         <div className="py-20 p-4 header-container flex-row">
-          <h1 className="text-center text-3xl">Pick A Category</h1>
+          <h1 className="text-center text-2xl text-gray-700">Pick A Category</h1>
         </div>
         <div className="card-list">
           <ErrorModal error={error} onClear={clearError} />

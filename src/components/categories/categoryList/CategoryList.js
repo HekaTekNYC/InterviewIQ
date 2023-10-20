@@ -5,9 +5,12 @@ import "../../../index.css";
 import "./categoryList.styles.css";
 
 const CategoryList = ({ categories }) => {
-  if (!categories || !Array.isArray(categories)) {
-    return <div>No categories to display</div>;
+
+  if (!categories || categories.length === 0) {
+    return <p>No categories available</p>;
   }
+  // handleclick needs to go here
+
   return (
     <div className="grid grid-cols-3 gap-4">
       {categories.map((category, key) => (
