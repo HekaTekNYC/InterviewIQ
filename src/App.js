@@ -5,7 +5,8 @@ import CategoryList from "./components/categories/categoryList/CategoryList";
 import CreateFlashcard from "./components/flashcard/createFlashcard/CreateFlashcard";
 import UpdateFlashcard from "./components/flashcard/updateFlashcard/UpdateFlashcard";
 import Flashcard from "./components/flashcard/flashcardComponent/Flashcard";
-import Login from "./components/Login";
+import Login from "./components/navbar/navbarHome/LogIn";
+
 import Register from "./components/Register";
 
 function App() {

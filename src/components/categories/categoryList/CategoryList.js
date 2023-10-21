@@ -3,20 +3,51 @@ import CategoryCard from "../categoryCard/CategoryCard";
 import "../../../index.css";
 import "./categoryList.styles.css";
 
-const CategoryList = ({ categories }) => {
+
+
+
+
+const CategoryList = () => {
+
+  // Category card data
+  const categories = [
+    {
+      id: 'c1',
+      name: 'Frontend',
+      subCount: '30'
+    },
+    {
+      id: 'c2',
+      name: 'Backend',
+      subCount: '20'
+    },
+    {
+      id: 'c3',
+      name: 'Languages',
+      subCount: '26'
+    },
+    {
+      id: 'c4',
+      name: 'Behavioral',
+      subCount: '37'
+    },
+
+  ]
+
+
   if (!categories || categories.length === 0) {
     return <p>No categories available</p>;
   }
   // handleclick needs to go here
   return (
     <>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-4 gap-4">
         {categories.map((category) => (
-          <div key={category._id}>
+          <div key={category.id}>
             <CategoryCard
-              id={category._id}
+              id={category.id}
               name={category.name}
-              categoryCount={category.subcategories.length}
+              subCount={category.subCount}
             />{" "}
           </div>
         ))}
