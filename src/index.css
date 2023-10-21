@@ -25,8 +25,19 @@
     padding: 0;
     box-sizing: border-box;
   }
+/* src/index.css */
+body {
+  background-color: rgb(37, 41, 60);
   
+}
 
+
+
+
+:root {
+  height: 100vh;
+  background-color: rgb(37, 41, 60)
+}
 
 a {
   text-decoration: none;
@@ -38,14 +49,22 @@ a:focus-visible {
   color: #49494ab5;
 } 
 
-.card-container {
+.card {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(174, 178, 185, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+/* .card-container {
   width: 200px;
   height: 200px;
   border: 1px solid rgb(202, 201, 201);
   margin: 0 auto;
   border-radius: 10px;
   overflow: hidden;
-}
+} */
 
 /* a,
 a:visited {
