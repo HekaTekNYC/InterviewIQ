@@ -7,6 +7,7 @@ import UpdateFlashcard from "./components/flashcard/updateFlashcard/UpdateFlashc
 import Flashcard from "./components/flashcard/flashcardComponent/Flashcard";
 import Login from "./components/navbar/navbarHome/LogIn";
 
+
 import Register from "./components/Register";
 
 function App() {
@@ -15,10 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:categoryId/categories" element={<CategoryList />} />
-        {/* <Route
-          path="/:categoryId/subcategories"
-          element={<SubcategoryList />}
-        /> */}
+        <Route path="/api/subcategories" element={<SubList />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

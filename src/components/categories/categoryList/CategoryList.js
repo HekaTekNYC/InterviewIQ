@@ -1,7 +1,9 @@
 import React from "react";
 import CategoryCard from "../categoryCard/CategoryCard";
+import { Link } from "react-router-dom";
 import "../../../index.css";
 import "./categoryList.styles.css";
+
 
 
 
@@ -35,11 +37,14 @@ const CategoryList = () => {
   ]
 
 
+
   if (!categories || categories.length === 0) {
     return <p>No categories available</p>;
   }
   // handleclick needs to go here
+
   return (
+
     <>
       <div className="grid grid-cols-4 gap-4">
         {categories.map((category) => (
@@ -53,10 +58,37 @@ const CategoryList = () => {
         ))}
       </div>
     </>
+
   );
 };
 
 export default CategoryList;
+
+// import React from "react";
+// import CategoryCard from "../categoryCard/CategoryCard";
+// import "../../../index.css";
+// import "./categoryList.styles.css";
+
+// const CategoryList = ({ categories }) => {
+//   // handleclick needs to go here
+//   return (
+//     <>
+//       <div className="grid grid-cols-3 gap-4">
+//         {categories.map((category) => (
+//           <div key={category._id}>
+//             <CategoryCard
+//               id={category._id}
+//               name={category.name}
+//               categoryCount={category.subcategories.length}
+//             />{" "}
+//           </div>
+//         ))}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default CategoryList;
 
 // import React from "react";
 // import CategoryCard from "../categoryCard/CategoryCard";
