@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SubCard from "../subCard/SubCard";
-
-import { useHttpClient } from "../../../shared/components/hooks/httpHook";
+import { useHttpClient } from "../../hooks/httpHook";
+// import { useHttpClient } from "../../../shared/components/hooks/httpHook";
 
 const SubList = () => {
   // const { categoryId } = useParams();
