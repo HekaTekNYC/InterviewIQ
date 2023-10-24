@@ -1,31 +1,18 @@
-import React, { useRef } from "react";
-import { Dialog } from "@headlessui/react";
+import React from 'react';
 
-const ErrorModal = (props) => {
-  let completeButtonRef = useRef(null);
+import Modal from './Modal';
+import Button from '../FormElements/Button';
+
+const ErrorModal = props => {
   return (
-    <Dialog
-      initialFocus={completeButtonRef}
-      open={!!props.error}
-      onClose={props.onClear}
-      className="relative z-50"
+    <Modal
+      onCancel={props.onClear}
+      header="An Error Occurred!"
+      show={!!props.error}
+      footer={<Button onClick={props.onClear}>Okay</Button>}
     >
-      <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-        <Dialog.Panel className="w-full max-w-sm rounded bg-blue-400">
-          <Dialog.Title className="text-lg font-bold">
-            An Error Occurred!
-          </Dialog.Title>
-          <p className="my-4">{props.error}</p>
-          <button
-            className="btn-primary"
-            ref={completeButtonRef}
-            onClick={props.onClear}
-          >
-            Okay
-          </button>
-        </Dialog.Panel>
-      </div>
-    </Dialog>
+      <p>{props.error}</p>
+    </Modal>
   );
 };
 

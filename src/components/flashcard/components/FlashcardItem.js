@@ -7,7 +7,7 @@ import Map from '../../shared/components/UIElements/Map';
 import { AuthContext } from '../../shared/context/auth-context';
 import './PlaceItem.css';
 
-const PlaceItem = props => {
+const FlashcardItem = props => {
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -60,7 +60,7 @@ const PlaceItem = props => {
         }
       >
         <p>
-          Do you want to proceed and delete this place? Please note that it
+          Do you want to proceed and delete this flashcard? Please note that it
           can't be undone thereafter.
         </p>
       </Modal>
@@ -94,4 +94,4 @@ const PlaceItem = props => {
   );
 };
 
-export default PlaceItem;
+export default FlashcardItem;
