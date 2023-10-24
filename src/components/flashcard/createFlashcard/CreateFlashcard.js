@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './createFlashcard.styles.css'
 import '../../../index.css'
 import { Button } from 'flowbite-react';
 
-import { useNavigate } from 'react-router-dom';
+
+// import Card from '../../shared/components/UIElements/Card';
+// import PlaceItem from './PlaceItem';
+// import FlashcardItem from '../components/FlahscardItem'
+// import './PlaceList.css';
+
 
 const CreateFlashcard = (props) => {
   // Define the state with useState hook
