@@ -5,9 +5,6 @@ import "./pages/home.styles.css";
 import CategoryList from "./components/categories/categoryList/CategoryList";
 import Login from "./components/navbar/navbarHome/LogIn";
 import SubList from "./components/subcategories/subList/subList";
-// import NewFlashcard from "./components/flashcard/pages/NewFlashcard";
-// import UserFlashcards from "./components/flashcard/pages/UserFlashcards";
-// import UpdateFlashcard from "./components/flashcard/pages/UpdateFlashcard";
 import Auth from './user/pages/Auth'
 import { AuthContext } from "./shared/context/auth-context";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
