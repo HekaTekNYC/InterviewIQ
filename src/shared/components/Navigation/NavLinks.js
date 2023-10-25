@@ -9,11 +9,11 @@ const NavLinks = props => {
 
   return (
     <ul className="nav-links">
-      <li>
-        <NavLink to="/" exact="true">
+      {/* <li> */}
+        {/* <NavLink to="/" exact="true">
           ALL USERS
-        </NavLink>
-      </li>
+        </NavLink> */}
+      {/* </li> */}
       {auth.isLoggedIn && (
         <li>
           <NavLink to="/:uid/flashcards">MY FLASHCARDS</NavLink>

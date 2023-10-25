@@ -10,8 +10,8 @@ const FlashcardList = props => {
     return (
       <div className="place-list center">
         <Card>
-          <h2>No places found. Maybe create one?</h2>
-          <Button to="/places/new">Share Place</Button>
+          <h2>No flashcard found. Would you like to create one?</h2>
+          <Button to="/flashcards/new">Share Flashcard</Button>
         </Card>
       </div>
     );
@@ -19,16 +19,16 @@ const FlashcardList = props => {
 
   return (
     <ul className="place-list">
-      {props.items.map(place => (
-        <PlaceItem
-          key={place.id}
-          id={place.id}
-          image={place.imageUrl}
-          title={place.title}
-          description={place.description}
-          address={place.address}
-          creatorId={place.creator}
-          coordinates={place.location}
+      {props.items.map(flashcard => (
+        <FlashcardItem
+          key={flashcard.id}
+          id={flashcard.id}
+          image={flashcard.imageUrl}
+          term={flashcard.term}
+          description={flashcard.definition}
+          hint1={flashcard.hint1}
+          hint2={flashcard.hint2}
+          creatorId={flashcard.creator}
         />
       ))}
     </ul>

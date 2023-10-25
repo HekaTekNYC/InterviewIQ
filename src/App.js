@@ -1,66 +1,53 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { useState, useCallback } from "react";
 import Home from "./pages/Home";
-import "./pages/home.styles.css";
-import CategoryList from "./components/categories/categoryList/CategoryList";
-import Login from "./components/navbar/navbarHome/LogIn";
-import SubList from "./components/subcategories/subList/subList";
-// import NewFlashcard from "./components/flashcard/pages/NewFlashcard";
-// import UserFlashcards from "./components/flashcard/pages/UserFlashcards";
-// import UpdateFlashcard from "./components/flashcard/pages/UpdateFlashcard";
-import Auth from './user/pages/Auth'
+import Auth from './user/pages/Auth';
 import { AuthContext } from "./shared/context/auth-context";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Register from "./components/Register";
+import UpdateFlashcard from './components/flashcard/updateFlashcard/UpdateFlashcard';
+import UsersFlashcards from './components/flashcard/pages/UsersFlashcards';
+import NewFlashcard from './components/flashcard/pages/NewFlashcard';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(false);
 
-  const login = useCallback(() => {
+  const login = useCallback((uid) => {
     setIsLoggedIn(true);
+    setUserId(uid);
   }, []);
 
   const logout = useCallback(() => {
     setIsLoggedIn(false);
+    setUserId(null);
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+      value={{
+        isLoggedIn: isLoggedIn,
+        userId: userId,
+        login: login,
+        logout: logout
+      }}
     >
+      <MainNavigation />
       <Routes>
-        <Route
-          path="/*"
-          element={
-            <>
-              <MainNavigation />
-              <main>
-                <Routes>
-                  <Route index element={<Home />} />
-                  <Route path="/:categoryId/categories" element={<CategoryList />} />
-                  <Route path="/api/subcategories" element={<SubList />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-              </main>
-            </>
-          }
-        />
-
-        <Route
-          path="/auth"
-          element={
-            isLoggedIn ? <Navigate to="/" /> : <Auth />
-          }
-        />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/flashcards/new" element={<NewFlashcard />} />
+        <Route path="/flashcards/:userId" element={<UpdateFlashcard />} />
+        <Route path="/auth/*" element={<Auth />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/:userId/flashcards/*" element={<UsersFlashcards />} />
+        <Route path="*" element={<Navigate to="/auth/login" />} />
       </Routes>
     </AuthContext.Provider>
   );
 }
 
 export default App;
+
 
 
 

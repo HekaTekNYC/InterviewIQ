@@ -96,7 +96,7 @@ const Auth = () => {
       } catch (err) {}
     }
   };
-  //don't change this is what took our error message away. I know it's diff than Max's.
+  //don't change this is what took our error message away. I know it's diff than Max's
 const errorHandler = () => {
   clearError();
 }

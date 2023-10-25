@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Input from '../../shared/components/FormElements/Input';
-import Button from '../../shared/components/FormElements/Button.js';
-import Card from '../../shared/components/UIElements/Card';
+import Input from '../../../shared/components/FormElements/Input';
+import Button from '../../../shared/components/FormElements/Button.js';
+import Card from '../../../shared/components/UIElements/Card';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
@@ -42,15 +42,15 @@ const DUMMY_PLACES = [
 
 const UpdateFlashcard = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const placeId = useParams().placeId;
+  const flashcardId = useParams().flashcardId;
 
   const [formState, inputHandler, setFormData] = useForm(
     {
-      title: {
+      term: {
         value: '',
         isValid: false
       },
-      description: {
+      definition: {
         value: '',
         isValid: false
       }
@@ -58,18 +58,18 @@ const UpdateFlashcard = () => {
     false
   );
 
-  const identifiedPlace = DUMMY_PLACES.find(p => p.id === placeId);
+  const identifiedFlashcard = DUMMY_FLASHCARD.find(f => f.id === userId);
 
   useEffect(() => {
-    if (identifiedPlace) {
+    if (identifiedFlashcard) {
       setFormData(
         {
           title: {
-            value: identifiedPlace.title,
+            value: identifiedFlashcard.term,
             isValid: true
           },
-          description: {
-            value: identifiedPlace.description,
+          definition: {
+            value: identifiedFlashcard.definition,
             isValid: true
           }
         },
@@ -77,18 +77,18 @@ const UpdateFlashcard = () => {
       );
     }
     setIsLoading(false);
-  }, [setFormData, identifiedPlace]);
+  }, [setFormData, identifiedFlashcard]);
 
-  const placeUpdateSubmitHandler = event => {
+  const flashcardUpdateSubmitHandler = event => {
     event.preventDefault();
     console.log(formState.inputs);
   };
 
-  if (!identifiedPlace) {
+  if (!identifiedFlashcard) {
     return (
       <div className="center">
         <Card>
-          <h2>Could not find place!</h2>
+          <h2>Could not find flashcard!</h2>
         </Card>
       </div>
     );
@@ -103,27 +103,27 @@ const UpdateFlashcard = () => {
   }
 
   return (
-    <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
+    <form className="place-form" onSubmit={flashcardUpdateSubmitHandler}>
       <Input
-        id="title"
+        id="term"
         element="input"
         type="text"
-        label="Title"
+        label="Term"
         validators={[VALIDATOR_REQUIRE()]}
-        errorText="Please enter a valid title."
+        errorText="Please enter a valid term."
         onInput={inputHandler}
-        initialValue={formState.inputs.title.value}
-        initialValid={formState.inputs.title.isValid}
+        initialValue={formState.inputs.term.value}
+        initialValid={formState.inputs.term.isValid}
       />
       <Input
-        id="description"
+        id="definition"
         element="textarea"
-        label="Description"
+        label="Definition"
         validators={[VALIDATOR_MINLENGTH(5)]}
-        errorText="Please enter a valid description (min. 5 characters)."
+        errorText="Please enter a valid definition (min. 5 characters)."
         onInput={inputHandler}
-        initialValue={formState.inputs.description.value}
-        initialValid={formState.inputs.description.isValid}
+        initialValue={formState.inputs.definition.value}
+        initialValid={formState.inputs.definition.isValid}
       />
       <Button type="submit" disabled={!formState.isValid}>
         UPDATE FLASHCARD

@@ -5,7 +5,9 @@ import Button from '../FormElements/Button';
 
 const ErrorModal = props => {
   const sideDrawerRef = useRef(null);
-  console.log('Error Message:', props.error)
+  console.log('Error Message:', props.error);
+
+  
   return (
     <Modal
       ref={sideDrawerRef}

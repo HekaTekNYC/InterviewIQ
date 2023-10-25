@@ -77,8 +77,7 @@ const CreateFlashcard = (props) => {
                   type='text'
                   placeholder='Flashcard Term'
                   name='term'
-                  // className='form-control'
-                  className=''
+                  className='form-control'
                   value={flashcard.term}
                   onChange={onChange}
                 />
@@ -90,7 +89,7 @@ const CreateFlashcard = (props) => {
                   type='text'
                   placeholder='Definition'
                   name='definition'
-                  className=''
+                  className='form-control'
                   value={flashcard.definition}
                   onChange={onChange}
                 />
@@ -101,7 +100,7 @@ const CreateFlashcard = (props) => {
                   type='text'
                   placeholder='Category'
                   name='category'
-                  className=''
+                  className='form-control'
                   value={flashcard.category}
                   onChange={onChange}
                 />
@@ -112,7 +111,7 @@ const CreateFlashcard = (props) => {
                   type='text'
                   placeholder='Expanded Definition'
                   name='expandedDef'
-                  className=''
+                  className='form-control'
                   value={flashcard.expandedDef}
                   onChange={onChange}
                 />
