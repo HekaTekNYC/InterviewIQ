@@ -1,9 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import FlashcardList from './FlashcardList';
 
-import PlaceList from '../components/PlaceList';
-
-const DUMMY_PLACES = [
+const DUMMY_FLASHCARDS = [
   {
     id: 'p1',
     title: 'Empire State Building',
@@ -32,10 +31,10 @@ const DUMMY_PLACES = [
   }
 ];
 
-const UserFlashcards = () => {
+const UsersFlashcards = () => {
   const userId = useParams().userId;
-  const loadedPlaces = DUMMY_PLACES.filter(place => place.creator === userId);
-  return <PlaceList items={loadedPlaces} />;
+  const loadedFlashcards = DUMMY_FLASHCARDS.filter(flashcard => flashcard.creator === userId);
+  return <FlashcardList items={loadedFlashcards} />;
 };
 
-export default UserFlashcards;
+export default UsersFlashcards;
