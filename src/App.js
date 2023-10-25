@@ -1,7 +1,9 @@
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { useState, useCallback } from "react";
 import Home from "./pages/Home";
+
 import Auth from './user/pages/Auth';
+
 import { AuthContext } from "./shared/context/auth-context";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Register from "./components/Register";
