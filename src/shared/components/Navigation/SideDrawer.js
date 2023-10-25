@@ -1,3 +1,33 @@
+import React, { useRef } from 'react';
+import ReactDOM from "react-dom"
+import { createPortal } from 'react-dom';
+import { CSSTransition } from 'react-transition-group';
+
+import './SideDrawer.css';
+
+const SideDrawer = (props) => {
+  const { show, onClick } = props;
+  const modalRef = useRef(null);
+
+  const content = (
+    <CSSTransition
+      ref={modalRef}
+      in={show}
+      timeout={200}
+      classNames="slide-in-left"
+      mountOnEnter
+      unmountOnExit
+    >
+      <aside className="side-drawer" onClick={onClick}>
+        {props.children}
+      </aside>
+    </CSSTransition>
+  );
+
+  return createPortal(content, document.body);
+};
+
+export default SideDrawer;
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 // import { CSSTransition } from 'react-transition-group';
@@ -30,34 +60,6 @@
 
 // export default SideDrawer;
 
-import React from 'react';
-import ReactDOM from "react-dom"
-import { createPortal } from 'react-dom';
-import { CSSTransition } from 'react-transition-group';
-
-import './SideDrawer.css';
-
-const SideDrawer = (props) => {
-  const { show, onClick } = props;
-
-  const content = (
-    <CSSTransition
-      in={show}
-      timeout={200}
-      classNames="slide-in-left"
-      mountOnEnter
-      unmountOnExit
-    >
-      <aside className="side-drawer" onClick={onClick}>
-        {props.children}
-      </aside>
-    </CSSTransition>
-  );
-
-  return createPortal(content, document.body);
-};
-
-export default SideDrawer;
 
 
 

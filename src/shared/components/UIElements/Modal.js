@@ -28,13 +28,13 @@ const ModalOverlay = (props) => {
 };
 
 const Modal = (props) => {
-  const { showModal, onCancel } = props;
+  const { show, onCancel } = props; // Use `show` instead of `showModal` there was a discrepancy between our Modal and Error Modal. We had it set to showModal in this file and set to show on the ErrorModal.js which is why it wasn't activating.
 
   return (
     <>
-      {showModal && <Backdrop onClick={onCancel} />}
+      {show && <Backdrop onClick={onCancel} />}
       <CSSTransition
-        in={showModal}
+        in={show}
         mountOnEnter
         unmountOnExit
         timeout={200}
