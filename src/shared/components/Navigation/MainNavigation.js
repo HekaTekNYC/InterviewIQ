@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from "react"
+import {Link} from "react-router-dom"
 
-import MainHeader from './MainHeader';
-import NavLinks from './NavLinks';
-import SideDrawer from './SideDrawer';
-import Backdrop from '../UIElements/Backdrop';
-import './MainNavigations.css'
-
+import MainHeader from "./MainHeader"
+import NavLinks from "./NavLinks"
+import SideDrawer from "./SideDrawer"
+import Backdrop from "../UIElements/Backdrop"
+import "./MainNavigations.css"
 
 const MainNavigation = props => {
-  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false)
 
   const openDrawerHandler = () => {
-    setDrawerIsOpen(true);
-  };
+    setDrawerIsOpen(true)
+  }
 
   const closeDrawerHandler = () => {
-    setDrawerIsOpen(false);
-  };
+    setDrawerIsOpen(false)
+  }
 
   return (
     <React.Fragment>
@@ -37,15 +36,20 @@ const MainNavigation = props => {
           <span />
           <span />
         </button>
-        <h1 className="main-navigation__title">
-          <Link to="/">InterviewIQ</Link>
+        <h1 className="main-navigation__title ms-2">
+          <Link to="/">
+            {" "}
+            <div className="text-white font-semibold text-lg">
+              Interview<span className="text-red-400">IQ</span>
+            </div>
+          </Link>
         </h1>
         <nav className="main-navigation__header-nav">
           <NavLinks />
         </nav>
       </MainHeader>
     </React.Fragment>
-  ); 
-};
+  )
+}
 
-export default MainNavigation;
+export default MainNavigation

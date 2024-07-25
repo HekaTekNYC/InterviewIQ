@@ -1,41 +1,47 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useContext} from "react"
+import {NavLink} from "react-router-dom"
 
-import { AuthContext } from '../../context/auth-context';
-import './NavLinks.css';
+import {AuthContext} from "../../context/auth-context"
+import "./NavLinks.css"
 
 const NavLinks = props => {
-  const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext)
 
   return (
     <ul className="nav-links">
-      {/* <li> */}
-        {/* <NavLink to="/" exact="true">
-          ALL USERS
-        </NavLink> */}
-      {/* </li> */}
+      {/* Public Links */}
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about">About</NavLink>
+      </li>
+      <li>
+        <NavLink to="/contact">Contact</NavLink>
+      </li>
+
+      {/* Conditional Links Based on Authentication */}
       {auth.isLoggedIn && (
-        <li>
-          <NavLink to="/:uid/flashcards">MY FLASHCARDS</NavLink>
-        </li>
+        <>
+          <li>
+            <NavLink to={`/${auth.userId}/flashcards`}>MY FLASHCARDS</NavLink>
+          </li>
+          <li>
+            <NavLink to="/flashcards/new">ADD FLASHCARDS</NavLink>
+          </li>
+          <li>
+            <button onClick={auth.logout}>LOGOUT</button>
+          </li>
+        </>
       )}
-      {auth.isLoggedIn && (
-        <li>
-          <NavLink to="/flashcards/new">ADD FLASHCARDS</NavLink>
-        </li>
-      )}
+
       {!auth.isLoggedIn && (
         <li>
-          <NavLink to="/auth">LOGIN</NavLink>
-        </li>
-      )}
-      {auth.isLoggedIn && (
-        <li>
-          <button onClick={auth.logout}>LOGOUT</button>
+          <NavLink to="/auth">Login</NavLink>
         </li>
       )}
     </ul>
-  );
-};
+  )
+}
 
-export default NavLinks;
+export default NavLinks
