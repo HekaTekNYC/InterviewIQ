@@ -1,6 +1,9 @@
 import {Routes, Route, Navigate} from "react-router-dom"
+import Layout from "./components/Layout/Layout"
 import Home from "./routes/HomePage/HomePage"
 import Categories from "./routes/CategoriesPage/CategoriesPage"
+
+import "./index.css"
 
 // Future features (preserved for later)
 // import Auth from "./user/pages/Auth"
@@ -27,9 +30,7 @@ function App() {
   // }, [])
 
   return (
-    // <AuthContext.Provider value={{ isLoggedIn, userId, login, logout }}>
-    <>
-      {/* <MainNavigation /> */}
+    <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -53,8 +54,7 @@ function App() {
         <Route path="/:userId/flashcards/*" element={<UsersFlashcards />} />
         <Route path="*" element={<Navigate to="/auth/login" />} /> */}
       </Routes>
-    </>
-    // </AuthContext.Provider>
+    </Layout>
   )
 }
 

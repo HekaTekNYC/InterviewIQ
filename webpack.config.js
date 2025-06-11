@@ -35,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/, // CSS, SCSS, SASS
-        use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf)$/, // image and font files
