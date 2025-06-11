@@ -1,7 +1,26 @@
-.cat-container {
-    height: 800px;
+.home {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
-.cat-list-container {
-    height: 200px;
+.home-container {
+  max-width: 900px;
+  text-align: center;
+  color: var(--primary-text);
+}
+
+.home-text h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.home-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--secondary-text);
 }
