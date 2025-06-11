@@ -1,6 +1,6 @@
 import {Routes, Route, Navigate} from "react-router-dom"
-import Home from "routes/home/HomePage"
-import Categories from "routes/categories/CategoriesPage"
+import Home from "./routes/home/HomePage"
+import Categories from "./routes/categories/CategoriesPage"
 
 // Future features (preserved for later)
 // import Auth from "./user/pages/Auth"
@@ -32,6 +32,7 @@ function App() {
       {/* <MainNavigation /> */}
       <Routes>
         <Route path="/" element={<Home />} />
+
         {/* Show list of categories */}
         <Route path="/flashcards" element={<Categories />} />
 
