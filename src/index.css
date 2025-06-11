@@ -38,11 +38,6 @@
 
   /* font */
   --font-primary: "Poppins", sans-serif;
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
 }
 
 /* Dark mode override */
@@ -104,15 +99,11 @@ body {
 }
 
 h1 {
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
 }
 
 h2 {
-  font-weight: var(--font-weight-semibold);
-}
-
-p {
-  font-weight: var(--font-weight-regular);
+  font-weight: 600;
 }
 
 a {
