@@ -6,134 +6,114 @@ I have imported all the files from frontend-backend-01-starting-setup section ex
 
       console.log('Error in Users component: ', error);
 
-  const errorHandler = () => {
-    setError(null);
-  };
+const errorHandler = () => {
+setError(null);
+};
+
 ```
+
+```
+
 InterviewIQ
 ├─ .babelrc
 ├─ README.md
 ├─ TaskList.md
 ├─ data
-│  └─ db.json
+│ └─ db.json
 ├─ package-lock.json
 ├─ package.json
 ├─ postcss.config.js
 ├─ public
-│  ├─ aecd42b4c1d197657b25.jpg
-│  ├─ index.html
-│  ├─ main.js
-│  └─ output.css
+│ ├─ aecd42b4c1d197657b25.jpg
+│ ├─ index.html
+│ ├─ main.js
+│ └─ output.css
 ├─ src
-│  ├─ App.js
-│  ├─ components
-│  │  ├─ Register.js
-│  │  ├─ categories
-│  │  │  ├─ categoryCard
-│  │  │  │  ├─ CategoryCard.js
-│  │  │  │  └─ categoryCard.styles.css
-│  │  │  └─ categoryList
-│  │  │     ├─ CategoryList.js
-│  │  │     └─ categoryList.styles.css
-│  │  ├─ flashcard
-│  │  │  ├─ components
-│  │  │  │  ├─ FlashcardItem.css
-│  │  │  │  ├─ FlashcardItem.js
-│  │  │  │  ├─ FlashcardList.css
-│  │  │  │  └─ FlashcardList.js
-│  │  │  ├─ pages
-│  │  │  │  ├─ FlashcardForm.css
-│  │  │  │  ├─ FlashcardList.js
-│  │  │  │  ├─ NewFlashcard.js
-│  │  │  │  ├─ UpdateFlashcard.js
-│  │  │  │  └─ UsersFlashcards.js
-│  │  │  ├─ updateFlashcard
-│  │  │  │  ├─ UpdateFlashcard.js
-│  │  │  │  └─ updateFlashcard.styles.css
-│  │  │  ├─ zcreateFlashcard
-│  │  │  │  ├─ CreateFlashcard.js
-│  │  │  │  └─ createFlashcard.styles.css
-│  │  │  ├─ zflashcardComponent
-│  │  │  │  ├─ Flashcard.js
-│  │  │  │  ├─ FlashcardToggle.js
-│  │  │  │  └─ flashcard.styles.css
-│  │  │  └─ zshowFlashcardList
-│  │  │     ├─ ShowFlashcardList.js
-│  │  │     └─ showFlashcardList.styles.css
-│  │  ├─ hooks
-│  │  │  ├─ formHook.js
-│  │  │  ├─ httpHook.js
-│  │  │  └─ useDarkMode.js
-│  │  ├─ navbar
-│  │  │  └─ navbarHome
-│  │  │     ├─ LogIn.js
-│  │  │     ├─ NavbarHome.js
-│  │  │     └─ navbarHome.styles.css
-│  │  └─ subcategories
-│  │     ├─ subCard
-│  │     │  └─ subCard.js
-│  │     └─ subList
-│  │        └─ subList.js
-│  ├─ img
-│  │  ├─ Studywoman.svg
-│  │  ├─ studying.png
-│  │  └─ user.png
-│  ├─ index.css
-│  ├─ index.js
-│  ├─ pages
-│  │  ├─ Home.js
-│  │  └─ home.styles.css
-│  ├─ shared
-│  │  ├─ components
-│  │  │  ├─ FormElements
-│  │  │  │  ├─ Button.css
-│  │  │  │  ├─ Button.js
-│  │  │  │  ├─ Input.css
-│  │  │  │  └─ Input.js
-│  │  │  ├─ Navigation
-│  │  │  │  ├─ MainHeader.css
-│  │  │  │  ├─ MainHeader.js
-│  │  │  │  ├─ MainNavigation.js
-│  │  │  │  ├─ MainNavigations.css
-│  │  │  │  ├─ NavLinks.css
-│  │  │  │  ├─ NavLinks.js
-│  │  │  │  ├─ SideDrawer.css
-│  │  │  │  └─ SideDrawer.js
-│  │  │  ├─ UIElements
-│  │  │  │  ├─ Avatar.css
-│  │  │  │  ├─ Avatar.js
-│  │  │  │  ├─ Backdrop.css
-│  │  │  │  ├─ Backdrop.js
-│  │  │  │  ├─ Card.css
-│  │  │  │  ├─ Card.js
-│  │  │  │  ├─ ErrorModal.js
-│  │  │  │  ├─ LoadingSpinner.js
-│  │  │  │  ├─ Map.css
-│  │  │  │  ├─ Map.js
-│  │  │  │  ├─ Modal.css
-│  │  │  │  ├─ Modal.js
-│  │  │  │  ├─ loadingSpinner.styles.css
-│  │  │  │  ├─ pillButton.js
-│  │  │  │  └─ pillButton.styles.css
-│  │  │  └─ util
-│  │  │     └─ validators.js
-│  │  ├─ context
-│  │  │  └─ auth-context.js
-│  │  └─ hooks
-│  │     ├─ auth-hook.js
-│  │     ├─ form-hook.js
-│  │     └─ http-hook.js
-│  └─ user
-│     ├─ components
-│     │  ├─ UserItem.css
-│     │  ├─ UserItem.js
-│     │  ├─ UsersList.css
-│     │  └─ UsersList.js
-│     └─ pages
-│        ├─ Auth.css
-│        ├─ Auth.js
-│        └─ Users.js
+│ ├─ App.tsx
+│ ├─ assets
+│ │ └─ img
+│ │ ├─ Studywoman.svg
+│ │ ├─ studying.png
+│ │ └─ user.png
+│ ├─ components
+│ │ ├─ LogIn.tsx
+│ │ ├─ Register.tsx
+│ │ ├─ UI
+│ │ │ ├─ Backdrop.css
+│ │ │ ├─ Backdrop.tsx
+│ │ │ ├─ Button.css
+│ │ │ ├─ Button.tsx
+│ │ │ ├─ ErrorModal.tsx
+│ │ │ ├─ Input.css
+│ │ │ ├─ Input.tsx
+│ │ │ ├─ LoadingSpinner.tsx
+│ │ │ ├─ Map.css
+│ │ │ ├─ Map.tsx
+│ │ │ ├─ Modal.css
+│ │ │ ├─ Modal.tsx
+│ │ │ ├─ loadingSpinner.styles.css
+│ │ │ ├─ pillButton.styles.css
+│ │ │ └─ pillButton.tsx
+│ │ ├─ avatar
+│ │ │ ├─ Avatar.css
+│ │ │ └─ Avatar.tsx
+│ │ ├─ categories
+│ │ │ ├─ categoryCard
+│ │ │ │ ├─ CategoryCard.jsx
+│ │ │ │ └─ category-card.css
+│ │ │ └─ categoryList
+│ │ │ ├─ CategoryList.jsx
+│ │ │ └─ category-list.css
+│ │ ├─ flashcard
+│ │ │ ├─ FlashcardForm.css
+│ │ │ ├─ FlashcardList.tsx
+│ │ │ ├─ NewFlashcard.tsx
+│ │ │ ├─ UpdateFlashcard.tsx
+│ │ │ ├─ UsersFlashcards.tsx
+│ │ │ ├─ flashcardItem
+│ │ │ │ ├─ FlashcardItem.tsx
+│ │ │ │ └─ flashcard-item.css
+│ │ │ ├─ flashcardList
+│ │ │ │ ├─ FlashcardList.tsx
+│ │ │ │ └─ flashcard-list.css
+│ │ │ └─ updateFlashcard
+│ │ │ ├─ UpdateFlashcard.tsx
+│ │ │ └─ update-flashcard.css
+│ │ └─ navigation
+│ │ └─ navbarMain
+│ │ ├─ NavbarMain.tsx
+│ │ └─ navbar-main.css
+│ ├─ contexts
+│ │ └─ auth-context.tsx
+│ ├─ hooks
+│ │ ├─ auth-hook.tsx
+│ │ ├─ form-hook.tsx
+│ │ ├─ http-hook.tsx
+│ │ └─ useDarkMode.tsx
+│ ├─ index.css
+│ ├─ index.tsx
+│ ├─ routes
+│ │ ├─ categories
+│ │ │ ├─ CategoriesPage.tsx
+│ │ │ └─ categories-page.css
+│ │ └─ home
+│ │ ├─ HomePage.tsx
+│ │ └─ home-page.css
+│ ├─ user
+│ │ ├─ UserItem.css
+│ │ ├─ UserItem.tsx
+│ │ ├─ UsersList.css
+│ │ ├─ UsersList.tsx
+│ │ └─ pages
+│ │ ├─ Auth.css
+│ │ ├─ Auth.tsx
+│ │ └─ Users.tsx
+│ └─ util
+│ └─ validators.tsx
 ├─ tailwind.config.js
+├─ tsconfig.json
 └─ webpack.config.js
+
+```
 
 ```

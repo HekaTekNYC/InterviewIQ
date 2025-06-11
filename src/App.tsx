@@ -1,6 +1,6 @@
 import {Routes, Route, Navigate} from "react-router-dom"
-import Home from "./routes/home/HomePage"
-import Categories from "./routes/categories/CategoriesPage"
+import Home from "./routes/HomePage/HomePage"
+import Categories from "./routes/CategoriesPage/CategoriesPage"
 
 // Future features (preserved for later)
 // import Auth from "./user/pages/Auth"
