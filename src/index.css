@@ -27,7 +27,8 @@
   }
 /* src/index.css */
 body {
-  background-color: rgb(37, 41, 60);
+  background-color: #25293c;
+  background-color: oklch(63.7% 0.237 25.331);
   
 }
 
