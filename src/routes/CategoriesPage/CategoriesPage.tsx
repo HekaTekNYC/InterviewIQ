@@ -1,7 +1,11 @@
-import React from "react"
+import { CategoryList } from '@/containers';
 
 const CategoriesPage = () => {
-  return <div>CategoriesPage</div>
-}
+  return (
+    <>
+      <CategoryList />
+    </>
+  );
+};
 
-export default CategoriesPage
+export default CategoriesPage;

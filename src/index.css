@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Light mode (default) */
 :root {
   /* Background & neutral */
   --bg-color: #ffffff;
+  --surface-color: #dbdbe5;
   --primary-text: #444050;
   --secondary-text: #6d6b77;
-  --color-white: #ffffff;
 
   /* Primary */
   --primary-light: #9294f5;
@@ -37,16 +37,16 @@
   --error-dark: #fb6f84;
 
   /* font */
-  --font-primary: "Poppins", sans-serif;
+  --font-primary: 'Poppins', sans-serif;
 }
 
 /* Dark mode override */
-[data-theme="dark"] {
+[data-theme='dark'] {
   /* Background & neutral */
   --bg-color: #25293c;
+  --surface-color: #464c67;
   --primary-text: #ffffff;
   --secondary-text: #6d6b77;
-  --color-white: #ffffff;
 
   /* Primary */
   --primary-light: #9294f5;
