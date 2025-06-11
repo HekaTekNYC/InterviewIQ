@@ -1,42 +1,46 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
   mode: "development",
-  entry: "/src/index.js",
+  entry: "./src/index.tsx", // 👈 main TS entry file
   output: {
-    path: path.join(__dirname, "/dist"),
+    path: path.resolve(__dirname, "dist"),
     publicPath: "/",
     filename: "main.js",
   },
-
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"], // 👈 allow imports without extensions
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "public/index.html", // to import index.html file inside index.js
+      template: "public/index.html", // your HTML shell
     }),
   ],
-
   devServer: {
-    port: 3030, // you can change the port
+    port: 3030,
+    historyApiFallback: true, // 👈 allows React Router to work properly
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, // .js and .jsx files
-        exclude: /node_modules/, // excluding the node_modules folder
-        use: {
-          loader: "babel-loader",
-        },
+        test: /\.(ts|tsx)$/, // 👈 handles .ts and .tsx files
+        exclude: /node_modules/,
+        use: "ts-loader", // 👈 TypeScript loader
       },
       {
-        test: /\.(sa|sc|c)ss$/, // styles files
+        test: /\.(js|jsx)$/, // optional: still handle .js files too
+        exclude: /node_modules/,
+        use: "babel-loader",
+      },
+      {
+        test: /\.(sa|sc|c)ss$/, // CSS, SCSS, SASS
         use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"],
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/, // to import images and fonts
-        loader: "url-loader",
-        options: { limit: false },
+        test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf)$/, // image and font files
+        type: "asset", // modern way, replaces url-loader/file-loader
       },
     ],
   },
-};
+}
