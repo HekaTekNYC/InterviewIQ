@@ -11,10 +11,10 @@ const CategoryCard = ({ id, name }: CategoryCardProps) => (
   <div className="category-card">
     <Link
       to={`/practice/${id}`}
-      className="category-card-link"
+      className="category-card__link"
       aria-label={`Practice category: ${name}`}
     >
-      <h3 className="category-card-title">{name}</h3>
+      <h3 className="category-card__title">{name}</h3>
     </Link>
   </div>
 );
