@@ -1,9 +1,13 @@
 export interface Category {
-  id: string; // slug like "css", "javascript"
+  id: string;
   name: string;
 }
 
 export const categories: Category[] = [
+  {
+    id: 'html',
+    name: 'HTML',
+  },
   {
     id: 'css',
     name: 'CSS',

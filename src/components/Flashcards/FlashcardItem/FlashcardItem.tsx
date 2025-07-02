@@ -95,3 +95,13 @@
 // };
 
 // export default FlashcardItem;
+
+// interface UserFlashcardProgress {
+//   flashcardId: string;
+//   lastReviewed: string | null;
+//   nextReview: string | null;
+//   difficulty: 'easy' | 'medium' | 'hard' | null;
+//   reviewCount: number;
+//   correctCount: number;
+//   favorite: boolean;
+// }
