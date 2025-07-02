@@ -1,43 +1,128 @@
 .flashcard {
-  width: 300px;
-  height: 200px;
+  width: 100%;
+  min-height: 300px;
+  max-width: 1000px;
   perspective: 1000px;
   cursor: pointer;
-  margin: 0 auto;
+  margin: 15px 0;
+  display: grid;
   position: relative;
 }
 
-.flashcard > div {
-  width: 100%;
-  height: 100%;
+.flashcard__front,
+.flashcard__back {
+  grid-area: 1 / 1;
   border-radius: 10px;
-  background: white;
+  background: var(--bg-color);
   backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 1rem;
+  padding: 32px 24px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
   font-size: 1.2rem;
   user-select: none;
-  transition: transform 0.6s;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+  overflow: visible;
+  box-sizing: border-box;
 }
 
-.front {
+/* Flashcard Front */
+.flashcard__front {
+  transform: rotateX(0deg);
+  height: 375px;
   z-index: 2;
 }
 
-.back {
-  transform: rotateY(180deg);
+.flashcard--flipped .flashcard__front {
+  transform: rotateX(180deg);
+  z-index: 1;
 }
 
-.flashcard.flipped .front {
-  transform: rotateY(180deg);
+.flashcard__question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  height: calc(100% - 32px);
+  width: 100%;
+  overflow-y: auto;
 }
 
-.flashcard.flipped .back {
-  transform: rotateY(0deg);
+.flashcard__front-bar {
+  display: flex;
+  align-items: center;
+  height: 25px;
+  width: 100%;
+}
+
+.flashcard__hint-icon {
+  height: 23px;
+  width: 23px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.flashcard__hint {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.flashcard__hint-toggle {
+  color: var(--secondary-dark);
+  cursor: pointer;
+  user-select: none;
+}
+
+.flashcard__hint-text {
+  font-style: italic;
+  margin-left: 0.25rem;
+  color: var(--secondary-dark);
+  font-weight: 500;
+}
+
+/* Flashcard Back */
+
+.flashcard__back {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.flashcard--flipped .flashcard__back {
+  transform: rotateX(360deg);
+  z-index: 2;
+}
+
+.flashcard__explanation {
+  font-weight: 500;
+  display: none;
+  color: var(--info-dark);
+}
+
+.flashcard__references {
+  color: var(--info-dark);
+}
+
+.flashcard__references a {
+  color: var(--info-dark);
+  text-decoration: none;
+}
+
+.flashcard__references a:hover {
+  text-decoration: underline;
+}
+
+.flashcard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.flashcard__tag {
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  color: var(--secondary-text);
 }

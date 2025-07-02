@@ -32,27 +32,29 @@ const PracticePage: React.FC = () => {
     <div className="practice-page">
       {!categoryId ? (
         <div className="practice-page__categories">
-          <h2 className="practice-page__categories-header">Categories</h2>
+          <h2>Categories</h2>
           <div className="practice-page__categories-container">
             <CategoryList categories={categories} />
           </div>
         </div>
       ) : filteredFlashcards && filteredFlashcards.length > 0 ? (
-        <div className="practice-page__flashcards-container">
-          <h2 className="practice-page__flashcards-header">Flashcards</h2>
-          <div className="practice-page__flashcards">
-            <FlashcardList
-              flashcards={filteredFlashcards}
-              currentIndex={currentIndex}
-            />
-          </div>
-          <div className="practice-page__flashcards-controls">
-            <FlashcardControls
-              onPrev={handlePrev}
-              onNext={handleNext}
-              disablePrev={currentIndex === 0}
-              disableNext={currentIndex === filteredFlashcards.length - 1}
-            />
+        <div className="practice-page__flashcards">
+          <h2>Flashcards</h2>
+          <div className="practice-page__flashcards-container">
+            <div className="practice-page__flashcards-list">
+              <FlashcardList
+                flashcards={filteredFlashcards}
+                currentIndex={currentIndex}
+              />
+            </div>
+            <div className="practice-page__flashcards-controls">
+              <FlashcardControls
+                onPrev={handlePrev}
+                onNext={handleNext}
+                disablePrev={currentIndex === 0}
+                disableNext={currentIndex === filteredFlashcards.length - 1}
+              />
+            </div>
           </div>
         </div>
       ) : (

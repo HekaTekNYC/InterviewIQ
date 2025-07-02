@@ -581,33 +581,4 @@ export const flashcards: Flashcard[] = [
     tags: ['clearfix', 'floats', 'css techniques'],
     reference: [],
   },
-  // JavaScript
-  {
-    id: 'javascript-1',
-    categoryId: 'javascript',
-    question: 'What is a closure in JavaScript?',
-    answer: 'A closure is a function that retains access to its outer scope.',
-  },
-  {
-    id: 'javascript-2',
-    categoryId: 'javascript',
-    question: 'What is hoisting?',
-    answer: 'Hoisting moves variable and function declarations to the top.',
-  },
-
-  // React
-  {
-    id: 'react-1',
-    categoryId: 'react',
-    question: 'What is JSX?',
-    answer:
-      'JSX is a syntax extension that allows mixing HTML with JavaScript.',
-  },
-  {
-    id: 'react-2',
-    categoryId: 'react',
-    question: 'What is a React Hook?',
-    answer:
-      'A Hook is a special function that lets you use state and other React features.',
-  },
 ];
