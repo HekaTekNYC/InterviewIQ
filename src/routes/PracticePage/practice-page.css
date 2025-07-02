@@ -1,0 +1,51 @@
+.practice-page {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-grow: 1;
+  width: 100%;
+  height: auto;
+  padding: 0px 35px;
+  margin: 40px 0 60px;
+}
+
+/* Categories Section */
+.practice-page__categories {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.practice-page__categories-header {
+}
+
+.practice-page__categories-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Media queries */
+
+/* Small Screens (≥576px) */
+@media (min-width: 576px) {
+  .practice-page {
+    padding: 0 40px;
+  }
+}
+
+/* Medium Screens (≥992px) */
+@media (min-width: 992px) {
+  .practice-page {
+    padding: 0 80px;
+  }
+}
+
+/* Large Screens (≥1400px) */
+@media (min-width: 1400px) {
+  .practice-page {
+    padding: 0 100px;
+  }
+}

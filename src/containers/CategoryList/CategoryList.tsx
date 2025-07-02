@@ -1,4 +1,5 @@
 import { CategoryCard } from '@/components/Categories';
+import './category-list.css';
 
 type Category = {
   id: string;

@@ -2,72 +2,64 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FlashcardControls } from '@/components/Flashcards';
 import { CategoryList, FlashcardList } from '@/containers';
+import { categories } from '@/data/categories';
+import { flashcards } from '@/data/flashcards';
 
-const dummyCategories = [
-  { id: 'javascript', name: 'JavaScript' },
-  { id: 'react', name: 'React' },
-];
-
-const dummyFlashcards: Record<string, { question: string; answer: string }[]> =
-  {
-    javascript: [
-      {
-        question: 'What is a closure?',
-        answer: 'A function that has access to outer scope variables.',
-      },
-      {
-        question: 'What is hoisting?',
-        answer: 'Variable and function declarations are moved to the top.',
-      },
-    ],
-    react: [
-      {
-        question: 'What is JSX?',
-        answer: 'JavaScript XML, a syntax extension for React.',
-      },
-      {
-        question: 'What is a hook?',
-        answer: 'A special function that lets you use React features.',
-      },
-    ],
-  };
+import './practice-page.css';
 
 const PracticePage: React.FC = () => {
   const { categoryId } = useParams<{ categoryId?: string }>();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  if (!categoryId) {
-    return <CategoryList categories={dummyCategories} />;
-  }
-
-  const flashcards =
-    dummyFlashcards[categoryId as keyof typeof dummyFlashcards];
-
-  if (!flashcards) {
-    return <p>Category not found.</p>;
-  }
+  // Filter flashcards based on the categoryId
+  const filteredFlashcards = categoryId
+    ? flashcards.filter((card) => card.categoryId === categoryId)
+    : null;
 
   const handleNext = () => {
-    if (currentIndex < flashcards.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+    if (filteredFlashcards && currentIndex < filteredFlashcards.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
     }
   };
 
   const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+    if (filteredFlashcards && currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
     }
   };
 
   return (
     <div className="practice-page">
-      <FlashcardList flashcards={flashcards} currentIndex={currentIndex} />
-      <FlashcardControls
-        onPrev={handlePrev}
-        onNext={handleNext}
-        disablePrev={currentIndex === 0}
-        disableNext={currentIndex === flashcards.length - 1}
-      />
+      {!categoryId ? (
+        <div className="practice-page__categories">
+          <h2 className="practice-page__categories-header">Categories</h2>
+          <div className="practice-page__categories-container">
+            <CategoryList categories={categories} />
+          </div>
+        </div>
+      ) : filteredFlashcards && filteredFlashcards.length > 0 ? (
+        <div className="practice-page__flashcards-container">
+          <h2 className="practice-page__flashcards-header">Flashcards</h2>
+          <div className="practice-page__flashcards">
+            <FlashcardList
+              flashcards={filteredFlashcards}
+              currentIndex={currentIndex}
+            />
+          </div>
+          <div className="practice-page__flashcards-controls">
+            <FlashcardControls
+              onPrev={handlePrev}
+              onNext={handleNext}
+              disablePrev={currentIndex === 0}
+              disableNext={currentIndex === filteredFlashcards.length - 1}
+            />
+          </div>
+        </div>
+      ) : (
+        <p className="practice-page__error">
+          Category not found or no flashcards available.
+        </p>
+      )}
     </div>
   );
 };
