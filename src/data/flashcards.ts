@@ -25,7 +25,16 @@ export const flashcards: Flashcard[] = [
       'Semantic tags make the structure of web pages more meaningful, improving accessibility, SEO, and code clarity.',
     tags: ['semantic', 'accessibility', 'SEO'],
     hint: 'Think of <section>, <article>, <nav>...',
-    reference: [],
+    reference: [
+      {
+        label: 'MDN Web Docs: Introduction to HTML semantics',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element#semantic_elements',
+      },
+      {
+        label: 'W3Schools: HTML5 Semantic Elements',
+        url: 'https://www.w3schools.com/html/html5_semantic_elements.asp',
+      },
+    ],
   },
   {
     id: 'html-2',
@@ -38,7 +47,16 @@ export const flashcards: Flashcard[] = [
       'Web APIs include DOM manipulation, Fetch API, localStorage, and WebSockets. They are grouped by functionality and enable building interactive UIs.',
     tags: ['API', 'DOM', 'browser'],
     hint: 'Think of fetch(), localStorage, or querySelector.',
-    reference: [],
+    reference: [
+      {
+        label: 'MDN Web Docs: Web APIs',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/API',
+      },
+      {
+        label: 'Google Developers: Introduction to Web APIs',
+        url: 'https://developers.google.com/web/fundamentals/primers/apis',
+      },
+    ],
   },
   {
     id: 'html-3',
