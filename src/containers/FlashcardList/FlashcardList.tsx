@@ -21,7 +21,6 @@ const FlashcardList: React.FC<FlashcardListProps> = ({
         hint={card.hint}
         explanation={card.explanation}
         reference={card.reference}
-        tags={card.tags}
       />
     </div>
   );

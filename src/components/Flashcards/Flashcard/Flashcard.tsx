@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Hint from '../../../assets/icons/hint.svg?react';
 import Link from '../../../assets/icons/link.svg?react';
 import Expand from '../../../assets/icons/expand.svg?react';
+import Bulb from '../../../assets/icons/bulb.svg?react';
 import './flashcard.css';
 
 type FlashcardProps = {
@@ -9,7 +10,10 @@ type FlashcardProps = {
   answer: string;
   hint?: string;
   explanation?: string;
-  reference?: { label: string; url: string }[];
+  reference?: {
+    label: string;
+    url: string;
+  }[];
 };
 
 const Flashcard: React.FC<FlashcardProps> = ({
@@ -21,35 +25,38 @@ const Flashcard: React.FC<FlashcardProps> = ({
 }) => {
   const references = reference ?? [];
   const [flipped, setFlipped] = useState(false);
-  const [expandedSection, setExpandedSection] = useState<
+  const [activeOverlay, setActiveOverlay] = useState<
     null | 'hint' | 'reference' | 'explanation'
   >(null);
 
-  // Helper to toggle expanded sections
-  const toggleExpand = (
-    e: React.MouseEvent | React.KeyboardEvent,
-    section: 'hint' | 'reference' | 'explanation'
-  ) => {
-    e.stopPropagation();
-    setExpandedSection((prev) => (prev === section ? null : section));
-  };
+  const renderOverlayContent = () => {
+    if (!activeOverlay) return null;
 
-  // Keyboard handler factory
-  const handleKeyDown = (
-    e: React.KeyboardEvent,
-    section: 'hint' | 'reference' | 'explanation'
-  ) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleExpand(e, section);
+    if (activeOverlay === 'hint') return <p>{hint}</p>;
+
+    if (activeOverlay === 'explanation') return <p>{explanation}</p>;
+
+    if (activeOverlay === 'reference') {
+      return references.map((ref, idx) => (
+        <div key={idx} className="flashcard__reference-item">
+          <a
+            href={ref.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flashcard__references-link"
+          >
+            {ref.label}
+          </a>
+        </div>
+      ));
     }
+
+    return null;
   };
 
   return (
     <div
-      className={`flashcard 
-        ${flipped ? 'flashcard--flipped' : ''} 
-        ${expandedSection ? `flashcard--expanded-${expandedSection}` : ''}`}
+      className={`flashcard ${flipped ? 'flashcard--flipped' : ''}`}
       onClick={() => setFlipped(!flipped)}
       role="button"
       tabIndex={0}
@@ -60,121 +67,100 @@ const Flashcard: React.FC<FlashcardProps> = ({
         }
       }}
     >
+      {/* Overlay */}
+      {activeOverlay && (
+        <div
+          className="flashcard__overlay"
+          onClick={(e) => {
+            e.stopPropagation();
+            setActiveOverlay(null);
+          }}
+          role="dialog"
+        >
+          <div
+            className="flashcard__overlay-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="flashcard__overlay-close"
+              onClick={() => setActiveOverlay(null)}
+            >
+              ✕
+            </button>
+            {renderOverlayContent()}
+          </div>
+        </div>
+      )}
+
       {/* Front */}
       <div className="flashcard__front">
         <p className="flashcard__question">{question}</p>
-
-        {/* Hint toggle */}
         {hint && (
-          <>
-            <div className="flashcard__front-bar">
-              <span
-                className="flashcard__icon"
-                onClick={(e) => toggleExpand(e, 'hint')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => handleKeyDown(e, 'hint')}
-              >
-                <Hint />
-              </span>
-              <span
-                className="flashcard__label"
-                onClick={(e) => toggleExpand(e, 'hint')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => handleKeyDown(e, 'hint')}
-              >
-                Get hint
-              </span>
-            </div>
-
-            <div
-              className="flashcard__expansion flashcard__expansion--hint"
-              onClick={(e) => toggleExpand(e, 'hint')}
+          <div className="flashcard__bar">
+            <span
+              className="flashcard__icon bulb"
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveOverlay('hint');
+              }}
               role="button"
               tabIndex={0}
-              onKeyDown={(e) => handleKeyDown(e, 'hint')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveOverlay('hint');
+                }
+              }}
             >
-              {expandedSection === 'hint' && hint}
-            </div>
-          </>
+              <Bulb />
+            </span>
+          </div>
         )}
       </div>
 
       {/* Back */}
       <div className="flashcard__back">
         <p className="flashcard__answer">{answer}</p>
-
-        {/* Back bar with Explanation and Reference toggles */}
-        <div className="flashcard__back-bar">
-          {/* Explanation toggle */}
+        <div className="flashcard__bar">
           {explanation && (
-            <div
-              className="flashcard__bar-item"
-              onClick={(e) => toggleExpand(e, 'explanation')}
+            <span
+              className="flashcard__icon icon-flip"
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveOverlay('explanation');
+              }}
               role="button"
               tabIndex={0}
-              onKeyDown={(e) => handleKeyDown(e, 'explanation')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveOverlay('explanation');
+                }
+              }}
             >
-              <span className="flashcard__icon icon-flip">
-                <Expand />
-              </span>
-            </div>
+              <Expand />
+            </span>
           )}
-
-          {/* Reference toggle */}
-          {reference.length > 0 && (
-            <div
-              className="flashcard__bar-item"
-              onClick={(e) => toggleExpand(e, 'reference')}
+          {references.length > 0 && (
+            <span
+              className="flashcard__icon"
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveOverlay('reference');
+              }}
               role="button"
               tabIndex={0}
-              onKeyDown={(e) => handleKeyDown(e, 'reference')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveOverlay('reference');
+                }
+              }}
             >
-              <span className="flashcard__icon">
-                <Link />
-              </span>
-            </div>
+              <Link />
+            </span>
           )}
         </div>
-
-        {/* Explanation expansion */}
-        {explanation && (
-          <div
-            className={`flashcard__expansion flashcard__expansion--explanation`}
-            onClick={(e) => toggleExpand(e, 'explanation')}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => handleKeyDown(e, 'explanation')}
-          >
-            {expandedSection === 'explanation' && explanation}
-          </div>
-        )}
-
-        {/* Reference expansion */}
-        {reference.length > 0 && (
-          <div
-            className={`flashcard__expansion flashcard__expansion--reference`}
-            onClick={(e) => toggleExpand(e, 'reference')}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => handleKeyDown(e, 'reference')}
-          >
-            {expandedSection === 'reference' &&
-              reference.map((ref, idx) => (
-                <div key={idx} className="flashcard__reference-item">
-                  <a
-                    href={ref.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flashcard__references-link"
-                  >
-                    {ref.label}
-                  </a>
-                </div>
-              ))}
-          </div>
-        )}
       </div>
     </div>
   );
