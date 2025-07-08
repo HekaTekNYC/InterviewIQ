@@ -49,6 +49,9 @@ const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
       </div>
       <div className="flashcard-viewer__flashcard-controls">
         <FlashcardControls
+          index={currentIndex}
+          setIndex={setCurrentIndex}
+          maxIndex={filteredFlashcards.length - 1}
           onPrev={handlePrev}
           onNext={handleNext}
           disablePrev={currentIndex === 0}

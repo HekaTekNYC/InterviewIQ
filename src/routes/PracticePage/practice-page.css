@@ -38,14 +38,6 @@
   height: auto;
 }
 
-.practice-page__flashcards-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60px;
-  width: 100%;
-}
-
 /* Media queries */
 
 /* Small Screens (≥576px) */

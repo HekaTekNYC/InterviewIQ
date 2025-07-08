@@ -4,7 +4,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  max-width: 150px;
+  max-width: 200px;
 }
 
 .flashcard-controls__control {
@@ -23,6 +23,12 @@
   cursor: pointer;
 }
 
+.flashcard-controls__control.disabled {
+  border: 1px solid var(--primary-light);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .flashcard-controls__back,
 .flashcard-controls__forward {
   display: flex;
@@ -39,9 +45,24 @@
   transform: rotate(180deg);
 }
 
+.flashcard-controls__back.disabled svg path,
+.flashcard-controls__forward.disabled svg path {
+  fill: var(--primary-light);
+}
+
 .flashcard-controls__control:hover {
   border: 2px solid var(--primary-medium);
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(99, 91, 204, 0.3) 0px 3px 7px -3px;
+}
+
+.flashcard-controls__control.disabled:hover {
+  border: 2px solid var(--primary-medium);
+  box-shadow: none;
+}
+
+.flashcard-controls__back.disabled:hover,
+.flashcard-controls__forward.disabled:hover {
+  cursor: not-allowed;
 }
