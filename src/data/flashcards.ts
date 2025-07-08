@@ -22,7 +22,7 @@ export const flashcards: Flashcard[] = [
     answer:
       'Semantic HTML means using tags that describe the meaning of the content they enclose, such as <article>, <section>, <header>, and <nav>.',
     explanation:
-      'Semantic tags make the structure of web pages more meaningful, improving accessibility, SEO, and code clarity.',
+      'Semantic tags make the structure of web pages more meaningful, improving accessibility, SEO, and code clarity. ',
     tags: ['semantic', 'accessibility', 'SEO'],
     hint: 'Think of <section>, <article>, <nav>...',
     reference: [

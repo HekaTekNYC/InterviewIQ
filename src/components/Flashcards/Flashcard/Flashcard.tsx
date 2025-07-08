@@ -37,18 +37,22 @@ const Flashcard: React.FC<FlashcardProps> = ({
     if (activeOverlay === 'explanation') return <p>{explanation}</p>;
 
     if (activeOverlay === 'reference') {
-      return references.map((ref, idx) => (
-        <div key={idx} className="flashcard__reference-item">
-          <a
-            href={ref.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flashcard__references-link"
-          >
-            {ref.label}
-          </a>
-        </div>
-      ));
+      return (
+        <ul className="flashcard__reference-list">
+          {references.map((ref, idx) => (
+            <li key={idx} className="flashcard__reference-item">
+              <a
+                href={ref.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flashcard__reference-link"
+              >
+                {ref.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      );
     }
 
     return null;
@@ -94,7 +98,9 @@ const Flashcard: React.FC<FlashcardProps> = ({
 
       {/* Front */}
       <div className="flashcard__front">
-        <p className="flashcard__question">{question}</p>
+        <div className="flashcard__question">
+          <p className="flashcard__question-content">{question}</p>
+        </div>
         {hint && (
           <div className="flashcard__bar">
             <span
@@ -120,7 +126,9 @@ const Flashcard: React.FC<FlashcardProps> = ({
 
       {/* Back */}
       <div className="flashcard__back">
-        <p className="flashcard__answer">{answer}</p>
+        <div className="flashcard__answer">
+          <p className="flashcard__answer-content">{answer}</p>
+        </div>
         <div className="flashcard__bar">
           {explanation && (
             <span

@@ -16,11 +16,11 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   text-align: center;
   font-size: 1.1rem;
-  padding: 32px 24px;
+  padding: 24px 18px 24px 24px;
   border-radius: 10px;
   background: var(--bg-color);
   backface-visibility: hidden;
@@ -28,7 +28,7 @@
   user-select: none;
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
-  overflow-y: auto;
+  overflow: hidden;
   z-index: 1;
 }
 
@@ -51,25 +51,51 @@
 /* Question/Answer areas */
 .flashcard__question,
 .flashcard__answer {
-  flex-grow: 1;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow-y: scroll;
+  overflow-y: auto;
+  position: relative;
+  padding-right: 8px;
+}
+/* @supports (scrollbar-width: thin) {
+  .flashcard__question,
+  .flashcard__answer {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-light) transparent;
+  }
+} */
+
+.flashcard__question-content,
+.flashcard__answer-content {
+  margin: auto 0;
 }
 
-.flashcard__answer {
-  padding-top: 10px;
+/* Custom Scrollbar Q and A */
+.flashcard__question::-webkit-scrollbar,
+.flashcard__answer::-webkit-scrollbar {
+  width: 5px;
+}
+
+.flashcard__question::-webkit-scrollbar-thumb,
+.flashcard__answer::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 3px;
+}
+
+.flashcard__question::-webkit-scrollbar-track,
+.flashcard__answer::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* Menu Bar */
 .flashcard__bar {
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: flex-end;
   user-select: none;
-  height: 20px;
+  height: 30px;
+  padding-top: 5px;
 }
 
 .flashcard__bar-item {
@@ -86,7 +112,7 @@
   justify-content: center;
   height: 100%;
   width: auto;
-  margin-right: 0.25rem;
+
   cursor: pointer;
 }
 
@@ -102,6 +128,7 @@
 .icon-flip svg {
   display: inline-block;
   transform: rotate(180deg);
+  margin-right: 0.3rem;
 }
 
 /* Flashcard Overlay */
@@ -113,14 +140,13 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  padding: 10px;
   background: rgba(226, 232, 254, 0.41);
   border: 1px solid var(--primary-light);
   border-radius: 10px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(9.7px);
   -webkit-backdrop-filter: blur(9.7px);
-
+  cursor: default;
   z-index: 10;
 }
 
@@ -129,9 +155,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   width: 100%;
   height: 100%;
-  padding: 24px;
+  padding: 15px;
   overflow-y: auto;
   color: var(--primary-text);
 }
@@ -148,21 +175,49 @@
   z-index: 11;
 }
 
+/* Overlay Custom Scrollbar */
+.flashcard__overlay-content::-webkit-scrollbar {
+  width: 5px;
+  padding-left: 15px;
+}
+
+.flashcard__overlay-content::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 3px;
+}
+
+.flashcard__overlay-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .flashcard__explanation {
   font-weight: 500;
   display: none;
   color: var(--info-dark);
 }
 
-.flashcard__references {
-  color: var(--info-dark);
+.flashcard__reference-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: disc inside;
+  width: 100%;
+  height: auto;
 }
 
-.flashcard__references a {
-  color: var(--info-dark);
+.flashcard__reference-item {
+  color: var(--primary-medium);
+}
+
+.flashcard__reference-link {
+  color: var(--primary-medium);
   text-decoration: none;
 }
 
-.flashcard__references a:hover {
+.flashcard__reference-link:hover {
   text-decoration: underline;
 }

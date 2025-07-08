@@ -15,10 +15,18 @@ const FlashcardControls: React.FC<FlashcardControlsProps> = ({
 }) => {
   return (
     <div className="flashcard-controls">
-      <button onClick={onPrev} disabled={disablePrev}>
+      <button
+        className="flashcard-controls__back"
+        onClick={onPrev}
+        disabled={disablePrev}
+      >
         Previous
       </button>
-      <button onClick={onNext} disabled={disableNext}>
+      <button
+        className="flashcard-controls__forward"
+        onClick={onNext}
+        disabled={disableNext}
+      >
         Next
       </button>
     </div>
