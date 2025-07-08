@@ -25,7 +25,6 @@ const PracticePage: React.FC = () => {
         <div className="practice-page__flashcards">
           <h2>Flashcards</h2>
           <div className="practice-page__flashcards-container">
-            {/* Here we hand off ALL the flashcard + control logic */}
             <FlashcardViewer flashcards={filteredFlashcards} />
           </div>
         </div>
