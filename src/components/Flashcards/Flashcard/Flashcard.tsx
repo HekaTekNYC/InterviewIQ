@@ -1,46 +1,44 @@
-import React, { useState } from 'react';
-import Hint from '../../../assets/icons/hint.svg?react';
+import React, { KeyboardEvent, MouseEvent } from 'react';
+// import Hint from '../../../assets/icons/hint.svg?react';
 import Link from '../../../assets/icons/link.svg?react';
 import Expand from '../../../assets/icons/expand.svg?react';
 import Bulb from '../../../assets/icons/bulb.svg?react';
 import './flashcard.css';
 
-type FlashcardProps = {
+type Reference = { label: string; url: string };
+
+export interface FlashcardProps {
   question: string;
   answer: string;
   hint?: string;
   explanation?: string;
-  reference?: {
-    label: string;
-    url: string;
-  }[];
-};
+  reference?: Reference[];
+  isFlipped: boolean;
+  setIsFlipped: (flipped: boolean) => void;
+}
 
 const Flashcard: React.FC<FlashcardProps> = ({
   question,
   answer,
   hint,
   explanation,
-  reference,
+  reference = [],
+  isFlipped,
+  setIsFlipped,
 }) => {
-  const references = reference ?? [];
-  const [flipped, setFlipped] = useState(false);
-  const [activeOverlay, setActiveOverlay] = useState<
+  const [activeOverlay, setActiveOverlay] = React.useState<
     null | 'hint' | 'reference' | 'explanation'
   >(null);
 
   const renderOverlayContent = () => {
     if (!activeOverlay) return null;
-
     if (activeOverlay === 'hint') return <p>{hint}</p>;
-
     if (activeOverlay === 'explanation') return <p>{explanation}</p>;
-
     if (activeOverlay === 'reference') {
       return (
         <ul className="flashcard__reference-list">
-          {references.map((ref, idx) => (
-            <li key={idx} className="flashcard__reference-item">
+          {reference.map((ref, i) => (
+            <li key={i} className="flashcard__reference-item">
               <a
                 href={ref.url}
                 target="_blank"
@@ -54,20 +52,25 @@ const Flashcard: React.FC<FlashcardProps> = ({
         </ul>
       );
     }
-
     return null;
+  };
+
+  const handleFlip = (e: MouseEvent | KeyboardEvent) => {
+    e.stopPropagation();
+    setIsFlipped(!isFlipped);
   };
 
   return (
     <div
-      className={`flashcard ${flipped ? 'flashcard--flipped' : ''}`}
-      onClick={() => setFlipped(!flipped)}
+      className={`flashcard ${isFlipped ? 'flashcard--flipped' : ''}`}
+      onClick={handleFlip}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          setFlipped(!flipped);
+          handleFlip(e);
+          console.log('isflipped?', isFlipped);
         }
       }}
     >
@@ -75,11 +78,11 @@ const Flashcard: React.FC<FlashcardProps> = ({
       {activeOverlay && (
         <div
           className="flashcard__overlay"
+          role="dialog"
           onClick={(e) => {
             e.stopPropagation();
             setActiveOverlay(null);
           }}
-          role="dialog"
         >
           <div
             className="flashcard__overlay-content"
@@ -99,7 +102,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
       {/* Front */}
       <div className="flashcard__front">
         <div className="flashcard__question">
-          <p className="flashcard__question-content">{question}</p>
+          <div className="flashcard__question-content">{question}</div>
         </div>
         {hint && (
           <div className="flashcard__bar">
@@ -127,7 +130,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
       {/* Back */}
       <div className="flashcard__back">
         <div className="flashcard__answer">
-          <p className="flashcard__answer-content">{answer}</p>
+          <div className="flashcard__answer-content">{answer}</div>
         </div>
         <div className="flashcard__bar">
           {explanation && (
@@ -149,7 +152,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
               <Expand />
             </span>
           )}
-          {references.length > 0 && (
+          {reference.length > 0 && (
             <span
               className="flashcard__icon"
               onClick={(e) => {
@@ -173,5 +176,4 @@ const Flashcard: React.FC<FlashcardProps> = ({
     </div>
   );
 };
-
 export default Flashcard;

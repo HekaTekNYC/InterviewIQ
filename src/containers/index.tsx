@@ -1,2 +1,2 @@
 export { default as CategoryList } from './CategoryList';
-export { default as FlashcardList } from './FlashcardList';
+export { default as FlashcardViewer } from './FlashcardViewer';
