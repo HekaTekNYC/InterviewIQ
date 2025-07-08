@@ -1,6 +1,47 @@
 .flashcard-controls {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
   height: 100%;
   width: 100%;
+  max-width: 150px;
+}
+
+.flashcard-controls__control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  padding: 12px;
+  background-color: var(--bg-color);
+  border-radius: 50px;
+  border: 1px solid var(--primary-medium);
+  transition:
+    box-shadow ease-in-out 0.2s,
+    border ease-in-out 0.2s;
+  cursor: pointer;
+}
+
+.flashcard-controls__back,
+.flashcard-controls__forward {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: var(--bg-color);
+  border: none;
+  cursor: pointer;
+}
+
+.flashcard-controls__back {
+  transform: rotate(180deg);
+}
+
+.flashcard-controls__control:hover {
+  border: 2px solid var(--primary-medium);
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(99, 91, 204, 0.3) 0px 3px 7px -3px;
 }

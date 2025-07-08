@@ -11,7 +11,6 @@ const PracticePage: React.FC = () => {
   const { categoryId } = useParams<{ categoryId?: string }>();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Filter flashcards based on the categoryId
   const filteredFlashcards = categoryId
     ? flashcards.filter((card) => card.categoryId === categoryId)
     : null;

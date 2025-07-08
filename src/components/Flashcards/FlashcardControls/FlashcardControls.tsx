@@ -1,3 +1,4 @@
+import Arrow from '../../../assets/icons/arrow.svg?react';
 import './flashcard-controls.css';
 
 interface FlashcardControlsProps {
@@ -15,20 +16,24 @@ const FlashcardControls: React.FC<FlashcardControlsProps> = ({
 }) => {
   return (
     <div className="flashcard-controls">
-      <button
-        className="flashcard-controls__back"
-        onClick={onPrev}
-        disabled={disablePrev}
-      >
-        Previous
-      </button>
-      <button
-        className="flashcard-controls__forward"
-        onClick={onNext}
-        disabled={disableNext}
-      >
-        Next
-      </button>
+      <div className="flashcard-controls__control">
+        <button
+          className="flashcard-controls__back"
+          onClick={onPrev}
+          disabled={disablePrev}
+        >
+          <Arrow />
+        </button>
+      </div>
+      <div className="flashcard-controls__control">
+        <button
+          className="flashcard-controls__forward"
+          onClick={onNext}
+          disabled={disableNext}
+        >
+          <Arrow />
+        </button>
+      </div>
     </div>
   );
 };
