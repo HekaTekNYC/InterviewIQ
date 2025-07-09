@@ -20,10 +20,9 @@ export const flashcards: Flashcard[] = [
     question:
       'With the introduction of HTML5 we now have the ability to write semantic HTML. Talk for a moment about your experiences writing semantic HTML. What is it? Where do you see the benefits of using semantics?',
     answer:
-      'Semantic HTML means using tags that describe the meaning of the content they enclose, such as <article>, <section>, <header>, and <nav>.',
-    explanation:
-      'Semantic tags make the structure of web pages more meaningful, improving accessibility, SEO, and code clarity. ',
-    tags: ['semantic', 'accessibility', 'SEO'],
+      "With the introduction of HTML5, semantic HTML has become a foundational best practice in how I structure web applications. Semantic HTML refers to using elements that convey meaning about the content they wrap — such as <article>, <section>, <header>, <footer>, <main>, <nav>, and so on — rather than relying on generic containers like <div> or <span>.  I've used it to improve accessibility, SEO, and code clarity. It makes content easier to navigate for screen readers, better indexed by search engines, and more maintainable for devs.",
+    explanation: '',
+    tags: ['html', 'semantic', 'accessibility', 'seo'],
     hint: 'Think of <section>, <article>, <nav>...',
     reference: [
       {
@@ -42,19 +41,19 @@ export const flashcards: Flashcard[] = [
     question:
       'Let’s talk about the Web API. What is it, how is it organized, and what can you do with it?',
     answer:
-      'The Web API is a collection of browser-provided interfaces that allow developers to interact with the browser using JavaScript.',
+      "The Web API is a collection of browser-provided interfaces that let you interact with the browser and the device. It's organized into modules like DOM, Fetch, Storage, and Events. You can use it to manipulate the page, make network requests, store data, handle user input, and much more.",
     explanation:
-      'Web APIs include DOM manipulation, Fetch API, localStorage, and WebSockets. They are grouped by functionality and enable building interactive UIs.',
-    tags: ['API', 'DOM', 'browser'],
+      'Web APIs are built into the browser and expose functionality like DOM manipulation, HTTP requests, local storage, media playback, and device access. They are grouped by purpose—e.g., DOM for document interaction, Fetch for HTTP requests, and Storage APIs for client-side persistence.',
+    tags: ['api', 'dom', 'browser', 'html'],
     hint: 'Think of fetch(), localStorage, or querySelector.',
     reference: [
       {
         label: 'MDN Web Docs: Web APIs',
-        url: 'https://developer.mozilla.org/en-US/docs/Web/API',
+        url: 'https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Client-side_APIs/Introduction',
       },
       {
-        label: 'Google Developers: Introduction to Web APIs',
-        url: 'https://developers.google.com/web/fundamentals/primers/apis',
+        label: 'W3Schools: Introduction to Web APIs',
+        url: 'https://www.w3schools.com/js/js_api_intro.asp',
       },
     ],
   },
@@ -63,24 +62,42 @@ export const flashcards: Flashcard[] = [
     categoryId: 'html',
     question: 'What does a doctype do?',
     answer:
-      'The <!DOCTYPE html> declaration tells the browser to render the page in standards mode.',
+      'A doctype tells the browser which version of HTML to expect so it can render the page correctly. In HTML5, it ensures the browser uses standards mode instead of quirks mode.',
     explanation:
-      'Without it, the browser may use quirks mode which can result in inconsistent rendering.',
-    tags: ['doctype', 'standards', 'browser'],
-    hint: 'It goes at the top of every HTML file.',
-    reference: [],
+      'The <!DOCTYPE html> declaration at the top of an HTML file prevents the browser from falling back to old, non-standard rendering behavior (quirks mode). It helps ensure consistent rendering across browsers.',
+    tags: ['html', 'doctype', 'html5', 'browser'],
+    hint: 'It appears at the top of your HTML file.',
+    reference: [
+      {
+        label: 'MDN Web Docs: <!DOCTYPE>',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/Doctype',
+      },
+      {
+        label: 'W3Schools: Doctype',
+        url: 'https://www.w3schools.com/tags/tag_doctype.ASP',
+      },
+    ],
   },
   {
     id: 'html-4',
     categoryId: 'html',
     question: 'How do you serve a page with content in multiple languages?',
     answer:
-      'Use the lang attribute, localization libraries, and server/browser language detection.',
+      'Use the `lang` attribute in the <html> tag (e.g. <html lang="en">) to set the page’s language, and add `lang` to elements that differ (e.g. <span lang="es">hola</span>). For full multilingual sites, serve different language versions at different URLs.',
     explanation:
-      'You can dynamically serve content based on user preferences or browser settings using Accept-Language headers or locale routing.',
-    tags: ['i18n', 'languages', 'lang'],
-    hint: 'Look into the lang attribute or Accept-Language.',
-    reference: [],
+      'The `lang` attribute helps screen readers and search engines understand the language. For full language support, sites may use routing or subdomains (e.g. /en/, /fr/, or en.example.com).',
+    tags: ['html', 'lang', 'accessibility', 'i18n'],
+    hint: 'Start with the <html lang="..."> tag.',
+    reference: [
+      {
+        label: 'MDN Web Docs: The lang attribute',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang',
+      },
+      {
+        label: 'Geeks for Geeks: Multiple Languages',
+        url: 'https://www.geeksforgeeks.org/html/how-to-serve-a-page-with-content-in-multiple-languages/',
+      },
+    ],
   },
   {
     id: 'html-5',
@@ -88,24 +105,47 @@ export const flashcards: Flashcard[] = [
     question:
       'What kind of things must you be wary of when designing or developing for multilingual sites?',
     answer:
-      'Text direction, content length, character encoding, pluralization rules, and consistent formatting.',
+      'Watch out for text expansion, font and character support, right-to-left (RTL) layouts, date/number formats, and hardcoded strings. Also ensure proper use of the lang attribute and consider locale-based routing.',
     explanation:
-      'Also consider fonts, responsive layout for longer content, and cultural context of imagery or color.',
-    tags: ['i18n', 'rtl', 'encoding'],
-    hint: 'Think about directionality and content length.',
-    reference: [],
+      'Different languages can change layout needs: some take more space (e.g. German), others flip direction (e.g. Arabic). Avoid hardcoding content; instead, use translation files and locale-aware components.',
+    tags: ['html', 'i18n', 'rtl', 'accessibility', 'localization'],
+    hint: 'Think text size, direction, format, and translation.',
+    reference: [
+      {
+        label: 'DEV: Tips for Multiligual Sites',
+        url: 'https://dev.to/zibu15/some-tips-for-designing-or-developing-multilingual-sites-2mp4',
+      },
+      {
+        label: 'Get Blend: Multilingual Websites Best PRactices',
+        url: 'https://www.getblend.com/blog/common-mistakes-to-avoid-when-building-a-multilingual-website/',
+      },
+    ],
   },
+
   {
     id: 'html-6',
     categoryId: 'html',
     question: 'What are data-attributes good for?',
     answer:
-      'They allow you to store extra information directly on HTML elements using the data-* syntax.',
+      'Data attributes (e.g., data-user-id="123") allow you to store custom data on HTML elements without affecting the layout or behavior. They are useful for attaching metadata that JavaScript can access and manipulate.',
     explanation:
-      'Useful for JS interactions and storing config/state data when a full JS state system isn’t needed.',
-    tags: ['attributes', 'data-*', 'HTML'],
-    hint: 'data-user-id is an example.',
-    reference: [],
+      'Data attributes provide a flexible way to embed extra information on elements. They keep HTML valid while enabling scripts to read/write data easily, often used for dynamic UI behavior or tracking.',
+    tags: ['html', 'data-attributes', 'javascript', 'metadata'],
+    hint: 'Look for attributes starting with "data-".',
+    reference: [
+      {
+        label: 'MDN Web Docs: Using data attributes',
+        url: 'https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes',
+      },
+      {
+        label: 'W3Schools: HTML data-* Attribute',
+        url: 'https://www.w3schools.com/tags/att_data-.asp',
+      },
+      {
+        label: 'GeeksforGeeks: HTML Data Attributes',
+        url: 'https://www.geeksforgeeks.org/html-data-attributes/',
+      },
+    ],
   },
   {
     id: 'html-7',
@@ -113,25 +153,48 @@ export const flashcards: Flashcard[] = [
     question:
       'Consider HTML5 as an open web platform. What are the building blocks of HTML5?',
     answer:
-      'Semantic HTML, CSS, JavaScript, and APIs like Canvas, Web Storage, and WebSockets.',
+      'The building blocks of HTML5 include semantic elements (like <section>, <article>), multimedia support (audio, video), graphics (Canvas, SVG), APIs (Web Storage, Geolocation), and enhanced form controls.',
     explanation:
-      'These components work together to allow rich, interactive web apps without plugins.',
-    tags: ['HTML5', 'platform', 'APIs'],
-    hint: 'Think of structural tags + JS APIs.',
-    reference: [],
+      'HTML5 provides new structural tags for better semantics, native media playback, 2D/3D graphics, and JavaScript APIs that enable rich, interactive web apps without plugins.',
+    tags: ['html', 'html5', 'web-platform', 'api', 'multimedia'],
+    hint: 'Think semantics, media, graphics, and APIs.',
+    reference: [
+      {
+        label: 'MDN Web Docs: Introduction to HTML5',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5',
+      },
+      {
+        label: 'W3Schools: HTML5 Introduction',
+        url: 'https://www.w3schools.com/html/html5_intro.asp',
+      },
+    ],
   },
+
   {
     id: 'html-8',
     categoryId: 'html',
     question:
       'Describe the difference between a cookie, sessionStorage, and localStorage.',
     answer:
-      'Cookies are sent to the server with requests; sessionStorage is per tab; localStorage is persistent.',
+      'Cookies store small data sent with every HTTP request and can have expiration dates. sessionStorage stores data for one browser tab session and clears when the tab closes. localStorage stores larger data persistently across sessions until explicitly cleared.',
     explanation:
-      'Use cookies for server-based sessions, sessionStorage for temporary client-only state, and localStorage for long-term key-value data.',
-    tags: ['storage', 'cookies', 'localStorage'],
-    hint: 'Which ones expire and when?',
-    reference: [],
+      'Cookies are used for server communication (like auth) but have size limits and security considerations. sessionStorage is temporary and per tab. localStorage persists until cleared and is good for client-side data caching.',
+    tags: ['html', 'storage', 'cookie', 'sessionstorage', 'localstorage'],
+    hint: 'Think scope, persistence, and size limits.',
+    reference: [
+      {
+        label: 'MDN Web Docs: Web Storage API',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API',
+      },
+      {
+        label: 'MDN Web Docs: HTTP Cookies',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies',
+      },
+      {
+        label: 'W3Schools: HTML Web Storage',
+        url: 'https://www.w3schools.com/html/html5_webstorage.asp',
+      },
+    ],
   },
   {
     id: 'html-9',
@@ -139,60 +202,108 @@ export const flashcards: Flashcard[] = [
     question:
       'Describe the difference between <script>, <script async>, and <script defer>.',
     answer:
-      '<script> blocks HTML parsing; async runs when ready; defer runs after the DOM is parsed.',
+      'A plain <script> blocks HTML parsing while it downloads and runs, which can slow page load. <script async> downloads the script without blocking HTML parsing and runs it as soon as it’s ready, which can happen before or after the HTML is parsed. <script defer> also downloads without blocking, but always waits to execute the script until after the entire HTML document is parsed, making it better for scripts that rely on the DOM.',
     explanation:
-      'Use defer for scripts dependent on DOM. async is best for analytics or independent scripts.',
-    tags: ['script', 'performance', 'async'],
-    hint: 'Think about blocking vs non-blocking.',
-    reference: [],
+      'Using async or defer helps improve page performance by not blocking the HTML parser. async is good for independent scripts, while defer is better when scripts need the full DOM ready.',
+    tags: ['html', 'script', 'performance', 'async', 'defer'],
+    hint: 'Think about how scripts affect HTML parsing and when they run.',
+    reference: [
+      {
+        label: 'Great Frontend: Script async and defer',
+        url: 'https://www.greatfrontend.com/questions/quiz/describe-the-difference-between-script-async-and-script-defer',
+      },
+      {
+        label: 'Google Developers: Async vs Defer',
+        url: 'https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript',
+      },
+    ],
   },
+
   {
     id: 'html-10',
     categoryId: 'html',
     question:
       'Why is it a good idea to put CSS <link>s in the <head> and JS <script>s before </body>?',
-    answer: 'To avoid unstyled content and ensure faster perceived load time.',
+    answer:
+      'Placing CSS links in the <head> lets the browser start loading styles early, so the page renders styled content faster and avoids a flash of unstyled content. Putting JS scripts before </body> prevents blocking the HTML parsing, so the page structure loads first and scripts run after, improving perceived load time.',
     explanation:
-      'CSS must load before rendering, and scripts should load last to avoid blocking page render.',
-    tags: ['rendering', 'performance'],
-    hint: 'Avoid FOUC and layout delays.',
-    reference: [],
+      'CSS is render-blocking, so loading it early helps the browser paint styled pages sooner. Scripts can block rendering, so placing them at the end lets the page load and display before running JavaScript.',
+    tags: ['html', 'css', 'javascript', 'performance', 'render-blocking'],
+    hint: 'Think about what blocks page rendering and how to optimize load order.',
+    reference: [
+      {
+        label: 'Great Front End: Loading CSS and JS',
+        url: 'https://www.greatfrontend.com/questions/quiz/css-link-between-head-and-js-script-just-before-body',
+      },
+      {
+        label: 'MDN: Link reference',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/linkm',
+      },
+    ],
   },
   {
     id: 'html-11',
     categoryId: 'html',
     question: 'What is progressive rendering?',
     answer:
-      'A set of techniques to render parts of a page as soon as possible to improve perceived speed.',
+      'Progressive rendering is a technique where the browser displays content to the user as soon as it’s available, instead of waiting for the whole page to load. This makes the page feel faster and more responsive.',
     explanation:
-      'Includes lazy loading images, prioritizing above-the-fold content, and streaming HTML.',
-    tags: ['performance', 'UX', 'lazy load'],
-    hint: 'Think about what users see first.',
-    reference: [],
+      'By prioritizing critical content first and loading other resources later, progressive rendering improves user experience, especially on slow connections or large pages.',
+    tags: ['html', 'performance', 'rendering', 'progressive'],
+    hint: 'Think about showing content early for better perceived speed.',
+    reference: [
+      {
+        label: 'Geeks to Geeks: Progressive Rendering',
+        url: 'https://www.geeksforgeeks.org/css/what-is-progressive-rendering/',
+      },
+      {
+        label: 'Medium: The Key to Progressive Rendering',
+        url: 'https://medium.com/the-thinkmill/progressive-rendering-the-key-to-faster-web-ebfbbece41a4',
+      },
+    ],
   },
   {
     id: 'html-12',
     categoryId: 'html',
     question:
-      'Why would you use a secret attribute in an image tag? Explain the process the browser uses.',
+      'Why would you use a "loading" attribute in an image tag? Explain the process the browser uses.',
     answer:
-      'There is no standard "secret" attribute. You may be thinking of crossorigin or referrerpolicy.',
+      'Using `loading="lazy"` delays loading images until they are about to enter the viewport. This improves page load performance by reducing initial data usage and speeding up time to interactive.',
     explanation:
-      'Browsers check attributes like crossorigin to determine how to handle CORS and origin requests.',
-    tags: ['security', 'image', 'attributes'],
-    hint: 'No official "secret" tag exists.',
-    reference: [],
+      'When `loading="lazy"` is set, the browser defers fetching the image until the user scrolls near it. This saves bandwidth and reduces CPU/memory usage for images that may never be seen immediately.',
+    tags: ['html', 'performance', 'lazy-loading', 'images'],
+    hint: 'Think about delaying image loading to improve speed.',
+    reference: [
+      {
+        label: 'MDN Web Docs: Image loading attribute',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading',
+      },
+      {
+        label: 'Google Developers: Lazy loading images',
+        url: 'https://web.dev/lazy-loading-images/',
+      },
+    ],
   },
   {
     id: 'html-13',
     categoryId: 'html',
     question: 'Have you used different HTML templating languages before?',
-    answer: 'Yes, I’ve used EJS, Handlebars, Nunjucks, Pug, and JSX.',
+    answer:
+      'I’ve mainly used React JSX and some Angular templates. Both let you combine HTML and JavaScript logic to build dynamic UIs. While I haven’t used many traditional templating languages like EJS or Handlebars, I’m familiar with the concepts and open to learning more.',
     explanation:
-      'Each offers a way to dynamically render HTML with varying levels of logic support and syntax.',
-    tags: ['templating', 'EJS', 'JSX'],
-    hint: 'Think about server-side vs React templating.',
-    reference: [],
+      'JSX and Angular templates enable declarative UI building by mixing markup with code. They help manage complex interfaces efficiently compared to classic templating engines.',
+    tags: ['html', 'templating', 'react', 'jsx', 'angular'],
+    hint: 'Think about how components mix markup and logic.',
+    reference: [
+      {
+        label: 'W3Schools: Intro to Reach JSX',
+        url: 'https://www.w3schools.com/react/react_jsx.asp',
+      },
+      {
+        label: 'Angular Docs: Templates',
+        url: 'https://angular.dev/guide/templates',
+      },
+    ],
   },
   {
     id: 'css-1',
