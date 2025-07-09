@@ -1,0 +1,85 @@
+.practice-page {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+  padding: 0px 35px;
+}
+
+/* Categories Section */
+.practice-page__categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.practice-page__categories h2 {
+  margin: 20px 0;
+}
+
+.practice-page__categories-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 0;
+  width: 100%;
+}
+
+/* Flashcards Section */
+
+.practice-page__flashcards {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.practice-page__flashcards h2 {
+  flex-shrink: 0;
+  margin: 20px 0;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.flashcard-header {
+  color: var(--primary-medium);
+}
+
+.practice-page__flashcards-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 0;
+  width: 100%;
+}
+
+/* Media queries */
+
+/* Small Screens (≥576px) */
+@media (min-width: 576px) {
+  .practice-page {
+    padding: 0 40px;
+  }
+}
+
+/* Medium Screens (≥992px) */
+@media (min-width: 992px) {
+  .practice-page {
+    padding: 0 80px;
+  }
+}
+
+/* Large Screens (≥1400px) */
+@media (min-width: 1400px) {
+  .practice-page {
+    padding: 0 100px;
+  }
+}

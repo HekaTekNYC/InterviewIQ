@@ -1,102 +1,136 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* @layer base {
-  @font-face {
-    font-family: 'Satoshi';
-    src: url() format('woff2')
-  }
-  // 'indigo-theme': {
-//   '50':  '#f7f9fb',
-//   '100': '#e5eefc',
-//   '200': '#ccd4fb',
-//   '300': '#a8b0f4',
-//   '400': '#8d88ec',
-//   '500': '#7764e7',
-//   '600': '#6347db',
-//   '700': '#4c36be',
-//   '800': '#352591',
-//   '900': '#1e195c',
-// },
-} */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-/* src/index.css */
-body {
-  background-color: rgb(37, 41, 60);
-  
+/* Light mode (default) */
+:root {
+  /* Background & neutral */
+  --bg-color: #ffffff;
+  --surface-color: #e6e6f7;
+  --primary-text: #444050;
+  --secondary-text: #6d6b77;
+
+  /* Primary */
+  --primary-light: #9294f5;
+  --primary-medium: #6366f1;
+  --primary-dark: #4547a9;
+
+  /* Secondary */
+  --secondary-light: #fabdc5;
+  --secondary-medium: #f87171;
+  --secondary-dark: #e35e74;
+
+  /* Accent */
+  --accent-light: #cdf1ee;
+  --accent-medium: #34c5b8;
+  --accent-dark: #279f95;
+
+  /* Status */
+  --info-light: #6ad0fa;
+  --info-dark: #0ca6e9;
+
+  --success-light: #65d9cc;
+  --success-dark: #2bd4bd;
+
+  --warning-light: #f9db7b;
+  --warning-dark: #f4c152;
+
+  --error-light: #fca0a8;
+  --error-dark: #fb6f84;
+
+  /* font */
+  --font-primary: 'Poppins', sans-serif;
 }
 
+/* Dark mode override */
+[data-theme='dark'] {
+  /* Background & neutral */
+  --bg-color: #25293c;
+  --surface-color: #464c67;
+  --primary-text: #ffffff;
+  --secondary-text: #6d6b77;
 
+  /* Primary */
+  --primary-light: #9294f5;
+  --primary-medium: #6366f1;
+  --primary-dark: #4547a9;
 
+  /* Secondary */
+  --secondary-light: #fa9c9c;
+  --secondary-medium: #f87171;
+  --secondary-dark: #ae4f4f;
 
-:root {
+  /* Accent */
+  --accent-light: #6be1d1;
+  --accent-medium: #34c5b8;
+  --accent-dark: #1e9484;
+
+  /* Status */
+  --info-light: #b6e4f8;
+  --info-dark: #0ca6e9;
+
+  --success-light: #8fe2d8;
+  --success-dark: #2bd4bd;
+
+  --warning-light: #f9db7b;
+  --warning-dark: #f4c152;
+
+  --error-light: #fca0a8;
+  --error-dark: #fb6f84;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  background-color: var(--bg-color);
+  color: var(--primary-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: sans-serif;
+  line-height: 1.6;
+  min-width: 100%;
   height: 100vh;
-  background-color: rgb(37, 41, 60)
+  overflow-x: hidden;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 a {
+  color: var(--primary);
   text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
 
-
-a:hover,
-a:focus-visible {
-  color: #49494ab5;
-} 
-
-.card {
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(174, 178, 185, 0.75);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+a:hover {
+  color: var(--accent);
 }
 
+/* Media queries */
 
-
-.slide-in-left-enter {
-  transform: translateX(-100%);
+/* XtraSmall Screens (≥430px) */
+@media (min-width: 430px) {
 }
 
-.slide-in-left-enter-active {
-  transform: translateX(0);
-  opacity: 1;
-  transition: all 200ms;
+/* Small Screens (≥768px) */
+@media (min-width: 768px) {
 }
 
-.slide-in-left-exit {
-  transform: translateX(0%);
-  opacity: 1;
+/* Medium Screens (≥992px) */
+@media (min-width: 992px) {
 }
 
-.slide-in-left-exit-active {
-  transform: translateX(-100%);
-  opacity: 0;
-  transition: all 200ms;
+/* Large Screens (≥1200px) */
+@media (min-width: 1200px) {
 }
-
-.center {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* .card-container {
-  width: 200px;
-  height: 200px;
-  border: 1px solid rgb(202, 201, 201);
-  margin: 0 auto;
-  border-radius: 10px;
-  overflow: hidden;
-} */
-
-/* a,
-a:visited {
-  color: rgb(42, 179, 228);
-} */
