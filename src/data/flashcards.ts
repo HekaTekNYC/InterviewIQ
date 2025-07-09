@@ -306,6 +306,49 @@ export const flashcards: Flashcard[] = [
     ],
   },
   {
+    id: 'html-14',
+    categoryId: 'html',
+    question: 'What is the difference between block-level and inline elements?',
+    answer:
+      'Block-level elements take up the full width available and start on a new line (e.g., <div>, <section>). Inline elements only take up as much width as needed and flow within the text (e.g., <span>, <a>).',
+    explanation:
+      'Understanding this helps with layout control. Block elements define structure, while inline elements are typically used for formatting or links inside text.',
+    tags: ['html', 'block', 'inline', 'layout'],
+    hint: 'Think <div> vs <span>.',
+    reference: [
+      {
+        label: 'MDN: Block-level elements',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements',
+      },
+      {
+        label: 'W3Schools: HTML Elements',
+        url: 'https://www.w3schools.com/html/html_blocks.asp',
+      },
+    ],
+  },
+  {
+    id: 'html-15',
+    categoryId: 'html',
+    question: 'What is ARIA and when would you use it?',
+    answer:
+      'ARIA (Accessible Rich Internet Applications) is a set of attributes that improve accessibility for users relying on assistive technologies. It’s used when native HTML elements don’t provide enough semantic meaning.',
+    explanation:
+      'ARIA can add roles, states, and properties to HTML elements to describe their behavior to screen readers, especially in custom components. It should be used carefully and only when semantic HTML isn’t enough.',
+    tags: ['html', 'accessibility', 'aria', 'a11y'],
+    hint: 'Think accessibility support for custom UI elements.',
+    reference: [
+      {
+        label: 'MDN Web Docs: ARIA',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA',
+      },
+      {
+        label: 'W3C: WAI-ARIA Overview',
+        url: 'https://www.w3.org/WAI/standards-guidelines/aria/',
+      },
+    ],
+  },
+
+  {
     id: 'css-1',
     categoryId: 'css',
     question:
