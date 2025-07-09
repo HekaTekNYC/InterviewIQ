@@ -2,9 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+
   width: 100%;
   max-width: 200px;
+  margin: 20px 0;
 }
 
 .flashcard-controls__control {
@@ -65,4 +66,14 @@
 .flashcard-controls__back.disabled:hover,
 .flashcard-controls__forward.disabled:hover {
   cursor: not-allowed;
+}
+
+.flashcard-controls__tracker {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+  min-width: 40px;
+  text-align: center;
+  flex-shrink: 0;
 }

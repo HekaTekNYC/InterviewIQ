@@ -23,7 +23,12 @@ const PracticePage: React.FC = () => {
         </div>
       ) : filteredFlashcards && filteredFlashcards.length > 0 ? (
         <div className="practice-page__flashcards">
-          <h2>Flashcards</h2>
+          <h2>
+            Practice{' '}
+            <span className="flashcard-header">
+              {categoryId.toLocaleUpperCase()}
+            </span>
+          </h2>
           <div className="practice-page__flashcards-container">
             <FlashcardViewer flashcards={filteredFlashcards} />
           </div>

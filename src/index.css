@@ -116,3 +116,21 @@ a {
 a:hover {
   color: var(--accent);
 }
+
+/* Media queries */
+
+/* XtraSmall Screens (≥430px) */
+@media (min-width: 430px) {
+}
+
+/* Small Screens (≥768px) */
+@media (min-width: 768px) {
+}
+
+/* Medium Screens (≥992px) */
+@media (min-width: 992px) {
+}
+
+/* Large Screens (≥1200px) */
+@media (min-width: 1200px) {
+}
