@@ -17,7 +17,12 @@ const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // Optional filtering by category
+  const [activeOverlay, setActiveOverlay] = useState<
+    null | 'hint' | 'reference' | 'explanation'
+  >(null);
+
+  const isOverlayOpen = activeOverlay !== null;
+
   const filteredFlashcards = categoryId
     ? flashcards.filter((card) => card.categoryId === categoryId)
     : flashcards;
@@ -25,6 +30,10 @@ const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
   const currentCard = filteredFlashcards[currentIndex];
 
   const handleNext = () => {
+    if (isOverlayOpen) {
+      setActiveOverlay(null);
+    }
+
     if (currentIndex < filteredFlashcards.length - 1) {
       setCurrentIndex((prev) => prev + 1);
       setIsFlipped(false);
@@ -32,6 +41,10 @@ const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
   };
 
   const handlePrev = () => {
+    if (isOverlayOpen) {
+      setActiveOverlay(null);
+    }
+
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
       setIsFlipped(false);
@@ -45,12 +58,13 @@ const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
           {...currentCard}
           isFlipped={isFlipped}
           setIsFlipped={setIsFlipped}
+          activeOverlay={activeOverlay}
+          setActiveOverlay={setActiveOverlay}
         />
       </div>
       <div className="flashcard-viewer__flashcard-controls">
         <FlashcardControls
           index={currentIndex}
-          setIndex={setCurrentIndex}
           maxIndex={filteredFlashcards.length - 1}
           onPrev={handlePrev}
           onNext={handleNext}

@@ -6,13 +6,15 @@ import Bulb from '../../../assets/icons/bulb.svg?react';
 import './flashcard.css';
 
 type Reference = { label: string; url: string };
-
+type OverlayType = 'hint' | 'reference' | 'explanation' | null;
 export interface FlashcardProps {
   question: string;
   answer: string;
   hint?: string;
   explanation?: string;
   reference?: Reference[];
+  activeOverlay: OverlayType;
+  setActiveOverlay: (value: OverlayType) => void;
   isFlipped: boolean;
   setIsFlipped: (flipped: boolean) => void;
 }
@@ -25,11 +27,9 @@ const Flashcard: React.FC<FlashcardProps> = ({
   reference = [],
   isFlipped,
   setIsFlipped,
+  activeOverlay,
+  setActiveOverlay,
 }) => {
-  const [activeOverlay, setActiveOverlay] = React.useState<
-    null | 'hint' | 'reference' | 'explanation'
-  >(null);
-
   const renderOverlayContent = () => {
     if (!activeOverlay) return null;
     if (activeOverlay === 'hint') return <p>{hint}</p>;
@@ -57,6 +57,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
 
   const handleFlip = (e: MouseEvent | KeyboardEvent) => {
     e.stopPropagation();
+    if (activeOverlay) return;
     setIsFlipped(!isFlipped);
   };
 

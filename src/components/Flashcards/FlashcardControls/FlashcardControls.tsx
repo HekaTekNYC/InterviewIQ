@@ -1,4 +1,3 @@
-// import Arrow from '../../../assets/icons/arrow.svg?react';
 import './flashcard-controls.css';
 
 interface FlashcardControlsProps {
@@ -22,11 +21,20 @@ const FlashcardControls: React.FC<FlashcardControlsProps> = ({
     <div className="flashcard-controls">
       <div
         className={`flashcard-controls__control ${disablePrev ? 'disabled' : ''}`}
+        onClick={() => {
+          if (!disablePrev) onPrev();
+        }}
+        role="button"
+        tabIndex={disablePrev ? -1 : 0}
+        onKeyDown={(e) => {
+          if ((e.key === 'Enter' || e.key === ' ') && !disablePrev) {
+            e.preventDefault();
+            onPrev();
+          }
+        }}
       >
         <button
           className={`flashcard-controls__back ${disablePrev ? 'disabled' : ''}`}
-          onClick={onPrev}
-          disabled={disablePrev}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,11 +59,20 @@ const FlashcardControls: React.FC<FlashcardControlsProps> = ({
       </p>
       <div
         className={`flashcard-controls__control ${disableNext ? 'disabled' : ''}`}
+        onClick={() => {
+          if (!disableNext) onNext();
+        }}
+        role="button"
+        tabIndex={disableNext ? -1 : 0}
+        onKeyDown={(e) => {
+          if ((e.key === 'Enter' || e.key === ' ') && !disableNext) {
+            e.preventDefault();
+            onPrev();
+          }
+        }}
       >
         <button
           className={`flashcard-controls__forward ${disableNext ? 'disabled' : ''}`}
-          onClick={onNext}
-          disabled={disableNext}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
