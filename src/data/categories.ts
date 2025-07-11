@@ -17,7 +17,15 @@ export const categories: Category[] = [
     name: 'JavaScript',
   },
   {
+    id: 'libraries',
+    name: 'Libraries',
+  },
+  {
     id: 'react',
     name: 'React',
+  },
+  {
+    id: 'network',
+    name: 'Network',
   },
 ];
