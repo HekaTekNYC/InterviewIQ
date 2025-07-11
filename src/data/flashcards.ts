@@ -1987,6 +1987,146 @@ export const flashcards: Flashcard[] = [
       },
     ],
   },
+
+  // Libraries
+  {
+    id: 'lib-1',
+    categoryId: 'libraries',
+    question: 'When would you use jQuery? Any reasons to not use jQuery?',
+    answer:
+      'jQuery was traditionally used to simplify DOM manipulation, event handling, and AJAX requests across browsers with inconsistent APIs. It’s still useful for legacy projects or when you need quick solutions in older codebases without modern JavaScript frameworks.',
+    hint: 'Think older browser support and simpler syntax for common tasks.',
+    explanation:
+      'jQuery abstracts away browser inconsistencies and provides a concise syntax for common JavaScript tasks. However, with modern JavaScript (ES6+), native APIs have improved dramatically — querySelector, fetch, classList, etc. — reducing the need for jQuery. Additionally, it adds unnecessary weight to the bundle in modern apps and can encourage outdated coding practices if not used thoughtfully.',
+    tags: ['jquery', 'legacy-support', 'dom', 'ajax', 'libraries'],
+    reference: [
+      {
+        label: 'W3Schools: Introduction to jQuery',
+        url: 'https://www.w3schools.com/jquery/jquery_intro.asp',
+      },
+      {
+        label: 'jQuery Official Site',
+        url: 'https://jquery.com/',
+      },
+      {
+        label: 'You Might Not Need jQuery',
+        url: 'https://youmightnotneedjquery.com/',
+      },
+    ],
+  },
+  {
+    id: 'lib-2',
+    categoryId: 'libraries',
+    question:
+      'How would you go about creating your own lightweight jQuery replacement library? What part(s) of the Web API would you use?',
+    answer:
+      'I’d focus on replicating the most common jQuery features using modern Web APIs — like element selection, event handling, and AJAX. I’d use `querySelectorAll` for DOM selection, `addEventListener` for event handling, and `fetch` for AJAX requests.',
+    hint: 'Use built-in browser features available in modern JavaScript.',
+    explanation:
+      'A lightweight alternative to jQuery could be built by wrapping core Web APIs in a small utility library. For example, you might create a function like `$()` that uses `document.querySelectorAll()` to return elements, and prototype chain methods like `.on()` to simplify event binding. Modern methods like `classList`, `closest()`, and `fetch()` make it easy to replicate most jQuery functionality without the overhead. The idea is to give a cleaner API for the most commonly used tasks.',
+    tags: ['jquery', 'dom', 'custom-library', 'web-api', 'modern-js'],
+    reference: [
+      {
+        label: 'You Might Not Need jQuery',
+        url: 'https://youmightnotneedjquery.com/',
+      },
+      {
+        label: 'MDN: DOM API reference',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model',
+      },
+      {
+        label: 'MDN: Fetch API',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API',
+      },
+    ],
+  },
+  {
+    id: 'lib-3',
+    categoryId: 'libraries',
+    question:
+      'What design decisions would influence whether you would choose to use Angular or React? How are the two libraries different?',
+    answer:
+      'I’d consider factors like project size, team experience, and long-term maintenance. Angular is a full-fledged framework with batteries-included, while React is a library that’s more flexible and lightweight but requires piecing together additional tools.',
+    hint: 'Think framework vs library, opinionated vs flexible.',
+    explanation:
+      'Angular is a comprehensive framework with built-in solutions for routing, state management, form handling, and more. It uses TypeScript by default and follows a more structured, opinionated approach. React, on the other hand, focuses only on the view layer and gives you freedom to choose your own libraries for routing, state management, etc. React uses JSX and encourages functional components and hooks for logic reuse. You might choose Angular for enterprise-scale apps with large teams, or React if you want more flexibility, a smaller learning curve, or to build something incrementally.',
+    tags: [
+      'react',
+      'angular',
+      'frameworks',
+      'design-decisions',
+      'library-vs-framework',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: React vs Angular: Key Differences',
+        url: 'https://www.geeksforgeeks.org/reactjs/difference-between-react-js-and-angular-js/',
+      },
+      {
+        label: 'Angular vs React: A Comparison',
+        url: 'https://angular.dev/overview',
+      },
+    ],
+  },
+  {
+    id: 'lib-4',
+    categoryId: 'libraries',
+    question:
+      'How do you structure your component architectures in React? Where does MVC fit into the architecture?',
+    answer:
+      'In React, I structure components by breaking UI into reusable, self-contained pieces, often following a hierarchy of presentational (UI) and container (logic/state) components. React doesn’t strictly follow MVC; instead, components combine view and controller logic, while state management tools (like Redux or Context) handle the model layer.',
+    hint: 'Think components as UI + controller, separate state management.',
+    explanation:
+      'React’s architecture centers around components which encapsulate both rendering and some controller logic. Presentational components focus on how things look and receive data via props, while container components manage state and business logic. Unlike traditional MVC where model, view, and controller are separate layers, React components blend view and controller roles. For complex state, external libraries manage the model/data layer. This approach promotes modularity, reusability, and easier maintenance.',
+    tags: [
+      'react',
+      'component-architecture',
+      'mvc',
+      'state-management',
+      'containers',
+      'presentational',
+    ],
+    reference: [
+      {
+        label: 'React Docs: Thinking in React',
+        url: 'https://reactjs.org/docs/thinking-in-react.html',
+      },
+      {
+        label: 'Presentational and Container Components',
+        url: 'https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0',
+      },
+    ],
+  },
+  {
+    id: 'lib-5',
+    categoryId: 'libraries',
+    question: 'Why choose React over Angular or Vue?',
+    answer:
+      'React is often chosen for its flexibility, strong community support, and a component-based architecture that integrates well with various tools and libraries. Unlike Angular, which is a full-fledged framework, React focuses on the UI layer, giving developers more freedom in choosing their stack. Compared to Vue, React has a larger ecosystem and corporate backing from Facebook, which can mean better long-term support.',
+    hint: 'Think flexibility, ecosystem, and control.',
+    explanation:
+      'React’s unopinionated nature allows developers to build their own architecture and choose libraries for routing, state management, and more, whereas Angular provides a more opinionated all-in-one solution. Vue is easier to get started with and offers a gentle learning curve, but React’s massive community and widespread adoption mean more resources, job opportunities, and third-party tools. React also emphasizes declarative programming and a virtual DOM for efficient rendering.',
+    tags: [
+      'react',
+      'angular',
+      'vue',
+      'comparison',
+      'frontend-frameworks',
+      'ecosystem',
+      'flexibility',
+    ],
+    reference: [
+      {
+        label: 'React vs Angular vs Vue',
+        url: 'https://www.browserstack.com/guide/angular-vs-react-vs-vue',
+      },
+      {
+        label: 'React Official Documentation',
+        url: 'https://reactjs.org/',
+      },
+    ],
+  },
+
   // Network
   {
     id: 'network-1',
