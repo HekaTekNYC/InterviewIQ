@@ -10,6 +10,7 @@ type OverlayType = 'hint' | 'reference' | 'explanation' | null;
 export interface FlashcardProps {
   question: string;
   answer: string;
+  code: string;
   hint?: string;
   explanation?: string;
   reference?: Reference[];
@@ -22,6 +23,7 @@ export interface FlashcardProps {
 const Flashcard: React.FC<FlashcardProps> = ({
   question,
   answer,
+  code,
   hint,
   explanation,
   reference = [],
@@ -132,6 +134,9 @@ const Flashcard: React.FC<FlashcardProps> = ({
       <div className="flashcard__back">
         <div className="flashcard__answer">
           <div className="flashcard__answer-content">{answer}</div>
+          <pre>
+            <code className="flashcard__code-content">{code}</code>
+          </pre>
         </div>
         <div className="flashcard__bar">
           {explanation && (

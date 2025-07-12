@@ -28,4 +28,8 @@ export const categories: Category[] = [
     id: 'network',
     name: 'Network',
   },
+  {
+    id: 'design-patterns',
+    name: 'Design Patterns',
+  },
 ];

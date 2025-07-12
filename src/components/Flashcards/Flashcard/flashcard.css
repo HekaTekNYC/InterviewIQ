@@ -80,6 +80,23 @@
   background: transparent;
 }
 
+.flashcard__code-content {
+  display: block;
+  white-space: pre-wrap; /* allow wrapping but keep whitespace and line breaks */
+  word-wrap: break-word; /* break long words if needed */
+  text-align: start;
+  font-family: 'Courier New', monospace;
+  color: var(--bg-color);
+  background-color: var(--bg-dark);
+  padding: 1rem;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
 /* Menu Bar */
 .flashcard__bar {
   display: flex;

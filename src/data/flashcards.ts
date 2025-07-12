@@ -3,6 +3,7 @@ export interface Flashcard {
   categoryId: string;
   question: string;
   answer: string;
+  code: string;
   tags?: string[];
   hint?: string;
   explanation?: string;
@@ -23,6 +24,7 @@ export const flashcards: Flashcard[] = [
       "With the introduction of HTML5, semantic HTML has become a foundational best practice in how I structure web applications. Semantic HTML refers to using elements that convey meaning about the content they wrap — such as <article>, <section>, <header>, <footer>, <main>, <nav>, and so on — rather than relying on generic containers like <div> or <span>.  I've used it to improve accessibility, SEO, and code clarity. It makes content easier to navigate for screen readers, better indexed by search engines, and more maintainable for devs.",
     explanation: '',
     tags: ['html', 'semantic', 'accessibility', 'seo'],
+    code: '',
     hint: 'Think of <section>, <article>, <nav>...',
     reference: [
       {
@@ -45,6 +47,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'Web APIs are built into the browser and expose functionality like DOM manipulation, HTTP requests, local storage, media playback, and device access. They are grouped by purpose—e.g., DOM for document interaction, Fetch for HTTP requests, and Storage APIs for client-side persistence.',
     tags: ['api', 'dom', 'browser', 'html'],
+    code: '',
     hint: 'Think of fetch(), localStorage, or querySelector.',
     reference: [
       {
@@ -66,6 +69,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'The <!DOCTYPE html> declaration at the top of an HTML file prevents the browser from falling back to old, non-standard rendering behavior (quirks mode). It helps ensure consistent rendering across browsers.',
     tags: ['html', 'doctype', 'html5', 'browser'],
+    code: '',
     hint: 'It appears at the top of your HTML file.',
     reference: [
       {
@@ -87,6 +91,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'The `lang` attribute helps screen readers and search engines understand the language. For full language support, sites may use routing or subdomains (e.g. /en/, /fr/, or en.example.com).',
     tags: ['html', 'lang', 'accessibility', 'i18n'],
+    code: '',
     hint: 'Start with the <html lang="..."> tag.',
     reference: [
       {
@@ -109,6 +114,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'Different languages can change layout needs: some take more space (e.g. German), others flip direction (e.g. Arabic). Avoid hardcoding content; instead, use translation files and locale-aware components.',
     tags: ['html', 'i18n', 'rtl', 'accessibility', 'localization'],
+    code: '',
     hint: 'Think text size, direction, format, and translation.',
     reference: [
       {
@@ -131,6 +137,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'Data attributes provide a flexible way to embed extra information on elements. They keep HTML valid while enabling scripts to read/write data easily, often used for dynamic UI behavior or tracking.',
     tags: ['html', 'data-attributes', 'javascript', 'metadata'],
+    code: '',
     hint: 'Look for attributes starting with "data-".',
     reference: [
       {
@@ -157,6 +164,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'HTML5 provides new structural tags for better semantics, native media playback, 2D/3D graphics, and JavaScript APIs that enable rich, interactive web apps without plugins.',
     tags: ['html', 'html5', 'web-platform', 'api', 'multimedia'],
+    code: '',
     hint: 'Think semantics, media, graphics, and APIs.',
     reference: [
       {
@@ -180,6 +188,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'Cookies are used for server communication (like auth) but have size limits and security considerations. sessionStorage is temporary and per tab. localStorage persists until cleared and is good for client-side data caching.',
     tags: ['html', 'storage', 'cookie', 'sessionstorage', 'localstorage'],
+    code: '',
     hint: 'Think scope, persistence, and size limits.',
     reference: [
       {
@@ -206,6 +215,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'Using async or defer helps improve page performance by not blocking the HTML parser. async is good for independent scripts, while defer is better when scripts need the full DOM ready.',
     tags: ['html', 'script', 'performance', 'async', 'defer'],
+    code: '',
     hint: 'Think about how scripts affect HTML parsing and when they run.',
     reference: [
       {
@@ -229,6 +239,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'CSS is render-blocking, so loading it early helps the browser paint styled pages sooner. Scripts can block rendering, so placing them at the end lets the page load and display before running JavaScript.',
     tags: ['html', 'css', 'javascript', 'performance', 'render-blocking'],
+    code: '',
     hint: 'Think about what blocks page rendering and how to optimize load order.',
     reference: [
       {
@@ -250,6 +261,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'By prioritizing critical content first and loading other resources later, progressive rendering improves user experience, especially on slow connections or large pages.',
     tags: ['html', 'performance', 'rendering', 'progressive'],
+    code: '',
     hint: 'Think about showing content early for better perceived speed.',
     reference: [
       {
@@ -272,6 +284,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'When `loading="lazy"` is set, the browser defers fetching the image until the user scrolls near it. This saves bandwidth and reduces CPU/memory usage for images that may never be seen immediately.',
     tags: ['html', 'performance', 'lazy-loading', 'images'],
+    code: '',
     hint: 'Think about delaying image loading to improve speed.',
     reference: [
       {
@@ -293,6 +306,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'JSX and Angular templates enable declarative UI building by mixing markup with code. They help manage complex interfaces efficiently compared to classic templating engines.',
     tags: ['html', 'templating', 'react', 'jsx', 'angular'],
+    code: '',
     hint: 'Think about how components mix markup and logic.',
     reference: [
       {
@@ -314,6 +328,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'Understanding this helps with layout control. Block elements define structure, while inline elements are typically used for formatting or links inside text.',
     tags: ['html', 'block', 'inline', 'layout'],
+    code: '',
     hint: 'Think <div> vs <span>.',
     reference: [
       {
@@ -335,6 +350,7 @@ export const flashcards: Flashcard[] = [
     explanation:
       'ARIA can add roles, states, and properties to HTML elements to describe their behavior to screen readers, especially in custom components. It should be used carefully and only when semantic HTML isn’t enough.',
     tags: ['html', 'accessibility', 'aria', 'a11y'],
+    code: '',
     hint: 'Think accessibility support for custom UI elements.',
     reference: [
       {
@@ -347,7 +363,9 @@ export const flashcards: Flashcard[] = [
       },
     ],
   },
-  // CSS
+
+  // CSS ------------------------------------------
+
   {
     id: 'css-1',
     categoryId: 'css',
@@ -355,6 +373,7 @@ export const flashcards: Flashcard[] = [
       'Please tell me about your strategy for creating responsive designs. What is it, and how do you approach the problem?',
     answer:
       'I use a mobile-first approach—starting with a base layout for small screens and scaling up with media queries. I use flexible layouts with percentage widths, relative units like rem/em, and tools like Flexbox and Grid. I also make sure spacing, typography, and images scale well across breakpoints.',
+    code: '',
     hint: 'Think small screen first, then enhance.',
     explanation:
       'Responsive design is about building layouts that work across screen sizes. A mobile-first approach ensures the core experience is optimized for small devices first, then progressively enhanced using media queries for larger screens.',
@@ -383,6 +402,7 @@ export const flashcards: Flashcard[] = [
     question: 'What are media queries? What are pseudo-selectors?',
     answer:
       'Media queries let you apply styles based on the device’s characteristics, like screen width or orientation. Pseudo-selectors let you style elements in specific states or positions, like when a user hovers or when an element is the first child.',
+    code: '',
     hint: 'Think about adapting to screen size and styling specific states or positions.',
     explanation:
       'Media queries are used to create responsive designs by applying styles only when certain conditions are met, such as the width of the screen. Pseudo-selectors target elements in specific contexts, such as when they are being hovered over or when they are the last child in a container. Both tools help make CSS more flexible and interactive.',
@@ -418,6 +438,7 @@ export const flashcards: Flashcard[] = [
     question: 'How do you approach organizing your CSS?',
     answer:
       'I organize CSS by grouping it into layers: base styles, layout, components, and utilities. I use a consistent naming convention like BEM or a similar pattern, and aim to keep styles modular and easy to maintain.',
+    code: '',
     hint: 'Think layers, consistency, and reusability.',
     explanation:
       'Organizing CSS in logical sections helps keep code readable and maintainable. Starting with resets or base styles, then adding layout and component-specific styles, allows for better scalability. Naming conventions like BEM help reduce confusion and avoid conflicts.',
@@ -439,6 +460,7 @@ export const flashcards: Flashcard[] = [
     question: 'What is CSS selector specificity and how does it work?',
     answer:
       'Specificity is how the browser decides which CSS rule to apply when multiple rules target the same element. It’s calculated based on the types of selectors used—inline styles are the most specific, followed by IDs, then classes, then elements.',
+    code: '',
     hint: 'Think of it like a scoring system for which rule wins.',
     explanation:
       'Each type of selector has a different weight. Inline styles have the highest specificity, then ID selectors, then classes and attributes, and finally element selectors. When rules conflict, the one with higher specificity overrides the others.',
@@ -461,6 +483,7 @@ export const flashcards: Flashcard[] = [
       'What\'s the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?',
     answer:
       'Resetting CSS removes all default styles from browsers to create a blank slate. Normalizing CSS keeps useful defaults and makes styles more consistent across browsers. I usually prefer normalizing because it preserves helpful styles while reducing cross-browser inconsistencies.',
+    code: '',
     hint: 'Think blank slate vs consistent baseline.',
     explanation:
       'A reset stylesheet wipes out all default styling, which can be useful for full control but may require more work to rebuild basics. Normalize.css, on the other hand, keeps useful defaults like button styling and makes rendering consistent across browsers without over-stripping styles.',
@@ -483,6 +506,7 @@ export const flashcards: Flashcard[] = [
     question: 'Describe floats and how they work.',
     answer:
       'Floats allow elements to move to the left or right within their container, so that other content can flow around them. They were originally used for layouts but now are more commonly used for wrapping text around images.',
+    code: '',
     hint: 'Think about content wrapping around an element.',
     explanation:
       'When an element is floated, it’s taken out of the normal document flow, which can affect how surrounding elements are positioned. This often requires "clearing" the float to prevent layout issues. Floats were once a common layout tool but are now mostly replaced by Flexbox and Grid.',
@@ -508,6 +532,7 @@ export const flashcards: Flashcard[] = [
     question: 'Describe z-index and how stacking context is formed.',
     answer:
       'z-index controls the vertical stacking order of positioned elements. Higher z-index values appear on top of lower ones. A stacking context is created by elements with position and z-index values, or certain CSS properties, which groups elements into separate layers.',
+    code: '',
     hint: 'Think about layers and which elements appear in front.',
     explanation:
       'A stacking context is formed when an element has a position value other than static and a z-index value, or due to certain CSS properties like opacity less than 1, transform, or flex containers. Elements inside a stacking context stack relative to each other but do not affect elements outside it.',
@@ -530,6 +555,7 @@ export const flashcards: Flashcard[] = [
     question: 'Describe BFC (Block Formatting Context) and how it works.',
     answer:
       'A Block Formatting Context (BFC) is a part of the visual CSS rendering that isolates elements so their layout and floats do not affect outside elements. It’s triggered by certain properties like overflow, float, or display settings.',
+    code: '',
     hint: 'Think of it as an isolated layout container.',
     explanation:
       'When an element creates a BFC, it contains its floated children and prevents margins from collapsing with outside elements. This helps manage layout issues like clearing floats and controlling element boundaries.',
@@ -552,6 +578,7 @@ export const flashcards: Flashcard[] = [
       'What are the various clearing techniques and which is appropriate for what context?',
     answer:
       'Clearing techniques fix layout issues caused by floated elements. Common methods include using the `clear` property on a sibling element, the clearfix hack using `::after` with `content` and `clear: both`, and setting overflow to hidden or auto on the container.',
+    code: '',
     hint: 'Think about preventing container collapse caused by floats.',
     explanation:
       'Using `clear: both` on a block-level element forces it below floated siblings, useful when you want a break. The clearfix method adds a hidden element after floats inside the container to expand its height, ideal for reusable containers. Setting `overflow` to hidden or auto on a container creates a new block formatting context that contains floats but can clip content, so use it carefully.',
@@ -573,6 +600,7 @@ export const flashcards: Flashcard[] = [
     question: 'How would you approach fixing browser-specific styling issues?',
     answer:
       'I usually test my CSS across different browsers early on to catch issues. When problems arise, I inspect styles in dev tools to understand what’s different. Flexbox can sometimes cause inconsistencies, so I often prefer using CSS Grid for more predictable layouts. I also use vendor prefixes or @supports if needed. I also use browser support tables like Can I Use.',
+    code: '',
     hint: 'Think testing early and choosing reliable CSS features.',
     explanation:
       'Browser differences often show up in how certain CSS features work, especially Flexbox. Testing early helps avoid surprises. CSS Grid tends to have better cross-browser consistency. Using vendor prefixes and fallback styles can help maintain support where needed.',
@@ -595,6 +623,7 @@ export const flashcards: Flashcard[] = [
       'How do you serve your pages for feature-constrained browsers? What techniques/processes do you use?',
     answer:
       'I use progressive enhancement by building a solid baseline experience with simple, widely supported features first. Then, I layer on advanced CSS or JavaScript for browsers that support them. I also use feature detection tools like Modernizr and provide fallbacks or polyfills when necessary.',
+    code: '',
     hint: 'Think progressive enhancement and fallback strategies.',
     explanation:
       'Serving feature-constrained browsers means ensuring core functionality and content are accessible even if advanced features aren’t supported. Progressive enhancement focuses on building up from a simple base, testing features before use, and providing alternatives to maintain usability.',
@@ -617,6 +646,7 @@ export const flashcards: Flashcard[] = [
       'What are the different ways to visually hide content but keep it accessible to screen readers?',
     answer:
       'You can visually hide content using CSS techniques like `clip-path`, `position: absolute` with off-screen positioning, or the popular `.sr-only` class that moves content off-screen but keeps it in the accessibility tree.',
+    code: '',
     hint: 'Think hiding visually but keeping for assistive tech.',
     explanation:
       'The key is to remove content from visual flow without removing it from the accessibility tree. Common methods include using `position: absolute` with negative offsets, `clip-path: inset(50%)` or `clip: rect(0 0 0 0)`, and using dedicated screen-reader-only CSS classes that hide content visually but preserve it for screen readers.',
@@ -639,6 +669,7 @@ export const flashcards: Flashcard[] = [
       'Have you ever used a grid system, and if so, what do you prefer?',
     answer:
       'Yes, I’ve used both traditional CSS grid frameworks like Bootstrap and modern CSS Grid layout. I prefer CSS Grid because it provides more flexibility and control for creating complex, responsive layouts without relying on external libraries.',
+    code: '',
     hint: 'Think native CSS Grid vs frameworks.',
     explanation:
       'While frameworks like Bootstrap offer quick setup with predefined classes, CSS Grid gives full control over layout structure and alignment, making it ideal for custom designs. It also integrates well with Flexbox for one-dimensional layouts.',
@@ -661,6 +692,7 @@ export const flashcards: Flashcard[] = [
       'Have you used or implemented media queries or mobile-specific layouts/CSS?',
     answer:
       'Yes, I regularly use media queries to create responsive, mobile-first designs. This includes adjusting layouts, font sizes, and visibility of elements based on screen size to ensure a smooth experience across devices.',
+    code: '',
     hint: 'Think adapting design to different screen sizes.',
     explanation:
       'Media queries allow CSS to adapt styles depending on device characteristics like width or resolution. Using them early in development ensures designs work well on mobile devices and scale up for larger screens.',
@@ -682,6 +714,7 @@ export const flashcards: Flashcard[] = [
     question: 'Are you familiar with styling SVG?',
     answer:
       'Yes, I usually import SVGs as React components or inline them when I need to style or animate parts, like on hover. Inline SVG lets me directly target elements with CSS or manipulate them with JavaScript.',
+    code: '',
     hint: 'Think React imports and inline SVG for styling control.',
     explanation:
       'Importing SVG as React components allows easy integration and styling via props or CSS. Inline SVG provides full control over shapes and allows dynamic styling and animations using CSS or JS, making it ideal for interactive icons or graphics.',
@@ -704,6 +737,7 @@ export const flashcards: Flashcard[] = [
       'Can you give an example of an @media property other than screen?',
     answer:
       'Yes, for example, the `print` media type targets styles when printing a page. You can adjust layout, font size, and colors specifically for print output.',
+    code: '',
     hint: 'Think about how pages look when printed.',
     explanation:
       'Media queries can target different media types like screen, print, speech, etc. Using `@media print` lets you define styles that only apply when a user prints the page, improving print readability and layout.',
@@ -721,6 +755,7 @@ export const flashcards: Flashcard[] = [
     question: 'What are some of the "gotchas" for writing efficient CSS?',
     answer:
       'Common gotchas include using overly specific selectors, deep nesting, redundant rules, and ignoring browser rendering performance. Also, large CSS files without modularity can slow down load times and maintenance.',
+    code: '',
     hint: 'Think specificity, redundancy, and performance.',
     explanation:
       'Efficient CSS avoids unnecessarily specific selectors that increase complexity, limits nesting depth for readability, removes duplicate styles, and considers how browsers parse and render styles. Modular CSS and minimizing file size help maintain performance and ease of updates.',
@@ -743,6 +778,7 @@ export const flashcards: Flashcard[] = [
       'What are the advantages and disadvantages of using CSS preprocessors? Describe what you like and dislike about the CSS preprocessors you have used.',
     answer:
       'I’ve used Sass with SCSS syntax. I like that it gives you variables, nesting, mixins, and functions—it makes organizing styles much easier and keeps code DRY. The downside is adding a build step and that debugging compiled CSS can sometimes be less straightforward. I know of Less but haven’t worked with it directly.',
+    code: '',
     hint: 'Think convenience vs extra complexity.',
     explanation:
       'Sass (especially SCSS syntax) is still widely used and adds many features that help manage larger stylesheets. It improves maintainability but adds tooling complexity. As native CSS adds similar features, the need for preprocessors is shrinking, but they’re still helpful in many cases.',
@@ -765,6 +801,7 @@ export const flashcards: Flashcard[] = [
       'How would you implement a web design comp that uses non-standard fonts?',
     answer:
       'I’d load the custom fonts using `@font-face` if I have the files, or through a service like Google Fonts. I use `font-family` in CSS with proper fallbacks, and I often preload key fonts in the <head> to improve performance and reduce layout shifts.',
+    code: '',
     hint: 'Think about loading, fallback fonts, and performance.',
     explanation:
       'Non-standard fonts aren’t guaranteed to be available on a user’s system, so they must be loaded from a server. `@font-face` lets you define font sources locally or via CDN. Always include fallback fonts to maintain legibility and test for performance impact, especially on mobile networks.',
@@ -787,6 +824,7 @@ export const flashcards: Flashcard[] = [
       'Explain how a browser determines what elements match a CSS selector.',
     answer:
       'The browser parses the CSS and then matches selectors against elements in the DOM, usually right to left—from the most specific part of the selector back to its ancestors.',
+    code: '',
     hint: 'Think about how the DOM is matched by selectors.',
     explanation:
       'Browsers optimize selector matching by starting from the rightmost part of a selector (the key element) and working backward through the DOM tree. For example, in `article h2 span`, the browser first finds all `span` elements, then checks if they’re inside an `h2` inside an `article`. This is why overly complex or inefficient selectors can hurt performance.',
@@ -809,6 +847,7 @@ export const flashcards: Flashcard[] = [
       'Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models.',
     answer:
       'The box model describes how elements are rendered as rectangular boxes made up of content, padding, border, and margin. By default, width and height only apply to the content area. To change this, I use `box-sizing: border-box` so padding and border are included inside the declared width and height.',
+    code: '',
     hint: 'Think content + padding + border + margin.',
     explanation:
       'In the standard (content-box) model, padding and border are added to the content width, which can affect layout size unexpectedly. Setting `box-sizing: border-box` tells the browser to include padding and border inside the set width/height, which helps with predictable sizing and layout control.',
@@ -831,6 +870,7 @@ export const flashcards: Flashcard[] = [
       'What does * { box-sizing: border-box; } do? What are its advantages?',
     answer:
       'It tells the browser to include padding and border within an element’s total width and height. This makes sizing more predictable and easier to manage when building layouts.',
+    code: '',
     hint: 'Think about how width and padding interact.',
     explanation:
       'By default, browsers use `box-sizing: content-box`, which does not include padding or border in the element’s width. Setting `box-sizing: border-box` globally means when you set a width, it includes content, padding, and border—avoiding layout overflow issues and simplifying calculations.',
@@ -853,6 +893,7 @@ export const flashcards: Flashcard[] = [
       'What is the CSS display property and can you give a few examples of its use?',
     answer:
       'The display property controls how an element is displayed on the page, determining its box type and layout behavior. Examples include `block`, `inline`, `inline-block`, `flex`, and `grid`.',
+    code: '',
     hint: 'Think block vs inline vs flex vs grid.',
     explanation:
       'Display sets whether an element generates a block box, inline box, flex container, grid container, or is hidden (`none`). For example, `display: block` makes the element take full width and start on a new line, while `inline` keeps it within a line. `flex` and `grid` enable advanced layout techniques.',
@@ -874,6 +915,7 @@ export const flashcards: Flashcard[] = [
     question: "What's the difference between inline and inline-block?",
     answer:
       'Inline elements flow within text and cannot have width or height set, while inline-block elements also flow inline but can have width, height, padding, and margins.',
+    code: '',
     hint: 'Think text flow and box sizing.',
     explanation:
       'Inline elements like `<span>` don’t accept width or height, and their box is only as big as their content. Inline-block elements behave like inline elements in flow but act like blocks in allowing box model properties like width, height, and vertical margins.',
@@ -896,6 +938,7 @@ export const flashcards: Flashcard[] = [
       "What's the difference between the nth-of-type() and nth-child() selectors?",
     answer:
       '`nth-child()` selects the nth child element regardless of type, while `nth-of-type()` selects the nth child of its type among siblings.',
+    code: '',
     hint: 'Think element position vs element type position.',
     explanation:
       '`nth-child(n)` matches the nth child of its parent counting all types of elements. `nth-of-type(n)` counts only siblings of the same element type, so it’s more specific when you want to target elements by their type position.',
@@ -918,6 +961,7 @@ export const flashcards: Flashcard[] = [
       'What is the difference between relative, fixed, absolute, and statically positioned elements?',
     answer:
       'Static is the default positioning where elements follow normal document flow. Relative moves the element relative to its normal position without affecting others. Absolute positions the element relative to the nearest positioned ancestor, removing it from normal flow. Fixed positions the element relative to the viewport, staying put on scroll.',
+    code: '',
     hint: 'Think document flow and reference points.',
     explanation:
       'Static elements are placed in normal flow with no offset. Relative elements shift relative to their original spot but keep space in the layout. Absolute elements are removed from the flow and positioned relative to the closest ancestor that has a position other than static. Fixed elements stay fixed relative to the viewport, unaffected by scrolling.',
@@ -944,6 +988,7 @@ export const flashcards: Flashcard[] = [
       'What existing CSS frameworks have you used locally or in production? How would you change or improve them?',
     answer:
       'I’ve used Bootstrap and Tailwind CSS in production. I like Bootstrap for quick prototyping but find it heavy and sometimes restrictive. Tailwind offers great utility-first flexibility, but I’d improve it by optimizing bundle size and adding better defaults for accessibility.',
+    code: '',
     hint: 'Think Bootstrap, Tailwind, pros and cons.',
     explanation:
       'Bootstrap provides a solid grid and components but can add extra unused CSS, impacting performance. Tailwind’s utility classes offer customization but may require a learning curve and tooling to remove unused styles. Improvements often focus on performance optimization and accessibility enhancements.',
@@ -973,6 +1018,7 @@ export const flashcards: Flashcard[] = [
     question: 'Have you used CSS Grid?',
     answer:
       'Yes, I use CSS Grid regularly for creating two-dimensional layouts. It offers precise control over rows and columns, making complex designs easier to build and maintain compared to older layout methods. Its also more accepted across browsers over flex',
+    code: '',
     hint: 'Think two-dimensional layout system.',
     explanation:
       'CSS Grid allows defining rows and columns explicitly and placing items anywhere within that grid. It simplifies layout creation that was previously complex with floats or flexbox alone, especially for grid-based and magazine-style designs.',
@@ -995,6 +1041,7 @@ export const flashcards: Flashcard[] = [
       'Have you ever worked with retina graphics? If so, when and what techniques did you use?',
     answer:
       'Yes, I have. To support retina displays, I provide higher resolution images, typically at 2x or 3x the normal size, and use `srcset` and `sizes` attributes in `<img>` tags. I also optimize image formats and use SVGs when possible for scalability.',
+    code: '',
     hint: 'Think high resolution and responsive images.',
     explanation:
       'Retina or high-density displays require images with more pixels to appear crisp. Using `srcset` allows the browser to select the appropriate image resolution based on device capabilities. SVGs are ideal for graphics because they scale without loss of quality, reducing the need for multiple versions.',
@@ -1017,6 +1064,7 @@ export const flashcards: Flashcard[] = [
       "Is there any reason you'd want to use translate() instead of absolute positioning, or vice-versa? And why?",
     answer:
       '`translate()` is better when you want smoother animations or to avoid affecting layout, while `position: absolute` is used to place elements precisely within a container. Use `translate()` for movement without triggering reflow, and `absolute` when layout placement is critical.',
+    code: '',
     hint: 'Think layout vs performance.',
     explanation:
       '`translate()` works in the transform layer, so it doesn’t trigger layout recalculations, which makes it great for performant animations and transitions. Absolute positioning removes the element from normal flow and places it relative to a positioned ancestor, which is more layout-focused. The choice depends on whether you care more about performance or structural layout.',
@@ -1038,6 +1086,7 @@ export const flashcards: Flashcard[] = [
     question: 'How is the clearfix CSS property useful?',
     answer:
       'Clearfix is used to clear floated child elements so the parent can properly wrap around them. Without it, the parent’s height may collapse.',
+    code: '',
     hint: 'Think float layout issues.',
     explanation:
       'When child elements are floated, their parent may not expand to contain them, leading to layout issues. The clearfix method adds a pseudo-element (`::after`) that clears the float, allowing the parent to correctly calculate its height. It’s commonly used in older float-based layouts or when mixing floated elements in modern code.',
@@ -1054,13 +1103,15 @@ export const flashcards: Flashcard[] = [
     ],
   },
 
-  // Javascript
+  // Javascript ---------------------------------------
+
   {
     id: 'js-1',
     categoryId: 'javascript',
     question: 'Explain event delegation.',
     answer:
       'Event delegation is when you attach a single event listener to a parent element to handle events from its child elements. It works by taking advantage of event bubbling.',
+    code: '',
     hint: 'Think bubbling from child to parent.',
     explanation:
       'Instead of adding event listeners to many child elements, you attach one listener to a common ancestor. When an event happens, it bubbles up through the DOM, and you can check `event.target` to see which child triggered it. This improves performance and is useful for dynamic content.',
@@ -1083,6 +1134,7 @@ export const flashcards: Flashcard[] = [
       'Explain how this works in JavaScript. Can you give an example of one of the ways that working with this has changed in ES6?',
     answer:
       '`this` refers to the object that’s currently executing the function. In ES6, arrow functions were introduced, which don’t have their own `this` — they inherit it from their surrounding scope.',
+    code: '',
     hint: 'Think function context and arrow functions.',
     explanation:
       '`this` behaves differently depending on how a function is called. In regular functions, `this` depends on the calling context. In ES6, arrow functions help avoid confusion by capturing the `this` value of their lexical scope, which is especially useful in callbacks or event handlers.',
@@ -1104,6 +1156,7 @@ export const flashcards: Flashcard[] = [
     question: 'Explain how prototypal inheritance works.',
     answer:
       'Prototypal inheritance allows objects to inherit properties and methods from other objects through a prototype chain. Every object in JavaScript has an internal [[Prototype]] property, which points to another object. When you access a property on an object and it doesn’t exist on the object itself, the JavaScript engine looks up the chain to its prototype, and so on, until it either finds the property or reaches the end of the chain (`null`). You can create inheritance using constructor functions with `prototype`, with `Object.create()`, or with ES6 `class` syntax, which is syntactic sugar over prototype-based inheritance.',
+    code: '',
     hint: 'Think "lookup chain" and shared methods.',
     explanation:
       'Prototypal inheritance enables efficient memory usage and method sharing across object instances. Instead of copying methods onto each object, shared behavior lives on the prototype. For example, functions defined on `ConstructorFunction.prototype` will be available to all instances created with `new ConstructorFunction()`. Similarly, objects created with `Object.create(parentObj)` will delegate property access to `parentObj` via the prototype chain.',
@@ -1126,6 +1179,7 @@ export const flashcards: Flashcard[] = [
       "What's the difference between a variable that is: null, undefined, or undeclared? How would you go about checking for any of these states?",
     answer:
       '`undefined` means a variable has been declared but not assigned a value. `null` is an intentional absence of any value. An undeclared variable hasn’t been declared in any scope and throws a ReferenceError if accessed.',
+    code: '',
     hint: 'Think assigned vs unassigned vs not declared at all.',
     explanation:
       '`undefined` happens when you declare a variable but don’t assign anything to it. `null` is explicitly assigned by a developer to indicate "no value." An undeclared variable hasn’t been defined at all — trying to access it results in a `ReferenceError`. To check: use `typeof` to safely check if a variable is undeclared (`typeof foo === "undefined"`), compare directly to `null`, and use strict equality (`===`) when testing for either.',
@@ -1147,6 +1201,7 @@ export const flashcards: Flashcard[] = [
     question: 'What is a closure, and how/why would you use one?',
     answer:
       'A closure is a function that retains access to variables from its outer (enclosing) scope even after that outer function has finished executing. It’s useful for data privacy and maintaining state between function calls.',
+    code: '',
     hint: 'Think inner function remembering outer variables.',
     explanation:
       'Closures are created whenever a function is defined inside another function and references variables from the outer function. Since the inner function retains access to that scope, you can use closures to encapsulate data, like in a counter or private state in a module. Closures are the foundation for many JavaScript patterns, including callbacks, function factories, and module patterns.',
@@ -1169,6 +1224,7 @@ export const flashcards: Flashcard[] = [
       'What language constructions do you use for iterating over object properties and array items?',
     answer:
       'For arrays, I use `for`, `for...of`, `forEach`, `map`, and other array methods. For objects, I use `for...in`, `Object.keys()`, `Object.entries()`, or `Object.values()` combined with array methods.',
+    code: '',
     hint: 'Think arrays vs plain objects.',
     explanation:
       'Arrays offer several looping options: classic `for` loops, `for...of` for values, and array methods like `forEach`, `map`, and `reduce`. For objects, `for...in` iterates over all enumerable properties (including inherited ones), so it’s often safer to use `Object.keys()`, `Object.entries()`, or `Object.values()` with array iteration methods to avoid inherited keys.',
@@ -1191,6 +1247,7 @@ export const flashcards: Flashcard[] = [
       'Can you describe the main difference between the Array.forEach() loop and Array.map() methods and why you would pick one versus the other?',
     answer:
       '`forEach()` is used for executing a function on each array item when you don’t need a return value. `map()` is used when you want to transform an array and return a new one with the results.',
+    code: '',
     hint: 'Think: forEach is side-effects, map returns a new array.',
     explanation:
       '`forEach()` is great when you just want to perform side effects, like logging or updating external state. It does not return anything useful. `map()` is used when you want to transform each element of the array and return a brand new array, leaving the original untouched. If you need a result, use `map`. If you just want to loop over items, use `forEach`.',
@@ -1212,6 +1269,7 @@ export const flashcards: Flashcard[] = [
     question: "What's a typical use case for anonymous functions?",
     answer:
       'Anonymous functions are often used as callbacks or when you need a function temporarily, like in array methods (`map`, `filter`, `forEach`) or event handlers.',
+    code: '',
     hint: 'Think quick callbacks or one-time logic.',
     explanation:
       'Anonymous functions are functions without a name. They’re useful when you don’t need to reuse the function elsewhere. Common use cases include passing them directly into methods like `setTimeout()`, `addEventListener()`, or array methods. They keep your code concise when a named function isn’t necessary.',
@@ -1237,6 +1295,7 @@ export const flashcards: Flashcard[] = [
     question: "What's the difference between host objects and native objects?",
     answer:
       'Native objects are built into the JavaScript language (like Array, Object, or Date). Host objects are provided by the environment, such as the browser or Node.js (like window, document, or process).',
+    code: '',
     hint: 'Think: JS core vs environment-specific.',
     explanation:
       'Native objects are defined by the ECMAScript specification and are always available in any JS environment. Host objects, on the other hand, are provided by the runtime environment — for example, browsers expose host objects like `window`, `document`, and `XMLHttpRequest`, while Node.js provides objects like `fs` or `process`. The availability of host objects depends on where your code is running.',
@@ -1259,6 +1318,7 @@ export const flashcards: Flashcard[] = [
       'Explain the difference between: function Person(){}, var person = Person(), and var person = new Person()?',
     answer:
       '`function Person(){}` declares a function. `Person()` calls that function like a regular function. `new Person()` creates a new object using the function as a constructor.',
+    code: '',
     hint: 'Think declaration vs invocation vs instantiation.',
     explanation:
       '`function Person(){}` defines a reusable function. If you call `Person()` directly, it runs the function but doesn’t create a new object — any `this` inside it will refer to the global object (or be undefined in strict mode). When you use `new Person()`, it creates a new object, sets `this` to that new object, and links it to `Person.prototype`, making it act like a constructor. This is the correct way to create instances from a constructor function.',
@@ -1281,6 +1341,7 @@ export const flashcards: Flashcard[] = [
       'Explain the differences on the usage of foo between function foo() {} and var foo = function() {}',
     answer:
       '`function foo() {}` is a function declaration and is hoisted entirely. `var foo = function() {}` is a function expression and only the variable `foo` is hoisted, not the function itself.',
+    code: '',
     hint: 'Think hoisting and when the function becomes usable.',
     explanation:
       'Function declarations (`function foo() {}`) are hoisted with their entire definition, so you can call `foo()` even before it’s defined in the code. Function expressions (`var foo = function() {}`) only hoist the variable `foo`, which is `undefined` until the assignment runs — calling `foo()` before that line will throw an error. Also, function expressions can be anonymous or named, and are often used for inline functions or to limit scope.',
@@ -1303,6 +1364,7 @@ export const flashcards: Flashcard[] = [
       "Can you explain what Function.call and Function.apply do? What's the notable difference between the two?",
     answer:
       '`call` and `apply` are methods to invoke functions with a specified `this` value. The difference is in how they accept arguments: `call` takes them as a comma-separated list, while `apply` takes them as an array.',
+    code: '',
     hint: 'Think calling functions with custom this and different argument passing.',
     explanation:
       'Both `call` and `apply` let you invoke a function with an explicit `this` context. For example, `func.call(obj, arg1, arg2)` calls `func` with `this` set to `obj` and arguments `arg1`, `arg2`. `func.apply(obj, [arg1, arg2])` does the same but expects the arguments as an array. `apply` is useful when you have arguments in an array or array-like object, while `call` is more straightforward when you know each argument.',
@@ -1324,6 +1386,7 @@ export const flashcards: Flashcard[] = [
     question: 'Explain Function.prototype.bind.',
     answer:
       '`bind` creates a new function that, when called, has its `this` keyword set to the provided value, with optional arguments prepended.',
+    code: '',
     hint: 'Think permanently setting this context.',
     explanation:
       '`bind` returns a new function that is like the original but with its `this` permanently set to the value you provide. This is helpful for passing methods as callbacks while keeping the correct `this`, or for partial function application by pre-setting some arguments. Unlike `call` or `apply`, `bind` does not invoke the function immediately; it returns a new function you can call later.',
@@ -1342,6 +1405,7 @@ export const flashcards: Flashcard[] = [
       "What's the difference between feature detection, feature inference, and using the UA string?",
     answer:
       'Feature detection checks if a browser supports a feature directly by testing it. Feature inference guesses support based on related features. Using the UA string relies on identifying the browser from its user agent to decide compatibility.',
+    code: '',
     hint: 'Think direct test vs guess vs browser sniffing.',
     explanation:
       'Feature detection is the most reliable method — it tests if a specific API or behavior exists before using it. Feature inference assumes support based on other known capabilities but can be unreliable. Using the UA (user agent) string means detecting the browser version and making assumptions, which is fragile because UA strings can be spoofed or change over time.',
@@ -1368,6 +1432,7 @@ export const flashcards: Flashcard[] = [
     question: 'Explain "hoisting".',
     answer:
       'Hoisting is JavaScript’s behavior of moving variable and function declarations to the top of their scope before code execution. This means you can use functions and variables before they are declared in the code.',
+    code: '',
     hint: 'Think declarations are “lifted” to the top.',
     explanation:
       'In JavaScript, variable declarations (`var`) and function declarations are processed before any code runs, so they’re “hoisted” to the top of their enclosing scope. However, only the declarations are hoisted, not initializations. For example, a `var` variable is hoisted but undefined until assigned, while function declarations are fully hoisted and can be called before their declaration. `let` and `const` are hoisted differently and are in a temporal dead zone until initialized.',
@@ -1389,6 +1454,7 @@ export const flashcards: Flashcard[] = [
     question: 'Describe event bubbling.',
     answer:
       'Event bubbling is the process where an event starts at the most specific element (the target) and then propagates upward through its ancestors in the DOM tree.',
+    code: '',
     hint: 'Think event flows from child to parent elements.',
     explanation:
       'When an event occurs on an element, it first triggers any handlers on that element, then moves up to its parent, then the parent’s parent, and so on, until it reaches the root of the document. This propagation allows a single event listener on a parent to handle events from many child elements. Event bubbling is the default phase in most browsers.',
@@ -1410,6 +1476,7 @@ export const flashcards: Flashcard[] = [
     question: 'Describe event capturing.',
     answer:
       'Event capturing is the phase where an event propagates from the root of the DOM down to the target element before the event is handled.',
+    code: '',
     hint: 'Think event flows from parent to child elements.',
     explanation:
       'In event capturing, the event starts at the top of the DOM tree and travels down through ancestor elements to the target element. This phase happens before event bubbling. You can listen for events during the capturing phase by setting the `capture` option to `true` when adding an event listener. Capturing is less commonly used than bubbling but useful for intercepting events early.',
@@ -1431,6 +1498,7 @@ export const flashcards: Flashcard[] = [
     question: 'What\'s the difference between an "attribute" and a "property"?',
     answer:
       'Attributes are defined in the HTML markup and provide initial values for elements. Properties are part of the DOM and represent the current state of an element.',
+    code: '',
     hint: 'Think HTML vs live DOM.',
 
     explanation: `Attributes are static and come from the HTML. For example, <input type="text" value="initial value" /> has a value attribute that sets the initial input content. Properties are dynamic and part of the DOM object. The input’s value property reflects the current content, which can change as the user types or via JavaScript.`,
@@ -1453,6 +1521,7 @@ export const flashcards: Flashcard[] = [
       'What are the pros and cons of extending built-in JavaScript objects?',
     answer:
       'Extending built-in objects lets you add custom methods or properties to native types like Array or String, which can make your code more expressive. However, it can lead to conflicts with future JavaScript versions or third-party libraries and can cause unexpected behavior.',
+    code: '',
     hint: 'Think custom enhancements vs risks and conflicts.',
     explanation:
       'Pros: You can add useful utilities directly to native prototypes, making code cleaner and more intuitive. Cons: Modifying built-ins can cause compatibility issues if future JavaScript adds methods with the same names. It can also break code relying on standard behavior or cause conflicts with libraries that expect native objects to be unchanged. For these reasons, extending built-ins is generally discouraged unless done carefully.',
@@ -1474,6 +1543,7 @@ export const flashcards: Flashcard[] = [
     question: 'What is the difference between == and ===?',
     answer:
       '`==` compares values with type coercion, meaning it converts types to match before comparing. `===` compares values without type coercion, so both type and value must be the same.',
+    code: '',
     hint: 'Think loose equality vs strict equality.',
     explanation:
       '`==` allows different types to be considered equal after conversion (e.g., 5 == "5" is true). `===` requires both type and value to match exactly (e.g., 5 === "5" is false). It’s generally recommended to use `===` to avoid unexpected bugs caused by type coercion.',
@@ -1501,6 +1571,7 @@ export const flashcards: Flashcard[] = [
     question: 'Explain the same-origin policy with regards to JavaScript.',
     answer:
       'The same-origin policy is a security measure that prevents scripts running on one origin from accessing resources on a different origin. An origin is defined by the protocol, domain, and port.',
+    code: '',
     hint: 'Think: protection between different websites.',
     explanation:
       'This policy helps prevent malicious scripts on one site from interacting with sensitive data on another. For example, a script on `https://example.com` can’t read cookies or make DOM changes on `https://other.com`. Cross-origin communication is possible but must be explicitly allowed via mechanisms like CORS (Cross-Origin Resource Sharing).',
@@ -1523,6 +1594,7 @@ export const flashcards: Flashcard[] = [
       'Why is it called a Ternary operator, what does the word "Ternary" indicate?',
     answer:
       'It’s called a "ternary" operator because it takes three operands: a condition, a value if true, and a value if false. The word "ternary" means composed of three parts.',
+    code: '',
     hint: 'Think condition ? ifTrue : ifFalse.',
     explanation:
       'The ternary operator is a concise alternative to an `if...else` statement. The syntax is `condition ? expr1 : expr2`, where `expr1` runs if the condition is true, and `expr2` runs if it’s false. It’s called ternary because it’s the only JavaScript operator that takes three operands.',
@@ -1545,6 +1617,7 @@ export const flashcards: Flashcard[] = [
       'What is strict mode? What are some of the advantages/disadvantages of using it?',
     answer:
       'Strict mode is a way to opt into a more secure and error-checked version of JavaScript by adding "use strict" at the top of a script or function. It helps catch silent errors, disallows unsafe actions like using undeclared variables, and generally makes your code cleaner. A downside is that it can break older scripts and makes certain things (like `this` in functions) behave differently.',
+    code: '',
     hint: 'Think: safer JavaScript, fewer silent bugs.',
     explanation:
       'Strict mode prevents the use of undeclared variables, disables `with` statements, makes assignments to non-writable properties throw errors, and changes how `this` behaves in functions (defaults to `undefined` instead of the global object). While it improves safety and helps avoid common bugs, it may also introduce compatibility issues with legacy code and has stricter rules that might confuse beginners at first.',
@@ -1567,6 +1640,7 @@ export const flashcards: Flashcard[] = [
       'What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?',
     answer:
       'Languages like TypeScript, CoffeeScript, or Elm compile to JavaScript and offer features JavaScript doesn’t natively support (or didn’t at the time), such as type checking, cleaner syntax, or better modularity. The main advantage is improved developer experience—features like static typing or modern syntax can reduce bugs and make code easier to maintain. On the downside, these tools add build complexity, may hide native JavaScript behavior, and require team familiarity and tooling support. Also, debugging can be harder if source maps are not used properly.',
+    code: '',
     hint: 'Think TypeScript, build step, and developer ergonomics.',
     explanation:
       'Using a compile-to-JavaScript language can help enforce coding standards, catch errors at compile time, and introduce advanced abstractions or syntactic sugar. TypeScript, for instance, improves tooling with autocompletion and better refactoring support. However, it introduces a build step that adds overhead, may slow down development for small projects, and can make hiring or onboarding harder if your team is unfamiliar with the language. Additionally, debugging requires maintaining accurate source maps to trace back to the original code.',
@@ -1596,6 +1670,7 @@ export const flashcards: Flashcard[] = [
     question: 'What tools and techniques do you use debugging JavaScript code?',
     answer:
       'I primarily use browser dev tools (like Chrome or Firefox DevTools) to inspect elements, set breakpoints, and step through code. I also use `console.log()` for quick insights, and tools like source maps when working with transpiled code. For more complex debugging, I might use a debugger statement, performance profiling, or third-party tools like ESLint for static code analysis.',
+    code: '',
     hint: 'Think breakpoints, logs, and static analysis.',
     explanation:
       'Debugging often starts with narrowing down where the issue occurs. Browser developer tools let you pause execution, inspect variables, check call stacks, and evaluate expressions in real time. `console.log()` is fast and simple for checking values, but setting breakpoints and using the debugger allows for deeper analysis. Static analysis tools like ESLint help catch errors before they happen. Source maps are useful when debugging minified or compiled code like TypeScript or SCSS.',
@@ -1622,6 +1697,7 @@ export const flashcards: Flashcard[] = [
       'Explain the difference between mutable and immutable objects. What is an example of an immutable object in JavaScript? What are the pros and cons of immutability?  How can you achieve immutability in your own code?',
     answer:
       'A mutable object can be changed after it’s created—its properties or values can be modified. An immutable object cannot be changed once it’s created. In JavaScript, most objects and arrays are mutable, while primitives like strings, numbers, and booleans are immutable.\n\nAn example of an immutable object is a string. When you modify a string, you actually create a new one rather than changing the original.\n\nThe pros of immutability include easier debugging, safer state management (especially in React or Redux), and predictable behavior. The cons are that it can lead to performance costs due to creating new objects rather than modifying existing ones.\n\nYou can achieve immutability using techniques like `Object.freeze()` to prevent changes to an object, spreading objects or arrays to create copies (`{...obj}`, `[...arr]`), or using libraries like Immer or Immutable.js to enforce and manage immutability more efficiently.',
+    code: '',
     hint: 'Think about strings vs objects. Also consider Redux state.',
     explanation:
       'Mutable structures are commonly used in JavaScript but can lead to side effects when state changes are shared across components. Immutability helps you track changes over time and avoid accidental mutations. Although `Object.freeze()` can prevent mutations, it only performs a shallow freeze. For deeper immutability or convenience, libraries like Immer allow you to write mutable-style code while maintaining immutability under the hood.',
@@ -1654,6 +1730,7 @@ export const flashcards: Flashcard[] = [
       'Explain the difference between synchronous and asynchronous functions.',
     answer:
       'Synchronous functions run sequentially—each task must complete before the next begins. If one function takes a long time to finish, it blocks the rest of the code from running. Asynchronous functions, on the other hand, allow your code to start a task and continue running other code while waiting for that task to complete. They often rely on callbacks, promises, or async/await syntax to handle operations like network requests or file reading without blocking the main thread.',
+    code: '',
     hint: 'Think blocking vs non-blocking, and how `await` works.',
     explanation:
       'In synchronous code, operations are executed one after another, which works fine for tasks that finish quickly. But for time-consuming operations (like fetching data), this can freeze your app. Asynchronous code solves this by using the event loop and task queue. With callbacks, promises, and async/await, you can run long tasks in the background and respond when they’re done—keeping the user experience smooth and responsive.',
@@ -1682,6 +1759,7 @@ export const flashcards: Flashcard[] = [
       'What is an event loop? What is the difference between call stack and task queue?',
     answer:
       'The event loop is a JavaScript mechanism that manages the execution of multiple tasks, allowing asynchronous operations to run without blocking the main thread. The call stack keeps track of the currently executing functions, while the task queue holds functions waiting to be executed after the stack is empty.',
+    code: '',
     hint: 'Think of event loop as the manager between call stack and task queue.',
     explanation:
       'JavaScript is single-threaded, meaning it can execute only one task at a time using the call stack. When asynchronous operations (like timers, fetch requests) complete, their callback functions are pushed into the task queue. The event loop constantly checks if the call stack is empty; if it is, it moves the next task from the task queue onto the call stack for execution. This process enables non-blocking asynchronous behavior and keeps the UI responsive.',
@@ -1710,6 +1788,7 @@ export const flashcards: Flashcard[] = [
       'What are the differences between variables created using let, var, or const?',
     answer:
       '`var` is function-scoped and hoisted, allowing redeclaration and can lead to bugs. `let` and `const` are block-scoped, not hoisted in the same way, and help prevent redeclaration errors. `const` declares constants that cannot be reassigned, while `let` allows reassignment.',
+    code: '',
     hint: 'Think scope, hoisting, and reassignment.',
     explanation:
       "`var` is hoisted and function-scoped, which means variables declared with `var` are accessible before their declaration (due to hoisting) and exist throughout the enclosing function. It also allows redeclaration, which can cause unexpected behavior. `let` and `const` were introduced in ES6 to address these issues; both are block-scoped, meaning they only exist within the nearest enclosing block (like loops or conditionals). `let` allows you to reassign the variable, but not redeclare it in the same scope. `const` must be assigned at declaration and cannot be reassigned, though if the value is an object, the object's properties can still be modified.",
@@ -1744,6 +1823,7 @@ export const flashcards: Flashcard[] = [
       'What are the differences between ES6 class and ES5 function constructors?',
     answer:
       'ES5 function constructors use regular functions to create objects and set up inheritance via prototypes manually. ES6 classes provide cleaner, more concise syntax for creating constructors and handling inheritance but are mostly syntactic sugar over the prototype system.',
+    code: '',
     hint: 'Think syntax sugar and prototypes.',
     explanation:
       "Function constructors in ES5 involve defining a function and attaching methods to its prototype to share behavior across instances. ES6 classes introduced a clearer, more intuitive syntax for defining constructors, instance methods, and inheritance with `extends` and `super`. Although classes look like classical OOP constructs, under the hood they still use JavaScript's prototype-based inheritance. Classes also come with stricter rules, such as requiring the use of `new` for instantiation and methods being non-enumerable by default.",
@@ -1773,6 +1853,7 @@ export const flashcards: Flashcard[] = [
       'Can you offer a use case for the new arrow => function syntax? How does this new syntax differ from other functions?',
     answer:
       'Arrow functions provide a shorter syntax and don’t have their own `this` binding. They inherit `this` from their surrounding scope, making them great for callbacks or methods where you want to keep the current `this` context without using `.bind()`.',
+    code: '',
     hint: 'Think concise syntax and lexical this.',
     explanation:
       'Unlike regular functions, arrow functions don’t create their own `this`, `arguments`, or `super`. This means `this` inside an arrow function is the same as the enclosing scope, which helps avoid common bugs with `this` in callbacks or event handlers. They are also more concise, especially for inline functions. However, arrow functions cannot be used as constructors and don’t have a `prototype` property.',
@@ -1795,6 +1876,7 @@ export const flashcards: Flashcard[] = [
       'What advantage is there for using the arrow syntax for a method in a constructor?',
     answer:
       'Using arrow functions for methods inside a constructor automatically binds `this` to the instance, so you don’t have to manually bind the method. This is especially helpful for passing methods as callbacks where the context might otherwise get lost.',
+    code: '',
     hint: 'Think automatic binding of this.',
     explanation:
       'Normally, methods defined in constructors need explicit `.bind(this)` calls to keep the right context when passed around. Arrow functions capture the `this` value from their defining scope (the constructor instance), so they stay correctly bound without extra code. This reduces boilerplate and avoids common bugs with `this` in event handlers or async callbacks.',
@@ -1816,6 +1898,7 @@ export const flashcards: Flashcard[] = [
     question: 'What is the definition of a higher-order function?',
     answer:
       'A higher-order function is a function that takes one or more functions as arguments, or returns a function as its result.',
+    code: '',
     hint: 'Think functions that work with other functions.',
     explanation:
       'Higher-order functions allow you to abstract and reuse behavior by accepting functions as parameters or returning new functions. Common examples include `map`, `filter`, and `reduce` which take callback functions to process data. They are a key concept in functional programming and help write cleaner, more flexible code.',
@@ -1838,6 +1921,7 @@ export const flashcards: Flashcard[] = [
       'Can you give an example for destructuring an object or an array?',
     answer:
       'Destructuring lets you unpack values from objects or arrays into distinct variables in a concise way. For example, from an object: `const { name, age } = person;` or from an array: `const [first, second] = colors;`',
+    code: '',
     hint: 'Think unpacking with curly braces for objects and square brackets for arrays.',
     explanation:
       'Destructuring is a convenient ES6 syntax that helps extract values from objects or arrays quickly and clearly. It improves readability and reduces the need to write repetitive code. You can also assign default values and rename variables during destructuring.',
@@ -1860,6 +1944,7 @@ export const flashcards: Flashcard[] = [
       'Can you give an example of generating a string with ES6 Template Literals?',
     answer:
       'Template literals let you create strings with embedded expressions using backticks (`). For example: `const greeting = `Hello, ${name}!`;` This inserts the value of `name` directly into the string.',
+    code: '',
     hint: 'Think backticks and ${expression} syntax.',
     explanation:
       'Template literals improve readability and ease of string creation compared to concatenation. They allow multiline strings and expression interpolation, making dynamic string building cleaner and less error-prone.',
@@ -1878,6 +1963,7 @@ export const flashcards: Flashcard[] = [
       'Can you give an example of a curry function and why this syntax offers an advantage?',
     answer:
       'Currying is transforming a function that takes multiple arguments into a sequence of functions each taking a single argument. For example: `const add = a => b => a + b;` allows calling `add(2)(3)` to get `5`.',
+    code: '',
     hint: 'Think functions returning functions one argument at a time.',
     explanation:
       'Currying lets you create reusable, more modular functions by fixing some arguments and returning new functions that wait for the rest. This can improve code clarity, enable partial application, and support functional programming patterns.',
@@ -1900,6 +1986,7 @@ export const flashcards: Flashcard[] = [
       'What are the benefits of using spread syntax and how is it different from rest syntax?',
     answer:
       'Spread syntax (`...`) expands iterable values (like arrays or objects) into individual elements, useful for copying or combining data. Rest syntax collects multiple elements into a single array parameter, handy for functions with variable arguments.',
+    code: '',
     hint: 'Think: spread unpacks, rest packs.',
     explanation:
       'Spread syntax helps create shallow copies, merge arrays or objects, and pass elements as separate arguments. Rest syntax is used in function parameters to gather all remaining arguments into an array, enabling flexible argument handling. Though both use `...`, their usage context differs—spread in calls or literals, rest in parameter definitions.',
@@ -1929,6 +2016,7 @@ export const flashcards: Flashcard[] = [
     question: 'How can you share code between files?',
     answer:
       'You can share code between files by using modules—exporting variables, functions, or classes from one file and importing them into another. In modern JavaScript, this is done using ES6 `export` and `import` statements.',
+    code: '',
     hint: 'Think export/import and modular code.',
     explanation:
       'Modules help keep code organized and reusable by splitting functionality into separate files. You use `export` to expose parts of a file, and `import` to include them where needed. This promotes maintainability and avoids polluting the global scope. Before ES6, tools like CommonJS (`require`/`module.exports`) were used, especially in Node.js.',
@@ -1950,6 +2038,7 @@ export const flashcards: Flashcard[] = [
     question: 'Why might you want to create static class members?',
     answer:
       'Static class members belong to the class itself rather than any instance. They’re useful for utility functions, constants, or properties that should be shared across all instances without duplication.',
+    code: '',
     hint: 'Think class-level properties and methods.',
     explanation:
       'Static members allow you to define methods or values that don’t rely on instance data and can be accessed without creating an object. For example, helper functions, configuration constants, or counters shared by all instances can be static. This keeps instance objects smaller and your API clear.',
@@ -1972,6 +2061,7 @@ export const flashcards: Flashcard[] = [
       'What is the difference between while and do-while loops in JavaScript?',
     answer:
       '`while` loops test the condition before each iteration, so the loop body may not run at all if the condition is false initially. `do-while` loops run the loop body first and then test the condition, ensuring the loop executes at least once.',
+    code: '',
     hint: 'Think: pre-check vs post-check loops.',
     explanation:
       '`while` loops are good when you want to run code only if a condition is true from the start. `do-while` loops are useful when the loop body must execute at least once regardless of the condition, like prompting for user input and then validating it.',
@@ -1988,13 +2078,15 @@ export const flashcards: Flashcard[] = [
     ],
   },
 
-  // Libraries
+  // Libraries ------------------------------------------------------------------
+
   {
     id: 'lib-1',
     categoryId: 'libraries',
     question: 'When would you use jQuery? Any reasons to not use jQuery?',
     answer:
       'jQuery was traditionally used to simplify DOM manipulation, event handling, and AJAX requests across browsers with inconsistent APIs. It’s still useful for legacy projects or when you need quick solutions in older codebases without modern JavaScript frameworks.',
+    code: '',
     hint: 'Think older browser support and simpler syntax for common tasks.',
     explanation:
       'jQuery abstracts away browser inconsistencies and provides a concise syntax for common JavaScript tasks. However, with modern JavaScript (ES6+), native APIs have improved dramatically — querySelector, fetch, classList, etc. — reducing the need for jQuery. Additionally, it adds unnecessary weight to the bundle in modern apps and can encourage outdated coding practices if not used thoughtfully.',
@@ -2021,6 +2113,7 @@ export const flashcards: Flashcard[] = [
       'How would you go about creating your own lightweight jQuery replacement library? What part(s) of the Web API would you use?',
     answer:
       'I’d focus on replicating the most common jQuery features using modern Web APIs — like element selection, event handling, and AJAX. I’d use `querySelectorAll` for DOM selection, `addEventListener` for event handling, and `fetch` for AJAX requests.',
+    code: '',
     hint: 'Use built-in browser features available in modern JavaScript.',
     explanation:
       'A lightweight alternative to jQuery could be built by wrapping core Web APIs in a small utility library. For example, you might create a function like `$()` that uses `document.querySelectorAll()` to return elements, and prototype chain methods like `.on()` to simplify event binding. Modern methods like `classList`, `closest()`, and `fetch()` make it easy to replicate most jQuery functionality without the overhead. The idea is to give a cleaner API for the most commonly used tasks.',
@@ -2047,6 +2140,7 @@ export const flashcards: Flashcard[] = [
       'What design decisions would influence whether you would choose to use Angular or React? How are the two libraries different?',
     answer:
       'I’d consider factors like project size, team experience, and long-term maintenance. Angular is a full-fledged framework with batteries-included, while React is a library that’s more flexible and lightweight but requires piecing together additional tools.',
+    code: '',
     hint: 'Think framework vs library, opinionated vs flexible.',
     explanation:
       'Angular is a comprehensive framework with built-in solutions for routing, state management, form handling, and more. It uses TypeScript by default and follows a more structured, opinionated approach. React, on the other hand, focuses only on the view layer and gives you freedom to choose your own libraries for routing, state management, etc. React uses JSX and encourages functional components and hooks for logic reuse. You might choose Angular for enterprise-scale apps with large teams, or React if you want more flexibility, a smaller learning curve, or to build something incrementally.',
@@ -2075,6 +2169,7 @@ export const flashcards: Flashcard[] = [
       'How do you structure your component architectures in React? Where does MVC fit into the architecture?',
     answer:
       'In React, I structure components by breaking UI into reusable, self-contained pieces, often following a hierarchy of presentational (UI) and container (logic/state) components. React doesn’t strictly follow MVC; instead, components combine view and controller logic, while state management tools (like Redux or Context) handle the model layer.',
+    code: '',
     hint: 'Think components as UI + controller, separate state management.',
     explanation:
       'React’s architecture centers around components which encapsulate both rendering and some controller logic. Presentational components focus on how things look and receive data via props, while container components manage state and business logic. Unlike traditional MVC where model, view, and controller are separate layers, React components blend view and controller roles. For complex state, external libraries manage the model/data layer. This approach promotes modularity, reusability, and easier maintenance.',
@@ -2103,6 +2198,7 @@ export const flashcards: Flashcard[] = [
     question: 'Why choose React over Angular or Vue?',
     answer:
       'React is often chosen for its flexibility, strong community support, and a component-based architecture that integrates well with various tools and libraries. Unlike Angular, which is a full-fledged framework, React focuses on the UI layer, giving developers more freedom in choosing their stack. Compared to Vue, React has a larger ecosystem and corporate backing from Facebook, which can mean better long-term support.',
+    code: '',
     hint: 'Think flexibility, ecosystem, and control.',
     explanation:
       'React’s unopinionated nature allows developers to build their own architecture and choose libraries for routing, state management, and more, whereas Angular provides a more opinionated all-in-one solution. Vue is easier to get started with and offers a gentle learning curve, but React’s massive community and widespread adoption mean more resources, job opportunities, and third-party tools. React also emphasizes declarative programming and a virtual DOM for efficient rendering.',
@@ -2127,7 +2223,8 @@ export const flashcards: Flashcard[] = [
     ],
   },
 
-  // Network
+  // Network --------------------------------------------------------
+
   {
     id: 'network-1',
     categoryId: 'network',
@@ -2135,6 +2232,7 @@ export const flashcards: Flashcard[] = [
       'Traditionally, why has it been better to serve site assets from multiple domains?',
     answer:
       'Historically, browsers limited the number of concurrent connections they could make to a single domain (often around 6). By serving assets from multiple domains (also called domain sharding), websites could load resources like images, scripts, and stylesheets in parallel, improving page load times.',
+    code: '',
     hint: 'Think about how browsers open connections.',
     explanation:
       'Older HTTP/1.1 limitations meant browsers could only open a few simultaneous requests to a domain. Using additional subdomains allowed more assets to load in parallel. However, with HTTP/2 and HTTP/3, this practice is now often discouraged since multiplexing allows multiple requests over a single connection, making domain sharding unnecessary and even potentially harmful due to extra DNS lookups and SSL handshakes.',
@@ -2157,6 +2255,7 @@ export const flashcards: Flashcard[] = [
       "Do your best to describe the process from the time you type in a website's URL to it finishing loading on your screen.",
     answer:
       'When you type a URL and hit enter, the browser first checks its cache or makes a DNS request to resolve the domain name to an IP address. Then, it initiates a TCP connection (or QUIC with HTTP/3), often followed by a TLS handshake for HTTPS. Once connected, the browser sends an HTTP request to the server, and the server responds with the HTML. The browser parses the HTML, makes additional requests for resources like CSS, JS, and images, and builds the DOM, CSSOM, and render tree. It then paints pixels to the screen while continuing to load and execute scripts. Modern browsers may progressively render content as it loads.',
+    code: '',
     hint: 'Think DNS → TCP → TLS → HTTP → parse/render.',
     explanation:
       "This process involves many layers of networking and rendering. DNS resolution maps the domain to an IP address. The browser opens a connection, secures it if necessary, and makes an HTTP request. When the response comes back, parsing begins immediately. The browser constructs the DOM and CSSOM, merges them into a render tree, and begins rendering. JavaScript may block rendering depending on how it's loaded. As more resources arrive, the browser reflows/repaints as needed.",
@@ -2179,6 +2278,7 @@ export const flashcards: Flashcard[] = [
       'What are the differences between Long-Polling, WebSockets, and Server-Sent Events?',
     answer:
       'Long-polling is a technique where the client repeatedly makes HTTP requests to the server, holding the connection open until new data is available. WebSockets provide full-duplex communication over a single persistent connection, allowing real-time bidirectional data transfer. Server-Sent Events (SSE) allow the server to push updates to the client over a single HTTP connection, but only in one direction (server → client).',
+    code: '',
     hint: 'Think about the direction of data flow and how persistent the connection is.',
     explanation:
       'Long-polling emulates real-time by repeatedly opening and closing HTTP connections, which is resource-intensive. WebSockets use a persistent TCP connection for real-time two-way communication, ideal for chat apps or games. SSE uses a persistent connection for one-way updates, making it lightweight and simple for live feeds or notifications. WebSockets are more complex but powerful. SSE is easier to implement but only supports server-to-client streams.',
@@ -2205,6 +2305,7 @@ export const flashcards: Flashcard[] = [
       'Explain the following request and response headers: What’s the difference between Expires, Date, Age and If-Modified-Since? What about Do Not Track, Cache-Control, Transfer-Encoding, ETag, and X-Frame-Options?',
     answer:
       '`Expires`, `Date`, and `Age` are headers used for cache control. `Expires` sets a timestamp when the content is considered stale. `Date` is when the response was generated by the server. `Age` tells how long the content has been cached by a proxy or browser. `If-Modified-Since` is a request header that asks the server to return a 304 Not Modified response if the content hasn’t changed since the given date. `Do Not Track` is a request header sent by browsers to signal user tracking preferences. `Cache-Control` provides more flexible cache instructions than `Expires`. `Transfer-Encoding` specifies how the message body is formatted — for example, using `chunked` encoding. `ETag` is a unique identifier for a resource version, useful for validating caches. `X-Frame-Options` prevents your site from being embedded in an iframe, helping avoid clickjacking attacks.',
+    code: '',
     hint: 'Think about which are for freshness, which are for security, and which help optimize communication between browser and server.',
     explanation:
       '`Expires`, `Date`, `Age`, and `If-Modified-Since` all deal with caching and content freshness. `Cache-Control` gives fine-grained cache rules like `max-age`, `no-store`, and `must-revalidate`. `ETag` helps with efficient revalidation by letting the browser send `If-None-Match`. `Transfer-Encoding: chunked` allows streaming content in pieces. `Do Not Track` (DNT) is a user preference header, but not all servers honor it. `X-Frame-Options` (`DENY`, `SAMEORIGIN`) defends against UI redress attacks by disallowing or restricting embedding in other pages.',
@@ -2240,6 +2341,7 @@ export const flashcards: Flashcard[] = [
       'What are HTTP methods? List all HTTP methods that you know, and explain them.',
     answer:
       'HTTP methods define the type of action a client wants to perform on a resource. Common methods include:\n\n- `GET`: Retrieve data.\n- `POST`: Send data to the server to create a resource.\n- `PUT`: Update a resource completely.\n- `PATCH`: Partially update a resource.\n- `DELETE`: Remove a resource.\n- `HEAD`: Same as `GET`, but only returns headers.\n- `OPTIONS`: Describes allowed methods for a resource (often used in CORS).\n- `CONNECT`: Establish a tunnel, typically used for HTTPS.\n- `TRACE`: Echoes the request, mainly used for debugging.',
+    code: '',
     hint: 'Think CRUD operations and how the client communicates intent.',
     explanation:
       'HTTP methods are verbs that describe how to interact with server-side resources. RESTful APIs are built around these methods to represent create, read, update, and delete operations. Understanding the difference between `PUT` and `PATCH`, or `GET` and `HEAD`, is crucial for building efficient and secure APIs.',
@@ -2262,6 +2364,7 @@ export const flashcards: Flashcard[] = [
       'What is domain pre-fetching and how does it help with performance?',
     answer:
       'Domain pre-fetching is a performance optimization technique where the browser is instructed to perform DNS lookups for specified domains ahead of time. This reduces latency when users eventually navigate to or request resources from those domains.',
+    code: '',
     hint: 'Think DNS lookups done proactively.',
     explanation:
       'Browsers must perform a DNS lookup to resolve a domain name to an IP address before making a request. Domain pre-fetching uses the `<link rel="dns-prefetch" href="//example.com">` tag to tell the browser to resolve external domains early. This is helpful when loading assets from third-party sources like CDNs, fonts, or analytics tools. While it doesn’t download the resource, it gets the domain ready faster, improving perceived speed.',
@@ -2283,6 +2386,7 @@ export const flashcards: Flashcard[] = [
     question: 'What is a CDN and what is the benefit of using one?',
     answer:
       'A CDN (Content Delivery Network) is a network of distributed servers that deliver content to users based on their geographic location. The main benefit is faster load times by serving assets from a nearby server, reducing latency. CDNs also help reduce server load, handle traffic spikes, and improve reliability and security.',
+    code: '',
     hint: 'Think edge caching and geographic distribution.',
     explanation:
       'When a user requests content, a CDN routes that request to the nearest edge node, serving static assets like images, CSS, and JavaScript files more quickly than a centralized origin server could. CDNs can also handle DDoS protection, TLS termination, and caching strategies that enhance both performance and scalability.',
@@ -2295,6 +2399,431 @@ export const flashcards: Flashcard[] = [
       {
         label: 'MDN: Content Delivery Network',
         url: 'https://developer.mozilla.org/en-US/docs/Glossary/CDN',
+      },
+    ],
+  },
+
+  // Design Patterns ----------------------------------------
+
+  {
+    id: 'design-p-1',
+    categoryId: 'design-patterns',
+    question:
+      'Why are global and static objects considered "evil"? Can you show it with a code example?',
+    answer:
+      'Global and static objects can lead to tightly coupled code, make testing difficult, and increase the risk of name collisions or unintended side effects. They can also be modified from anywhere, which makes behavior harder to predict. For example:\n\n```js\nvar globalConfig = { theme: "dark" };\n\nfunction render() {\n  console.log(globalConfig.theme);\n}\n```\n\nThis makes it hard to isolate and test `render()`, since it depends on a global. A better approach would be to pass the config as an argument.',
+    code: '',
+    hint: 'Think about scope, coupling, and testability. ',
+    explanation:
+      'Using global or static objects means that state is shared and accessible from anywhere in the application. This can introduce hidden dependencies, unexpected mutations, and makes unit testing harder because you can’t isolate behavior. Instead, it’s better to use dependency injection or modular patterns to manage state and access.',
+    tags: [
+      'design-patterns',
+      'global-scope',
+      'static-objects',
+      'testability',
+      'coupling',
+    ],
+    reference: [
+      {
+        label: 'MDN Web Docs: Global objects',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/Global_object',
+      },
+      {
+        label: 'StackOverflow: Why is using global variables bad?',
+        url: 'https://stackoverflow.com/questions/484635/are-global-variables-bad',
+      },
+    ],
+  },
+  {
+    id: 'design-p-2',
+    categoryId: 'design-patterns',
+    question:
+      'Tell me about Inversion of Control and how it improves the design of code.',
+    answer:
+      'Inversion of Control (IoC) is a design principle where the control of object creation and the flow of a program is inverted—from being handled by your own code to being managed by an external framework or component. This improves modularity and makes code easier to maintain, test, and extend.',
+    code: '',
+    hint: 'Think about control flow and who is responsible for what.',
+    explanation:
+      'Instead of your code manually managing dependencies or execution flow, IoC delegates that responsibility. A common form of IoC is Dependency Injection (DI), where objects are given their dependencies rather than creating them internally. This decouples components, promotes reusability, and makes unit testing easier by allowing mock implementations to be injected.',
+    tags: [
+      'design-patterns',
+      'inversion-of-control',
+      'dependency-injection',
+      'architecture',
+      'testability',
+    ],
+    reference: [
+      {
+        label: 'Martin Fowler: Inversion of Control',
+        url: 'https://martinfowler.com/bliki/InversionOfControl.html',
+      },
+      {
+        label: 'Wikipedia: Inversion of Control',
+        url: 'https://en.wikipedia.org/wiki/Inversion_of_control',
+      },
+    ],
+  },
+  {
+    id: 'design-p-3',
+    categoryId: 'design-patterns',
+    question:
+      'The Law of Demeter (the Principle of Least Knowledge) states that each unit should have only limited knowledge about other units and it should only talk to its immediate friends (sometimes stated as "don\'t talk to strangers"). Would you write code violating this principle, show why it is a bad design and then fix it?',
+    answer:
+      'A violation of the Law of Demeter looks like this:\n\n```js\nuser.getProfile().getSettings().getTheme();\n```\n\nThis is bad design because it exposes the internal structure of objects and creates tight coupling between components. If any part of that chain changes, the code breaks. A better approach:\n\n```js\nuser.getTheme();\n```\n\nNow `user` encapsulates the traversal and provides a clear, stable interface.',
+    code: '',
+    hint: 'Think about chaining vs direct responsibility.',
+    explanation:
+      'The Law of Demeter promotes low coupling and better encapsulation by discouraging objects from navigating through the internals of other objects. When you "reach through" multiple layers to get data, your code becomes fragile and harder to maintain. Instead, expose necessary methods at the top level of each object and delegate internally. This reduces dependencies and makes objects easier to reuse and test.',
+    tags: [
+      'design-patterns',
+      'law-of-demeter',
+      'encapsulation',
+      'coupling',
+      'clean-code',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Law of Demeter',
+        url: 'https://en.wikipedia.org/wiki/Law_of_Demeter',
+      },
+      {
+        label: 'StackOverflow: Law of Demeter example',
+        url: 'https://stackoverflow.com/questions/4361242/what-is-the-law-of-demeter',
+      },
+      {
+        label: 'Medium: Law of Demeter example',
+        url: 'https://medium.com/vattenfall-tech/the-law-of-demeter-by-example-fd7adbf0c324',
+      },
+    ],
+  },
+  {
+    id: 'design-p-4',
+    categoryId: 'design-patterns',
+    question:
+      'Active-Record is the design pattern that promotes objects to include functions such as Insert, Update, and Delete, and properties that correspond to the columns in some underlying database table. In your opinion and experience, which are the limits and pitfalls of this pattern?',
+    answer:
+      'Active-Record tightly couples domain logic with database operations, which can lead to challenges in complex applications. It can make unit testing harder because business logic is mixed with persistence code. Also, it may not handle complex queries or relationships well, leading to bloated models and less flexibility.',
+    code: '',
+    hint: 'Think coupling, testability, and model bloat.',
+    explanation:
+      'While Active-Record is simple and convenient for CRUD operations, it mixes data access and business logic, violating separation of concerns. This can make the code harder to maintain, especially as applications grow in complexity. It often leads to "fat models" with too many responsibilities. Alternatives like Data Mapper patterns or Repository patterns can help decouple business logic from database details.',
+    tags: [
+      'design-patterns',
+      'active-record',
+      'separation-of-concerns',
+      'testing',
+      'database',
+    ],
+    reference: [
+      {
+        label: 'Martin Fowler: Active Record',
+        url: 'https://martinfowler.com/eaaCatalog/activeRecord.html',
+      },
+      {
+        label: 'StackOverflow: Active Record vs Data Mapper',
+        url: 'https://stackoverflow.com/questions/4295217/active-record-vs-data-mapper',
+      },
+      {
+        label: 'This dudes Blog: Active Record',
+        url: 'https://www.yegor256.com/2016/07/26/active-record.html',
+      },
+    ],
+  },
+  {
+    id: 'design-p-5',
+    categoryId: 'design-patterns',
+    question:
+      'Data-Mapper is a design pattern that promotes the use of a layer of Mappers that moves data between objects and a database while keeping them independent of each other and the mapper itself. On the contrary, Active-Record objects directly incorporate operations for persisting themselves to a database, and properties corresponding to the underlying database tables. Do you have an opinion on those patterns? When would you use one instead of the other?',
+    answer:
+      'Active-Record is simpler and faster to implement, making it suitable for small to medium projects with straightforward CRUD needs. Data-Mapper provides better separation of concerns, making it ideal for complex domains, better testability, and when business logic must be decoupled from persistence.',
+    code: '',
+    hint: 'Think simplicity vs separation of concerns.',
+    explanation:
+      'Active-Record mixes data and behavior, which is convenient but can cause issues as complexity grows. Data-Mapper abstracts database interactions into a separate layer, allowing domain models to focus purely on business logic. Use Active-Record for simpler apps or rapid development, and Data-Mapper when you need flexibility, easier testing, or work with complex data relationships.',
+    tags: [
+      'design-patterns',
+      'active-record',
+      'data-mapper',
+      'separation-of-concerns',
+      'architecture',
+    ],
+    reference: [
+      {
+        label: 'Thoughtful Code: Data Mapper vs Active Record',
+        url: 'https://www.thoughtfulcode.com/orm-active-record-vs-data-mapper/',
+      },
+      {
+        label: 'Martin Fowler: Data Mapper',
+        url: 'https://martinfowler.com/eaaCatalog/dataMapper.html',
+      },
+      {
+        label: 'Martin Fowler: Active Record',
+        url: 'https://martinfowler.com/eaaCatalog/activeRecord.html',
+      },
+    ],
+  },
+  {
+    id: 'design-p-6',
+    categoryId: 'design-patterns',
+    question:
+      "Many state that, in Object-Oriented Programming, composition is often a better option than inheritance. What's your opinion?",
+    answer:
+      'Composition favors building complex objects by combining simpler ones, promoting greater flexibility and reuse compared to inheritance, which creates tight coupling between parent and child classes. Composition allows changing behavior at runtime by swapping components, avoids problems like the fragile base class, and leads to more maintainable and modular code.',
+    code: '',
+    hint: 'Think flexibility, coupling, and reuse.',
+    explanation:
+      'Inheritance can lead to rigid hierarchies and tight coupling, making changes difficult and risking unintended side effects when parent classes change. Composition, by assembling behavior from smaller, reusable components, encourages loose coupling and better encapsulation. It enables easier testing and extension since components can be replaced or modified independently without affecting unrelated parts of the system.',
+    tags: [
+      'design-patterns',
+      'oop',
+      'composition',
+      'inheritance',
+      'code-maintainability',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Composition over Inheritance',
+        url: 'https://www.geeksforgeeks.org/java/favoring-composition-over-inheritance-in-java-with-examples/',
+      },
+      {
+        label: 'Stack Overflow: Composition vs inheritance',
+        url: 'https://stackoverflow.com/questions/49002/prefer-composition-over-inheritance',
+      },
+    ],
+  },
+  {
+    id: 'design-p-7',
+    categoryId: 'design-patterns',
+    question: 'What is an Anti-corruption Layer?',
+    answer:
+      'An Anti-corruption Layer (ACL) is a design pattern used to create a boundary between two different systems or bounded contexts, translating and adapting communication to prevent external systems from corrupting the internal domain model.',
+    code: '',
+    hint: 'Think integration, isolation, and translation between systems.',
+    explanation:
+      'The ACL acts as a protective barrier when integrating with legacy systems, third-party services, or other bounded contexts that have different models or assumptions. It translates data and operations between systems, allowing each to evolve independently without leaking unwanted complexity or inconsistencies. This improves maintainability and reduces coupling across system boundaries.',
+    tags: [
+      'design-patterns',
+      'integration',
+      'bounded-context',
+      'anti-corruption-layer',
+      'system-design',
+    ],
+    reference: [
+      {
+        label: 'Medium: Anti-Corruption Layer',
+        url: 'https://medium.com/solutions-architecture-patterns/anti-corruption-layer-pattern-bd75e1f2be7f',
+      },
+      {
+        label: 'Microsoft Docs: Anti-Corruption Layer',
+        url: 'https://docs.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer',
+      },
+    ],
+  },
+  {
+    id: 'design-p-8',
+    categoryId: 'design-patterns',
+    question:
+      'Singleton is a design pattern that restricts the instantiation of a class to one single object. Writing a Thread-Safe Singleton class is not so obvious. Would you try?',
+    answer:
+      'A Singleton ensures only one instance of a class exists and provides a global access point to it. Thread safety means ensuring this property holds even when multiple threads attempt to create an instance simultaneously. In JavaScript, because it runs single-threaded, thread safety isn’t usually a concern, but in multi-threaded environments (like Java or C#), you need synchronization techniques.',
+    code: 'public class Singleton {\n  private static volatile Singleton instance;\n  private Singleton() {}\n\n  public static Singleton getInstance() {\n    if (instance == null) {\n      synchronized(Singleton.class) {\n        if (instance == null) {\n          instance = new Singleton();\n        }\n      }\n    }\n    return instance;\n  }\n}',
+    hint: 'Think instance control and thread synchronization.',
+    explanation:
+      'To write a thread-safe Singleton, you typically use locking mechanisms to ensure only one thread can create the instance at a time. The above example uses double-checked locking in Java to ensure lazy initialization with minimal synchronization overhead. In JavaScript, a module pattern or closure is typically sufficient due to its single-threaded runtime.',
+    tags: [
+      'design-patterns',
+      'singleton',
+      'thread-safety',
+      'concurrency',
+      'instantiation',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Singleton Pattern',
+        url: 'https://en.wikipedia.org/wiki/Singleton_pattern',
+      },
+      {
+        label: 'Medium: Thread safe Singleton',
+        url: 'https://medium.com/@cancerian0684/singleton-design-pattern-and-how-to-make-it-thread-safe-b207c0e7e368',
+      },
+    ],
+  },
+  {
+    id: 'design-p-9',
+    categoryId: 'design-patterns',
+    question:
+      'The ability to change implementation without affecting clients is called Data Abstraction. Produce an example violating this property, then fix it.',
+    answer:
+      'Violating data abstraction means clients depend directly on implementation details, making changes risky. Below is an example of violating this principle, followed by a corrected version that preserves abstraction.',
+    code: '// Violating abstraction\nclass User {\n  constructor() {\n    this.details = { name: "Alice", age: 30 };\n  }\n}\n\nconst user = new User();\nconsole.log(user.details.name); // Client accesses internal structure directly\n\n//Preserving abstraction\nclass User {\n  constructor() {\n    this._details = { name: "Alice", age: 30 };\n  }\n\n  getName() {\n    return this._details.name;\n  }\n}\n\nconst user = new User();\nconsole.log(user.getName()); // Client uses abstraction, internal structure can change',
+    hint: 'Think about hiding internal details behind methods.',
+    explanation:
+      'Data abstraction hides internal details, exposing only what clients need. This decouples clients from internal changes, making the code more maintainable. Violating this means clients depend on specific data shapes or properties, so refactoring breaks them. Using getter methods or interfaces preserves abstraction and flexibility.',
+    tags: [
+      'design-patterns',
+      'data-abstraction',
+      'encapsulation',
+      'oop',
+      'design-principles',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Data Abstraction',
+        url: 'https://en.wikipedia.org/wiki/Abstraction_(computer_science)',
+      },
+      {
+        label: 'MDN: Object-Oriented Programming',
+        url: 'https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS',
+      },
+    ],
+  },
+  {
+    id: 'design-p-10',
+    categoryId: 'design-patterns',
+    question:
+      "Write a snippet of code violating the Don't Repeat Yourself (DRY) principle. Then, fix it.",
+    answer:
+      'Violating the DRY principle means duplicating logic or data in multiple places, which increases maintenance costs and the risk of bugs. Here’s an example of repeated logic, followed by a refactored version using a reusable function.',
+    code: '// Violating DRY\nfunction getUserGreeting(user) {\n  return "Hello, " + user.firstName + " " + user.lastName;\n}\n\nfunction getUserFullName(user) {\n  return user.firstName + " " + user.lastName;\n}\n\n// Fixing DRY\nfunction getFullName(user) {\n  return user.firstName + " " + user.lastName;\n}\n\nfunction getUserGreeting(user) {\n  return "Hello, " + getFullName(user);\n}',
+    hint: 'Look for repeated logic that could be extracted into a function.',
+    explanation:
+      'The DRY principle encourages reusing logic by extracting it into functions or modules. Repeating the same logic in multiple places makes code harder to maintain. In this example, the user’s full name was computed twice in different ways. By creating a single `getFullName()` function, you reduce duplication and improve maintainability.',
+    tags: ['design-patterns', 'dry', 'clean-code', 'refactoring'],
+    reference: [
+      {
+        label: 'Wikipedia: DRY Principle',
+        url: 'https://en.wikipedia.org/wiki/Don%27t_repeat_yourself',
+      },
+      {
+        label: 'Geeks for Geeks: DRY',
+        url: 'https://www.geeksforgeeks.org/software-engineering/dont-repeat-yourselfdry-in-software-development/',
+      },
+    ],
+  },
+  {
+    id: 'design-p-11',
+    categoryId: 'design-patterns',
+    question: 'How would you deal with Dependency Hell?',
+    answer:
+      'Dependency Hell arises when managing dependencies becomes complex due to version conflicts, incompatible updates, or deeply nested dependencies causing errors and failures.',
+    code: '',
+    hint: 'Think version conflicts, lockfiles, and modularization.',
+    explanation:
+      'To handle Dependency Hell, you can:\n' +
+      '- Use package managers with lockfiles (like npm’s package-lock.json or yarn.lock) to ensure consistent dependency versions.\n' +
+      '- Follow semantic versioning carefully to avoid breaking changes.\n' +
+      '- Use deduplication tools and resolution overrides to flatten dependencies.\n' +
+      '- Modularize code to limit dependency exposure.\n' +
+      '- Adopt monorepos with tools like Lerna or Nx for shared dependency control.\n' +
+      '- Regularly audit and update dependencies, testing thoroughly.\n' +
+      '- Use containerization (e.g., Docker) to isolate environments and dependencies per project.',
+    tags: [
+      'dependency-management',
+      'package-management',
+      'npm',
+      'yarn',
+      'versioning',
+      'dependency-hell',
+    ],
+    reference: [
+      {
+        label: 'npm Docs: package-lock.json',
+        url: 'https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json',
+      },
+      {
+        label: 'Yarn Docs: Resolutions',
+        url: 'https://classic.yarnpkg.com/en/docs/selective-version-resolutions/',
+      },
+      {
+        label: 'Medium: Dependency Hell',
+        url: 'https://mandhan.medium.com/dependency-hell-79097a5d312f/',
+      },
+    ],
+  },
+  {
+    id: 'design-p-12',
+    categoryId: 'design-patterns',
+    question:
+      'Is goto evil? You may have heard of the famous paper "Go To Statement Considered Harmful" by Edsger Dijkstra, in which he criticized the use of the goto statement and advocated structured programming instead. The use of “GOTO” has always been controversial, so much that even Dijkstra\'s letter was criticized with articles such as "\'GOTO Considered Harmful\' Considered Harmful". What\'s your opinion on the use of GOTO?',
+    answer:
+      'The `goto` statement is generally discouraged because it can make code harder to read, reason about, and maintain. It breaks the structured flow of control, leading to "spaghetti code".',
+    code: '',
+    hint: 'Think about readability, maintainability, and structured flow.',
+    explanation:
+      'GOTO was once a common control structure, but overuse led to unpredictable and tangled code flows. Dijkstra’s criticism highlighted that structured alternatives like loops and conditionals make code more reliable and easier to understand.\n\nHowever, there are rare cases (such as in low-level programming, error handling in C, or optimizing performance-critical code) where `goto` can be justified.\n\nIn modern high-level languages like JavaScript, `goto` isn’t even supported, and structured constructs offer cleaner and safer alternatives. Overall, while not inherently evil, `goto` is usually a sign of poor design in higher-level programming.',
+    tags: [
+      'goto',
+      'structured-programming',
+      'control-flow',
+      'code-quality',
+      'best-practices',
+    ],
+    reference: [
+      {
+        label: 'Edsger W. Dijkstra: Go To Statement Considered Harmful',
+        url: 'https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf',
+      },
+      {
+        label: 'Wikipedia: Goto',
+        url: 'https://en.wikipedia.org/wiki/Goto',
+      },
+    ],
+  },
+  {
+    id: 'design-p-13',
+    categoryId: 'design-patterns',
+    question:
+      'The robustness principle is a general design guideline for software that recommends "be conservative in what you send, be liberal in what you accept". It is often re-worded as "be a tolerant reader and a careful writer". Would you like to discuss the rationale of this principle?',
+    answer:
+      'The robustness principle encourages developers to write code that communicates clearly and consistently while being flexible when interpreting inputs from others. This helps ensure systems remain interoperable even when one party is slightly non-compliant.',
+    code: '',
+    hint: 'Think about interoperability, fault tolerance, and graceful degradation.',
+    explanation:
+      'This principle originated in the context of network protocol design, where systems often had to interact with imperfect implementations. By being strict about what your software emits (e.g. well-formed data, standardized formats) and forgiving about what it receives (e.g. allowing optional fields or variations), you increase the chances of smooth communication across systems.\n\nHowever, some criticize this principle for potentially encouraging bad behavior in others—accepting invalid input may hide bugs. Therefore, it’s important to strike a balance: tolerate variation without allowing violations that could cause security issues or propagate broken data.',
+    tags: [
+      'design-principles',
+      'robustness-principle',
+      'interoperability',
+      'fault-tolerance',
+      'best-practices',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Robustness principle',
+        url: 'https://en.wikipedia.org/wiki/Robustness_principle',
+      },
+      {
+        label: 'IETF RFC 1122',
+        url: 'https://datatracker.ietf.org/doc/html/rfc1122#section-1.2.2',
+      },
+    ],
+  },
+  {
+    id: 'design-p-14',
+    categoryId: 'design-patterns',
+    question:
+      'Separation of Concerns is a design principle for separating a computer program into distinct areas, each one addressing a separate concern. There are a lot of different mechanisms for achieving Separation of Concerns (use of objects, functions, modules, or patterns such as MVC and the like). Would you discuss this topic?',
+    answer:
+      'Separation of Concerns (SoC) is about organizing code so that each part of a system deals with one specific responsibility. This makes software easier to develop, test, maintain, and scale.',
+    code: '',
+    hint: 'Think about modularity, readability, and maintainability.',
+    explanation:
+      'SoC helps reduce complexity by dividing a system into distinct sections, each with a single, well-defined role. For example, in web development, HTML handles structure, CSS handles styling, and JavaScript handles behavior—each concern is separated.\n\nCommon methods to achieve SoC include:\n- Functions to isolate logic.\n- Classes and objects to encapsulate behavior.\n- Modules to separate reusable units of code.\n- Architectural patterns like MVC (Model-View-Controller), where:\n  - The Model handles data and business logic,\n  - The View handles the UI,\n  - The Controller handles user input.\n\nGood SoC promotes cleaner codebases, makes onboarding easier, and allows teams to work in parallel without stepping on each other’s toes.',
+    tags: [
+      'design-patterns',
+      'separation-of-concerns',
+      'architecture',
+      'modularity',
+      'best-practices',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Separation of concerns',
+        url: 'https://en.wikipedia.org/wiki/Separation_of_concerns',
+      },
+      {
+        label: 'Geeks for Geeks: Structuring your project',
+        url: 'https://www.geeksforgeeks.org/software-engineering/separation-of-concerns-soc/',
       },
     ],
   },
