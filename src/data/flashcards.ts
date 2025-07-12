@@ -2827,4 +2827,352 @@ export const flashcards: Flashcard[] = [
       },
     ],
   },
+
+  // Code Design -------------------------------
+
+  {
+    id: 'code-design-1',
+    categoryId: 'code-design',
+    question:
+      'It is often said that one of the most important goals in Object-Oriented Design (and code design in general) is to have High Cohesion and Loose Coupling. What does it mean? Why is it that important and how is it achieved?',
+    answer:
+      'High cohesion means a component or class focuses on a single task or responsibility. Loose coupling means components or classes have minimal dependencies on each other. Together, they lead to modular, maintainable, and testable code.',
+    code: '',
+    hint: 'Focus on modular responsibilities and minimal interdependence.',
+    explanation:
+      'High cohesion ensures that the responsibilities of a component are tightly related, making the component easier to understand and maintain. Loose coupling minimizes the impact of changes by reducing dependencies between components.\n\nBenefits of high cohesion and loose coupling include:\n- Easier testing and debugging\n- Greater code reuse\n- Faster onboarding for new developers\n- Lower risk of introducing bugs when making changes\n\nHow to achieve it:\n- Use clear, single-purpose classes and functions (e.g., Single Responsibility Principle)\n- Use interfaces or abstractions to separate implementation from usage\n- Apply dependency injection instead of hardcoding dependencies\n- Favor composition over inheritance\n\nFor example, rather than having one large class that manages both user data and rendering, split it into separate classes: one for user logic, one for UI logic.',
+    tags: [
+      'code-design',
+      'cohesion',
+      'coupling',
+      'oop',
+      'modularity',
+      'best-practices',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Cohesion (computer science)',
+        url: 'https://en.wikipedia.org/wiki/Cohesion_(computer_science)',
+      },
+      {
+        label: 'Wikipedia: Coupling (computer programming)',
+        url: 'https://en.wikipedia.org/wiki/Coupling_(computer_programming)',
+      },
+    ],
+  },
+  {
+    id: 'code-design-2',
+    categoryId: 'code-design',
+    question: "Why do array indexes start with '0' in most languages?",
+    answer:
+      'Array indexing starts at 0 in most programming languages for historical and performance reasons. It aligns with how memory is addressed in low-level languages like C, where the index is treated as an offset from the start of the array.',
+    code: '',
+    hint: 'Think about how memory and pointers work in low-level languages.',
+    explanation:
+      "When arrays are implemented at a low level, they are blocks of contiguous memory. The index is used as an offset from the starting address of the array. So:\n\n`array[0]` = start of the array (`base_address + 0 * element_size`)\n\nIf arrays started at 1, you'd need to subtract 1 from the index internally, adding overhead and complexity. This zero-based indexing is efficient and consistent with pointer arithmetic, which is why it became the standard in many languages influenced by C.",
+    tags: [
+      'arrays',
+      'indexing',
+      'memory',
+      'low-level-concepts',
+      'performance',
+      'code-design',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Why do arrays start from zero?',
+        url: 'https://www.geeksforgeeks.org/dsa/why-array-index-starts-from-zero/',
+      },
+      {
+        label: 'Wikipedia: Zero-based numbering',
+        url: 'https://en.wikipedia.org/wiki/Zero-based_numbering',
+      },
+    ],
+  },
+  {
+    id: 'code-design-3',
+    categoryId: 'code-design',
+    question: 'How do tests and TDD influence code design?',
+    answer:
+      'Tests—and especially Test-Driven Development (TDD)—encourage writing modular, loosely coupled, and well-encapsulated code. They influence design by requiring code to be easily testable, which naturally leads to better separation of concerns and smaller, single-responsibility components.',
+    code: '',
+    hint: 'Think about testability, modularity, and feedback loops.',
+    explanation:
+      'TDD guides development by writing tests before implementation, which helps define clear expectations for what the code should do. This leads to smaller units of functionality and encourages practices like dependency injection, interface segregation, and decoupling.\n\nAs a result, codebases tend to be more maintainable, easier to refactor, and better documented through tests. However, over-emphasis on testability can sometimes lead to over-abstraction or unnatural design decisions, so balance is key.',
+    tags: [
+      'tdd',
+      'testing',
+      'modularity',
+      'clean-code',
+      'code-design',
+      'separation-of-concerns',
+    ],
+    reference: [
+      {
+        label: 'Martin Fowler: TDD and Design',
+        url: 'https://martinfowler.com/bliki/TestDrivenDevelopment.html',
+      },
+      {
+        label: 'Geeks for Geeks: TDD',
+        url: 'https://www.geeksforgeeks.org/software-engineering/test-driven-development-tdd/',
+      },
+    ],
+  },
+  {
+    id: 'code-design-4',
+    categoryId: 'code-design',
+    question:
+      "Write a snippet of code violating the Don't Repeat Yourself (DRY) principle. Then, explain why it is a bad design, and fix it.",
+    answer:
+      'Violating the DRY principle means duplicating logic in multiple places. This makes maintenance harder and increases the chance of bugs when changes are needed. Here’s an example:',
+    code: '// Repeating logic (violates DRY)\nfunction getAdminEmails(users) {\n  return users.filter(u => u.role === "admin").map(u => u.email);\n}\n\nfunction getAdminUsernames(users) {\n  return users.filter(u => u.role === "admin").map(u => u.username);\n}\n\n// DRY version\nfunction getAdmins(users) {\n  return users.filter(u => u.role === "admin");\n}\n\nfunction getAdminEmails(users) {\n  return getAdmins(users).map(u => u.email);\n}\n\nfunction getAdminUsernames(users) {\n  return getAdmins(users).map(u => u.username);\n}',
+    hint: 'Look for repeated filtering logic or transformation.',
+    explanation:
+      'In the original code, the same filtering logic is repeated in two places. If the criteria for identifying an admin changes, you’d have to update both places, increasing maintenance overhead and the likelihood of errors. By centralizing shared logic into a single function (`getAdmins`), we reduce duplication and make the code more maintainable and expressive.',
+    tags: ['dry', 'clean-code', 'code-design', 'refactoring'],
+    reference: [
+      {
+        label: 'Wikipedia: Don’t Repeat Yourself',
+        url: 'https://en.wikipedia.org/wiki/Don%27t_repeat_yourself',
+      },
+      {
+        label: 'Geeks for Geeks: DRY Principle',
+        url: 'https://www.geeksforgeeks.org/software-engineering/dont-repeat-yourselfdry-in-software-development/',
+      },
+    ],
+  },
+  {
+    id: 'code-design-5',
+    categoryId: 'code-design',
+    question: "What's the difference between cohesion and coupling?",
+    answer:
+      'Cohesion refers to how closely related and focused the responsibilities of a single module are. Coupling describes how dependent modules are on each other.',
+    code: '',
+    hint: 'Think about internal unity vs. external dependency.',
+    explanation:
+      'High cohesion means a module does one thing well and its internal parts work together toward a common purpose. Low cohesion often indicates a module is trying to do too many unrelated things. Loose coupling means modules interact through well-defined interfaces and don’t rely heavily on each other’s internal details. Tightly coupled code is harder to maintain, test, and reuse. Ideally, strive for high cohesion and loose coupling to improve code readability, flexibility, and maintainability.',
+    tags: ['code-design', 'cohesion', 'coupling', 'architecture', 'clean-code'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Coupling and Cohesion',
+        url: 'https://www.geeksforgeeks.org/software-engineering/software-engineering-coupling-and-cohesion/',
+      },
+      {
+        label: 'Medium: Understanding Cohesion',
+        url: 'https://medium.com/@ravipatel.it/understanding-cohesion-in-software-engineering-8fefc017de5c',
+      },
+    ],
+  },
+  {
+    id: 'code-design-6',
+    categoryId: 'code-design',
+    question: 'What is refactoring useful for?',
+    answer:
+      'Refactoring is the process of restructuring existing code without changing its external behavior. It’s useful for improving the internal structure, readability, and maintainability of code.',
+    code: '',
+    hint: 'It doesn’t change what the code does, only how it’s written.',
+    explanation:
+      'Refactoring helps developers clean up messy or overly complex code, reduce duplication, improve naming and modularity, and make future changes easier. It supports better testing, debugging, and onboarding of new team members. Refactoring should be done in small steps, ideally alongside tests that ensure behavior stays the same. While it doesn’t add new features, it lays the groundwork for building features more reliably.',
+    tags: ['code-design', 'refactoring', 'clean-code', 'maintenance'],
+    reference: [
+      {
+        label: 'Martin Fowler: Refactoring',
+        url: 'https://martinfowler.com/books/refactoring.html',
+      },
+      {
+        label: 'Geeks for Geeks: Refactoring',
+        url: 'https://www.geeksforgeeks.org/software-engineering/refactoring-introduction-and-its-techniques/',
+      },
+    ],
+  },
+  {
+    id: 'code-design-7',
+    categoryId: 'code-design',
+    question:
+      'Are comments in code useful? Some say they should be avoided as much as possible, and hopefully made unnecessary. Do you agree?',
+    answer:
+      'Comments can be useful, but they should not replace clean, self-explanatory code. Ideally, your code should be clear enough that comments are rarely needed.',
+    code: '',
+    hint: 'Consider why the code needs a comment in the first place.',
+    explanation:
+      'Comments are helpful when they explain “why” something is done, especially when the reasoning is non-obvious or business-driven. However, excessive comments or ones that explain “what” the code is doing (when the code is already readable) can become noise. Worse, outdated comments can mislead developers. Clean code, with good naming, modular functions, and clear logic, reduces the need for comments. In general: prefer code that doesn’t need comments, but don’t avoid comments when they clarify intent.',
+    tags: ['code-design', 'comments', 'clean-code', 'documentation'],
+    reference: [
+      {
+        label: 'Medium: Comments arent evil',
+        url: 'https://dev.to/grantdotdev/code-comments-are-not-evil-20o9',
+      },
+      {
+        label: 'StackOverflow: Are comments in code a bad practice?',
+        url: 'https://stackoverflow.com/questions/184618/what-is-the-role-of-comments-in-code',
+      },
+    ],
+  },
+  {
+    id: 'code-design-8',
+    categoryId: 'code-design',
+    question: 'What is the difference between design and architecture?',
+    answer:
+      'Design and architecture are both concerned with structuring software, but they differ in scale and abstraction. Architecture refers to the high-level structure and fundamental choices of a system, while design focuses on lower-level implementation details within that architecture.',
+    code: '',
+    hint: 'Think of architecture as the blueprint and design as the construction plan for each room.',
+    explanation:
+      'Software architecture deals with the major components, their responsibilities, and how they interact. It involves decisions like choosing microservices vs. monolith, defining layers (UI, business logic, data), and technology stacks. Design, on the other hand, focuses on classes, methods, algorithms, patterns, and object relationships within a component. Architecture is harder to change once in place, so it emphasizes scalability, maintainability, and robustness. Good design supports the architecture by making it easier to evolve and maintain.',
+    tags: [
+      'code-design',
+      'architecture',
+      'software-design',
+      'system-structure',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Architecture vs Design',
+        url: 'https://www.geeksforgeeks.org/system-design/difference-between-software-design-and-software-architecture/',
+      },
+      {
+        label: 'Medium: Software Design and Architecture',
+        url: 'https://medium.com/@concisesoftware/whats-the-difference-between-software-architecture-and-design-b705c2584631',
+      },
+    ],
+  },
+  {
+    id: 'testing-1',
+    categoryId: 'testing',
+    question: 'In TDD, why are tests written before code?',
+    answer:
+      'Writing tests before code helps clarify requirements, define expected behavior upfront, and guide the development process. It ensures the code you write is directly aimed at passing the tests, promoting simpler, more focused implementations.',
+    code: '',
+    hint: 'Think about “Red-Green-Refactor” and how tests drive design.',
+    explanation:
+      'In Test-Driven Development (TDD), writing tests first encourages developers to think about the desired functionality and edge cases before implementation. This approach leads to better designed, more modular, and testable code. It also provides immediate feedback when changes break functionality, reducing bugs and regression issues. The TDD cycle — write a failing test (red), write code to pass it (green), then refactor — helps maintain code quality and prevents over-engineering.',
+    tags: ['testing', 'tdd', 'test-driven-development', 'code-quality'],
+    reference: [
+      {
+        label: 'Kent Beck: Test Driven Development',
+        url: 'https://www.agilealliance.org/glossary/tdd/',
+      },
+      {
+        label: 'Medium: TDD before coding',
+        url: 'https://medium.com/@ferrohardian/tdd-write-tests-before-the-actual-code-b61f50142918',
+      },
+    ],
+  },
+  {
+    id: 'design-p-11',
+    categoryId: 'design-patterns',
+    question:
+      'C++ supports multiple inheritance, and Java allows a class to implement multiple interfaces. What impact does using these facilities have on orthogonality? Is there a difference in impact between using multiple inheritance and multiple interfaces? Is there a difference between using delegation and using inheritance?',
+    answer:
+      'Using multiple inheritance or multiple interfaces increases flexibility in composing behaviors but affects orthogonality differently. Multiple inheritance can introduce complexity and ambiguity (e.g., the diamond problem), potentially reducing orthogonality by creating tightly coupled and interdependent hierarchies. Multiple interfaces promote orthogonality by allowing classes to adopt multiple contracts without sharing implementation, keeping concerns separated and reducing coupling.',
+    code: '',
+    hint: 'Consider coupling, reuse, and code complexity differences between inheritance, interfaces, and delegation.',
+    explanation:
+      'Orthogonality means components can be changed independently without unexpected side effects. Multiple inheritance may violate this by intertwining behaviors and state, making the system harder to understand and maintain. Interfaces preserve orthogonality by separating "what" from "how", allowing independent implementations.\n\nDelegation differs from inheritance in that objects explicitly forward tasks to helper objects rather than inheriting behavior. Delegation promotes composition over inheritance, encouraging loose coupling, greater flexibility, and more modular, orthogonal designs that avoid the complexity of deep inheritance trees.',
+    tags: [
+      'design-patterns',
+      'inheritance',
+      'interfaces',
+      'delegation',
+      'orthogonality',
+      'oop',
+    ],
+    reference: [
+      {
+        label: 'Medium: Orthogonality',
+        url: 'https://medium.com/aimonks/orthogonality-in-programming-and-software-engineering-4991366f8a91',
+      },
+      {
+        label: 'Geeks for Geeks: Multiple Inheritance using Interfaces JAVA',
+        url: 'https://www.geeksforgeeks.org/java/how-to-implement-multiple-inheritance-by-using-interfaces-in-java/',
+      },
+    ],
+  },
+  {
+    id: 'design-p-12',
+    categoryId: 'design-patterns',
+    question:
+      'What are the pros and cons of holding domain logic in Stored Procedures?',
+    answer:
+      'Storing domain logic in Stored Procedures means placing business rules and operations directly inside the database layer rather than in application code.',
+    code: '',
+    hint: 'Think about performance, maintainability, and separation of concerns.',
+    explanation:
+      'Pros include improved performance due to execution close to the data, reduced network traffic, and potential for centralized logic that multiple applications can reuse. Stored Procedures can also encapsulate complex queries and enforce data integrity.\n\nCons involve tight coupling between business logic and the database, making it harder to version, test, and maintain. It can reduce portability across different database systems and lead to difficulties in scaling and deploying changes independently from the application code. Debugging and source control can also be more challenging compared to application-level logic.',
+    tags: [
+      'design-patterns',
+      'stored-procedures',
+      'domain-logic',
+      'database',
+      'performance',
+      'maintainability',
+    ],
+    reference: [
+      {
+        label: 'Medium: Pros and cons stored procedures',
+        url: 'https://medium.com/@chanukasuboth1/stored-procedures-advantages-and-disadvantages-c0aa2d50004b',
+      },
+      {
+        label: 'Stored Procedures: Advantages and Disadvantages',
+        url: 'https://www.geeksforgeeks.org/sql/advantages-and-disadvantages-of-using-stored-procedures-sql/',
+      },
+    ],
+  },
+  {
+    id: 'design-p-13',
+    categoryId: 'design-patterns',
+    question:
+      'In your opinion, why has Object-Oriented Design dominated the market for so many years?',
+    answer:
+      'Object-Oriented Design (OOD) has dominated because it naturally models real-world entities and relationships, making it intuitive and accessible for developers and stakeholders. It promotes code reuse through inheritance and composition, encapsulates data and behavior, and supports modular, maintainable, and extensible systems.',
+    code: '',
+    hint: 'Consider how OOD relates to problem modeling and software scalability.',
+    explanation:
+      'OOD aligns well with human thinking by representing software as interacting objects with clear responsibilities, which simplifies complex system design. Its principles like encapsulation, inheritance, and polymorphism encourage reusable and flexible code. The availability of mature languages, tools, and design patterns has reinforced its dominance. Moreover, OOD facilitates team collaboration by promoting clear interfaces and modular components, which is critical in large projects. While newer paradigms exist, OOD’s deep ecosystem and proven effectiveness have kept it central in software engineering.',
+    tags: [
+      'design-patterns',
+      'object-oriented-design',
+      'software-engineering',
+      'modularity',
+      'code-reuse',
+      'scalability',
+    ],
+    reference: [
+      {
+        label: 'Object-Oriented Design - Wikipedia',
+        url: 'https://en.wikipedia.org/wiki/Object-oriented_design',
+      },
+      {
+        label: 'Medium: Why OOP Still Relevant',
+        url: 'https://medium.com/@itcgroup.io/is-object-oriented-programming-oop-still-relevant-today-3b67260acf2e',
+      },
+    ],
+  },
+  {
+    id: 'design-p-14',
+    categoryId: 'design-patterns',
+    question: 'What would you do to understand if your code has a bad design?',
+    answer:
+      'To determine if your code has a bad design, look for common symptoms like high coupling, low cohesion, duplicated code, lack of modularity, poor readability, and difficulty in testing or extending the code.',
+    code: '',
+    hint: 'Consider maintainability, readability, testability, and flexibility.',
+    explanation:
+      'Bad design often manifests as code that is hard to change, understand, or reuse. Signs include large monolithic functions or classes, frequent code duplication, tight dependencies between modules, and violation of design principles like SOLID. Tools like code reviews, static analysis, and design metrics (e.g., cyclomatic complexity, code smells) help identify problems. Regular refactoring and adherence to design best practices can prevent or fix bad design.',
+    tags: [
+      'design-patterns',
+      'code-quality',
+      'maintainability',
+      'refactoring',
+      'code-smells',
+    ],
+    reference: [
+      {
+        label: 'Code Smells - Wikipedia',
+        url: 'https://en.wikipedia.org/wiki/Code_smell',
+      },
+      {
+        label: 'Writing bad code',
+        url: 'https://crocoblock.com/blog/writing-clean-code-tips/',
+      },
+    ],
+  },
 ];

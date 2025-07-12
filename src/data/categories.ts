@@ -32,4 +32,8 @@ export const categories: Category[] = [
     id: 'design-patterns',
     name: 'Design Patterns',
   },
+  {
+    id: 'code-design',
+    name: 'Code Design',
+  },
 ];
