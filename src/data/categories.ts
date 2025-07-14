@@ -44,4 +44,8 @@ export const categories: Category[] = [
     id: 'web-development',
     name: 'Web Development',
   },
+  {
+    id: 'databases',
+    name: 'Databases',
+  },
 ];

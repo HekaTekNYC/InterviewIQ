@@ -4133,4 +4133,264 @@ for t in threads:
       },
     ],
   },
+
+  // Databases ---------------------------------------------
+
+  {
+    id: 'db-1',
+    categoryId: 'databases',
+    question:
+      'How would you migrate an application from a database to another, for example from MySQL to PostgreSQL? If you had to manage that project, which issues would you expect to face?',
+    answer:
+      'Database migration involves transferring schema, data, and application logic from one system to another. A typical process includes assessing compatibility, exporting schema/data, transforming SQL dialects, testing, and deploying with validation.',
+    code: '',
+    hint: 'Think about schema differences, data types, SQL dialects, and testing.',
+    explanation:
+      'Migrating from MySQL to PostgreSQL requires careful planning and testing:\n\n**Steps:**\n1. **Assess differences** in data types, indexes, default behaviors (e.g., `AUTO_INCREMENT` vs `SERIAL`).\n2. Use tools like `pgloader` or `AWS DMS` to automate the migration.\n3. **Convert SQL dialects** and stored procedures/functions (PostgreSQL uses PL/pgSQL).\n4. Refactor application queries that are vendor-specific (e.g., `LIMIT`/`OFFSET` nuances, string comparisons, date/time functions).\n5. **Migrate schema**, then **migrate and validate data integrity**.\n6. Test all data access and business logic thoroughly.\n7. Set up replication or change data capture (CDC) for a smooth cutover, especially in production.\n\n**Challenges:**\n- Data type mismatches (e.g., `TINYINT(1)` in MySQL vs `BOOLEAN` in PostgreSQL).\n- SQL function differences.\n- Character encoding issues.\n- Performance tuning and index strategy might need to change.\n\nSuccessful migration often involves both DBAs and application developers working closely to identify incompatibilities early.',
+    tags: [
+      'databases',
+      'migration',
+      'mysql',
+      'postgresql',
+      'data-integrity',
+      'schema-conversion',
+    ],
+    reference: [
+      {
+        label: 'Estuary: Step by step MySQL to PostgreSQL',
+        url: 'https://estuary.dev/blog/mysql-to-postgresql/',
+      },
+      {
+        label: 'Pgloader: Documentation',
+        url: 'https://pgloader.io/',
+      },
+      {
+        label: 'AWS DMS: Database Migration Service',
+        url: 'https://aws.amazon.com/dms/',
+      },
+    ],
+  },
+  {
+    id: 'db-2',
+    categoryId: 'databases',
+    question:
+      'Why do databases treat null as a special case? For example, why does SELECT * FROM table WHERE field = null not match records with null field in SQL?',
+    answer:
+      'In SQL, `NULL` represents an unknown or missing value, not a concrete value like an empty string or zero. Comparisons involving `NULL` using `=` or `!=` will not return true because `NULL` is not equal to anything, not even itself.',
+    code: '-- Incorrect: this will not match NULLs\nSELECT * FROM users WHERE email = NULL;\n\n-- Correct: use IS NULL\nSELECT * FROM users WHERE email IS NULL;',
+    hint: 'Think of NULL as "unknown", and unknown values can’t be compared using standard operators.',
+    explanation:
+      'Databases treat `NULL` as a marker for "missing" or "unknown" information. Since it’s not a specific value, logical comparisons like `= NULL` or `!= NULL` do not work as expected. Instead, SQL uses `IS NULL` or `IS NOT NULL` to test for null values. This behavior ensures that queries behave consistently with the concept of unknown data—e.g., you can’t say two unknowns are equal because you don’t know what either is. This logic follows the rules of three-valued logic (true, false, unknown), which SQL uses when dealing with `NULL`.',
+    tags: [
+      'databases',
+      'sql',
+      'null',
+      'three-valued-logic',
+      'querying',
+      'data-integrity',
+    ],
+    reference: [
+      {
+        label: 'PostgreSQL: NULLs and Three-Valued Logic',
+        url: 'https://www.postgresql.org/docs/current/functions-comparison.html#FUNCTIONS-COMPARISON-NULL',
+      },
+      {
+        label: 'Geeks for Geeks: NULL in SQL',
+        url: 'https://www.geeksforgeeks.org/sql-null-values/',
+      },
+    ],
+  },
+  {
+    id: 'db-3',
+    categoryId: 'databases',
+    question:
+      'ACID is an acronym that refers to Atomicity, Consistency, Isolation and Durability, 4 properties guaranteed by a database transaction in most database engines. What do you know about this topic? Would you like to elaborate?',
+    answer:
+      'ACID is a set of properties that ensure reliable processing of database transactions. Each letter represents a key guarantee that prevents data corruption or inconsistency during operations.',
+    code: '-- Example: Transferring money between two accounts\nBEGIN;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT;',
+    hint: 'Think about what ensures a transaction either fully completes or doesn’t affect the system at all.',
+    explanation:
+      'ACID stands for:\n- **Atomicity**: Transactions are all-or-nothing. If any part fails, the entire transaction is rolled back.\n- **Consistency**: Transactions move the database from one valid state to another, preserving all rules and constraints.\n- **Isolation**: Concurrent transactions don’t interfere with each other. Results are the same as if run sequentially.\n- **Durability**: Once a transaction commits, its changes are permanent—even in the case of system failure.\n\nThese guarantees are crucial in systems where data integrity matters, like banking, inventory, or reservation systems.',
+    tags: [
+      'databases',
+      'acid',
+      'transactions',
+      'data-integrity',
+      'reliability',
+    ],
+    reference: [
+      {
+        label: 'PostgreSQL Docs: Transactions and ACID',
+        url: 'https://www.postgresql.org/docs/current/tutorial-transactions.html',
+      },
+      {
+        label: 'Geeks for Geeks: ACID Properties in DBMS',
+        url: 'https://www.geeksforgeeks.org/acid-properties-in-dbms/',
+      },
+    ],
+  },
+  {
+    id: 'db-4',
+    categoryId: 'databases',
+    question:
+      'How would you manage database schema migrations? That is, how would you automate changes to database schema, as the application evolves, version after version?',
+    answer:
+      'Database schema migrations are managed by applying incremental, versioned changes to the schema using migration scripts or tools that track which migrations have been applied.',
+    code: '-- Example of a simple migration script (SQL)\nALTER TABLE users ADD COLUMN last_login TIMESTAMP;\n\n-- Using migration tools (e.g., with Node.js Sequelize CLI)\n// sequelize migration:generate --name add-last-login\n// sequelize db:migrate',
+    hint: 'Think about version control for your database schema and rollback strategies.',
+    explanation:
+      'Schema migrations help evolve the database schema safely and predictably over time.\n\nCommon practices include:\n- Using migration files/scripts that describe changes (add/drop columns, indexes, tables).\n- Keeping track of applied migrations in a dedicated table to avoid reapplying.\n- Supporting forward and backward migrations (up/down) to apply or rollback changes.\n- Integrating migrations into the deployment process for automation.\n\nPopular tools: Liquibase, Flyway, Django Migrations, Rails ActiveRecord Migrations, Sequelize CLI.\n\nAutomating migrations reduces manual errors, keeps schema in sync with code, and supports team collaboration.',
+    tags: ['databases', 'schema', 'migrations', 'automation', 'devops'],
+    reference: [
+      {
+        label: 'Liquibase Documentation',
+        url: 'https://www.liquibase.org/documentation/index.html',
+      },
+      {
+        label: 'Bytebase: Database Migrations',
+        url: 'https://www.bytebase.com/blog/how-to-handle-database-schema-change/',
+      },
+    ],
+  },
+  {
+    id: 'db-5',
+    categoryId: 'databases',
+    question:
+      'How is lazy loading achieved? When is it useful? What are its pitfalls?',
+    answer:
+      'Lazy loading is a technique where resources (e.g., related records or large blobs) are fetched only when needed rather than upfront, deferring data retrieval until it is actually required by the application.',
+    code: '// Example: Lazy loading in ORM (e.g., Sequelize in Node.js)\nconst user = await User.findByPk(1);\n// Related posts are loaded only when requested\nconst posts = await user.getPosts();',
+    hint: 'Think about optimizing performance by delaying data fetching.',
+    explanation:
+      'Lazy loading helps reduce initial database load and memory usage by fetching only necessary data. It is especially useful when dealing with large datasets or relations that may not always be accessed.\n\nPitfalls include:\n- Potentially increased number of database queries, leading to the "N+1 query problem".\n- Added complexity in code management.\n- Possible performance degradation if overused or improperly implemented.',
+    tags: ['databases', 'lazy-loading', 'performance', 'orm', 'optimization'],
+    reference: [
+      {
+        label: 'Martin Fowler: Lazy Load',
+        url: 'https://martinfowler.com/eaaCatalog/lazyLoad.html',
+      },
+      {
+        label: 'CloudFlare: Lazy Loading pros and cons',
+        url: 'https://www.cloudflare.com/learning/performance/what-is-lazy-loading/',
+      },
+    ],
+  },
+  {
+    id: 'db-6',
+    categoryId: 'databases',
+    question:
+      'The so called "N + 1 problem" is an issue that occurs when code needs to load the children of a parent-child relationship with ORMs that have lazy-loading enabled, and that therefore issue a query for the parent record, and then one query for each child record. How to fix it?',
+    answer:
+      'The "N + 1 problem" happens when an ORM lazily loads related data by issuing one query to fetch parent records, then N additional queries for each parent’s children. This leads to performance bottlenecks due to excessive database calls.',
+    code: '// Fix with eager loading (example with Sequelize):\nconst usersWithPosts = await User.findAll({\n  include: [Post] // loads posts together with users in a single query\n});',
+    hint: 'Use eager loading or batch queries to minimize round-trips.',
+    explanation:
+      'To fix the N + 1 problem, use eager loading to fetch related records in a single query or a minimal number of queries. Most ORMs support this via "include", "join", or "fetch" options. This reduces database round-trips and improves performance.\n\nAlternatively, batch queries or manual joins can be used. However, eager loading must be balanced against fetching unnecessary data when relationships are large or rarely accessed.',
+    tags: [
+      'databases',
+      'n+1-problem',
+      'orm',
+      'performance',
+      'lazy-loading',
+      'eager-loading',
+    ],
+    reference: [
+      {
+        label: 'Planet Scale: N+1 problem',
+        url: 'https://planetscale.com/blog/what-is-n-1-query-problem-and-how-to-solve-it',
+      },
+      {
+        label: 'Medium: N + 1 Problem explained',
+        url: 'https://medium.com/databases-in-simple-words/the-n-1-database-query-problem-a-simple-explanation-and-solutions-ef11751aef8a',
+      },
+    ],
+  },
+  {
+    id: 'db-7',
+    categoryId: 'databases',
+    question:
+      'How would you find the most expensive queries in an application?',
+    answer:
+      'To find the most expensive queries, you can analyze query performance metrics using database-provided tools and logs that track execution time, resource usage, and frequency.',
+    code: '',
+    hint: 'Look for slow query logs, execution plans, and monitoring tools.',
+    explanation:
+      'Most database systems provide ways to identify expensive queries. For example, enabling slow query logs in MySQL or PostgreSQL captures queries exceeding a threshold time. You can also use EXPLAIN or EXPLAIN ANALYZE to see query execution plans and understand inefficiencies.\n\nAdditionally, database monitoring tools (like pg_stat_statements for PostgreSQL, or performance schema for MySQL) aggregate query statistics such as execution count, total time, and average time.\n\nProfiling queries helps prioritize optimization efforts, such as adding indexes or rewriting queries for better performance.',
+    tags: [
+      'databases',
+      'query-optimization',
+      'performance',
+      'monitoring',
+      'slow-queries',
+    ],
+    reference: [
+      {
+        label: 'Microsoft: Capturing expensive queries',
+        url: 'https://learn.microsoft.com/en-us/answers/questions/1347095/what-is-the-right-way-of-capturing-expensive-queri',
+      },
+      {
+        label: 'MySQL Documentation: Slow Query Log',
+        url: 'https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html',
+      },
+    ],
+  },
+  {
+    id: 'db-8',
+    categoryId: 'databases',
+    question:
+      'In your opinion, is it always needed to use database normalization? When is it advisable to use denormalized databases?',
+    answer:
+      'Normalization is essential for reducing data redundancy and ensuring data integrity, but it is not always required. Denormalization can be advisable when performance optimization and faster read access are priorities.',
+    code: '',
+    hint: 'Consider trade-offs between data consistency and query performance.',
+    explanation:
+      'Database normalization organizes data into related tables to minimize duplication and maintain integrity, which simplifies updates and reduces anomalies.\n\nHowever, normalization can lead to complex joins and slower read performance in certain scenarios, such as in reporting, analytics, or high-read applications.\n\nDenormalization duplicates some data intentionally to speed up read queries and simplify data retrieval at the cost of increased storage and potential data inconsistency.\n\nChoosing normalization vs denormalization depends on use cases: transactional systems benefit from normalization, while analytical or caching layers may benefit from denormalization.',
+    tags: [
+      'databases',
+      'normalization',
+      'denormalization',
+      'performance',
+      'data-integrity',
+    ],
+    reference: [
+      {
+        label:
+          'Geeks for Geeks: What is data normalization and why is it important',
+        url: 'http://geeksforgeeks.org/dbms/what-is-data-normalization-and-why-is-it-important/',
+      },
+      {
+        label: 'Airbyte: Data denormalization',
+        url: 'https://airbyte.com/data-engineering-resources/data-denormalization',
+      },
+    ],
+  },
+  {
+    id: 'db-9',
+    categoryId: 'databases',
+    question:
+      "Continuous Integration's technique is called Blue-Green Deployment: it consists in having two production environments, as identical as possible, and in performing the deployment in one of them while the other one is still operating, and then in safely switching the traffic to the second one after some convenient testing. This technique becomes more complicated when the deployment includes changes to the database structure or content. Discuss this topic.",
+    answer:
+      'Blue-Green Deployment allows seamless releases with minimal downtime by switching traffic between two identical production environments. However, when database schema or data changes are involved, the process becomes more complex due to the need for data consistency and backward compatibility.',
+    code: '',
+    hint: 'Think about database migrations, compatibility, and rollback strategies.',
+    explanation:
+      'Deploying database changes during Blue-Green Deployment requires careful planning to maintain data integrity and system availability. Key considerations include:\n\n- Applying backward-compatible schema changes that support both old and new versions simultaneously (e.g., additive schema changes).\n- Using feature toggles to control the exposure of new features relying on database changes.\n- Running data migration scripts carefully in phases.\n- Planning rollback strategies that include reverting database and application code changes.\n- Coordinating closely between developers, DBAs, and ops teams.\n\nAutomation and extensive testing help reduce risks during this complex deployment process.',
+    tags: [
+      'databases',
+      'blue-green-deployment',
+      'database-migration',
+      'continuous-integration',
+      'release-management',
+    ],
+    reference: [
+      {
+        label: 'Martin Fowler: Blue-Green Deployment',
+        url: 'https://martinfowler.com/bliki/BlueGreenDeployment.html',
+      },
+      {
+        label: 'Database Migrations with Zero Downtime - ThoughtWorks',
+        url: 'https://martinfowler.com/articles/evodb.html',
+      },
+    ],
+  },
 ];
