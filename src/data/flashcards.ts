@@ -3932,4 +3932,205 @@ for t in threads:
       },
     ],
   },
+
+  // Web Development ----------------------------------
+  {
+    id: 'webdev-1',
+    categoryId: 'web-development',
+    question:
+      'Why are first-party cookies and third-party cookies treated so differently?',
+    answer:
+      'First-party cookies are created by the website a user is directly visiting, while third-party cookies are created by other domains (usually ad networks or analytics tools) embedded in the site. The key difference lies in privacy and control.',
+    code: '',
+    hint: 'Consider privacy concerns and browser policy changes.',
+    explanation:
+      'First-party cookies are generally considered safer because they are controlled by the domain the user is interacting with. They’re used for things like remembering login status or preferences. In contrast, third-party cookies can track users across many sites, leading to concerns over surveillance and privacy violations. As a result, browsers like Safari and Firefox have blocked third-party cookies by default, and Chrome is phasing them out. This shift is part of a broader effort to protect user privacy and give users more control over their data.',
+    tags: [
+      'cookies',
+      'privacy',
+      'first-party',
+      'third-party',
+      'web-development',
+      'browser-security',
+    ],
+    reference: [
+      {
+        label: 'MDN Web Docs: HTTP cookies',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies',
+      },
+      {
+        label: 'Tech Target: First vs Third-party Cookies',
+        url: 'https://www.techtarget.com/searchcustomerexperience/tip/First-party-vs-third-party-cookies-Whats-the-difference',
+      },
+    ],
+  },
+  {
+    id: 'webdev-2',
+    categoryId: 'web-development',
+    question: 'How would you manage Web Services API versioning?',
+    answer:
+      'API versioning is crucial for evolving your API without breaking existing clients. You can version APIs through the URL path, request headers, or query parameters. Each approach has trade-offs, but the goal is to ensure backward compatibility while allowing incremental improvements.',
+    code: '',
+    hint: 'Think about client compatibility and long-term maintainability.',
+    explanation:
+      'Common strategies include:\n\n- **URI Versioning** (e.g., `/api/v1/users`): Clear and simple, often preferred for public APIs.\n- **Header Versioning** (e.g., custom `Accept` header like `application/vnd.api+json;version=1`): Keeps URLs clean but can be harder to test/debug.\n- **Query Parameter Versioning** (e.g., `/users?version=1`): Easy to implement but less standard.\n\nBest practices include deprecating old versions with clear communication, providing change logs, and minimizing breaking changes. Good versioning allows different clients to coexist while your API evolves over time.',
+    tags: ['api', 'versioning', 'web-services', 'rest', 'web-development'],
+    reference: [
+      {
+        label: 'Microsoft Docs: API Versioning Best Practices',
+        url: 'https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#versioning-a-restful-web-api',
+      },
+      {
+        label: 'Postman: API Versioning best practices',
+        url: 'https://www.postman.com/api-platform/api-versioning/',
+      },
+    ],
+  },
+  {
+    id: 'webdev-3',
+    categoryId: 'web-development',
+    question:
+      'From a backend perspective, are there any disadvantages or drawbacks on the adoption of Single Page Applications (SPAs)?',
+    answer:
+      'Yes, Single Page Applications (SPAs) introduce several backend-related challenges, especially when compared to traditional multi-page applications (MPAs). These include SEO limitations, more complex authentication flows, and a shift of rendering responsibility to the frontend.',
+    code: '',
+    hint: 'Think about authentication, SEO, and request/response handling.',
+    explanation:
+      'From a backend point of view, SPAs bring drawbacks such as:\n\n- **SEO Challenges**: Since content is rendered on the client side, it can be harder for search engine crawlers to index pages properly unless server-side rendering (SSR) or pre-rendering is used.\n- **Increased API Load**: SPAs rely heavily on APIs for fetching data. This increases the number of requests and may require more sophisticated rate limiting and caching.\n- **Authentication Complexity**: Handling tokens (like JWT) and protecting endpoints in SPAs often involves more complexity than session-based auth.\n- **Routing and Error Handling**: The frontend controls routing, so traditional HTTP status codes and redirects need special handling by the backend to cooperate with the SPA’s logic.\n- **Initial Load Time**: SPAs often require loading a large JavaScript bundle upfront, which can delay rendering unless backend and frontend teams coordinate optimizations.\n\nDespite these drawbacks, SPAs offer a smooth user experience. Backend developers must adapt to a more service-oriented, API-first mindset to support SPAs effectively.',
+    tags: ['spa', 'web-development', 'backend', 'api', 'seo', 'authentication'],
+    reference: [
+      {
+        label: 'MDN Web Docs: Single-page applications',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/SPA',
+      },
+      {
+        label: 'Hacker News: SPAs',
+        url: 'https://news.ycombinator.com/item?id=29781187',
+      },
+    ],
+  },
+  {
+    id: 'webdev-4',
+    categoryId: 'web-development',
+    question:
+      'Why do we usually put so much effort into having stateless services? What’s so good about stateless code, and why and when is statefulness bad?',
+    answer:
+      'Stateless services are simpler to scale, easier to test, and more resilient. By not relying on internal memory between requests, they avoid issues with concurrency, session management, and server affinity. Statelessness is especially useful in distributed systems like microservices or serverless environments.',
+    code: '',
+    hint: 'Think scalability, testability, and reliability.',
+    explanation:
+      'Stateless services treat every request as independent, containing all the information needed to process it. This approach offers several benefits:\n\n- **Scalability**: New instances can be added or removed without worrying about local memory/state synchronization.\n- **Resilience**: If one instance fails, another can take over without losing state.\n- **Simplicity**: Stateless logic is easier to reason about, test, and debug because the outcome of a request doesn’t depend on prior interactions.\n- **Load balancing**: Any server can handle any request without needing sticky sessions.\n\nStateful services can introduce challenges:\n- They require session persistence (often in memory or databases), which complicates horizontal scaling.\n- Failure recovery is harder if the state is lost.\n\n**When statefulness is needed**: For features like shopping carts, real-time collaboration, or user sessions, where continuity is required, state can be stored in external systems (e.g., Redis, databases) to preserve flexibility while keeping the core service stateless.',
+    tags: [
+      'stateless',
+      'stateful',
+      'scalability',
+      'web-services',
+      'architecture',
+      'microservices',
+    ],
+    reference: [
+      {
+        label: 'REST API Tutorial: Statelessness',
+        url: 'https://restfulapi.net/statelessness/',
+      },
+      {
+        label: 'Martin Fowler: Microservice Trade-Offs',
+        url: 'https://martinfowler.com/articles/microservice-trade-offs.html',
+      },
+      {
+        label: 'Red Hat: Stateful vs Stateless',
+        url: 'https://www.redhat.com/en/topics/cloud-native-apps/stateful-vs-stateless',
+      },
+    ],
+  },
+  {
+    id: 'webdev-5',
+    categoryId: 'web-development',
+    question: 'What is REST and how does it work?',
+    answer:
+      'REST (Representational State Transfer) is an architectural style for designing networked applications. It uses standard HTTP methods to perform CRUD operations on resources, which are identified by URIs (Uniform Resource Identifiers).',
+    code: '',
+    hint: 'Think about resources, HTTP methods, and stateless interactions.',
+    explanation:
+      'REST is based on a set of principles that define how web standards like HTTP should be used:\n\n- **Resources**: Data is treated as resources (e.g., `/users/123`) that can be accessed and manipulated using URIs.\n- **HTTP Methods**: Common actions are mapped to HTTP verbs:\n  - `GET`: Retrieve a resource\n  - `POST`: Create a new resource\n  - `PUT`/`PATCH`: Update a resource\n  - `DELETE`: Remove a resource\n- **Statelessness**: Each request must contain all the information needed to understand and process it. The server does not store client context between requests.\n- **Representations**: Resources can be returned in multiple formats (usually JSON or XML).\n- **Uniform Interface**: A consistent structure across the API improves usability and understanding.\n\nRESTful APIs are widely adopted for their simplicity, scalability, and alignment with HTTP standards.',
+    tags: [
+      'rest',
+      'web-development',
+      'http',
+      'api',
+      'architecture',
+      'stateless',
+    ],
+    reference: [
+      {
+        label: 'MDN Web Docs: REST APIs',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/REST',
+      },
+      {
+        label: 'REST API Tutorial: What is REST?',
+        url: 'https://restfulapi.net/',
+      },
+    ],
+  },
+  {
+    id: 'webdev-6',
+    categoryId: 'web-development',
+    question: 'REST and SOAP: when would you choose one, and when the other?',
+    answer:
+      'REST and SOAP are both web service communication protocols, but they have different use cases. REST is simpler, more lightweight, and ideal for web-based, stateless, resource-oriented APIs. SOAP is more rigid and feature-rich, better suited for enterprise-level services where formal contracts, security, and ACID-compliance are critical.',
+    code: '',
+    hint: 'Compare flexibility and simplicity vs. features and robustness.',
+    explanation:
+      'REST (Representational State Transfer):\n- **Best for**: Public web APIs, mobile applications, microservices.\n- **Advantages**: Lightweight, uses standard HTTP methods, easily readable (usually JSON), cacheable, scalable.\n- **Drawbacks**: No built-in standard for security, transactions, or state.\n\nSOAP (Simple Object Access Protocol):\n- **Best for**: Enterprise applications, financial services, operations requiring high security and strict contracts.\n- **Advantages**: Built-in standards for security (WS-Security), ACID-compliant transactions, retry logic, and formal service contracts via WSDL.\n- **Drawbacks**: More verbose, relies on XML, more complex setup, not ideal for mobile or lightweight communication.\n\nChoose **REST** for performance and simplicity, especially in web and mobile apps. Choose **SOAP** when you need high reliability, strict contracts, or integration with legacy systems.',
+    tags: [
+      'rest',
+      'soap',
+      'api',
+      'web-development',
+      'enterprise',
+      'protocols',
+      'architecture',
+    ],
+    reference: [
+      {
+        label: 'MDN Web Docs: REST',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/REST',
+      },
+      {
+        label: 'Geeks for Geeks: REST vs. SOAP APIs',
+        url: 'https://www.geeksforgeeks.org/websites-apps/difference-between-rest-api-and-soap-api/',
+      },
+    ],
+  },
+  {
+    id: 'webdev-7',
+    categoryId: 'web-development',
+    question:
+      'In web development, Model-View Controller and Model-View-View-Model approaches are very common, both in the backend and in the frontend. What are they, and why are they advisable?',
+    answer:
+      'MVC and MVVM are architectural patterns that help organize code by separating concerns. They improve maintainability, scalability, and testability by dividing application logic into distinct layers: data (Model), user interface (View), and logic/control (Controller or ViewModel).',
+    code: '',
+    hint: 'Focus on separation of concerns and how each component communicates.',
+    explanation:
+      '**MVC (Model-View-Controller):**\n- **Model**: Represents the data and business logic.\n- **View**: Displays the data (UI).\n- **Controller**: Handles user input, updates the model, and selects the view.\n- **Used in**: Frameworks like Ruby on Rails, Express (Node), Laravel.\n\n**MVVM (Model-View-ViewModel):**\n- **Model**: Data and business logic.\n- **View**: UI elements.\n- **ViewModel**: Acts as a binding layer between the Model and View; handles presentation logic and data binding.\n- **Used in**: Frameworks like Angular, Vue, and Knockout.\n\n**Why advisable:**\n- Promotes **separation of concerns**, allowing developers to work independently on UI, logic, and data.\n- Makes applications more **testable and maintainable**.\n- Encourages **reusability** of components.\n\nChoose the right pattern based on your framework, team structure, and project complexity.',
+    tags: [
+      'mvc',
+      'mvvm',
+      'architecture',
+      'frontend',
+      'backend',
+      'web-development',
+      'design-patterns',
+    ],
+    reference: [
+      {
+        label: 'Microsoft Learn: Design patterns - MVC and MVVM',
+        url: 'https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/overview/asp-net-mvc-overview',
+      },
+      {
+        label: 'Geeks for Geeks: MCV and MVVM patterns',
+        url: 'https://www.geeksforgeeks.org/android/difference-between-mvc-and-mvvm-architecture-pattern-in-android/',
+      },
+    ],
+  },
 ];

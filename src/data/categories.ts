@@ -40,4 +40,8 @@ export const categories: Category[] = [
     id: 'languages',
     name: 'Languages',
   },
+  {
+    id: 'web-development',
+    name: 'Web Development',
+  },
 ];
