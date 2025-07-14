@@ -3175,4 +3175,761 @@ export const flashcards: Flashcard[] = [
       },
     ],
   },
+
+  // Languages -----------------
+
+  {
+    id: 'languages-1',
+    categoryId: 'languages',
+    question: 'Tell me the 3 worst defects of your preferred language.',
+    answer:
+      'Every programming language has its drawbacks, including my preferred one. Here are three common defects often cited:',
+    code: '// Example for JavaScript\n// 1. Dynamic typing can lead to runtime errors\nlet value = "10";\nvalue = value + 5; // Results in "105" (string concatenation)\n\n// 2. Lack of true integer types can cause precision issues\nconst largeNumber = 9007199254740991 + 1;\nconsole.log(largeNumber); // May not behave as expected\n\n// 3. Asynchronous programming model complexity\nfetch("url").then(response => response.json())\n  .catch(err => console.error(err));\n',
+    hint: 'Think about language quirks, runtime behavior, and developer experience.',
+    explanation:
+      "Dynamic typing, while flexible, can cause bugs that are hard to detect early. JavaScript's numeric precision limits may lead to unexpected results with large integers. Also, handling asynchronous code requires understanding of promises or async/await, which can add complexity. These defects are balanced by language strengths like flexibility and ubiquity, but awareness helps write better code.",
+    tags: ['languages', 'javascript', 'language-defects', 'programming'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: JavaScript advantages & disadvantages',
+        url: 'https://www.geeksforgeeks.org/javascript/advantages-and-disadvantages-of-javascript/',
+      },
+      {
+        label: 'Web Developers: Javascript limitations',
+        url: 'https://www.webdevelopersjournal.com/javascript-limitations/',
+      },
+    ],
+  },
+  {
+    id: 'languages-2',
+    categoryId: 'languages',
+    question: 'Why is there a rising interest in Functional Programming?',
+    answer:
+      'Functional Programming (FP) emphasizes pure functions, immutability, and declarative code, making programs easier to test, reason about, and maintain. Its principles help avoid side effects and promote predictability.',
+    code: '// Example of a pure function in JavaScript\nfunction add(a, b) {\n  return a + b;\n}\n\n// This function is pure: no side effects, same output for same input\nconsole.log(add(2, 3)); // 5\n',
+    hint: 'Think about state management, side effects, and predictability.',
+    explanation:
+      'As software systems grow more complex and multi-threaded, avoiding side effects and managing shared state becomes increasingly important. FP’s focus on immutability and stateless functions aligns well with modern development challenges, such as building reliable UI components or working with concurrency. Libraries like Redux and frameworks like React encourage a more functional style, further driving interest. Additionally, FP concepts help reduce bugs and improve modularity, making it a popular paradigm for modern developers.',
+    tags: [
+      'functional-programming',
+      'languages',
+      'paradigms',
+      'immutability',
+      'side-effects',
+    ],
+    reference: [
+      {
+        label: 'Dev: Functional programming',
+        url: 'https://dev.to/alexmercedcoder/deep-dive-into-functional-programming-in-javascript-851',
+      },
+      {
+        label: 'Geeks for Geeks: Functional Programming ',
+        url: 'https://www.geeksforgeeks.org/javascript/functional-programming-in-javascript/',
+      },
+    ],
+  },
+  {
+    id: 'languages-3',
+    categoryId: 'languages',
+    question:
+      'What is a closure, and what is it useful for? What’s in common between closures and classes?',
+    answer:
+      'A closure is a function that retains access to its lexical scope even when executed outside of that scope. It’s useful for encapsulating state, creating private variables, and building factory functions.',
+    code: '// Closure example\nfunction makeCounter() {\n  let count = 0;\n  return function () {\n    return ++count;\n  };\n}\n\nconst counter = makeCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2\n',
+    hint: 'Closures can be used to preserve state without using global variables.',
+    explanation:
+      'Closures allow functions to “remember” variables from their surrounding scope. This makes them powerful for managing state in a controlled, encapsulated way—similar to how classes manage state with private fields. Both closures and classes support encapsulation: closures via lexical scope, and classes via object instances. However, closures are generally lighter-weight and are often used in functional programming patterns, while classes provide a formal structure for creating objects and behavior in object-oriented programming.',
+    tags: [
+      'closures',
+      'functions',
+      'lexical-scope',
+      'classes',
+      'encapsulation',
+      'javascript',
+    ],
+    reference: [
+      {
+        label: 'MDN: Closures',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures',
+      },
+      {
+        label: 'JavaScript.info: Closures',
+        url: 'https://javascript.info/closure',
+      },
+    ],
+  },
+  {
+    id: 'languages-4',
+    categoryId: 'languages',
+    question: 'What are generics useful for?',
+    answer:
+      'Generics allow you to create reusable, type-safe code that works with a variety of data types without sacrificing type safety.',
+    code: '// TypeScript generic function example\nfunction identity<T>(arg: T): T {\n  return arg;\n}\n\nconst num = identity<number>(42);\nconst str = identity<string>("hello");',
+    hint: 'Think about how you might avoid repeating similar code for different types.',
+    explanation:
+      'Generics are a feature of statically typed languages like TypeScript, Java, or C# that enable functions, classes, and interfaces to operate on a variety of types without rewriting code for each one. They help ensure type safety by allowing the compiler to catch type mismatches at compile time. This improves code maintainability, reusability, and documentation. Without generics, developers would need to use type `any` or create multiple versions of the same function for different types, which increases redundancy and risk of errors.',
+    tags: [
+      'generics',
+      'type-safety',
+      'typescript',
+      'reusability',
+      'code-design',
+    ],
+    reference: [
+      {
+        label: 'TypeScript Handbook: Generics',
+        url: 'https://www.typescriptlang.org/docs/handbook/generics.html',
+      },
+      {
+        label: 'Dev: Coding Generics',
+        url: 'https://dev.to/chris_bertrand/coding-concepts---generics-34cf',
+      },
+    ],
+  },
+  {
+    id: 'languages-5',
+    categoryId: 'languages',
+    question:
+      'What are higher-order functions? What are they useful for? Write one, in your preferred language.',
+    answer:
+      'A higher-order function is a function that either takes one or more functions as arguments, returns a function, or both. They are useful for abstraction, reusability, and functional programming patterns like composition, currying, and callbacks.',
+    code: '// JavaScript higher-order function example\nfunction repeat(n, action) {\n  for (let i = 0; i < n; i++) {\n    action(i);\n  }\n}\n\nrepeat(3, console.log); // Logs 0, 1, 2',
+    hint: 'Think functions that work with or return other functions.',
+    explanation:
+      'Higher-order functions treat functions as first-class citizens, allowing them to be passed around like any other value. This enables powerful programming patterns such as callbacks (e.g., `setTimeout`, `map`, `filter`), decorators, and function composition. For example, `Array.prototype.map()` is a built-in higher-order function that transforms arrays by applying a function to each element. Using higher-order functions can lead to cleaner, more expressive, and reusable code.',
+    tags: [
+      'higher-order-functions',
+      'functional-programming',
+      'javascript',
+      'first-class-functions',
+      'abstraction',
+    ],
+    reference: [
+      {
+        label: 'MDN: First-class functions',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function',
+      },
+      {
+        label: 'Eloquent JavaScript - Higher-Order Functions',
+        url: 'https://eloquentjavascript.net/05_higher_order.html',
+      },
+    ],
+  },
+  {
+    id: 'languages-6',
+    categoryId: 'languages',
+    question:
+      'Write a loop, then transform it into a recursive function, using only immutable structures (i.e. avoid using variables). Discuss.',
+    answer:
+      'A loop often uses mutable variables (like counters or accumulators). Recursion can replace loops by carrying state through function parameters instead of mutation, aligning better with functional programming practices.',
+    code: `// Loop version
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+// Recursive version using immutability
+function printNums(n, limit) {
+  if (n >= limit) return;
+  console.log(n);
+  printNums(n + 1, limit);
+}
+
+printNums(0, 5);`,
+    hint: 'Pass state through parameters instead of using mutable variables.',
+    explanation:
+      'Using recursion with immutable structures encourages purity and reduces side effects. Each recursive call receives a new set of parameters rather than modifying shared state. This improves testability and avoids issues like race conditions. However, recursion can be less readable and may cause stack overflow if not optimized (e.g., with tail call optimization). In languages like JavaScript, iteration is often more efficient due to lack of guaranteed tail-call support.',
+    tags: [
+      'recursion',
+      'functional-programming',
+      'immutability',
+      'loop-to-recursion',
+      'javascript',
+    ],
+    reference: [
+      {
+        label: 'MDN: Recursion',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/Recursion',
+      },
+      {
+        label: 'Eloquent JavaScript - Recursion',
+        url: 'https://eloquentjavascript.net/03_functions.html#h_z9x9p2p6y7',
+      },
+    ],
+  },
+  {
+    id: 'languages-7',
+    categoryId: 'languages',
+    question:
+      'What does it mean when a language treats functions as first-class citizens?',
+    answer:
+      'It means functions in that language are treated like any other value—they can be assigned to variables, passed as arguments, and returned from other functions. This feature is fundamental to functional programming and allows for powerful abstractions and flexible code structures.',
+    code: 'const sayHello = () => console.log("Hello");\n\nfunction runTwice(fn) {\n  fn();\n  fn();\n}\n\nrunTwice(sayHello); // Outputs "Hello" twice',
+    hint: 'Think about using a function as a value.',
+    explanation:
+      'In a language where functions are first-class citizens, you can store them in data structures, assign them to variables, and pass them around like strings or numbers. This enables higher-order functions, callbacks, currying, and many other functional programming techniques. It also supports cleaner, more modular code by treating behavior as data.',
+    tags: [
+      'languages',
+      'first-class-functions',
+      'functional-programming',
+      'higher-order',
+      'javascript',
+    ],
+    reference: [
+      {
+        label: 'MDN: First-class functions',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function',
+      },
+      {
+        label: 'Wikipedia: First-class function',
+        url: 'https://en.wikipedia.org/wiki/First-class_function',
+      },
+    ],
+  },
+  {
+    id: 'languages-8',
+    categoryId: 'languages',
+    question: 'Show me an example where an anonymous function can be useful.',
+    answer:
+      'Anonymous functions are useful when you need a function for a short period, usually as an argument to another function, without the need to name it. They help keep code concise and readable, especially for callbacks, event handlers, or immediately invoked function expressions (IIFEs).',
+    code: 'const numbers = [1, 2, 3, 4, 5];\n\n// Using an anonymous function as a callback\nconst doubled = numbers.map(function(num) {\n  return num * 2;\n});\n\nconsole.log(doubled); // [2, 4, 6, 8, 10]',
+    hint: 'Think about callbacks and inline functions.',
+    explanation:
+      'Anonymous functions let you define behavior right where it’s needed without cluttering the scope with a function name. They’re often used in functional programming patterns and event-driven code, allowing you to write short, inline functions that don’t require reuse elsewhere.',
+    tags: ['languages', 'anonymous-functions', 'callbacks', 'javascript'],
+    reference: [
+      {
+        label: 'MDN: Function expressions',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#function_expressions',
+      },
+      {
+        label: 'Geeks for Geeks: Anonymous Functions',
+        url: 'https://www.geeksforgeeks.org/javascript/what-is-a-typical-use-case-for-anonymous-functions-in-javascript/s',
+      },
+    ],
+  },
+  {
+    id: 'languages-9',
+    categoryId: 'languages',
+    question:
+      "There are a lot of different type systems. Let's talk about static and dynamic type systems, and about strong and weak ones. You surely have an opinion and a preference about this topic. Would you like to share about them, and discuss why and when would you promote one particular type system for developing an enterprise software?",
+    answer:
+      'Static type systems check types at compile time, catching many errors early before running the program. Dynamic type systems check types at runtime, offering flexibility but potentially more runtime errors. Strong typing enforces strict type rules and conversions, while weak typing allows implicit coercion that can lead to unpredictable behavior.',
+    code: '// Static typing example (TypeScript)\nfunction add(a: number, b: number): number {\n  return a + b;\n}\n\n// Dynamic typing example (JavaScript)\nfunction add(a, b) {\n  return a + b;\n}\n\nconsole.log(add(5, "10")); // "510" due to implicit coercion in JS',
+    hint: 'Consider safety versus flexibility, and error detection timing.',
+    explanation:
+      'Static typing is often preferred in enterprise environments for its early error detection, better tooling (like autocomplete and refactoring), and clearer API contracts, which improve maintainability and collaboration. Dynamic typing favors rapid prototyping and flexibility but requires thorough testing to avoid runtime errors.\n\nStrong typing reduces bugs caused by unintended type coercion, making code more predictable. Weak typing can speed up development but risks subtle bugs.\n\nChoosing depends on project needs: safety and scalability favor static, strong typing; quick iteration and scripting may favor dynamic typing.',
+    tags: [
+      'languages',
+      'type-systems',
+      'static-typing',
+      'dynamic-typing',
+      'strong-typing',
+      'weak-typing',
+    ],
+    reference: [
+      {
+        label: 'Static vs Dynamic Typing',
+        url: 'https://en.wikipedia.org/wiki/Type_system#Static_and_dynamic_typing',
+      },
+      {
+        label: 'NetGuru: Static vs Dynamic Typing',
+        url: 'https://www.netguru.com/blog/static-vs-dynamic-typing',
+      },
+      {
+        label: 'Site Point: Static, Dynamic Typing,x Weak and Strong',
+        url: 'https://www.sitepoint.com/typing-versus-dynamic-typing/',
+      },
+    ],
+  },
+  {
+    id: 'languages-10',
+    categoryId: 'languages',
+    question: 'What are namespaces useful for? Invent an alternative.',
+    answer:
+      'Namespaces provide a way to group and organize code entities (such as classes, functions, and variables) under a unique name to avoid naming collisions and improve modularity. They help maintain a clean global scope, especially in large codebases or when integrating multiple libraries.',
+    code: '// Example of a namespace in TypeScript\nnamespace Geometry {\n  export function areaCircle(radius: number): number {\n    return Math.PI * radius * radius;\n  }\n}\n\nconsole.log(Geometry.areaCircle(5)); // 78.5398...',
+    hint: 'Think about preventing naming conflicts in large projects.',
+    explanation:
+      'Without namespaces, different parts of a large program might use the same names for variables or functions, leading to conflicts and bugs. Namespaces logically group related code and clarify ownership.\n\nAn alternative approach could be to use module systems (like ES Modules) that isolate code within files and expose only selected parts. Another alternative is prefixing identifiers manually (e.g., using unique prefixes) or using object literals as containers to simulate namespaces.',
+    tags: ['languages', 'namespaces', 'code-organization', 'modules', 'scope'],
+    reference: [
+      {
+        label: 'MDN Web Docs: Namespaces',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/Namespace',
+      },
+      {
+        label: 'Geeks for Geeks: Namespaces',
+        url: 'https://www.geeksforgeeks.org/javascript/javascript-namespace/',
+      },
+    ],
+  },
+  {
+    id: 'languages-11',
+    categoryId: 'languages',
+    question:
+      'Talk about interoperability between Java and C# (in alternative, choose 2 other arbitrary languages).',
+    answer:
+      'Interoperability between Java and C# is challenging because they run on different virtual machines (JVM vs. CLR) and use different runtime environments. Directly calling C# code from Java or vice versa is not straightforward, requiring bridges or intermediate communication methods like web services, REST APIs, or message queues.\n\nSome tools and approaches to bridge these worlds include:\n- Using web services or REST APIs for communication over HTTP.\n- JNI (Java Native Interface) combined with C++ to interact with .NET code.\n- Projects like IKVM (a JVM implementation on .NET) that attempt to bridge bytecode compatibility.\n\nAlternative interoperability examples include Python and C integration, where Python can call C libraries via ctypes or Cython, enabling high performance and seamless extension of Python with C.',
+    code: '',
+    hint: 'Consider virtual machines, runtime differences, and communication bridges.',
+    explanation:
+      'Java and C# are both statically typed, object-oriented languages with similar syntax, but their ecosystems and runtimes differ. This divergence means interoperability usually happens through loosely coupled mechanisms (APIs, services) rather than direct code sharing.\n\nIn contrast, languages like Python and C have well-established interoperability using foreign function interfaces, allowing Python programs to leverage performant C code. Understanding these approaches helps design systems that integrate diverse technologies effectively.',
+    tags: [
+      'languages',
+      'interoperability',
+      'java',
+      'csharp',
+      'runtime',
+      'integration',
+    ],
+    reference: [
+      {
+        label: 'Net Curu: Java vs C#',
+        url: 'https://www.netguru.com/blog/java-vs-c-sharp',
+      },
+      {
+        label: 'Microsoft Docs: .NET Interoperability',
+        url: 'https://learn.microsoft.com/en-us/dotnet/standard/native-interop/',
+      },
+      {
+        label: 'Digital Commons: Interoperability in Programming Languages',
+        url: 'https://digitalcommons.morris.umn.edu/cgi/viewcontent.cgi?article=1014&context=horizons',
+      },
+    ],
+  },
+  {
+    id: 'languages-12',
+    categoryId: 'languages',
+    question: 'Why do many software engineers not like Java?',
+    answer:
+      'Many developers criticize Java for its verbosity, boilerplate-heavy syntax, and sometimes slow compilation times. Its strict static typing and checked exceptions can lead to verbose error handling. Additionally, older versions of Java lacked modern language features, making the code less expressive compared to newer languages.',
+    code: '',
+    hint: 'Think about syntax verbosity, error handling, and language evolution.',
+    explanation:
+      'Java’s verbosity requires writing a lot of repetitive code for simple tasks, which can reduce developer productivity and readability. Checked exceptions, while designed for robustness, often lead to cluttered code due to mandatory try-catch blocks. Although Java has evolved significantly (e.g., lambdas in Java 8, records in Java 14+), some engineers feel it still lags behind more modern languages in expressiveness and developer ergonomics. Despite these critiques, Java remains popular due to its performance, ecosystem, and cross-platform capabilities.',
+    tags: [
+      'languages',
+      'java',
+      'verbosity',
+      'static-typing',
+      'developer-experience',
+    ],
+    reference: [
+      {
+        label: 'Medium: Why Java is unliked',
+        url: 'https://medium.com/codex/why-java-was-loved-20-years-ago-and-disliked-today-ef45f7a53740',
+      },
+      {
+        label: 'Medium: Why developers dislike Java',
+        url: 'https://medium.com/codex/why-java-was-loved-20-years-ago-and-disliked-today-ef45f7a53740',
+      },
+    ],
+  },
+  {
+    id: 'languages-13',
+    categoryId: 'languages',
+    question: 'What makes a good language good and a bad language bad?',
+    answer:
+      'A good programming language enables developers to write clear, efficient, and maintainable code with minimal effort, while a bad language introduces unnecessary complexity, ambiguity, or restrictions that hinder productivity and code quality.',
+    code: '',
+    hint: 'Consider readability, expressiveness, tooling, community, and learning curve.',
+    explanation:
+      'Good languages have clear syntax, powerful abstractions, strong tooling, and active communities, making development smoother and less error-prone. They balance performance, safety, and flexibility, allowing developers to focus on solving problems rather than language quirks. Bad languages often suffer from poor design choices like inconsistent syntax, lack of abstractions, insufficient tooling, or obscure error messages, which can frustrate developers and lead to buggy, hard-to-maintain code. Ultimately, a language’s goodness depends on how well it fits the problem domain and the developers’ needs.',
+    tags: [
+      'languages',
+      'programming-languages',
+      'language-design',
+      'developer-experience',
+    ],
+    reference: [
+      {
+        label: 'Medium: Characteristics of a Good programming language',
+        url: 'https://medium.com/@learnwithakshay/characteristics-of-good-programming-language-7163e554faec',
+      },
+      {
+        label: 'CDG: What makes a good programming language',
+        url: 'https://cdg.dev/tech/2019/08/what-makes-a-good-programming-language/',
+      },
+    ],
+  },
+  {
+    id: 'languages-14',
+    categoryId: 'languages',
+    question:
+      'Write two functions, one referentially transparent and the other one referentially opaque. Discuss.',
+    answer:
+      'Referential transparency means a function always returns the same output given the same input, without causing side effects. Referentially opaque functions may produce different results or have side effects, making reasoning harder.',
+    code: `// Referentially transparent function
+function add(a, b) {
+  return a + b;
+}
+
+// Referentially opaque function
+let counter = 0;
+function increment() {
+  counter += 1;
+  return counter;
+}`,
+    hint: 'Think pure functions vs functions with side effects.',
+    explanation:
+      'The "add" function is referentially transparent because for any inputs a and b, it always returns the same result without modifying external state. This predictability helps with testing and reasoning about code. The "increment" function depends on and modifies an external variable "counter", making it referentially opaque — its output depends on external state and it causes side effects. Referential transparency is a key concept in functional programming, promoting safer and more maintainable code.',
+    tags: [
+      'languages',
+      'functional-programming',
+      'referential-transparency',
+      'pure-functions',
+      'side-effects',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Referential Transparency',
+        url: 'https://en.wikipedia.org/wiki/Referential_transparency',
+      },
+      {
+        label: 'Geeks for Geeks: Pure Functions',
+        url: 'https://www.geeksforgeeks.org/javascript/pure-functions-in-javascript/',
+      },
+    ],
+  },
+  {
+    id: 'languages-15',
+    categoryId: 'languages',
+    question: "What is a stack and what is a heap? What's a stack overflow?",
+    answer:
+      'The stack and the heap are two areas of memory used for different purposes during program execution. The stack stores function calls, local variables, and control flow data in a last-in, first-out (LIFO) order. The heap is a larger, more flexible memory area used for dynamic memory allocation, where objects live until explicitly freed (or garbage collected). A stack overflow occurs when the stack exceeds its allocated size, often due to excessively deep or infinite recursion, causing a program crash or undefined behavior.',
+    code: `// Example of stack usage:
+function factorial(n) {
+  if (n === 0) return 1;
+  return n * factorial(n - 1);
+}
+
+// Heap example: dynamically allocated objects
+const obj = { name: "Alice", age: 30 }; // stored in heap`,
+
+    hint: 'Think about memory management and function calls.',
+    explanation:
+      "The stack manages memory for function execution contexts: when a function is called, a stack frame with local variables and return address is pushed onto the stack, and popped off when the function returns. This makes stack allocation very fast but limited in size. The heap stores objects and data that need to persist beyond function calls or vary in size. A stack overflow happens if too many nested calls occur without returning, exhausting the stack's fixed size. Understanding the stack vs heap is key to grasping memory management and program performance.",
+    tags: ['languages', 'memory-management', 'stack', 'heap', 'stack-overflow'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Stack and Heap Memory',
+        url: 'https://www.geeksforgeeks.org/javascript/memory-management-in-javascript/',
+      },
+      {
+        label: 'Wikipedia: Stack Overflow',
+        url: 'https://en.wikipedia.org/wiki/Stack_overflow',
+      },
+    ],
+  },
+  {
+    id: 'languages-16',
+    categoryId: 'languages',
+    question:
+      'Why is it important that in a language functions are first-class citizens?',
+    answer:
+      'Having functions as first-class citizens means functions can be treated like any other variable — assigned to variables, passed as arguments, returned from other functions, and stored in data structures. This enables powerful programming paradigms such as functional programming, higher-order functions, and callbacks, increasing code flexibility and expressiveness.',
+    code: `// Example: passing a function as an argument
+function greet(name) {
+  return 'Hello, ' + name;
+}
+
+function sayHello(fn, name) {
+  console.log(fn(name));
+}
+
+sayHello(greet, 'Alice'); // Hello, Alice`,
+
+    hint: 'Think about functions as values and their flexible use.',
+    explanation:
+      'First-class functions allow programs to treat behavior as data, enabling concise, reusable, and modular code. They support callbacks, event handlers, functional composition, and declarative programming styles. Without this, many advanced and elegant coding techniques would be cumbersome or impossible, limiting language expressiveness and developer productivity.',
+    tags: [
+      'languages',
+      'functions',
+      'first-class-citizens',
+      'functional-programming',
+    ],
+    reference: [
+      {
+        label: 'MDN: Functions as First-Class Objects',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#functions_as_first-class_objects',
+      },
+      {
+        label: 'Wikipedia: First-Class Function',
+        url: 'https://en.wikipedia.org/wiki/First-class_function',
+      },
+    ],
+  },
+  {
+    id: 'languages-17',
+    categoryId: 'languages',
+    question:
+      'Some languages, especially the ones that promote a functional approach, allow a technique called pattern matching. Do you know it? How is pattern matching different from switch clauses?',
+    answer:
+      'Pattern matching is a powerful control structure found in functional languages (and some modern multi-paradigm languages) that allows checking a value against a series of patterns and executing code based on which pattern matches. Unlike traditional switch statements, pattern matching can destructure complex data types, perform deep comparisons, and bind variables within patterns, making it more expressive and concise.',
+    code: `// Example of pattern matching in JavaScript (using hypothetical syntax)
+/*
+match (value) {
+  case { type: 'circle', radius }:
+    console.log('Circle with radius', radius);
+    break;
+  case { type: 'square', size }:
+    console.log('Square with size', size);
+    break;
+  default:
+    console.log('Unknown shape');
+}
+*/
+
+// Equivalent switch statement is limited to simple value checks
+switch (shape.type) {
+  case 'circle':
+    console.log('Circle with radius', shape.radius);
+    break;
+  case 'square':
+    console.log('Square with size', shape.size);
+    break;
+  default:
+    console.log('Unknown shape');
+}`,
+    hint: 'Think about matching complex data structures and extracting values.',
+    explanation:
+      'Switch statements typically compare simple values (e.g., numbers or strings) for equality and execute corresponding code blocks. Pattern matching goes beyond this by enabling matching of complex data shapes (like tuples, lists, or objects), supporting nested and conditional patterns, and allowing direct extraction of values within the matched pattern. This leads to clearer, less error-prone, and more expressive code, especially in handling algebraic data types common in functional programming.',
+    tags: [
+      'languages',
+      'pattern-matching',
+      'switch',
+      'functional-programming',
+      'control-structures',
+    ],
+    reference: [
+      {
+        label: 'Medium: Pattern Matching',
+        url: 'https://lokesh-prajapati.medium.com/a-new-era-for-javascript-pattern-matching-unveiled-8f00980210b1',
+      },
+      {
+        label: 'MDN: switch statement',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch',
+      },
+    ],
+  },
+  {
+    id: 'languages-18',
+    categoryId: 'languages',
+    question:
+      'Why do some languages have no exceptions by design? What are the pros and cons?',
+    answer:
+      'Some languages avoid exceptions altogether to simplify error handling and promote explicit, predictable control flow. Instead of exceptions, they use alternative mechanisms like return codes, option types, or result objects to represent errors. This design aims to make error handling more visible and manageable, reducing hidden side effects.',
+    code: `// Example in Rust using Result type instead of exceptions
+
+fn divide(a: f64, b: f64) -> Result<f64, String> {
+    if b == 0.0 {
+        Err(String::from("Division by zero"))
+    } else {
+        Ok(a / b)
+    }
+}
+
+match divide(4.0, 0.0) {
+    Ok(result) => println!("Result: {}", result),
+    Err(e) => println!("Error: {}", e),
+}`,
+    hint: 'Consider control flow, readability, and error visibility.',
+    explanation:
+      'Pros of no-exception design include clearer control flow, as all errors must be explicitly handled; better compiler checks for unhandled errors; and avoiding unexpected runtime crashes caused by uncaught exceptions. However, it can lead to verbose code, requiring manual error checking after every operation. In contrast, exceptions simplify propagating errors up the call stack but can obscure control flow and cause hidden bugs if not carefully managed.',
+    tags: [
+      'languages',
+      'error-handling',
+      'exceptions',
+      'control-flow',
+      'rust',
+      'design-decisions',
+    ],
+    reference: [
+      {
+        label: 'DEV: Errors are not Exceptional',
+        url: 'https://dev.to/swyx/errors-are-not-exceptional-1g0b',
+      },
+      {
+        label: 'Stack Overflow: Why some languages do not have exceptions',
+        url: 'https://stackoverflow.com/questions/4619446/why-do-some-languages-not-have-exceptions',
+      },
+    ],
+  },
+  {
+    id: 'languages-19',
+    categoryId: 'languages',
+    question: 'If Cat is an Animal, is TakeCare<Cat> a TakeCare<Animal>?',
+    answer:
+      'Not necessarily. This is a question of *variance* in generic types—specifically, whether `TakeCare<Cat>` can be used where `TakeCare<Animal>` is expected. The answer depends on how the type system handles generics: covariant, contravariant, or invariant.',
+    code: `// TypeScript example (generics are invariant by default)
+class Animal {
+  speak() { console.log("Animal speaks"); }
+}
+
+class Cat extends Animal {
+  meow() { console.log("Meow"); }
+}
+
+class TakeCare<T> {
+  subject: T;
+  constructor(subject: T) {
+    this.subject = subject;
+  }
+}
+
+const catCare = new TakeCare<Cat>(new Cat());
+const animalCare: TakeCare<Animal> = catCare; // Error in most languages unless explicitly allowed
+`,
+    hint: 'This relates to generics and type variance (covariance, contravariance, invariance).',
+    explanation:
+      'In most statically typed languages like Java and TypeScript, generics are *invariant* by default. That means `TakeCare<Cat>` is **not** considered a subtype of `TakeCare<Animal>`, even though `Cat` is a subtype of `Animal`. Covariance would allow this substitution, but only if the generic is read-only (like `List<? extends Animal>` in Java). Contravariance works in reverse: `TakeCare<Animal>` could be used as `TakeCare<Cat>` only if the generic is write-only. This prevents type errors that can arise from writing the wrong type into a container.',
+    tags: [
+      'generics',
+      'variance',
+      'type-systems',
+      'inheritance',
+      'oop',
+      'typescript',
+      'java',
+    ],
+    reference: [
+      {
+        label: 'TypeScript Handbook: Generics',
+        url: 'https://www.typescriptlang.org/docs/handbook/2/generics.html',
+      },
+      {
+        label: 'Geeks for Geeks: Java Generics and Variance',
+        url: 'https://www.geeksforgeeks.org/java/variance-in-java/',
+      },
+    ],
+  },
+  {
+    id: 'languages-20',
+    categoryId: 'languages',
+    question:
+      'In Java, C# and many other languages, why are constructors not part of the interface?',
+    answer:
+      'Constructors are not included in interfaces because interfaces define a contract for behavior, not instantiation. Interfaces describe what an object can do, not how it is created.',
+    code: `// Java-style example
+interface Animal {
+  void speak();
+}
+
+class Dog implements Animal {
+  public Dog() {
+    // Constructor logic
+  }
+
+  public void speak() {
+    System.out.println("Woof");
+  }
+}
+
+// The interface does not (and cannot) declare: Dog()
+`,
+    hint: 'Interfaces are about behavior, while constructors are about object creation.',
+    explanation:
+      'Interfaces in Java, C#, and similar languages are meant to define capabilities or behaviors that a class must implement. They are not concerned with how objects are created, which is what constructors handle. Including constructors would break abstraction and make interfaces harder to decouple from specific implementations. Object creation is typically handled through patterns like dependency injection or factories, keeping interfaces clean and focused only on what objects *do*, not how they are built.',
+    tags: [
+      'interfaces',
+      'oop',
+      'constructors',
+      'abstraction',
+      'java',
+      'csharp',
+      'design-principles',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Java Interface',
+        url: 'https://www.geeksforgeeks.org/interfaces-in-java/',
+      },
+      {
+        label: 'Microsoft Learn: Interface (C# Reference)',
+        url: 'https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface',
+      },
+    ],
+  },
+  {
+    id: 'languages-21',
+    categoryId: 'languages',
+    question:
+      "In the last years there has been a lot of hype around Node.js. What's your opinion on using a language that was initially conceived to run in the browser in the backend?",
+    answer:
+      "Using JavaScript on the backend via Node.js offers several advantages, including a unified language across the stack, a vibrant ecosystem, and strong performance for I/O-bound tasks. However, JavaScript's original design for front-end scripting brings challenges when applied to server-side needs, such as lack of static typing and limited concurrency models.",
+    code: `// Node.js example: simple HTTP server
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.end('Hello from Node.js backend!');
+});
+
+server.listen(3000);`,
+    hint: 'Consider performance, developer experience, and ecosystem.',
+    explanation:
+      'Node.js made JavaScript viable on the backend by introducing an event-driven, non-blocking I/O model, which is ideal for scalable network applications. It enables full-stack development with a single language, reducing context switching and enabling code reuse (e.g., validation logic). Its massive npm ecosystem also accelerates development. However, JavaScript’s lack of type safety and historical single-threaded model can pose maintainability and performance concerns for CPU-bound or enterprise-scale applications. Tools like TypeScript and worker threads help mitigate these drawbacks.',
+    tags: [
+      'nodejs',
+      'javascript',
+      'backend',
+      'full-stack',
+      'event-loop',
+      'typescript',
+      'ecosystem',
+    ],
+    reference: [
+      {
+        label: 'Node.js Official Docs',
+        url: 'https://nodejs.org/en/docs',
+      },
+      {
+        label: 'Mozilla Developer Network: Introduction to Node.js',
+        url: 'https://developer.mozilla.org/en-US/docs/Learn/Server-side/Node_server_without_framework',
+      },
+    ],
+  },
+  {
+    id: 'languages-22',
+    categoryId: 'languages',
+    question:
+      "Pretend you have a time machine and the opportunity to go to a particular point in time during Python's development. What would you try to convince its core architects to do differently?",
+    answer:
+      "If I could go back in time during Python's evolution, I would advocate for earlier implementation of true multithreading support and a more efficient runtime for CPU-bound tasks. Specifically, I would ask the core team to rethink the Global Interpreter Lock (GIL) or provide an alternative path for true parallelism.",
+    code: `# Example of Python's threading bottleneck
+import threading
+
+def task():
+    for _ in range(10**6):
+        pass
+
+threads = [threading.Thread(target=task) for _ in range(4)]
+for t in threads:
+    t.start()
+for t in threads:
+    t.join()
+
+# Despite using 4 threads, GIL prevents true parallel CPU execution`,
+    hint: 'Focus on concurrency and performance limitations in Python.',
+    explanation:
+      "The Global Interpreter Lock (GIL) limits Python's ability to utilize multiple CPU cores in standard CPython, which makes it less ideal for high-performance, CPU-bound applications. While Python shines in readability, rapid development, and flexibility, its concurrency model has long been a known pain point. Removing the GIL or redesigning Python with better native concurrency support (as seen in languages like Go or Rust) could have made Python more viable for system-level programming and heavy computational tasks.",
+    tags: [
+      'python',
+      'language-design',
+      'gil',
+      'concurrency',
+      'performance',
+      'interpreters',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Disadvantages of Python',
+        url: 'https://www.geeksforgeeks.org/python/disadvantages-of-python/',
+      },
+      {
+        label: 'Netguru: Python Pros and Cons',
+        url: 'https://www.netguru.com/blog/python-pros-and-cons',
+      },
+    ],
+  },
 ];
