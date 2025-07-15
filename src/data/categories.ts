@@ -64,4 +64,8 @@ export const categories: Category[] = [
     id: 'dist-sys',
     name: 'Distributed Systems',
   },
+  {
+    id: 'software-culture',
+    name: 'Software Culture',
+  },
 ];

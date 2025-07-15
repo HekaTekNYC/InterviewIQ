@@ -5319,4 +5319,398 @@ function waitFreeIncrement() {
       },
     ],
   },
+
+  // Software Culture ----------------------------------
+
+  {
+    id: 'software-culture-1',
+    categoryId: 'software-culture',
+    question: 'What is agility?',
+    answer:
+      'Agility refers to the ability of a software development team or organization to quickly adapt to change, respond to feedback, and deliver value incrementally. It’s about flexibility, collaboration, and continuous improvement over rigid planning or processes.',
+    code: '',
+    hint: 'Think about responsiveness, adaptability, and iterative development.',
+    explanation:
+      'In the context of software, agility means embracing short development cycles, cross-functional teams, and constant communication with stakeholders. Agile methodologies (like Scrum, Kanban, XP) emphasize working software, customer collaboration, and adapting to change rather than strictly following a plan. Agility helps teams deliver better software faster by continuously refining both the product and the process.',
+    tags: [
+      'agile',
+      'software-culture',
+      'development-process',
+      'adaptability',
+      'teamwork',
+    ],
+    reference: [
+      {
+        label: 'Agile Manifesto',
+        url: 'https://agilemanifesto.org/',
+      },
+      {
+        label: 'Agile Software Development – Wikipedia',
+        url: 'https://en.wikipedia.org/wiki/Agile_software_development',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-2',
+    categoryId: 'software-culture',
+    question: 'How would you deal with legacy code?',
+    answer:
+      'Dealing with legacy code requires understanding, stabilizing, and gradually improving it without introducing regressions. Start by identifying the business-critical areas, adding tests, and documenting behavior before making changes.',
+    code: '',
+    hint: 'Think about safety, testing, and incremental refactoring.',
+    explanation:
+      'Legacy code often lacks tests, documentation, or modern patterns. The first step is to treat it with care—avoid rewriting everything. Instead, focus on high-value areas and surround them with characterization tests (tests that describe what the code does). Once you have test coverage, you can safely refactor or modularize the code. It’s also important to communicate with the team and avoid introducing unnecessary complexity while improving maintainability.',
+    tags: [
+      'legacy-code',
+      'software-culture',
+      'refactoring',
+      'technical-debt',
+      'testing',
+    ],
+    reference: [
+      {
+        label:
+          'Understanding Legacy Code: Working efficiently with legacy code',
+        url: 'https://understandlegacycode.com/blog/key-points-of-working-effectively-with-legacy-code/',
+      },
+      {
+        label: 'Perforce: Tips of working with legacy code',
+        url: 'https://www.perforce.com/blog/qac/tips-working-legacy-code',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-3',
+    categoryId: 'software-culture',
+    question:
+      "Say I'm your project manager, and I'm no expert in programming. Would you try explaining to me what legacy code is and why should I care about code quality?",
+    answer:
+      'Yes, I would definitely explain it. Legacy code is existing software that’s hard to change or maintain, often because it’s poorly documented, lacks tests, or was written with outdated practices. I’d emphasize that code quality impacts project timelines, costs, and product reliability, so understanding this helps prioritize technical debt and refactoring efforts.',
+    code: '',
+    hint: 'Explain clearly and focus on business impact.',
+    explanation:
+      'When talking to a non-technical manager, I’d avoid jargon and relate code quality to real project outcomes — like delays, bugs, and cost overruns. I’d explain that legacy code slows down adding new features and fixing issues, which impacts delivery and customer satisfaction. Framing it this way helps non-technical stakeholders appreciate why investing in code quality is critical for the product’s success.',
+    tags: [
+      'legacy-code',
+      'software-culture',
+      'code-quality',
+      'communication',
+      'technical-debt',
+    ],
+    reference: [
+      {
+        label: 'IBM: What Is Legacy Code?',
+        url: 'https://www.ibm.com/think/topics/legacy-code',
+      },
+      {
+        label: 'Adabeat: Why Code Quality Matters',
+        url: 'https://adabeat.com/insight/the-importance-of-code-quality/',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-4',
+    categoryId: 'software-culture',
+    question: 'What is the biggest difference between Agile and Waterfall?',
+    answer:
+      'The biggest difference is that Waterfall is a linear, sequential approach where each phase (requirements, design, implementation, testing, deployment) happens one after the other, while Agile is an iterative and incremental approach focused on flexibility, continuous feedback, and adapting to change.',
+    code: '',
+    hint: 'Think about project phases versus iterative cycles.',
+    explanation:
+      'Waterfall assumes all requirements are known upfront and emphasizes completing each phase before moving on, which can make adapting to changes difficult. Agile breaks work into smaller chunks called sprints, allowing frequent reassessment of priorities and delivering working software continuously. This makes Agile better suited for projects where requirements evolve or are unclear.',
+    tags: [
+      'software-culture',
+      'agile',
+      'waterfall',
+      'project-management',
+      'methodologies',
+    ],
+    reference: [
+      {
+        label: 'Agile Alliance: What is Agile?',
+        url: 'https://www.agilealliance.org/agile101/',
+      },
+      {
+        label: 'Atlassian: Agile vs Waterfall',
+        url: 'https://www.atlassian.com/agile/project-management/project-management-intro',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-5',
+    categoryId: 'software-culture',
+    question:
+      'Being a team manager, how would you deal with the problem of having too many meetings?',
+    answer:
+      'I would evaluate the purpose and necessity of each meeting, consolidate overlapping meetings, set clear agendas and time limits, and encourage asynchronous communication where possible to reduce meeting load.',
+    code: '',
+    hint: 'Focus on meeting effectiveness and alternative communication methods.',
+    explanation:
+      'Too many meetings can reduce productivity and cause burnout. By auditing meetings, canceling unnecessary ones, combining similar topics, and using tools like email, chat, or collaborative documents for updates and discussions, you can keep the team focused. Also, ensuring meetings have clear goals and strict timing helps maintain efficiency.',
+    tags: ['software-culture', 'team-management', 'meetings', 'productivity'],
+    reference: [
+      {
+        label: 'Harvard Business Review: Stop the Meeting Madness',
+        url: 'https://hbr.org/2017/07/stop-the-meeting-madness',
+      },
+      {
+        label: 'Atlassian: How to reduce meetings',
+        url: 'https://www.atlassian.com/blog/teamwork/how-to-run-effective-meetings',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-6',
+    categoryId: 'software-culture',
+    question: 'How would you manage a very late project?',
+    answer:
+      'I would start by assessing the current status, identifying the main causes of delay, and reprioritizing tasks to focus on critical features. Clear communication with stakeholders about realistic timelines and scope adjustments is key. Implementing incremental deliveries and increasing collaboration helps regain momentum.',
+    code: '',
+    hint: 'Focus on transparency, prioritization, and incremental progress.',
+    explanation:
+      'Managing a late project requires diagnosing root causes such as scope creep, resource constraints, or technical debt. Then, adjusting scope, timelines, and resources helps set achievable goals. Regular progress tracking and transparent communication build trust. Agile practices like iterative releases enable early value delivery, reducing risk and improving morale.',
+    tags: [
+      'software-culture',
+      'project-management',
+      'risk-management',
+      'agile',
+    ],
+    reference: [
+      {
+        label: 'Medium: Managing Late Projects',
+        url: 'https://onix-systems.medium.com/how-to-deal-with-software-project-delays-practical-tips-and-tricks-2a884cd8d632',
+      },
+      {
+        label: 'Geeks for Geeks: How to handle late projects',
+        url: 'https://www.geeksforgeeks.org/software-engineering/what-causes-project-delay-how-to-avoid-them/',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-7',
+    categoryId: 'software-culture',
+    question:
+      '"Individuals and interactions over processes and tools" and "Customer collaboration over contract negotiation" comprise half of the values of the Agile Manifesto. Discuss.',
+    answer:
+      'These values emphasize the importance of people and communication in software development. Agile prioritizes flexible, face-to-face collaboration and responsiveness to change rather than rigid adherence to processes or formal contracts. This human-centric approach fosters adaptability, trust, and better alignment with customer needs.',
+    code: '',
+    hint: 'Focus on why human relationships and collaboration matter more than strict procedures or paperwork.',
+    explanation:
+      'The Agile Manifesto recognizes that even the best tools and processes can’t replace effective communication and collaboration among team members and with customers. Prioritizing individuals ensures that teams can adapt quickly, solve problems creatively, and deliver value faster. Customer collaboration encourages ongoing feedback, reducing misunderstandings and enabling solutions that better meet real needs, while strict contracts can hinder flexibility.',
+    tags: [
+      'software-culture',
+      'agile',
+      'collaboration',
+      'customer-focus',
+      'communication',
+    ],
+    reference: [
+      {
+        label: 'Agile Manifesto',
+        url: 'https://agilemanifesto.org/',
+      },
+      {
+        label: 'Scrumalliance: Agile values and principles',
+        url: 'https://resources.scrumalliance.org/Article/key-values-principles-agile-manifesto',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-8',
+    categoryId: 'software-culture',
+    question:
+      'Tell me what decisions you would take if you could be the CTO of your company.',
+    answer:
+      'As CTO, I would focus on fostering a culture of innovation, ensuring technical excellence, and aligning technology strategy with business goals. Key decisions would include investing in scalable infrastructure, prioritizing developer experience, adopting modern tools and practices like CI/CD and automated testing, and promoting continuous learning within the team.',
+    code: '',
+    hint: 'Think about technical leadership, team culture, and aligning tech with business.',
+    explanation:
+      'The CTO role requires balancing technology vision with practical delivery. Decisions should empower teams to build reliable, maintainable, and scalable products. Emphasizing collaboration, transparency, and user-centric development helps keep the company agile and competitive. Additionally, I would advocate for diversity, inclusion, and supporting professional growth to retain top talent and foster creativity.',
+    tags: [
+      'software-culture',
+      'leadership',
+      'technology-strategy',
+      'team-culture',
+      'innovation',
+    ],
+    reference: [
+      {
+        label: 'Made With Love: How a CTO make technology decisions',
+        url: 'https://madewithlove.com/blog/how-a-cto-makes-technology-decisions/',
+      },
+      {
+        label: 'Medium: The Role of the CTO',
+        url: 'https://medium.com/@riaanfnel/the-new-ctos-guide-a-world-of-responsibilities-94bc8ef374bc',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-9',
+    categoryId: 'software-culture',
+    question: 'Are program managers useful?',
+    answer:
+      'Yes, program managers play a crucial role in coordinating multiple related projects, aligning them with business objectives, managing risks, and ensuring communication among teams and stakeholders. They help keep complex initiatives on track and facilitate strategic decision-making.',
+    code: '',
+    hint: 'Think about coordination, communication, and strategic alignment.',
+    explanation:
+      'Program managers oversee the broader scope beyond individual projects, focusing on how multiple projects interrelate and contribute to organizational goals. They handle resource allocation, timelines, and stakeholder expectations, reducing friction and helping teams deliver value effectively. Without program managers, teams might face misaligned priorities, duplicated efforts, or missed deadlines.',
+    tags: [
+      'software-culture',
+      'program-management',
+      'team-coordination',
+      'project-management',
+    ],
+    reference: [
+      {
+        label: 'Atlassian: Program Manager vs Project Manager?',
+        url: 'https://www.atlassian.com/agile/project-management/program-vs-project-manager',
+      },
+      {
+        label: 'Atlassian: What is a Program Manager?',
+        url: 'https://www.atlassian.com/agile/project-management/program-management#:~:text=Program%20managers%20also%20help%20to,implement%20DevOps%20practices%20and%20principles.',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-10',
+    categoryId: 'software-culture',
+    question:
+      'Organize a development team using flexible schedules (that is, no imposed working hours) and "take as you need" vacation policy.',
+    answer:
+      'To organize a development team with flexible schedules and unlimited vacation, focus on clear communication, trust, and outcome-oriented goals rather than micromanagement of hours. Set expectations around deliverables and collaboration windows, and empower team members to manage their own time and work-life balance.',
+    code: '',
+    hint: 'Think about accountability, communication norms, and measuring output over hours worked.',
+    explanation:
+      'Flexible schedules and unlimited vacation policies work best when paired with a culture of trust and responsibility. Teams should agree on core hours or overlapping times for meetings and collaboration. Deliverables and milestones should be clearly defined so progress can be tracked without constant supervision. This approach improves morale and reduces burnout but requires strong communication and transparency to avoid misunderstandings and ensure project goals are met.',
+    tags: [
+      'software-culture',
+      'team-management',
+      'flexible-schedules',
+      'vacation-policy',
+      'trust',
+    ],
+    reference: [
+      {
+        label: 'Forbes: Implementing flexible work schedule',
+        url: 'https://www.forbes.com/councils/forbeshumanresourcescouncil/2020/08/25/13-techniques-for-implementing-a-flexible-work-schedule-policy-efficiently/',
+      },
+      {
+        label: 'HRMorning: Unlimited PTO',
+        url: 'https://www.hrmorning.com/articles/unlimited-pto/',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-11',
+    categoryId: 'software-culture',
+    question:
+      'How would you manage a very high turnover and convince developers not to leave the team, without increasing compensation? What could a company improve to make them stay?',
+    answer:
+      'To reduce high turnover without raising pay, focus on improving work environment, career growth, recognition, and work-life balance. Foster a positive culture, provide learning opportunities, empower autonomy, and encourage open communication. Making developers feel valued and supported often outweighs compensation alone.',
+    code: '',
+    hint: 'Think beyond salary: culture, growth, recognition, autonomy, and support.',
+    explanation:
+      'Developers tend to stay where they feel engaged, respected, and challenged. Providing mentorship, clear career paths, flexible work options, meaningful projects, and regular feedback creates loyalty. Recognizing contributions and promoting psychological safety reduces burnout and dissatisfaction. Ultimately, investing in people and culture builds retention even when budgets are tight.',
+    tags: [
+      'software-culture',
+      'team-management',
+      'retention',
+      'employee-engagement',
+      'work-culture',
+    ],
+    reference: [
+      {
+        label: 'Invene: Limiting developer turnover',
+        url: 'https://www.invene.com/blog/limiting-developer-turnover',
+      },
+      {
+        label: 'Stack Overflow Developer Survey 2024 - Job Satisfaction',
+        url: 'https://survey.stackoverflow.co/2024/developer-profile',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-12',
+    categoryId: 'software-culture',
+    question:
+      'What are the top 3 qualities you look for in colleagues, beyond their code?',
+    answer:
+      'Beyond coding skills, I look for collaboration, communication, and a growth mindset. Great colleagues work well with others, communicate clearly, and are eager to learn and adapt.',
+    code: '',
+    hint: 'Think about teamwork, clarity, and continuous improvement.',
+    explanation:
+      'Technical skills are important, but the ability to collaborate fosters better team dynamics and project outcomes. Clear communication reduces misunderstandings and speeds up progress. A growth mindset means they embrace feedback, learn from mistakes, and evolve, which benefits the whole team over time.',
+    tags: [
+      'software-culture',
+      'teamwork',
+      'communication',
+      'growth-mindset',
+      'soft-skills',
+    ],
+    reference: [
+      {
+        label:
+          'We Are Devleopers: The Top Qualities of an Excellent Software Developer',
+        url: 'https://www.wearedevelopers.com/en/magazine/166/characteristics-of-a-software-engineer-strengths-and-traits',
+      },
+      {
+        label: 'Geeks for Geeks: Characteristics of a good software engineer',
+        url: 'https://www.geeksforgeeks.org/software-engineering/characteristics-of-a-good-software-engineer/',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-13',
+    categoryId: 'software-culture',
+    question:
+      'What are the top 3 things you wish non-technical people knew about code?',
+    answer:
+      'First, code is not magic — it’s built through thoughtful planning and problem solving. Second, changing one small thing can have unexpected ripple effects. Third, good code takes time — rushed development often leads to long-term maintenance issues.',
+    code: '',
+    hint: 'Think about complexity, impact, and timelines.',
+    explanation:
+      'Understanding these points helps non-technical stakeholders have realistic expectations. Code is a complex system, and changes often require careful consideration. What may seem small can affect many parts of the system. And writing maintainable, scalable code requires more than just “getting it to work” — it involves testing, readability, and long-term thinking.',
+    tags: [
+      'software-culture',
+      'communication',
+      'non-technical-awareness',
+      'engineering-expectations',
+      'code-quality',
+    ],
+    reference: [
+      {
+        label: 'LevelUP: 3 things non programmers should know',
+        url: 'https://levelup.gitconnected.com/3-most-important-things-non-programmers-should-know-about-programming-73da00ac4437',
+      },
+    ],
+  },
+  {
+    id: 'software-culture-14',
+    categoryId: 'software-culture',
+    question:
+      "Imagine your company gives you 1 month and some budget to improve your and your colleagues' daily life. What would you do?",
+    answer:
+      "I'd focus on both comfort and collaboration. This might include upgrading ergonomic equipment, improving our shared tools (like automating common dev tasks), setting up a mental health day or wellness week, and maybe organizing a mini internal hackathon to explore fun or pain-relieving ideas together.",
+    code: '',
+    hint: 'Think comfort, morale, and lasting team impact.',
+    explanation:
+      'Improving developer experience goes beyond perks — it’s about removing friction and supporting well-being. Even small investments in tooling, communication processes, or physical comfort (e.g., chairs, screens) can boost morale and productivity. Creating space for team bonding or cross-project experimentation also builds a stronger, more resilient culture.',
+    tags: [
+      'software-culture',
+      'developer-experience',
+      'team-health',
+      'productivity',
+      'wellbeing',
+    ],
+    reference: [
+      {
+        label: 'GitHub: Developer Happiness',
+        url: 'https://github.blog/engineering/engineering-principles/the-ultimate-guide-to-developer-happiness/https://github.blog/2022-04-12-developer-happiness-is-productivity/',
+      },
+      {
+        label: 'ATlassian: Developer Experience Matters',
+        url: 'https://www.atlassian.com/blog/devops/developer-experience-more-important',
+      },
+    ],
+  },
 ];
