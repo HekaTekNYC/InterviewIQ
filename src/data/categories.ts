@@ -48,4 +48,8 @@ export const categories: Category[] = [
     id: 'databases',
     name: 'Databases',
   },
+  {
+    id: 'nosql',
+    name: 'NoSQL',
+  },
 ];

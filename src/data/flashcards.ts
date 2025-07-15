@@ -4393,4 +4393,154 @@ for t in threads:
       },
     ],
   },
+
+  // NoSQL -----------------------------------
+
+  {
+    id: 'nosql-1',
+    categoryId: 'nosql',
+    question: 'What is eventual consistency?',
+    answer:
+      'Eventual consistency is a consistency model used in distributed systems where updates to a data item will propagate to all nodes over time, and eventually, all replicas will reflect the same value. It does not guarantee immediate consistency after a write, but rather that the system will become consistent if no new updates are made.',
+    code: '',
+    hint: 'Think about distributed systems that prioritize availability over strict consistency.',
+    explanation:
+      'In systems like NoSQL databases (e.g., Amazon DynamoDB, Cassandra), availability and partition tolerance are prioritized (as per the CAP theorem). Eventual consistency allows these systems to handle high volumes of data and continue operating despite network partitions. However, it means that a read may temporarily return stale data until the system reaches a consistent state. This model is suitable for applications that can tolerate slight delays in consistency, such as social media feeds or shopping carts.',
+    tags: [
+      'nosql',
+      'eventual-consistency',
+      'distributed-systems',
+      'cap-theorem',
+      'consistency-models',
+    ],
+    reference: [
+      {
+        label: 'AWS: Eventual Consistency',
+        url: 'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html',
+      },
+      {
+        label: 'Geeks for Geeks: Eventual vs Strong Consistency',
+        url: 'https://www.geeksforgeeks.org/dbms/eventual-vs-strong-consistency-in-distributed-databases/',
+      },
+    ],
+  },
+  {
+    id: 'nosql-2',
+    categoryId: 'nosql',
+    question:
+      "Brewer's Theorem, most commonly known as the CAP theorem, states that in the presence of a network partition (the P in CAP), a system's designer has to choose between consistency (the C in CAP) and availability (the A in CAP). Can you think about examples of CP, AP and CA systems?",
+    answer:
+      "The CAP theorem says that in a distributed system, it's impossible to guarantee all three: Consistency, Availability, and Partition Tolerance simultaneously. Systems must choose two:\n\n- **CP (Consistency + Partition Tolerance)**: Prioritize accuracy over availability. If a network partition occurs, the system will reject requests rather than risk inconsistent data.\n- **AP (Availability + Partition Tolerance)**: Ensure availability even at the cost of consistency. Data might be temporarily inconsistent.\n- **CA (Consistency + Availability)**: Only achievable in systems that do not partition—typically centralized systems or those with strong network guarantees.",
+    code: '',
+    hint: 'Think about real-world distributed systems and what tradeoffs they make.',
+    explanation:
+      "**CP systems** (e.g., HBase, MongoDB in some configurations) ensure consistency and tolerate partitioning, but may become unavailable under network failure.\n\n**AP systems** (e.g., CouchDB, Cassandra, DynamoDB) prioritize uptime even during partitions, but might return stale or inconsistent data temporarily.\n\n**CA systems** (e.g., traditional relational databases like PostgreSQL or MySQL running on a single node) can provide consistency and availability because partition tolerance isn't required in a non-distributed setup. In truly distributed environments, CA is theoretically unachievable.",
+    tags: [
+      'nosql',
+      'cap-theorem',
+      'distributed-systems',
+      'consistency',
+      'availability',
+      'partition-tolerance',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Understanding the CAP Theorem',
+        url: 'https://www.geeksforgeeks.org/system-design/cap-theorem-in-system-design/',
+      },
+      {
+        label: 'Medium: How to use CAP Theorem',
+        url: 'https://medium.com/@hksrise/how-to-use-cap-theorem-to-choose-the-right-database-a-simple-guide-with-examples-4882d9f60311',
+      },
+    ],
+  },
+  {
+    id: 'nosql-3',
+    categoryId: 'nosql',
+    question: 'How would you explain the recent rise in interest in NoSQL?',
+    answer:
+      'The rise of NoSQL is largely driven by the need for scalability, flexibility, and high availability in modern web and cloud applications. Traditional relational databases can struggle with horizontal scaling and dynamic data structures, which NoSQL databases handle more naturally.',
+    code: '',
+    hint: 'Think about modern app needs: speed, scale, and flexible schemas.',
+    explanation:
+      'NoSQL databases have gained popularity due to several factors:\n\n- **Scalability**: NoSQL databases are designed to scale out horizontally across distributed systems, making them suitable for large-scale applications.\n- **Flexible schemas**: They allow dynamic and nested data structures (e.g., JSON), which makes it easier to evolve applications over time.\n- **Performance**: For certain workloads (e.g., real-time analytics, caching, event logging), NoSQL can outperform traditional RDBMS.\n- **Big Data and cloud computing**: The growth of large-scale, cloud-native apps has created demand for databases that are optimized for distributed, unstructured, or semi-structured data.',
+    tags: [
+      'nosql',
+      'scalability',
+      'databases',
+      'schema-design',
+      'big-data',
+      'modern-architecture',
+    ],
+    reference: [
+      {
+        label: 'MongoDB: NoSQL Explained',
+        url: 'https://www.mongodb.com/nosql-explained',
+      },
+      {
+        label: 'Geeks for Geeks: Advantages and Disadvantages of NoSQL',
+        url: 'https://www.geeksforgeeks.org/data-engineering/what-are-the-advantages-and-disadvantages-of-using-sql-vs-nosql-databases/',
+      },
+    ],
+  },
+  {
+    id: 'nosql-4',
+    categoryId: 'nosql',
+    question: 'How does NoSQL tackle scalability challenges?',
+    answer:
+      'NoSQL databases are designed to scale horizontally, meaning they can distribute data across multiple servers (nodes) instead of relying on a single powerful machine. This allows them to handle large volumes of traffic and data efficiently.',
+    code: '',
+    hint: 'Think about distributed systems and horizontal scaling.',
+    explanation:
+      'NoSQL databases handle scalability by embracing horizontal scaling—spreading data across a cluster of machines. This is often achieved using techniques such as **sharding** (partitioning data across nodes), **replication** (copying data to ensure fault tolerance), and **eventual consistency** models that trade strict consistency for high availability and partition tolerance. These approaches help systems grow elastically with demand and reduce bottlenecks, making NoSQL ideal for high-traffic, big data, and cloud-native applications.',
+    tags: [
+      'nosql',
+      'scalability',
+      'horizontal-scaling',
+      'distributed-systems',
+      'sharding',
+      'replication',
+    ],
+    reference: [
+      {
+        label: 'AWS: What is NoSQL?',
+        url: 'https://aws.amazon.com/nosql/',
+      },
+      {
+        label: 'MongoDB Docs: Sharding',
+        url: 'https://www.mongodb.com/docs/manual/sharding/',
+      },
+    ],
+  },
+  {
+    id: 'nosql-5',
+    categoryId: 'nosql',
+    question:
+      'When would you use a document database like MongoDB instead of a relational database like MySQL or PostgreSQL?',
+    answer:
+      'A document database like MongoDB is ideal when you need flexible schemas, rapid development, and horizontal scalability. It works well with hierarchical or nested data that doesn’t fit neatly into tables.',
+    code: '',
+    hint: 'Think about data structure flexibility and evolving schemas.',
+    explanation:
+      'Document databases store data in JSON-like formats, making them suitable for applications with varying or evolving data structures—such as content management systems, product catalogs, and user-generated content. Unlike relational databases, document stores don’t require predefined schemas, allowing for faster iteration. They are also better suited for workloads with high read/write demands, large-scale data distribution, or complex object-like data. However, if you need strict relationships, ACID transactions, or strong data integrity guarantees, a relational database may be more appropriate.',
+    tags: [
+      'nosql',
+      'document-database',
+      'mongodb',
+      'relational-database',
+      'mysql',
+      'postgresql',
+      'schema-design',
+    ],
+    reference: [
+      {
+        label: 'MongoDB: When to Use MongoDB',
+        url: 'https://www.mongodb.com/use-cases',
+      },
+      {
+        label: 'MongoDB: SQL vs MySQL',
+        url: 'https://www.mongodb.com/resources/basics/databases/nosql-explained/nosql-vs-sql',
+      },
+    ],
+  },
 ];
