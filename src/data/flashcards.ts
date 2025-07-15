@@ -5027,4 +5027,296 @@ function waitFreeIncrement() {
       },
     ],
   },
+
+  // Distributed Systems ---------------------------------
+  {
+    id: 'dist-sys-1',
+    categoryId: 'dist-sys',
+    question: 'How would you test a distributed system?',
+    answer:
+      "Testing distributed systems involves validating the system's behavior across multiple independent nodes that communicate over a network, which introduces challenges such as network failures, latency, concurrency, and partial failures. Testing strategies must cover functional correctness, fault tolerance, and performance under various conditions.",
+    code: '',
+    hint: 'Consider the complexity of distributed interactions, failure modes, and consistency.',
+    explanation:
+      'Effective testing of distributed systems requires multiple approaches: unit tests for individual components, integration tests for communication and data exchange between nodes, and end-to-end tests simulating real-world scenarios including network partitions, node failures, and message delays. Techniques such as chaos engineering intentionally introduce faults to observe system resilience. Monitoring and logging help detect issues in production. Due to the nondeterministic nature of distributed systems, tests often include retries, timeouts, and assertions on eventual consistency rather than immediate consistency.',
+    tags: [
+      'distributed-systems',
+      'testing',
+      'fault-tolerance',
+      'integration-testing',
+      'chaos-engineering',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Testing Strategies for Distributed Systems',
+        url: 'https://www.geeksforgeeks.org/system-design/testing-distributed-systems/',
+      },
+      {
+        label: 'Codemia: Testing Distributed Systems',
+        url: 'https://codemia.io/knowledge-hub/path/distributed_systems_testing',
+      },
+    ],
+  },
+  {
+    id: 'dist-sys-2',
+    categoryId: 'dist-sys',
+    question:
+      'When would you apply asynchronous communication between two systems?',
+    answer:
+      'Asynchronous communication is used when the sender and receiver systems operate independently and do not require an immediate response. It enables decoupling, improves scalability, and allows the sender to continue processing without waiting for the receiver to respond.',
+    code: '',
+    hint: 'Think about system decoupling, latency tolerance, and load handling.',
+    explanation:
+      'You would apply asynchronous communication in scenarios where real-time interaction is not critical, such as processing jobs in a queue, event-driven architectures, or handling high throughput where blocking would degrade performance. It is ideal when systems need to be loosely coupled, improving fault tolerance by allowing retries and buffering messages during downtime. Examples include messaging systems (e.g., RabbitMQ, Kafka), email sending, or background processing tasks. However, it introduces complexity in error handling, ordering, and eventual consistency that must be managed.',
+    tags: [
+      'distributed-systems',
+      'asynchronous-communication',
+      'messaging',
+      'scalability',
+      'decoupling',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Asynchronous vs Synchronous communication',
+        url: 'https://www.geeksforgeeks.org/system-design/synchronous-vs-asynchronous-communication-system-design/',
+      },
+      {
+        label: 'Atlassian: When to use Asynchronous vs Synchronous',
+        url: 'https://www.atlassian.com/blog/loom/synchronous-vs-asynchronous#:~:text=Ask%20yourself%20if%20your%20message,t%20require%20an%20immediate%20response.',
+      },
+    ],
+  },
+  {
+    id: 'dist-sys-3',
+    categoryId: 'dist-sys',
+    question: 'What are the general pitfalls of remote procedure calls?',
+    answer:
+      'Remote Procedure Calls (RPC) abstract communication between distributed systems by allowing one system to invoke methods on another as if they were local. However, this abstraction can hide the complexities and unreliability of the network, leading to pitfalls.',
+    code: '',
+    hint: 'Consider network unreliability, latency, and failure modes.',
+    explanation:
+      'Common pitfalls of RPC include:\n\n1. **Network Failures:** Unlike local calls, RPCs can fail due to network issues, leading to partial failures and timeouts.\n2. **Latency:** Remote calls are significantly slower than local ones, which can degrade performance if not managed carefully.\n3. **Tight Coupling:** RPC encourages synchronous communication and can lead to tightly coupled systems, reducing scalability and fault tolerance.\n4. **Complex Error Handling:** Network errors, retries, and partial failures require sophisticated handling.\n5. **Versioning Issues:** Different versions of client and server can cause compatibility problems.\n6. **Serialization Overhead:** Data must be serialized and deserialized, adding overhead.\n\nDesigners often mitigate these pitfalls by using asynchronous messaging, timeouts, retries, and designing for eventual consistency.',
+    tags: [
+      'distributed-systems',
+      'rpc',
+      'network',
+      'pitfalls',
+      'error-handling',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Remote Procedure Invocation',
+        url: 'https://www.geeksforgeeks.org/operating-systems/remote-procedure-call-rpc-in-operating-system/',
+      },
+      {
+        label: 'DEV: RPC calls clearly explained',
+        url: 'https://dev.to/ralphsebastian/rpc-call-clearly-explained-3ine',
+      },
+    ],
+  },
+  {
+    id: 'dist-sys-4',
+    categoryId: 'dist-sys',
+    question:
+      "If you are building a distributed system for scalability and robustness, what are the different things you'd think of if you are working in a closed and secure network environment versus when you are working in a geographically distributed and public system?",
+    answer:
+      'Designing distributed systems in closed environments differs significantly from designing them in public, globally distributed settings. In closed, secure networks, you can optimize for performance and internal trust. In public, distributed systems, you must design for untrusted environments, higher latency, and fault tolerance.',
+    code: '',
+    hint: 'Focus on trust, latency, fault tolerance, and security assumptions.',
+    explanation:
+      'In a **closed, secure network environment**, you can:\n- Assume **low latency** and **high reliability**.\n- Trust nodes more easily, requiring **less stringent security**.\n- Use **simpler coordination and consensus algorithms**.\n- Optimize aggressively for **performance** without heavy encryption or access control.\n\nIn a **geographically distributed, public system**, you must:\n- Account for **high latency** and **network partitions**.\n- Design for **partial failures** and **asynchronous communication**.\n- Emphasize **security**: encrypt data in transit, authenticate nodes, prevent attacks.\n- Use **robust consensus mechanisms** like Raft or Paxos.\n- Build with **fault-tolerance** and **resilient failover mechanisms**.\n- Handle **data replication** and **eventual consistency** across zones.\n\nThese environmental differences influence choices in architecture, protocols, data handling, and reliability strategies.',
+    tags: [
+      'distributed-systems',
+      'scalability',
+      'fault-tolerance',
+      'public-vs-private',
+      'system-design',
+      'security',
+    ],
+    reference: [
+      {
+        label: 'Inseego: Private vs Public Networks',
+        url: 'https://inseego.com/resources/blog/private-vs-public-networks/',
+      },
+      {
+        label: 'Geeks for Geeks: Distributed Systems Tutorial',
+        url: 'https://www.geeksforgeeks.org/computer-networks/distributed-systems-tutorial/',
+      },
+    ],
+  },
+  {
+    id: 'dist-sys-5',
+    categoryId: 'dist-sys',
+    question:
+      'How would you manage fault tolerance in a web application? What about in a desktop one?',
+    answer:
+      'Fault tolerance ensures that applications continue to function correctly even when components fail. In web and desktop applications, fault tolerance is handled differently due to architectural differences. Web apps emphasize redundancy and distributed resilience, while desktop apps rely more on local recovery and state preservation.',
+    code: '',
+    hint: 'Compare distributed vs local failure handling.',
+    explanation:
+      '**In a web application**, fault tolerance is achieved by:\n- **Redundancy**: Deploying multiple instances behind load balancers.\n- **Graceful degradation**: Maintaining partial functionality if some services fail.\n- **Retries and timeouts**: Retrying failed requests with backoff strategies.\n- **Circuit breakers**: Preventing cascading failures.\n- **Failover**: Automatically switching to backup systems or regions.\n- **Monitoring and alerts**: Detecting issues early and triggering auto-recovery.\n- **Statelessness**: Making services easier to replicate and recover.\n\n**In a desktop application**, fault tolerance includes:\n- **Autosaving state**: Recovering user data after a crash.\n- **Error boundaries**: Catching and handling exceptions to prevent full app crashes.\n- **Isolating modules**: Preventing failures in one component from affecting others.\n- **Graceful exits**: Saving logs and user context for debugging or recovery.\n- **Background updates and rollback**: Ensuring failed updates can be reversed.\n\nEach platform uses techniques suited to its environment, but both aim to preserve user experience and minimize data loss.',
+    tags: [
+      'fault-tolerance',
+      'web-application',
+      'desktop-application',
+      'error-handling',
+      'reliability',
+      'system-design',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Fault Tolerance in System Design',
+        url: 'https://www.geeksforgeeks.org/system-design/fault-tolerance-in-system-design/',
+      },
+      {
+        label: 'Geeks for Geeks: Fault Tolerance Software Techniques',
+        url: 'https://www.geeksforgeeks.org/software-engineering/basic-fault-tolerant-software-techniques/',
+      },
+    ],
+  },
+  {
+    id: 'dist-sys-6',
+    categoryId: 'dist-sys',
+    question: 'How would you deal with failures in a distributed system?',
+    answer:
+      'Failures in distributed systems are inevitable, so the system must be designed to detect, isolate, and recover from them gracefully. Strategies vary depending on the type of failure—network, hardware, software, or data inconsistency.',
+    code: '',
+    hint: 'Think about detection, isolation, recovery, and resilience patterns.',
+    explanation:
+      "To deal with failures in a distributed system:\n\n1. **Failure Detection**: Use health checks, heartbeats, and monitoring tools to identify failing nodes or services.\n\n2. **Timeouts and Retries**: Set appropriate timeouts and implement retry mechanisms with exponential backoff to handle temporary issues.\n\n3. **Circuit Breakers**: Prevent cascading failures by temporarily cutting off requests to a failing service.\n\n4. **Redundancy and Replication**: Duplicate critical services and data to ensure availability even if some nodes fail.\n\n5. **Graceful Degradation**: Allow the system to continue operating in a reduced capacity when some components are unavailable.\n\n6. **Idempotency**: Ensure that retrying an operation doesn't cause unintended effects.\n\n7. **Fallbacks and Defaults**: Provide default responses or cached data when live data is unavailable.\n\n8. **Monitoring and Alerting**: Continuously observe system behavior and notify operators when something breaks.\n\n9. **Logging and Tracing**: Enable detailed logs and distributed tracing to diagnose and debug issues.\n\n10. **Partition Tolerance**: Design the system to handle network splits (CAP theorem) by choosing between consistency and availability based on the context.\n\nThese practices help make distributed systems more robust and resilient to partial or total service disruptions.",
+    tags: [
+      'distributed-systems',
+      'resilience',
+      'fault-tolerance',
+      'error-handling',
+      'system-design',
+    ],
+    reference: [
+      {
+        label: 'AWS Well-Architected Framework: Reliability Pillar',
+        url: 'https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/',
+      },
+      {
+        label: 'Google SRE Book: Handling Overload',
+        url: 'https://sre.google/sre-book/handling-overload/',
+      },
+    ],
+  },
+  {
+    id: 'dist-sys-7',
+    categoryId: 'dist-sys',
+    question:
+      "Let's talk about the several approaches to reconciliation after network partitions.",
+    answer:
+      'After a network partition heals, systems need to reconcile divergent data or state between the partitions. There are several reconciliation strategies depending on system requirements for consistency, availability, and performance.',
+    code: '',
+    hint: 'Think about consistency models, conflict resolution, and data synchronization.',
+    explanation:
+      "When a network partition occurs (P in the CAP theorem), parts of a distributed system may become isolated and make independent changes. Once the partition heals, reconciling differences is critical.\n\nHere are common reconciliation strategies:\n\n1. **Last-Write-Wins (LWW)**: The system chooses the most recent update based on timestamps. It's simple but can lead to data loss if concurrent updates occur.\n\n2. **Vector Clocks**: Each node keeps track of version history to detect conflicts. When conflicts are detected, the system can merge or ask for human intervention.\n\n3. **Operational Transformation / CRDTs**: Used in collaborative systems (like Google Docs), these allow concurrent changes to be merged automatically and deterministically without conflicts.\n\n4. **Manual Resolution**: In critical systems (e.g., banking), reconciliation might involve audits or user intervention to ensure accuracy.\n\n5. **Application-Level Merging**: The application defines custom logic to resolve conflicting updates based on domain knowledge (e.g., merging two versions of a shopping cart).\n\n6. **Consensus Protocols**: Systems using protocols like Paxos or Raft avoid divergence altogether by blocking writes during a partition, ensuring strong consistency at the cost of availability.\n\nChoosing the right approach depends on your consistency model (eventual vs strong), the criticality of the data, and user expectations.",
+    tags: [
+      'distributed-systems',
+      'network-partition',
+      'data-consistency',
+      'conflict-resolution',
+      'CAP-theorem',
+      'reconciliation',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Handling Network Partitions',
+        url: 'https://www.geeksforgeeks.org/computer-networks/handling-network-partitions-in-distributed-systems/',
+      },
+      {
+        label: 'Medium: Network Partitions',
+        url: 'https://medium.com/@awinas270597/network-partition-in-distributed-systems-5a9dbe9a9173',
+      },
+    ],
+  },
+  {
+    id: 'dist-sys-8',
+    categoryId: 'dist-sys',
+    question: 'What are the fallacies of distributed computing?',
+    answer:
+      'The fallacies of distributed computing are a set of common assumptions that developers often make when designing distributed systems. These assumptions usually turn out to be incorrect and lead to fragile, inefficient, or insecure systems if not accounted for.',
+    code: '',
+    hint: 'Think about assumptions related to networks, latency, bandwidth, and reliability.',
+    explanation:
+      'Originally proposed by Peter Deutsch and expanded by others at Sun Microsystems, there are eight classic fallacies:\n\n1. **The network is reliable** – Networks fail, and systems must be built to detect and recover from these failures.\n\n2. **Latency is zero** – Network delays are real and must be accounted for, especially in geographically distributed systems.\n\n3. **Bandwidth is infinite** – Bandwidth has limits, especially with large data transfers or under network congestion.\n\n4. **The network is secure** – Data can be intercepted or tampered with. Security should be explicitly designed into all distributed communications.\n\n5. **Topology doesn’t change** – Nodes may come and go, and IP addresses or paths can change, especially in cloud environments.\n\n6. **There is one administrator** – Distributed systems often span different organizations and administrative domains.\n\n7. **Transport cost is zero** – Moving data over the network incurs costs in time, CPU, and money (especially in cloud platforms).\n\n8. **The network is homogeneous** – Real-world networks consist of a mix of hardware, protocols, latencies, and failure modes.\n\nRecognizing and designing around these fallacies is critical to building resilient and scalable distributed systems.',
+    tags: [
+      'distributed-systems',
+      'fallacies',
+      'networking',
+      'architecture',
+      'resilience',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Fallacies of Distributed Computing',
+        url: 'https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing',
+      },
+      {
+        label: 'Geeks for Geeks: Fallacies of Distributed Sytems',
+        url: 'https://www.geeksforgeeks.org/system-design/fallacies-of-distributed-systems/',
+      },
+    ],
+  },
+  {
+    id: 'dist-sys-9',
+    categoryId: 'dist-sys',
+    question: 'When would you use request/reply and when publish/subscribe?',
+    answer:
+      'Request/reply is best when a client needs a specific response from a known service, while publish/subscribe is ideal for broadcasting information to multiple receivers without expecting a direct response.',
+    code: '',
+    hint: 'Think about one-to-one communication vs. one-to-many event distribution.',
+    explanation:
+      'Request/reply is a synchronous or asynchronous communication pattern in which a requester sends a message and waits for a direct response. It’s useful in tightly coupled interactions such as:\n- Querying a service for data (e.g., requesting user details)\n- Performing actions that require confirmation (e.g., payment processing)\n\nPublish/subscribe (pub/sub), on the other hand, is an asynchronous, event-driven model. A publisher emits messages to a topic or channel, and multiple subscribers can independently receive and handle those messages. This model works well when:\n- Events need to be broadcast to many listeners (e.g., chat messages, logging systems)\n- Components are loosely coupled and should not know about each other\n\nIn summary:\n- **Use request/reply** when you need a direct answer.\n- **Use pub/sub** when you want to decouple components and enable broad communication.',
+    tags: [
+      'distributed-systems',
+      'request-reply',
+      'publish-subscribe',
+      'messaging-patterns',
+      'communication',
+    ],
+    reference: [
+      {
+        label: 'DEV: Request-Reply vs Pub/Sub',
+        url: 'https://dev.to/mazenr/request-response-vs-message-queues-vs-publish-subscribe-patterns-3l0l',
+      },
+      {
+        label: 'Opto22: Request-response vs. publish-subscribe',
+        url: 'https://blog.opto22.com/optoblog/request-response-vs-pub-sub-part-1',
+      },
+    ],
+  },
+  {
+    id: 'dist-sys-10',
+    categoryId: 'dist-sys',
+    question:
+      'Suppose the system you are working on does not support transactionality. How would you implement it from scratch?',
+    answer:
+      "To implement transactionality from scratch, you'd need to create mechanisms for atomicity, consistency, isolation, and durability (ACID) manually. This often involves using patterns like the Unit of Work or Saga pattern, along with write-ahead logs, retries, and compensation mechanisms.",
+    code: '',
+    hint: 'Think about guaranteeing ACID properties without native DB or framework support.',
+    explanation:
+      'When native transaction support is unavailable, you must emulate transactional behavior. Here’s how you might approach it:\n\n**1. Atomicity**: Use a Unit of Work pattern to group multiple operations into a logical transaction. If any part fails, roll back the entire group. In distributed systems, this might require a Saga pattern, where each step has a compensating action to undo its effect if something fails.\n\n**2. Consistency**: Implement validation before and after transactions to ensure the system never enters an invalid state. You may also need to write checkpoints or snapshots.\n\n**3. Isolation**: Use locking mechanisms or versioning (optimistic/pessimistic) to prevent race conditions and ensure concurrent processes don’t interfere.\n\n**4. Durability**: Use write-ahead logs or event sourcing to persist changes before applying them, so that operations can be replayed if interrupted.\n\nYou may also need to handle retries, idempotency, and state tracking for partial failures in multi-step workflows.',
+    tags: [
+      'distributed-systems',
+      'transactions',
+      'acidity',
+      'saga-pattern',
+      'unit-of-work',
+      'durability',
+    ],
+    reference: [
+      {
+        label: 'ThreeDots: Distributed Transactions',
+        url: 'https://threedots.tech/post/distributed-transactions-in-go/',
+      },
+      {
+        label:
+          'Microsoft Docs: Implementing Transactions Without a Transaction Coordinator',
+        url: 'https://learn.microsoft.com/en-us/azure/architecture/patterns/saga',
+      },
+    ],
+  },
 ];

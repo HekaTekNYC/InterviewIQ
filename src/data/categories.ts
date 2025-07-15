@@ -60,4 +60,8 @@ export const categories: Category[] = [
     id: 'concurrency',
     name: 'Concurrency',
   },
+  {
+    id: 'dist-sys',
+    name: 'Distributed Systems',
+  },
 ];
