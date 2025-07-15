@@ -4543,4 +4543,153 @@ for t in threads:
       },
     ],
   },
+
+  // Code Versioning ----------------------------------
+
+  {
+    id: 'code-versioning-1',
+    categoryId: 'code-versioning',
+    question: 'Why is branching with Mercurial or Git easier than with SVN?',
+    answer:
+      'Branching with Git or Mercurial is easier because these systems are distributed, and branches are lightweight, local, and fast to create and manage compared to SVN.',
+    code: '',
+    hint: 'Think about local repositories, lightweight branches, and merging tools.',
+    explanation:
+      'In Git and Mercurial, each developer has a full local repository with complete version history, making branch operations like creation, switching, and merging fast and independent of a central server. Branches are simply pointers to commits, so they are lightweight and cost almost nothing to create. In contrast, SVN branches are implemented as directories in the central repository, making them heavier, harder to track, and more dependent on network operations. Git and Mercurial also offer more advanced merging and history visualization tools, which simplify working with multiple branches.',
+    tags: ['git', 'mercurial', 'svn', 'branching', 'version-control', 'dvcs'],
+    reference: [
+      {
+        label: 'Atlassian: Comparing Git and SVN',
+        url: 'https://www.atlassian.com/git/tutorials/svn-to-git-prepping-migration',
+      },
+      {
+        label: 'Geeks for Geeks: Git vs SVN',
+        url: 'https://www.geeksforgeeks.org/git/difference-between-git-and-svn/',
+      },
+    ],
+  },
+
+  {
+    id: 'code-versioning-2',
+    categoryId: 'code-versioning',
+    question:
+      'What are the pros and cons of distributed version control systems like Git over centralized ones like SVN?',
+    answer:
+      'Distributed version control systems (DVCS) like Git provide better flexibility, offline capabilities, and faster operations, but they can be more complex to learn and manage in large teams compared to centralized systems like SVN.',
+    code: '',
+    hint: 'Think about collaboration models, network dependency, and workflow complexity.',
+    explanation:
+      'In DVCS like Git, every user has a complete copy of the repository, including full history, which allows commits, diffs, and branches to be handled locally without needing a network connection. This improves speed and enables offline work. It also encourages more flexible workflows, such as feature branching and pull requests.\n\nHowever, Git’s complexity, especially around concepts like rebasing, staging, and multiple remotes, can create a steeper learning curve. SVN, being centralized, is simpler and can be easier to manage for small teams with straightforward needs, but it lacks the performance and flexibility of DVCS, and network reliance can slow down or block development work.',
+    tags: [
+      'git',
+      'svn',
+      'version-control',
+      'dvcs',
+      'centralized-vcs',
+      'collaboration',
+    ],
+    reference: [
+      {
+        label: 'Atlassian: Centralized vs Distributed Version Control',
+        url: 'https://www.atlassian.com/git/tutorials/comparing-workflows/centralized-workflow',
+      },
+      {
+        label: 'Git SCM: About Distributed Version Control',
+        url: 'https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control',
+      },
+    ],
+  },
+  {
+    id: 'code-versioning-3',
+    categoryId: 'code-versioning',
+    question: 'Could you describe GitHub Flow and GitFlow workflows?',
+    answer:
+      'GitHub Flow is a lightweight, branch-based workflow ideal for continuous deployment and frequent releases. GitFlow is a more structured workflow that separates development and production code, using long-lived branches like `develop` and `main` along with supporting branches like `feature`, `release`, and `hotfix`.',
+    code: '',
+    hint: 'Think about project size, release frequency, and complexity when comparing workflows.',
+    explanation:
+      'GitHub Flow works well for teams that deploy often. It involves creating a feature branch from `main`, working on it, opening a pull request, reviewing, testing, and then merging it back into `main`. Every change can be deployed after merge.\n\nGitFlow is better suited for projects with scheduled releases and larger teams. It uses multiple primary branches: `main` for production-ready code and `develop` for ongoing development. Features are built in `feature/*` branches, tested and merged into `develop`, then prepared for release in `release/*` branches. Urgent fixes are handled in `hotfix/*` branches and merged into both `main` and `develop`.',
+    tags: [
+      'git',
+      'github-flow',
+      'gitflow',
+      'version-control',
+      'workflow',
+      'deployment',
+      'branching-strategies',
+    ],
+    reference: [
+      {
+        label: 'GitHub Docs: Understanding the GitHub flow',
+        url: 'https://docs.github.com/en/get-started/quickstart/github-flow',
+      },
+      {
+        label: 'Atlassian: GitFlow Workflow',
+        url: 'https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow',
+      },
+    ],
+  },
+  {
+    id: 'code-versioning-4',
+    categoryId: 'code-versioning',
+    question: "What's a rebase?",
+    answer:
+      'Rebase is a Git command that moves or “replays” a sequence of commits from one branch onto another, creating a linear commit history. It rewrites commit history by changing the parent of commits.',
+    code: '',
+    hint: 'Think about linear history and avoiding unnecessary merge commits.',
+    explanation:
+      'When you run `git rebase`, Git moves the base of your branch to a new starting point (usually the latest commit of the target branch) and re-applies your commits on top of it. This results in a cleaner, linear history without merge commits. It’s often used to integrate changes from `main` into a feature branch before merging back.\n\nHowever, since it rewrites history, rebase should be used with caution on shared branches. For example:\n\n1. `git checkout feature`\n2. `git rebase main`\n\nNow, your `feature` branch contains the latest `main` changes, and your changes are replayed on top of them.',
+    tags: [
+      'git',
+      'rebase',
+      'version-control',
+      'commit-history',
+      'merge-vs-rebase',
+    ],
+    reference: [
+      {
+        label: 'Git SCM: git-rebase Documentation',
+        url: 'https://git-scm.com/docs/git-rebase',
+      },
+      {
+        label: 'Atlassian: Git rebase',
+        url: 'https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase',
+      },
+      {
+        label: 'Geeks for Geeks: Git rebase',
+        url: 'https://www.geeksforgeeks.org/git/rebasing-of-branches-in-git/',
+      },
+    ],
+  },
+  {
+    id: 'code-versioning-5',
+    categoryId: 'code-versioning',
+    question:
+      'Why are merges easier with Mercurial and Git than with SVN and CVS?',
+    answer:
+      'Merges are easier with Git and Mercurial because they are distributed version control systems that track changesets and entire project history locally, allowing more intelligent and accurate merge handling.',
+    code: '',
+    hint: 'Consider how Git and Mercurial record changes versus SVN and CVS.',
+    explanation:
+      'Git and Mercurial manage merging more effectively by storing snapshots (rather than just file diffs) and using a directed acyclic graph (DAG) to track branching and merging history. This allows them to automatically identify the common ancestor during a merge, making it less error-prone and more automatic.\n\nSVN and CVS, being centralized and less sophisticated in their branching models, often lack a complete view of the commit history. They rely more heavily on manual intervention and are prone to conflicts due to weaker merge-tracking capabilities.',
+    tags: [
+      'git',
+      'mercurial',
+      'svn',
+      'cvs',
+      'merging',
+      'version-control',
+      'dvcs',
+    ],
+    reference: [
+      {
+        label: 'Git SCM: Branching and Merging',
+        url: 'https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging',
+      },
+      {
+        label: 'Atlassian: DVCS vs CVCS',
+        url: 'https://www.atlassian.com/git/tutorials/syncing/git-push',
+      },
+    ],
+  },
 ];
