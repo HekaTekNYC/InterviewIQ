@@ -134,9 +134,11 @@ const Flashcard: React.FC<FlashcardProps> = ({
       <div className="flashcard__back">
         <div className="flashcard__answer">
           <div className="flashcard__answer-content">{answer}</div>
-          <pre>
-            <code className="flashcard__code-content">{code}</code>
-          </pre>
+          {code && (
+            <pre>
+              <code className="flashcard__code-content">{code}</code>
+            </pre>
+          )}
         </div>
         <div className="flashcard__bar">
           {explanation && (

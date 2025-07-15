@@ -4692,4 +4692,339 @@ for t in threads:
       },
     ],
   },
+
+  // Concurrency ------------------------------
+
+  {
+    id: 'concurrency-1',
+    categoryId: 'concurrency',
+    question: 'Why do we need concurrency, anyway? Explain.',
+    answer:
+      'Concurrency allows a system to handle multiple tasks at once, improving efficiency, responsiveness, and resource utilization—especially important in modern applications with I/O-bound or CPU-bound operations.',
+    code: '',
+    hint: 'Think about responsiveness, resource sharing, and parallelism.',
+    explanation:
+      'Concurrency is essential for designing systems that remain responsive and performant. It enables tasks like UI rendering, file I/O, or network communication to run alongside one another without blocking. In multicore systems, concurrency can also mean true parallelism, which maximizes CPU usage. Without concurrency, applications would perform tasks one at a time, potentially freezing or delaying user interactions while waiting for long-running operations to complete.',
+    tags: [
+      'concurrency',
+      'performance',
+      'parallelism',
+      'async',
+      'multitasking',
+      'resource-management',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Concurrency (computer science)',
+        url: 'https://en.wikipedia.org/wiki/Concurrency_(computer_science)',
+      },
+      {
+        label: 'MDN Web Docs: Concurrency model and the event loop',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop',
+      },
+    ],
+  },
+  {
+    id: 'concurrency-2',
+    categoryId: 'concurrency',
+    question: 'Why is testing multithreaded/concurrent code so difficult?',
+    answer:
+      'Testing multithreaded or concurrent code is difficult because of nondeterministic behavior caused by thread scheduling, race conditions, and timing issues, which can lead to unpredictable and hard-to-reproduce bugs.',
+    code: '',
+    hint: 'Think about timing, thread interaction, and race conditions.',
+    explanation:
+      'Concurrent code involves multiple threads or processes executing simultaneously, which introduces nondeterminism—different executions can produce different outcomes. Bugs like race conditions, deadlocks, and livelocks can appear only under certain timing scenarios, making them hard to detect and reproduce in tests. This complexity requires specialized testing approaches like stress testing, thread sanitizers, deterministic schedulers, and careful synchronization to ensure correctness.',
+    tags: [
+      'concurrency',
+      'testing',
+      'multithreading',
+      'race-conditions',
+      'nondeterminism',
+      'debugging',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Multithreading',
+        url: 'https://www.geeksforgeeks.org/operating-systems/multithreading-in-operating-system/',
+      },
+      {
+        label: 'Wikipedia: Race Condition',
+        url: 'https://en.wikipedia.org/wiki/Race_condition',
+      },
+    ],
+  },
+  {
+    id: 'concurrency-3',
+    categoryId: 'concurrency',
+    question:
+      'What is a race condition? Code an example, using whatever language you like.',
+    answer:
+      'A race condition occurs when multiple threads or processes access and modify shared data concurrently, and the final outcome depends on the timing or sequence of their execution. This can lead to unpredictable and erroneous behavior.',
+    code: '// JavaScript example simulating a race condition using async operations\nlet counter = 0;\n\nfunction increment() {\n  let temp = counter;\n  // Simulate some async work\n  setTimeout(() => {\n    counter = temp + 1;\n    console.log("Counter:", counter);\n  }, Math.random() * 100);\n}\n\n// Two increments started almost simultaneously\nincrement();\nincrement();\n\n// Output might be:\n// Counter: 1\n// Counter: 1\n// Instead of expected 2, due to race condition',
+    hint: 'Race conditions happen when shared state is accessed without proper synchronization.',
+    explanation:
+      "When two or more concurrent operations read and write shared data without coordination, they may overwrite each other's changes. In the example, both increments read the same initial value, increment it separately, and write back the same result, losing one increment. Proper synchronization or atomic operations prevent race conditions.",
+    tags: [
+      'concurrency',
+      'race-condition',
+      'threading',
+      'async',
+      'synchronization',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Race Condition',
+        url: 'https://en.wikipedia.org/wiki/Race_condition',
+      },
+      {
+        label: 'MDN: Concurrency model and Event Loop',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop',
+      },
+    ],
+  },
+
+  {
+    id: 'concurrency-4',
+    categoryId: 'concurrency',
+    question:
+      'What is a deadlock? Would you be able to write some code that is affected by deadlocks?',
+    answer:
+      'A deadlock is a situation in concurrent programming where two or more threads (or async tasks) are blocked forever, each waiting for the other to release a resource, causing the program to hang indefinitely.',
+    code: `// JavaScript example simulating deadlock using async locks
+
+class Lock {
+  constructor() {
+    this._locked = false;
+    this._waitingResolvers = [];
+  }
+  
+  acquire() {
+    return new Promise(resolve => {
+      if (!this._locked) {
+        this._locked = true;
+        resolve();
+      } else {
+        this._waitingResolvers.push(resolve);
+      }
+    });
+  }
+  
+  release() {
+    if (this._waitingResolvers.length > 0) {
+      const resolve = this._waitingResolvers.shift();
+      resolve();
+    } else {
+      this._locked = false;
+    }
+  }
+}
+
+const lockA = new Lock();
+const lockB = new Lock();
+
+async function task1() {
+  await lockA.acquire();
+  console.log('Task 1 acquired lock A');
+  // Simulate some async work
+  await new Promise(r => setTimeout(r, 100));
+  
+  console.log('Task 1 waiting for lock B');
+  await lockB.acquire(); // Waits here indefinitely if task2 holds lockB
+  console.log('Task 1 acquired lock B');
+
+  // Critical section
+  lockB.release();
+  lockA.release();
+}
+
+async function task2() {
+  await lockB.acquire();
+  console.log('Task 2 acquired lock B');
+  // Simulate some async work
+  await new Promise(r => setTimeout(r, 100));
+
+  console.log('Task 2 waiting for lock A');
+  await lockA.acquire(); // Waits here indefinitely if task1 holds lockA
+  console.log('Task 2 acquired lock A');
+
+  // Critical section
+  lockA.release();
+  lockB.release();
+}
+
+// Start tasks concurrently
+task1();
+task2();
+
+// Result: Task 1 holds lockA and waits for lockB,
+// Task 2 holds lockB and waits for lockA,
+// causing a deadlock (no further progress).
+`,
+    hint: 'Deadlocks often happen when two async tasks wait on each other’s locks.',
+    explanation:
+      'In this JavaScript example, each task acquires one lock and then waits for another lock held by the other task, resulting in a circular wait condition and deadlock. JavaScript’s async nature allows simulating this scenario with Promises. Deadlocks can be avoided by acquiring locks in a consistent order or by using timeout-based lock acquisition.',
+    tags: ['concurrency', 'deadlock', 'async', 'locks', 'javascript'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Deadlock in operating systems',
+        url: 'https://www.geeksforgeeks.org/operating-systems/introduction-of-deadlock-in-operating-system/',
+      },
+      {
+        label: 'Baeldung: Deadlock',
+        url: 'https://www.baeldung.com/cs/os-deadlock',
+      },
+    ],
+  },
+  {
+    id: 'concurrency-5',
+    categoryId: 'concurrency',
+    question:
+      "What is process starvation? If you need, let's review its definition.",
+    answer:
+      'Process starvation occurs when a process (or thread) waits indefinitely because other higher-priority processes keep getting resources first, preventing it from making progress.',
+    code: `// Example in JavaScript simulating starvation via priority scheduling (conceptual)
+
+class PriorityQueue {
+  constructor() {
+    this.queue = [];
+  }
+  
+  enqueue(task, priority) {
+    this.queue.push({ task, priority });
+    this.queue.sort((a, b) => b.priority - a.priority); // Higher priority first
+  }
+  
+  dequeue() {
+    return this.queue.shift()?.task;
+  }
+}
+
+const scheduler = new PriorityQueue();
+
+function runTask(name, priority) {
+  scheduler.enqueue(() => {
+    console.log(\`Running task: \${name} with priority \${priority}\`);
+  }, priority);
+}
+
+// High priority tasks keep arriving
+setInterval(() => runTask('High Priority Task', 10), 100);
+
+// Low priority task is enqueued once
+runTask('Low Priority Task', 1);
+
+// Run tasks every 200ms
+setInterval(() => {
+  const task = scheduler.dequeue();
+  if (task) task();
+}, 200);
+
+// In this scenario, the low priority task may never get CPU time,
+// because high priority tasks keep preempting it — this is starvation.
+`,
+    hint: 'Starvation happens due to unfair resource allocation, often with priority-based scheduling.',
+    explanation:
+      'Starvation is a problem where low-priority processes wait indefinitely because higher-priority processes monopolize the resources. Unlike deadlocks, starvation is caused by scheduling policies that don’t guarantee fairness. Solutions include aging (gradually increasing priority of waiting tasks) or fair scheduling algorithms to ensure all processes get a chance to run.',
+    tags: [
+      'concurrency',
+      'starvation',
+      'scheduling',
+      'priority',
+      'resource-allocation',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Starvation (computing)',
+        url: 'https://en.wikipedia.org/wiki/Starvation_(computing)',
+      },
+      {
+        label: 'Geeks for Geeks: Process Starvation',
+        url: 'https://www.geeksforgeeks.org/operating-systems/starvation-and-aging-in-operating-systems/',
+      },
+    ],
+  },
+  {
+    id: 'concurrency-6',
+    categoryId: 'concurrency',
+    question: 'What is a wait-free algorithm?',
+    answer:
+      'A wait-free algorithm guarantees that every thread or process will complete its operation in a finite number of steps, regardless of the behavior of other threads. It ensures system-wide progress without any thread ever having to wait for others, avoiding issues like deadlocks or starvation.',
+    code: `// Conceptual example: Atomic increment using JavaScript's Atomics (simulated wait-free behavior)
+
+const sharedBuffer = new SharedArrayBuffer(4);
+const counter = new Int32Array(sharedBuffer);
+
+function waitFreeIncrement() {
+  let done = false;
+  while (!done) {
+    const oldValue = Atomics.load(counter, 0);
+    done = Atomics.compareExchange(counter, 0, oldValue, oldValue + 1) === oldValue;
+  }
+}
+
+// Multiple threads calling waitFreeIncrement concurrently will complete without waiting indefinitely.
+`,
+    hint: 'Wait-free algorithms guarantee completion in a bounded number of steps for all threads.',
+    explanation:
+      'Wait-free algorithms are the strongest type of non-blocking synchronization. They guarantee system progress by ensuring each thread can complete its operation independently of others, preventing delays caused by locks or waiting. This makes them highly desirable for concurrent programming but often complex to design and implement.',
+    tags: [
+      'concurrency',
+      'wait-free',
+      'non-blocking',
+      'algorithms',
+      'parallelism',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Wait-free',
+        url: 'https://en.wikipedia.org/wiki/Non-blocking_algorithm#Wait-freedom',
+      },
+      {
+        label: 'Intel Developer Zone: Non-blocking Synchronization',
+        url: 'https://software.intel.com/content/www/us/en/develop/articles/introduction-to-non-blocking-synchronization.html',
+      },
+    ],
+  },
+  {
+    id: 'concurrency-6',
+    categoryId: 'concurrency',
+    question: 'What is a wait-free algorithm?',
+    answer:
+      'A wait-free algorithm guarantees that every thread or process will complete its operation in a finite number of steps, regardless of the behavior of other threads. It ensures system-wide progress without any thread ever having to wait for others, avoiding issues like deadlocks or starvation.',
+    code: `// Conceptual example: Atomic increment using JavaScript's Atomics (simulated wait-free behavior)
+
+const sharedBuffer = new SharedArrayBuffer(4);
+const counter = new Int32Array(sharedBuffer);
+
+function waitFreeIncrement() {
+  let done = false;
+  while (!done) {
+    const oldValue = Atomics.load(counter, 0);
+    done = Atomics.compareExchange(counter, 0, oldValue, oldValue + 1) === oldValue;
+  }
+}
+
+// Multiple threads calling waitFreeIncrement concurrently will complete without waiting indefinitely.
+`,
+    hint: 'Wait-free algorithms guarantee completion in a bounded number of steps for all threads.',
+    explanation:
+      'Wait-free algorithms are the strongest type of non-blocking synchronization. They guarantee system progress by ensuring each thread can complete its operation independently of others, preventing delays caused by locks or waiting. This makes them highly desirable for concurrent programming but often complex to design and implement.',
+    tags: [
+      'concurrency',
+      'wait-free',
+      'non-blocking',
+      'algorithms',
+      'parallelism',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Wait-free',
+        url: 'https://en.wikipedia.org/wiki/Non-blocking_algorithm#Wait-freedom',
+      },
+      {
+        label: 'RethinkDB: Lock-free vs Wait-free concurrency',
+        url: 'https://rethinkdb.com/blog/lock-free-vs-wait-free-concurrency/',
+      },
+    ],
+  },
 ];

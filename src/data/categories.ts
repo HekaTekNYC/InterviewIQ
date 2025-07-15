@@ -56,4 +56,8 @@ export const categories: Category[] = [
     id: 'code-versioning',
     name: 'Code Versioning',
   },
+  {
+    id: 'concurrency',
+    name: 'Concurrency',
+  },
 ];

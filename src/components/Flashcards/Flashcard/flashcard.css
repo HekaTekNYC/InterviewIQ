@@ -82,8 +82,8 @@
 
 .flashcard__code-content {
   display: block;
-  white-space: pre-wrap; /* allow wrapping but keep whitespace and line breaks */
-  word-wrap: break-word; /* break long words if needed */
+  white-space: pre-wrap;
+  word-wrap: break-word;
   text-align: start;
   font-family: 'Courier New', monospace;
   color: var(--bg-color);
