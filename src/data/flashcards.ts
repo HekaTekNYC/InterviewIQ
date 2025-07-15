@@ -5713,4 +5713,570 @@ function waitFreeIncrement() {
       },
     ],
   },
+
+  // Algorithms and Logic ---------------------------
+
+  {
+    id: 'algos-logic-1',
+    categoryId: 'algos-logic',
+    question:
+      'Make a FIFO queue using only LIFO stacks. Then build a LIFO stack using only FIFO queues.',
+    answer:
+      'You can simulate a FIFO queue using two LIFO stacks by pushing to one and popping from the other, transferring elements only when necessary. To simulate a LIFO stack using FIFO queues, enqueue elements and rotate the queue after each insertion so the most recent item stays at the front.',
+    code: '// FIFO Queue using two LIFO Stacks\nclass Queue {\n  constructor() {\n    this.inStack = [];\n    this.outStack = [];\n  }\n\n  enqueue(val) {\n    this.inStack.push(val);\n  }\n\n  dequeue() {\n    if (!this.outStack.length) {\n      while (this.inStack.length) {\n        this.outStack.push(this.inStack.pop());\n      }\n    }\n    return this.outStack.pop();\n  }\n}\n\n// LIFO Stack using two FIFO Queues\nclass Stack {\n  constructor() {\n    this.q1 = [];\n    this.q2 = [];\n  }\n\n  push(val) {\n    this.q2.push(val);\n    while (this.q1.length) {\n      this.q2.push(this.q1.shift());\n    }\n    [this.q1, this.q2] = [this.q2, this.q1];\n  }\n\n  pop() {\n    return this.q1.shift();\n  }\n}',
+    hint: 'Think about transferring elements between two stacks or queues to simulate the opposite behavior.',
+    explanation:
+      'Stacks and queues are opposites in how they manage order—LIFO vs FIFO. By cleverly transferring elements between two structures, you can simulate the opposite behavior. For the queue with stacks, delay the reversal until necessary (lazy transfer). For the stack with queues, force order on every push (eager rotation). These techniques allow for structural inversion.',
+    tags: [
+      'data-structures',
+      'stack',
+      'queue',
+      'interview',
+      'algorithms',
+      'javascript',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Implement Queue using Stacks',
+        url: 'https://www.geeksforgeeks.org/dsa/queue-using-stacks/',
+      },
+      {
+        label: 'Geeks for Geeks: Implement Stack using Queues',
+        url: 'https://www.geeksforgeeks.org/implement-stack-using-queue/',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-2',
+    categoryId: 'algos-logic',
+    question: 'Write a snippet of code affected by a stack overflow.',
+    answer:
+      'A stack overflow occurs when a program uses more stack memory than is available—usually by excessive or infinite recursion.',
+    code: '// Infinite recursion leading to stack overflow\nfunction recurse() {\n  return recurse();\n}\n\nrecurse(); // ⚠️ Maximum call stack size exceeded',
+    hint: 'Think about recursion without a base case.',
+    explanation:
+      'Each function call in JavaScript (and most languages) consumes stack space. Recursive functions must have base cases to stop calling themselves. Without one, like in this example, the call stack grows until the runtime throws an error (often "Maximum call stack size exceeded"). This is a stack overflow.',
+    tags: [
+      'recursion',
+      'stack-overflow',
+      'call-stack',
+      'algorithms',
+      'errors',
+      'javascript',
+    ],
+    reference: [
+      {
+        label: 'MDN: Call stack',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/Call_stack',
+      },
+      {
+        label: 'Geeks for Geeks: Stack overflow',
+        url: 'https://www.geeksforgeeks.org/cpp/heap-overflow-stack-overflow/',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-3',
+    categoryId: 'algos-logic',
+    question: 'Write a tail-recursive version of the factorial function.',
+    answer:
+      'A tail-recursive function performs the recursive call as its final action. This allows some languages (not JavaScript) to optimize and reuse the same stack frame.',
+    code: '// Tail-recursive factorial (ES6+ style, not optimized in JS engines)\nfunction factorial(n, acc = 1) {\n  if (n <= 1) return acc;\n  return factorial(n - 1, n * acc);\n}\n\nconsole.log(factorial(5)); // Output: 120',
+    hint: 'Use an accumulator to carry the result through recursive calls.',
+    explanation:
+      'In tail recursion, the recursive call is the last statement executed. Some languages (like Scheme, Scala, or newer versions of Python with optimizations) support Tail Call Optimization (TCO), which allows efficient recursion. JavaScript currently lacks guaranteed TCO, so the optimization may not apply, but the style is still useful for understanding recursion principles.',
+    tags: [
+      'recursion',
+      'tail-recursion',
+      'factorial',
+      'optimization',
+      'javascript',
+      'algorithms',
+    ],
+    reference: [
+      {
+        label: 'MDN: Recursion',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/Recursion',
+      },
+      {
+        label: 'Geeks for geeks: Tail recursion',
+        url: 'https://www.geeksforgeeks.org/dsa/tail-recursion/',
+      },
+    ],
+  },
+
+  {
+    id: 'algos-logic-4',
+    categoryId: 'algos-logic',
+    question:
+      'Using your preferred language, write a REPL that echoes your inputs. Evolve it to make it an RPN calculator.',
+    answer:
+      'A REPL (Read-Eval-Print Loop) continuously reads user input, evaluates it, and prints the result. Starting with an echo REPL is a good base. An RPN (Reverse Polish Notation) calculator uses a stack to evaluate expressions without parentheses.',
+    code: "// Simple echo REPL (Node.js only)\nconst readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin, output: process.stdout });\n\nconsole.log('Echo REPL: Type something');\nrl.on('line', (input) => {\n  console.log(`You said: ${input}`);\n});\n\n// RPN Calculator (e.g. input: '3 4 +')\nrl.on('line', (input) => {\n  const tokens = input.trim().split(' ');\n  const stack = [];\n\n  for (let token of tokens) {\n    if (!isNaN(token)) {\n      stack.push(Number(token));\n    } else {\n      const b = stack.pop();\n      const a = stack.pop();\n      switch (token) {\n        case '+': stack.push(a + b); break;\n        case '-': stack.push(a - b); break;\n        case '*': stack.push(a * b); break;\n        case '/': stack.push(a / b); break;\n        default: console.log(`Unknown operator: ${token}`);\n      }\n    }\n  }\n\n  console.log('Result:', stack[0]);\n});",
+    hint: 'Start with a readline loop. Then add a stack and evaluate operations from left to right.',
+    explanation:
+      'A REPL provides an interactive command-line interface. In JavaScript, this is done using Node’s `readline` module. To convert it into an RPN calculator, maintain a stack, push numbers onto it, and perform operations by popping values off. This demonstrates stack usage and control flow.',
+    tags: ['javascript', 'repl', 'stack', 'rpn', 'nodejs', 'algorithms'],
+    reference: [
+      {
+        label: 'Node.js: Readline module',
+        url: 'https://nodejs.org/api/readline.html',
+      },
+      {
+        label: 'Wikipedia: Reverse Polish Notation',
+        url: 'https://en.wikipedia.org/wiki/Reverse_Polish_notation',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-5',
+    categoryId: 'algos-logic',
+    question: 'How would you design a "defragger" utility?',
+    answer:
+      'A "defragger" rearranges fragmented files on disk to occupy contiguous blocks, improving read/write performance. Designing one involves analyzing disk layout, identifying fragmented files, and moving their parts to contiguous spaces while updating file system metadata safely.',
+    code: '',
+    hint: 'Think about how files are stored in blocks and what fragmentation means for performance.',
+    explanation:
+      'File fragmentation occurs when files are split into scattered blocks on disk due to frequent modifications, deletions, or space limitations. A defragger scans the file system, identifies non-contiguous file blocks, and moves them into adjacent free blocks to make access faster. Key concerns include ensuring data integrity, minimizing downtime, and coordinating with the operating system to lock or schedule file movements safely. For SSDs, defragmentation is often discouraged, as it doesn’t improve performance and may reduce drive lifespan.',
+    tags: [
+      'algorithms',
+      'file-systems',
+      'optimization',
+      'disk-management',
+      'performance',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Disk defragmentation',
+        url: 'https://en.wikipedia.org/wiki/Defragmentation',
+      },
+      {
+        label: 'CCRComputing: Defragmentation',
+        url: 'https://ccrcomputing.weebly.com/defragmentation.html',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-6',
+    categoryId: 'algos-logic',
+    question: 'Write a program that builds random mazes.',
+    answer:
+      'A program that builds random mazes can use algorithms like recursive backtracking, Prim’s algorithm, or Kruskal’s algorithm. These algorithms start with a grid and carve out paths randomly while ensuring the maze remains solvable with no isolated sections.',
+    code: `// Recursive Backtracking Maze Generator (JavaScript)
+const createMaze = (width, height) => {
+  const maze = Array.from({ length: height }, () => Array(width).fill('█'));
+  const directions = [
+    [0, -2], [2, 0], [0, 2], [-2, 0]
+  ];
+  const isValid = (x, y) =>
+    x > 0 && x < width - 1 && y > 0 && y < height - 1;
+
+  const carve = (x, y) => {
+    maze[y][x] = ' ';
+    directions.sort(() => Math.random() - 0.5);
+    for (const [dx, dy] of directions) {
+      const nx = x + dx, ny = y + dy;
+      if (isValid(nx, ny) && maze[ny][nx] === '█') {
+        maze[y + dy / 2][x + dx / 2] = ' ';
+        carve(nx, ny);
+      }
+    }
+  };
+
+  carve(1, 1);
+  return maze.map(row => row.join('')).join('\\n');
+};
+
+console.log(createMaze(21, 21));`,
+    hint: 'Use depth-first search or another spanning tree algorithm to carve paths in a grid.',
+    explanation:
+      'Maze generation algorithms create complex paths while ensuring there is one or more ways to get from start to end. Recursive backtracking is a common approach where the algorithm carves out a path from a starting point and backtracks when it hits a dead end. Randomized Prim’s or Kruskal’s algorithms work by building a minimum spanning tree over the grid cells. These algorithms avoid loops and ensure that the resulting maze has a single connected component.',
+    tags: [
+      'algorithms',
+      'mazes',
+      'recursion',
+      'backtracking',
+      'data-structures',
+      'pathfinding',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Maze generation algorithm',
+        url: 'https://en.wikipedia.org/wiki/Maze_generation_algorithm',
+      },
+      {
+        label: 'Medium: Maze Generation',
+        url: 'https://medium.com/swlh/how-to-create-a-maze-with-javascript-36f3ad8eebc1',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-7',
+    categoryId: 'algos-logic',
+    question: 'Write a sample program that produces a memory leak.',
+    answer:
+      'Memory leaks occur when allocated memory is never released, often because objects are unintentionally kept in memory due to lingering references. In JavaScript, this commonly happens with global variables, closures, or forgotten DOM elements.',
+    code: `// Memory leak example in JavaScript
+const leaks = [];
+
+function leakMemory() {
+  const largeData = new Array(1e6).fill('leak'); // 1 million items
+  leaks.push(() => largeData); // closure keeps reference alive
+}
+
+// Call repeatedly to simulate leak over time
+setInterval(leakMemory, 1000);`,
+    hint: 'Think about what happens when memory is referenced but never released.',
+    explanation:
+      'This example creates a large array and captures it inside a closure, which is then pushed into a global array. Because the reference to the data is never removed, the garbage collector cannot reclaim the memory. Over time, this will increase memory usage indefinitely. To avoid leaks, ensure objects no longer needed are dereferenced or removed from long-lived structures.',
+    tags: [
+      'memory',
+      'javascript',
+      'leak',
+      'closures',
+      'debugging',
+      'performance',
+    ],
+    reference: [
+      {
+        label: 'MDN Web Docs: Memory Management',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management',
+      },
+      {
+        label: 'Geeks for Geeks: JavaScript Memory Leaks',
+        url: 'https://www.geeksforgeeks.org/javascript/how-to-handle-memory-leaks-in-javascript/',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-8',
+    categoryId: 'algos-logic',
+    question: 'Generate a sequence of unique random numbers.',
+    answer:
+      'To generate a sequence of unique random numbers, you need to ensure no duplicates are included. A common approach is to shuffle an array of numbers and then pick from it, or use a Set to track uniqueness while generating.',
+    code: `// Generate unique random numbers between 1 and 100 (inclusive)
+function generateUniqueRandomNumbers(count, max) {
+  if (count > max) throw new Error("Count cannot be greater than max");
+
+  const numbers = Array.from({ length: max }, (_, i) => i + 1);
+  // Fisher-Yates shuffle
+  for (let i = numbers.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+  }
+  return numbers.slice(0, count);
+}
+
+// Example usage:
+const uniqueRandoms = generateUniqueRandomNumbers(10, 100);
+console.log(uniqueRandoms);`,
+    hint: 'Shuffling an array is often easier than generating and checking for duplicates.',
+    explanation:
+      'By shuffling an array of numbers from 1 to max, you randomize the order without duplicates. Then, by slicing the first count numbers, you get a unique sequence. This approach is efficient and guarantees uniqueness without extra checks.',
+    tags: [
+      'random',
+      'unique',
+      'javascript',
+      'algorithm',
+      'shuffle',
+      'fisher-yates',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Fisher–Yates shuffle',
+        url: 'https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle',
+      },
+      {
+        label: 'MDN: Array.prototype.sort() and random shuffling',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#random_shuffle',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-9',
+    categoryId: 'algos-logic',
+    question: 'Write a simple garbage collection system.',
+    answer:
+      'Garbage collection automatically frees memory that is no longer reachable. One simple approach is the mark-and-sweep algorithm: it marks all reachable objects, then sweeps away unmarked (unreachable) ones.',
+    code: `// Simple mark-and-sweep GC simulation in JS
+
+class GCObject {
+  constructor(name) {
+    this.name = name;
+    this.references = [];
+    this.marked = false;
+  }
+}
+
+class SimpleGC {
+  constructor() {
+    this.objects = [];
+    this.roots = [];
+  }
+
+  addObject(obj) {
+    this.objects.push(obj);
+  }
+
+  addRoot(obj) {
+    this.roots.push(obj);
+  }
+
+  mark(obj) {
+    if (obj.marked) return;
+    obj.marked = true;
+    obj.references.forEach(ref => this.mark(ref));
+  }
+
+  sweep() {
+    this.objects = this.objects.filter(obj => {
+      if (!obj.marked) {
+        console.log(\`Collecting \${obj.name}\`);
+        return false; // Remove unmarked objects
+      }
+      obj.marked = false; // Reset for next GC cycle
+      return true;
+    });
+  }
+
+  collect() {
+    this.roots.forEach(root => this.mark(root));
+    this.sweep();
+  }
+}
+
+// Example usage
+const gc = new SimpleGC();
+
+const objA = new GCObject('A');
+const objB = new GCObject('B');
+const objC = new GCObject('C');
+const objD = new GCObject('D');
+
+objA.references.push(objB);
+objB.references.push(objC);
+
+gc.addObject(objA);
+gc.addObject(objB);
+gc.addObject(objC);
+gc.addObject(objD);
+
+gc.addRoot(objA);
+
+gc.collect(); // Should collect D because it is unreachable
+`,
+    hint: 'Think about marking reachable objects first, then removing the rest.',
+    explanation:
+      'The mark-and-sweep garbage collector starts from root objects and marks all reachable objects recursively. Then it removes all objects that were not marked, freeing memory. This simple simulation helps illustrate the concept but real-world GCs are much more complex and optimized.',
+    tags: [
+      'garbage-collection',
+      'memory-management',
+      'mark-and-sweep',
+      'algorithm',
+      'javascript',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Garbage Collection',
+        url: 'https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)',
+      },
+      {
+        label: 'Geeks for Geeks: Garbage Collection',
+        url: 'https://www.geeksforgeeks.org/javascript/garbage-collection-in-javascript/',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-10',
+    categoryId: 'algos-logic',
+    question: 'Write a basic message broker, using whatever language you like.',
+    answer:
+      'A message broker acts as an intermediary that allows different parts of a system to communicate asynchronously by publishing and subscribing to messages.',
+    code: `// Basic Message Broker in JavaScript (Pub/Sub pattern)
+class MessageBroker {
+  constructor() {
+    this.topics = {};
+  }
+
+  subscribe(topic, listener) {
+    if (!this.topics[topic]) {
+      this.topics[topic] = [];
+    }
+    this.topics[topic].push(listener);
+  }
+
+  unsubscribe(topic, listener) {
+    if (!this.topics[topic]) return;
+    this.topics[topic] = this.topics[topic].filter(l => l !== listener);
+  }
+
+  publish(topic, message) {
+    if (!this.topics[topic]) return;
+    this.topics[topic].forEach(listener => listener(message));
+  }
+}
+
+// Usage Example
+const broker = new MessageBroker();
+
+function subscriber1(msg) {
+  console.log('Subscriber 1 received:', msg);
+}
+
+function subscriber2(msg) {
+  console.log('Subscriber 2 received:', msg);
+}
+
+broker.subscribe('news', subscriber1);
+broker.subscribe('news', subscriber2);
+
+broker.publish('news', 'Hello subscribers!');
+
+broker.unsubscribe('news', subscriber2);
+
+broker.publish('news', 'Second message');`,
+    hint: 'Think about topics, subscriptions, and publishing messages.',
+    explanation:
+      'This simple broker maintains a list of topics and their subscribers. Subscribers register callback functions to topics. When a message is published to a topic, all subscribed callbacks are invoked with the message. This decouples senders and receivers, enabling asynchronous communication.',
+    tags: [
+      'message-broker',
+      'pub-sub',
+      'asynchronous',
+      'event-driven',
+      'javascript',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Message Broker',
+        url: 'https://en.wikipedia.org/wiki/Message_broker',
+      },
+      {
+        label: 'TSH: Message broker',
+        url: 'https://tsh.io/blog/message-broker/',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-11',
+    categoryId: 'algos-logic',
+    question:
+      'Write a very basic web server. Draw a roadmap for features to be implemented in the future.',
+    answer:
+      'A very basic web server listens for HTTP requests and sends back responses. Below is a simple example using Node.js built-in http module.',
+    code: `// Basic HTTP Web Server in Node.js
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200; // OK
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, world!\\n');
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log('Server running at http://localhost:' + PORT);
+});`,
+    hint: 'Start simple: listen on a port, respond to any request.',
+    explanation:
+      'This server listens on port 3000 and responds with "Hello, world!" for any HTTP request. It forms the foundation for building more complex web servers. Future improvements include routing, static file serving, middleware, template rendering, REST API support, security, and performance enhancements.',
+    tags: ['web-server', 'nodejs', 'http', 'backend', 'javascript'],
+    reference: [
+      {
+        label: 'Node.js HTTP Module',
+        url: 'https://www.w3schools.com/nodejs/nodejs_http.asp',
+      },
+      {
+        label: 'MDN: HTTP Server',
+        url: 'https://developer.mozilla.org/en-US/docs/Learn/Server-side/Node_server_without_framework',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-12',
+    categoryId: 'algos-logic',
+    question:
+      'How would you sort a 10GB file? How would your approach change with a 10TB one?',
+    answer:
+      'Sorting a 10GB file typically exceeds available RAM, so an external sorting algorithm is needed, like External Merge Sort. For a 10TB file, the approach must handle even larger data and possibly distributed storage and processing.',
+    code: `// Pseudocode for External Merge Sort:
+// 1. Break the large file into smaller chunks that fit into memory.
+// 2. Sort each chunk in memory and write it back to disk as a sorted "run".
+// 3. Merge sorted runs in passes until one sorted file remains.
+
+function externalMergeSort(file, chunkSize) {
+  // Step 1: Read file in chunks of chunkSize
+  // Step 2: Sort each chunk and write to temp files
+  // Step 3: Merge temp files pairwise until one remains
+}`,
+    hint: 'Think about memory limits and disk I/O; merge sorted chunks.',
+    explanation:
+      'For 10GB, external merge sort divides the file into manageable chunks, sorts them individually, and merges sorted chunks efficiently. For 10TB, single-machine external sort becomes impractical; you might use distributed systems like Hadoop or Spark to parallelize sorting across many nodes. Also, storage, network, and fault tolerance become critical factors.',
+    tags: [
+      'external-sort',
+      'big-data',
+      'file-sorting',
+      'merge-sort',
+      'distributed-systems',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: External Sorting',
+        url: 'https://en.wikipedia.org/wiki/External_sorting',
+      },
+      {
+        label: 'W3Schools: Storage Key',
+        url: 'https://www.w3schools.com/jsref/met_storage_key.asp',
+      },
+    ],
+  },
+  {
+    id: 'algos-logic-13',
+    categoryId: 'algos-logic',
+    question: 'How would you programmatically detect file duplicates?',
+    answer:
+      'To detect file duplicates, you can compare files using their content hashes. The process involves computing a hash (like MD5, SHA-1, or SHA-256) for each file and grouping files with identical hashes as duplicates. This approach is efficient because comparing hashes is faster than comparing entire file contents.',
+    code: `const crypto = require('crypto');
+const fs = require('fs');
+
+function hashFile(filePath) {
+  return new Promise((resolve, reject) => {
+    const hash = crypto.createHash('sha256');
+    const stream = fs.createReadStream(filePath);
+    stream.on('data', chunk => hash.update(chunk));
+    stream.on('end', () => resolve(hash.digest('hex')));
+    stream.on('error', err => reject(err));
+  });
+}
+
+async function findDuplicates(files) {
+  const hashMap = {};
+  for (const file of files) {
+    const hash = await hashFile(file);
+    if (hashMap[hash]) {
+      hashMap[hash].push(file);
+    } else {
+      hashMap[hash] = [file];
+    }
+  }
+  return Object.values(hashMap).filter(group => group.length > 1);
+}
+
+// Usage example:
+// findDuplicates(['file1.txt', 'file2.txt', 'file3.txt']).then(console.log);
+`,
+    hint: 'Use file hashing to identify identical content without comparing full files directly.',
+    explanation:
+      'Computing cryptographic hashes uniquely represents file content. Files with matching hashes are likely duplicates. To optimize, you might first compare file sizes to avoid hashing files that differ in size, and only hash files with the same size. For large datasets, incremental or chunked hashing and caching results can improve performance.',
+    tags: ['file-duplicates', 'hashing', 'crypto', 'file-system', 'efficiency'],
+    reference: [
+      {
+        label: 'Wikipedia: Cryptographic Hash Function',
+        url: 'https://en.wikipedia.org/wiki/Cryptographic_hash_function',
+      },
+      {
+        label: 'Node.js crypto module',
+        url: 'https://nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm_options',
+      },
+    ],
+  },
 ];
