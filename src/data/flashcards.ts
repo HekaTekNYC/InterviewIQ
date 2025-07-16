@@ -1,17 +1,4 @@
-export interface Flashcard {
-  id: string;
-  categoryId: string;
-  question: string;
-  answer: string;
-  code: string;
-  tags?: string[];
-  hint?: string;
-  explanation?: string;
-  reference?: {
-    label: string;
-    url: string;
-  }[];
-}
+import { Flashcard } from '@/types';
 
 export const flashcards: Flashcard[] = [
   // HTML
@@ -6276,6 +6263,214 @@ async function findDuplicates(files) {
       {
         label: 'Node.js crypto module',
         url: 'https://nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm_options',
+      },
+    ],
+  },
+
+  // Software Architecture ----------------------------------
+
+  {
+    id: 'software-arch-1',
+    categoryId: 'software-architecture',
+    question: 'When is a cache not useful or even dangerous?',
+    answer:
+      'A cache is not useful when the data changes very frequently, or when the cost of retrieving fresh data is low compared to the complexity and overhead of maintaining the cache. It can be dangerous if it serves stale data that leads to incorrect application behavior, or if it consumes too much memory or resources without clear benefits.',
+    code: '',
+    hint: 'Think about data freshness, consistency, and resource costs.',
+    explanation:
+      'Caching is beneficial when data is read often but updated infrequently. If data changes frequently or requires strong consistency, caching risks serving outdated or incorrect information, leading to bugs or security issues. Additionally, improperly managed caches can consume excessive memory or CPU, degrade performance, or introduce cache coherence problems. Therefore, caching strategies must balance performance gains with potential consistency and complexity costs.',
+    tags: [
+      'software-architecture',
+      'caching',
+      'performance',
+      'consistency',
+      'design-considerations',
+    ],
+    reference: [
+      {
+        label: 'Momento: Think before you cache',
+        url: 'https://www.gomomento.com/blog/think-first-cache-later/',
+      },
+      {
+        label: 'Geeks for Geeks: Why Caching isnt always useful',
+        url: 'https://www.geeksforgeeks.org/system-design/why-caching-does-not-always-improve-performance/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-2',
+    categoryId: 'software-architecture',
+    question: 'Why does Event-Driven Architecture improve scalability?',
+    answer:
+      'Event-Driven Architecture (EDA) improves scalability by decoupling producers and consumers of data, allowing systems to handle events asynchronously and independently, which enables horizontal scaling and better resource utilization.',
+    code: '',
+    hint: 'Think about decoupling, asynchronous processing, and independent scaling.',
+    explanation:
+      'In an Event-Driven Architecture, components communicate by emitting and reacting to events, rather than calling each other directly. This loose coupling means that components can evolve and scale independently. Since events are often handled asynchronously (e.g., via message queues or pub/sub systems), the system can process workloads in parallel and buffer spikes in demand. This allows for better fault isolation, load balancing, and the ability to scale consumers up or down based on event volume.',
+    tags: [
+      'software-architecture',
+      'event-driven-architecture',
+      'scalability',
+      'asynchronous',
+      'microservices',
+    ],
+    reference: [
+      {
+        label: 'Martin Fowler: Event-Driven Architecture',
+        url: 'https://martinfowler.com/articles/201701-event-driven.html',
+      },
+      {
+        label: 'AWS: Event-driven architecture',
+        url: 'http://aws.amazon.com/event-driven-architecture/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-3',
+    categoryId: 'software-architecture',
+    question:
+      'How would you approach setting up a scalable server architecture?',
+    answer:
+      'Setting up a scalable server architecture involves designing systems that can handle increased load by adding resources efficiently. This includes using load balancers, stateless services, horizontal scaling, caching, and database optimization.',
+    code: '',
+    hint: 'Think in layers: load balancing, stateless services, horizontal scaling, data stores.',
+    explanation:
+      'A scalable server architecture typically begins with a **load balancer** to distribute traffic across multiple instances. Services should be **stateless** so they can be replicated or restarted without affecting the system. You should design for **horizontal scaling**, allowing the system to handle increased traffic by adding more servers. Use **caching** at different levels (CDN, in-memory caches like Redis) to reduce repeated computations and database load. For data storage, consider **read replicas**, **sharding**, or **NoSQL** solutions based on access patterns. Monitoring, auto-scaling, and infrastructure as code (IaC) tools help maintain scalability as demand changes.',
+    tags: [
+      'software-architecture',
+      'scalability',
+      'load-balancing',
+      'stateless',
+      'horizontal-scaling',
+      'caching',
+      'infrastructure',
+    ],
+    reference: [
+      {
+        label: 'DigitalOcean: How To Scale a Web Application',
+        url: 'https://www.digitalocean.com/resources/articles/scale-web-app',
+      },
+      {
+        label: 'Geeks for Geeks: Guide for scalable systems',
+        url: 'https://www.geeksforgeeks.org/system-design/guide-for-designing-highly-scalable-systems/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-4',
+    categoryId: 'software-architecture',
+    question: 'What makes code readable?',
+    answer:
+      'Readable code is clear, consistent, and easy to understand by others (or your future self). It uses meaningful names, follows consistent formatting, avoids deep nesting, and separates concerns.',
+    code: '',
+    hint: 'Think about naming, formatting, comments, and simplicity.',
+    explanation:
+      'Readable code follows principles that prioritize human understanding over cleverness. Good naming conventions help express purpose and intent. Consistent indentation and formatting make structure clear. Simplicity over complexity reduces cognitive load. Clear separation of concerns keeps functions and components focused on a single task. Comments, where necessary, explain why something is done, not what is done. Following established conventions and linters also improves readability across teams.',
+    tags: [
+      'software-architecture',
+      'readability',
+      'clean-code',
+      'naming-conventions',
+      'code-style',
+    ],
+    reference: [
+      {
+        label: 'Fellow: Guide to readable code',
+        url: 'https://fellow.app/blog/the-complete-guide-to-readable-code/',
+      },
+      {
+        label: 'Geeks for Geeks: Writing readable code',
+        url: 'https://www.geeksforgeeks.org/blogs/tips-to-write-clean-and-better-code/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-5',
+    categoryId: 'software-architecture',
+    question:
+      'What is the difference between emergent design and evolutionary architecture?',
+    answer:
+      'Emergent design is about allowing the software’s internal structure to evolve as the system grows, using principles like refactoring and continuous feedback. Evolutionary architecture, on the other hand, focuses on enabling the *overall* architecture to evolve to meet changing business and technical requirements over time.',
+    code: '',
+    hint: 'Think of design as internal structure and architecture as high-level system shape.',
+    explanation:
+      'Emergent design happens at the code and component level, encouraging simplicity and flexibility through practices like TDD, YAGNI, and constant refactoring. It avoids over-engineering by letting the best design emerge naturally through iterations.\n\nEvolutionary architecture is a higher-level concept concerned with enabling large-scale system changes, such as switching databases, decomposing monoliths, or adapting to new protocols. It involves building in change as a core principle—e.g., using fitness functions, loose coupling, and modular components.\n\nBoth approaches aim to create systems that can adapt, but they operate at different layers.',
+    tags: [
+      'software-architecture',
+      'emergent-design',
+      'evolutionary-architecture',
+      'agile',
+      'refactoring',
+      'modularity',
+    ],
+    reference: [
+      {
+        label: 'ThoughtWorks: Evolutionary Architecture',
+        url: 'https://www.thoughtworks.com/en-us/radar/techniques/evolutionary-architecture',
+      },
+      {
+        label: 'Medium: Agile Architecture',
+        url: 'https://medium.com/@stefano.rossini.mail/agile-architecture-intentional-emergent-evolutionary-architectures-da77905098fc',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-6',
+    categoryId: 'software-architecture',
+    question:
+      'Scale out vs scale up: how are they different? When to apply one, when the other?',
+    answer:
+      'Scaling up means upgrading existing hardware (e.g., more CPU, RAM), while scaling out means adding more machines to distribute the load. Scaling out is often preferred for horizontal scalability and fault tolerance, especially in cloud environments.',
+    code: '',
+    hint: 'Think vertical (scale up) vs horizontal (scale out).',
+    explanation:
+      'Scaling up (vertical scaling) increases the capacity of a single server or system by adding more resources. It’s simpler but limited by hardware constraints and can create a single point of failure.\n\nScaling out (horizontal scaling) adds more servers to handle increased load. It offers better fault tolerance and elasticity, especially in distributed systems. However, it introduces complexity, like data distribution and consistency challenges.\n\nUse scale up for quick, low-complexity performance boosts. Use scale out for web-scale applications, systems with high availability needs, or when elasticity is a key concern.',
+    tags: [
+      'software-architecture',
+      'scaling',
+      'performance',
+      'cloud',
+      'infrastructure',
+      'horizontal-scaling',
+      'vertical-scaling',
+    ],
+    reference: [
+      {
+        label: 'Microsoft: Scaling up vs scaling out',
+        url: 'https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/scaling-out-vs-scaling-up',
+      },
+      {
+        label: 'Portworx: Scaling up vs Scaling out',
+        url: 'https://portworx.com/blog/scale-up-vs-scale-out/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-7',
+    categoryId: 'software-architecture',
+    question: 'How to deal with failover and user sessions?',
+    answer:
+      'To ensure reliability and a good user experience during failover, user sessions should be decoupled from any single server and managed in a shared, persistent storage system. This way, if one server fails, another can resume the session seamlessly.',
+    code: '',
+    hint: 'Think about stateful vs stateless designs and external session storage.',
+    explanation:
+      'Failover is the ability of a system to switch to a backup component when one fails. If user sessions are stored in-memory on a single server (stateful), users will be logged out or lose progress during failover.\n\nTo prevent this, sessions should be managed externally using:\n- Distributed caches like Redis or Memcached\n- Databases (SQL or NoSQL)\n- Token-based authentication (like JWTs) for stateless session handling\n\nFor high availability, combine session replication, health checks, load balancing, and clustering. Stateless designs with token-based auth offer the most scalability but have limitations (e.g., token revocation).',
+    tags: [
+      'software-architecture',
+      'sessions',
+      'failover',
+      'high-availability',
+      'state-management',
+      'scalability',
+    ],
+    reference: [
+      {
+        label: 'NGINX: Session Persistence',
+        url: 'https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#session-persistence',
+      },
+      {
+        label: 'EnterpriseDB: Session State Failover',
+        url: 'https://www.enterprisedb.com/blog/session-state-failover',
       },
     ],
   },

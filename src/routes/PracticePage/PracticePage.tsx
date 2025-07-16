@@ -12,6 +12,9 @@ const PracticePage: React.FC = () => {
     ? flashcards.filter((card) => card.categoryId === categoryId)
     : null;
 
+  const getCategoryName = (id: string) =>
+    categories.find((cat) => cat.id === id)?.name ?? id;
+
   return (
     <div className="practice-page">
       {!categoryId ? (
@@ -26,7 +29,7 @@ const PracticePage: React.FC = () => {
           <h2>
             Practice{' '}
             <span className="flashcard-header">
-              {categoryId.toLocaleUpperCase()}
+              {getCategoryName(categoryId)}
             </span>
           </h2>
           <div className="practice-page__flashcards-container">

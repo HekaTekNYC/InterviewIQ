@@ -1,24 +1,18 @@
 import React, { KeyboardEvent, MouseEvent } from 'react';
+import type { Flashcard as FlashcardType } from '@/types';
 // import Hint from '../../../assets/icons/hint.svg?react';
 import Link from '../../../assets/icons/link.svg?react';
 import Expand from '../../../assets/icons/expand.svg?react';
 import Bulb from '../../../assets/icons/bulb.svg?react';
 import './flashcard.css';
 
-type Reference = { label: string; url: string };
 type OverlayType = 'hint' | 'reference' | 'explanation' | null;
-export interface FlashcardProps {
-  question: string;
-  answer: string;
-  code: string;
-  hint?: string;
-  explanation?: string;
-  reference?: Reference[];
-  activeOverlay: OverlayType;
-  setActiveOverlay: (value: OverlayType) => void;
+type FlashcardProps = FlashcardType & {
   isFlipped: boolean;
   setIsFlipped: (flipped: boolean) => void;
-}
+  activeOverlay: OverlayType;
+  setActiveOverlay: (value: OverlayType) => void;
+};
 
 const Flashcard: React.FC<FlashcardProps> = ({
   question,

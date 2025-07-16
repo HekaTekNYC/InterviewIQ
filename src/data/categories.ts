@@ -1,7 +1,4 @@
-export interface Category {
-  id: string;
-  name: string;
-}
+import { Category } from '@/types';
 
 export const categories: Category[] = [
   {
@@ -67,5 +64,9 @@ export const categories: Category[] = [
   {
     id: 'software-culture',
     name: 'Software Culture',
+  },
+  {
+    id: 'software-architecture',
+    name: 'Software Architecture',
   },
 ];
