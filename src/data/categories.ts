@@ -1,7 +1,4 @@
-export interface Category {
-  id: string;
-  name: string;
-}
+import { Category } from '@/types';
 
 export const categories: Category[] = [
   {
@@ -27,5 +24,49 @@ export const categories: Category[] = [
   {
     id: 'network',
     name: 'Network',
+  },
+  {
+    id: 'design-patterns',
+    name: 'Design Patterns',
+  },
+  {
+    id: 'code-design',
+    name: 'Code Design',
+  },
+  {
+    id: 'languages',
+    name: 'Languages',
+  },
+  {
+    id: 'web-development',
+    name: 'Web Development',
+  },
+  {
+    id: 'databases',
+    name: 'Databases',
+  },
+  {
+    id: 'nosql',
+    name: 'NoSQL',
+  },
+  {
+    id: 'code-versioning',
+    name: 'Code Versioning',
+  },
+  {
+    id: 'concurrency',
+    name: 'Concurrency',
+  },
+  {
+    id: 'dist-sys',
+    name: 'Distributed Systems',
+  },
+  {
+    id: 'software-culture',
+    name: 'Software Culture',
+  },
+  {
+    id: 'software-architecture',
+    name: 'Software Architecture',
   },
 ];

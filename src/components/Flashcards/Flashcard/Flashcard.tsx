@@ -1,29 +1,25 @@
 import React, { KeyboardEvent, MouseEvent } from 'react';
+import type { Flashcard as FlashcardType } from '@/types';
 // import Hint from '../../../assets/icons/hint.svg?react';
 import Link from '../../../assets/icons/link.svg?react';
 import Expand from '../../../assets/icons/expand.svg?react';
 import Bulb from '../../../assets/icons/bulb.svg?react';
 import './flashcard.css';
 
-type Reference = { label: string; url: string };
-type OverlayType = 'hint' | 'reference' | 'explanation' | null;
-export interface FlashcardProps {
-  question: string;
-  answer: string;
-  hint?: string;
-  explanation?: string;
-  reference?: Reference[];
-  activeOverlay: OverlayType;
-  setActiveOverlay: (value: OverlayType) => void;
+type OverlayType = 'hint' | 'reference' | 'expanded' | null;
+type FlashcardProps = FlashcardType & {
   isFlipped: boolean;
   setIsFlipped: (flipped: boolean) => void;
-}
+  activeOverlay: OverlayType;
+  setActiveOverlay: (value: OverlayType) => void;
+};
 
 const Flashcard: React.FC<FlashcardProps> = ({
   question,
   answer,
+  code,
   hint,
-  explanation,
+  expanded,
   reference = [],
   isFlipped,
   setIsFlipped,
@@ -33,7 +29,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
   const renderOverlayContent = () => {
     if (!activeOverlay) return null;
     if (activeOverlay === 'hint') return <p>{hint}</p>;
-    if (activeOverlay === 'explanation') return <p>{explanation}</p>;
+    if (activeOverlay === 'expanded') return <p>{expanded}</p>;
     if (activeOverlay === 'reference') {
       return (
         <ul className="flashcard__reference-list">
@@ -132,21 +128,26 @@ const Flashcard: React.FC<FlashcardProps> = ({
       <div className="flashcard__back">
         <div className="flashcard__answer">
           <div className="flashcard__answer-content">{answer}</div>
+          {code && (
+            <pre>
+              <code className="flashcard__code-content">{code}</code>
+            </pre>
+          )}
         </div>
         <div className="flashcard__bar">
-          {explanation && (
+          {expanded && (
             <span
               className="flashcard__icon icon-flip"
               onClick={(e) => {
                 e.stopPropagation();
-                setActiveOverlay('explanation');
+                setActiveOverlay('expanded');
               }}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  setActiveOverlay('explanation');
+                  setActiveOverlay('expanded');
                 }
               }}
             >

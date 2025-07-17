@@ -1,14 +1,10 @@
+import { Category } from '@/types';
 import { CategoryCard } from '@/components/Categories';
 import './category-list.css';
 
-type Category = {
-  id: string;
-  name: string;
-};
-
-interface CategoryListProps {
+type CategoryListProps = {
   categories: Category[];
-}
+};
 
 const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {
   return (

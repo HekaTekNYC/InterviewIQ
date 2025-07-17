@@ -4,6 +4,7 @@
 :root {
   /* Background & neutral */
   --bg-color: #ffffff;
+  --bg-dark: #1a1a1b;
   --surface-color: #e6e6f7;
   --primary-text: #444050;
   --secondary-text: #6d6b77;
