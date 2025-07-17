@@ -9,7 +9,8 @@ export type Flashcard = {
   answer: string;
   categoryId: string;
   code: string;
+  tags?: string[];
   hint?: string;
-  explanation?: string;
+  expanded?: string;
   reference?: { label: string; url: string }[];
 };

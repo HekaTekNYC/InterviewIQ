@@ -6,7 +6,7 @@ import Expand from '../../../assets/icons/expand.svg?react';
 import Bulb from '../../../assets/icons/bulb.svg?react';
 import './flashcard.css';
 
-type OverlayType = 'hint' | 'reference' | 'explanation' | null;
+type OverlayType = 'hint' | 'reference' | 'expanded' | null;
 type FlashcardProps = FlashcardType & {
   isFlipped: boolean;
   setIsFlipped: (flipped: boolean) => void;
@@ -19,7 +19,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
   answer,
   code,
   hint,
-  explanation,
+  expanded,
   reference = [],
   isFlipped,
   setIsFlipped,
@@ -29,7 +29,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
   const renderOverlayContent = () => {
     if (!activeOverlay) return null;
     if (activeOverlay === 'hint') return <p>{hint}</p>;
-    if (activeOverlay === 'explanation') return <p>{explanation}</p>;
+    if (activeOverlay === 'expanded') return <p>{expanded}</p>;
     if (activeOverlay === 'reference') {
       return (
         <ul className="flashcard__reference-list">
@@ -135,19 +135,19 @@ const Flashcard: React.FC<FlashcardProps> = ({
           )}
         </div>
         <div className="flashcard__bar">
-          {explanation && (
+          {expanded && (
             <span
               className="flashcard__icon icon-flip"
               onClick={(e) => {
                 e.stopPropagation();
-                setActiveOverlay('explanation');
+                setActiveOverlay('expanded');
               }}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  setActiveOverlay('explanation');
+                  setActiveOverlay('expanded');
                 }
               }}
             >

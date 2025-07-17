@@ -9,7 +9,7 @@ export const flashcards: Flashcard[] = [
       'With the introduction of HTML5 we now have the ability to write semantic HTML. Talk for a moment about your experiences writing semantic HTML. What is it? Where do you see the benefits of using semantics?',
     answer:
       "With the introduction of HTML5, semantic HTML has become a foundational best practice in how I structure web applications. Semantic HTML refers to using elements that convey meaning about the content they wrap — such as <article>, <section>, <header>, <footer>, <main>, <nav>, and so on — rather than relying on generic containers like <div> or <span>.  I've used it to improve accessibility, SEO, and code clarity. It makes content easier to navigate for screen readers, better indexed by search engines, and more maintainable for devs.",
-    explanation: '',
+    expanded: '',
     tags: ['html', 'semantic', 'accessibility', 'seo'],
     code: '',
     hint: 'Think of <section>, <article>, <nav>...',
@@ -31,7 +31,7 @@ export const flashcards: Flashcard[] = [
       'Let’s talk about the Web API. What is it, how is it organized, and what can you do with it?',
     answer:
       "The Web API is a collection of browser-provided interfaces that let you interact with the browser and the device. It's organized into modules like DOM, Fetch, Storage, and Events. You can use it to manipulate the page, make network requests, store data, handle user input, and much more.",
-    explanation:
+    expanded:
       'Web APIs are built into the browser and expose functionality like DOM manipulation, HTTP requests, local storage, media playback, and device access. They are grouped by purpose—e.g., DOM for document interaction, Fetch for HTTP requests, and Storage APIs for client-side persistence.',
     tags: ['api', 'dom', 'browser', 'html'],
     code: '',
@@ -53,7 +53,7 @@ export const flashcards: Flashcard[] = [
     question: 'What does a doctype do?',
     answer:
       'A doctype tells the browser which version of HTML to expect so it can render the page correctly. In HTML5, it ensures the browser uses standards mode instead of quirks mode.',
-    explanation:
+    expanded:
       'The <!DOCTYPE html> declaration at the top of an HTML file prevents the browser from falling back to old, non-standard rendering behavior (quirks mode). It helps ensure consistent rendering across browsers.',
     tags: ['html', 'doctype', 'html5', 'browser'],
     code: '',
@@ -75,7 +75,7 @@ export const flashcards: Flashcard[] = [
     question: 'How do you serve a page with content in multiple languages?',
     answer:
       'Use the `lang` attribute in the <html> tag (e.g. <html lang="en">) to set the page’s language, and add `lang` to elements that differ (e.g. <span lang="es">hola</span>). For full multilingual sites, serve different language versions at different URLs.',
-    explanation:
+    expanded:
       'The `lang` attribute helps screen readers and search engines understand the language. For full language support, sites may use routing or subdomains (e.g. /en/, /fr/, or en.example.com).',
     tags: ['html', 'lang', 'accessibility', 'i18n'],
     code: '',
@@ -98,7 +98,7 @@ export const flashcards: Flashcard[] = [
       'What kind of things must you be wary of when designing or developing for multilingual sites?',
     answer:
       'Watch out for text expansion, font and character support, right-to-left (RTL) layouts, date/number formats, and hardcoded strings. Also ensure proper use of the lang attribute and consider locale-based routing.',
-    explanation:
+    expanded:
       'Different languages can change layout needs: some take more space (e.g. German), others flip direction (e.g. Arabic). Avoid hardcoding content; instead, use translation files and locale-aware components.',
     tags: ['html', 'i18n', 'rtl', 'accessibility', 'localization'],
     code: '',
@@ -121,7 +121,7 @@ export const flashcards: Flashcard[] = [
     question: 'What are data-attributes good for?',
     answer:
       'Data attributes (e.g., data-user-id="123") allow you to store custom data on HTML elements without affecting the layout or behavior. They are useful for attaching metadata that JavaScript can access and manipulate.',
-    explanation:
+    expanded:
       'Data attributes provide a flexible way to embed extra information on elements. They keep HTML valid while enabling scripts to read/write data easily, often used for dynamic UI behavior or tracking.',
     tags: ['html', 'data-attributes', 'javascript', 'metadata'],
     code: '',
@@ -148,7 +148,7 @@ export const flashcards: Flashcard[] = [
       'Consider HTML5 as an open web platform. What are the building blocks of HTML5?',
     answer:
       'The building blocks of HTML5 include semantic elements (like <section>, <article>), multimedia support (audio, video), graphics (Canvas, SVG), APIs (Web Storage, Geolocation), and enhanced form controls.',
-    explanation:
+    expanded:
       'HTML5 provides new structural tags for better semantics, native media playback, 2D/3D graphics, and JavaScript APIs that enable rich, interactive web apps without plugins.',
     tags: ['html', 'html5', 'web-platform', 'api', 'multimedia'],
     code: '',
@@ -172,7 +172,7 @@ export const flashcards: Flashcard[] = [
       'Describe the difference between a cookie, sessionStorage, and localStorage.',
     answer:
       'Cookies store small data sent with every HTTP request and can have expiration dates. sessionStorage stores data for one browser tab session and clears when the tab closes. localStorage stores larger data persistently across sessions until explicitly cleared.',
-    explanation:
+    expanded:
       'Cookies are used for server communication (like auth) but have size limits and security considerations. sessionStorage is temporary and per tab. localStorage persists until cleared and is good for client-side data caching.',
     tags: ['html', 'storage', 'cookie', 'sessionstorage', 'localstorage'],
     code: '',
@@ -199,7 +199,7 @@ export const flashcards: Flashcard[] = [
       'Describe the difference between <script>, <script async>, and <script defer>.',
     answer:
       'A plain <script> blocks HTML parsing while it downloads and runs, which can slow page load. <script async> downloads the script without blocking HTML parsing and runs it as soon as it’s ready, which can happen before or after the HTML is parsed. <script defer> also downloads without blocking, but always waits to execute the script until after the entire HTML document is parsed, making it better for scripts that rely on the DOM.',
-    explanation:
+    expanded:
       'Using async or defer helps improve page performance by not blocking the HTML parser. async is good for independent scripts, while defer is better when scripts need the full DOM ready.',
     tags: ['html', 'script', 'performance', 'async', 'defer'],
     code: '',
@@ -223,7 +223,7 @@ export const flashcards: Flashcard[] = [
       'Why is it a good idea to put CSS <link>s in the <head> and JS <script>s before </body>?',
     answer:
       'Placing CSS links in the <head> lets the browser start loading styles early, so the page renders styled content faster and avoids a flash of unstyled content. Putting JS scripts before </body> prevents blocking the HTML parsing, so the page structure loads first and scripts run after, improving perceived load time.',
-    explanation:
+    expanded:
       'CSS is render-blocking, so loading it early helps the browser paint styled pages sooner. Scripts can block rendering, so placing them at the end lets the page load and display before running JavaScript.',
     tags: ['html', 'css', 'javascript', 'performance', 'render-blocking'],
     code: '',
@@ -245,7 +245,7 @@ export const flashcards: Flashcard[] = [
     question: 'What is progressive rendering?',
     answer:
       'Progressive rendering is a technique where the browser displays content to the user as soon as it’s available, instead of waiting for the whole page to load. This makes the page feel faster and more responsive.',
-    explanation:
+    expanded:
       'By prioritizing critical content first and loading other resources later, progressive rendering improves user experience, especially on slow connections or large pages.',
     tags: ['html', 'performance', 'rendering', 'progressive'],
     code: '',
@@ -268,7 +268,7 @@ export const flashcards: Flashcard[] = [
       'Why would you use a "loading" attribute in an image tag? Explain the process the browser uses.',
     answer:
       'Using `loading="lazy"` delays loading images until they are about to enter the viewport. This improves page load performance by reducing initial data usage and speeding up time to interactive.',
-    explanation:
+    expanded:
       'When `loading="lazy"` is set, the browser defers fetching the image until the user scrolls near it. This saves bandwidth and reduces CPU/memory usage for images that may never be seen immediately.',
     tags: ['html', 'performance', 'lazy-loading', 'images'],
     code: '',
@@ -290,7 +290,7 @@ export const flashcards: Flashcard[] = [
     question: 'Have you used different HTML templating languages before?',
     answer:
       'I’ve mainly used React JSX and some Angular templates. Both let you combine HTML and JavaScript logic to build dynamic UIs. While I haven’t used many traditional templating languages like EJS or Handlebars, I’m familiar with the concepts and open to learning more.',
-    explanation:
+    expanded:
       'JSX and Angular templates enable declarative UI building by mixing markup with code. They help manage complex interfaces efficiently compared to classic templating engines.',
     tags: ['html', 'templating', 'react', 'jsx', 'angular'],
     code: '',
@@ -312,7 +312,7 @@ export const flashcards: Flashcard[] = [
     question: 'What is the difference between block-level and inline elements?',
     answer:
       'Block-level elements take up the full width available and start on a new line (e.g., <div>, <section>). Inline elements only take up as much width as needed and flow within the text (e.g., <span>, <a>).',
-    explanation:
+    expanded:
       'Understanding this helps with layout control. Block elements define structure, while inline elements are typically used for formatting or links inside text.',
     tags: ['html', 'block', 'inline', 'layout'],
     code: '',
@@ -334,7 +334,7 @@ export const flashcards: Flashcard[] = [
     question: 'What is ARIA and when would you use it?',
     answer:
       'ARIA (Accessible Rich Internet Applications) is a set of attributes that improve accessibility for users relying on assistive technologies. It’s used when native HTML elements don’t provide enough semantic meaning.',
-    explanation:
+    expanded:
       'ARIA can add roles, states, and properties to HTML elements to describe their behavior to screen readers, especially in custom components. It should be used carefully and only when semantic HTML isn’t enough.',
     tags: ['html', 'accessibility', 'aria', 'a11y'],
     code: '',
@@ -362,7 +362,7 @@ export const flashcards: Flashcard[] = [
       'I use a mobile-first approach—starting with a base layout for small screens and scaling up with media queries. I use flexible layouts with percentage widths, relative units like rem/em, and tools like Flexbox and Grid. I also make sure spacing, typography, and images scale well across breakpoints.',
     code: '',
     hint: 'Think small screen first, then enhance.',
-    explanation:
+    expanded:
       'Responsive design is about building layouts that work across screen sizes. A mobile-first approach ensures the core experience is optimized for small devices first, then progressively enhanced using media queries for larger screens.',
     tags: [
       'css',
@@ -391,7 +391,7 @@ export const flashcards: Flashcard[] = [
       'Media queries let you apply styles based on the device’s characteristics, like screen width or orientation. Pseudo-selectors let you style elements in specific states or positions, like when a user hovers or when an element is the first child.',
     code: '',
     hint: 'Think about adapting to screen size and styling specific states or positions.',
-    explanation:
+    expanded:
       'Media queries are used to create responsive designs by applying styles only when certain conditions are met, such as the width of the screen. Pseudo-selectors target elements in specific contexts, such as when they are being hovered over or when they are the last child in a container. Both tools help make CSS more flexible and interactive.',
     tags: [
       'css',
@@ -427,7 +427,7 @@ export const flashcards: Flashcard[] = [
       'I organize CSS by grouping it into layers: base styles, layout, components, and utilities. I use a consistent naming convention like BEM or a similar pattern, and aim to keep styles modular and easy to maintain.',
     code: '',
     hint: 'Think layers, consistency, and reusability.',
-    explanation:
+    expanded:
       'Organizing CSS in logical sections helps keep code readable and maintainable. Starting with resets or base styles, then adding layout and component-specific styles, allows for better scalability. Naming conventions like BEM help reduce confusion and avoid conflicts.',
     tags: ['css', 'organization', 'naming', 'modular', 'bem'],
     reference: [
@@ -449,7 +449,7 @@ export const flashcards: Flashcard[] = [
       'Specificity is how the browser decides which CSS rule to apply when multiple rules target the same element. It’s calculated based on the types of selectors used—inline styles are the most specific, followed by IDs, then classes, then elements.',
     code: '',
     hint: 'Think of it like a scoring system for which rule wins.',
-    explanation:
+    expanded:
       'Each type of selector has a different weight. Inline styles have the highest specificity, then ID selectors, then classes and attributes, and finally element selectors. When rules conflict, the one with higher specificity overrides the others.',
     tags: ['css', 'specificity', 'selectors', 'cascade'],
     reference: [
@@ -472,7 +472,7 @@ export const flashcards: Flashcard[] = [
       'Resetting CSS removes all default styles from browsers to create a blank slate. Normalizing CSS keeps useful defaults and makes styles more consistent across browsers. I usually prefer normalizing because it preserves helpful styles while reducing cross-browser inconsistencies.',
     code: '',
     hint: 'Think blank slate vs consistent baseline.',
-    explanation:
+    expanded:
       'A reset stylesheet wipes out all default styling, which can be useful for full control but may require more work to rebuild basics. Normalize.css, on the other hand, keeps useful defaults like button styling and makes rendering consistent across browsers without over-stripping styles.',
     tags: ['css', 'reset', 'normalize', 'browser consistency'],
     reference: [
@@ -495,7 +495,7 @@ export const flashcards: Flashcard[] = [
       'Floats allow elements to move to the left or right within their container, so that other content can flow around them. They were originally used for layouts but now are more commonly used for wrapping text around images.',
     code: '',
     hint: 'Think about content wrapping around an element.',
-    explanation:
+    expanded:
       'When an element is floated, it’s taken out of the normal document flow, which can affect how surrounding elements are positioned. This often requires "clearing" the float to prevent layout issues. Floats were once a common layout tool but are now mostly replaced by Flexbox and Grid.',
     tags: ['css', 'floats', 'layout', 'positioning'],
     reference: [
@@ -521,7 +521,7 @@ export const flashcards: Flashcard[] = [
       'z-index controls the vertical stacking order of positioned elements. Higher z-index values appear on top of lower ones. A stacking context is created by elements with position and z-index values, or certain CSS properties, which groups elements into separate layers.',
     code: '',
     hint: 'Think about layers and which elements appear in front.',
-    explanation:
+    expanded:
       'A stacking context is formed when an element has a position value other than static and a z-index value, or due to certain CSS properties like opacity less than 1, transform, or flex containers. Elements inside a stacking context stack relative to each other but do not affect elements outside it.',
     tags: ['css', 'z-index', 'stacking context', 'positioning', 'layout'],
     reference: [
@@ -544,7 +544,7 @@ export const flashcards: Flashcard[] = [
       'A Block Formatting Context (BFC) is a part of the visual CSS rendering that isolates elements so their layout and floats do not affect outside elements. It’s triggered by certain properties like overflow, float, or display settings.',
     code: '',
     hint: 'Think of it as an isolated layout container.',
-    explanation:
+    expanded:
       'When an element creates a BFC, it contains its floated children and prevents margins from collapsing with outside elements. This helps manage layout issues like clearing floats and controlling element boundaries.',
     tags: ['css', 'bfc', 'layout', 'floats', 'formatting'],
     reference: [
@@ -567,7 +567,7 @@ export const flashcards: Flashcard[] = [
       'Clearing techniques fix layout issues caused by floated elements. Common methods include using the `clear` property on a sibling element, the clearfix hack using `::after` with `content` and `clear: both`, and setting overflow to hidden or auto on the container.',
     code: '',
     hint: 'Think about preventing container collapse caused by floats.',
-    explanation:
+    expanded:
       'Using `clear: both` on a block-level element forces it below floated siblings, useful when you want a break. The clearfix method adds a hidden element after floats inside the container to expand its height, ideal for reusable containers. Setting `overflow` to hidden or auto on a container creates a new block formatting context that contains floats but can clip content, so use it carefully.',
     tags: ['css', 'clearing', 'floats', 'clearfix', 'layout'],
     reference: [
@@ -589,7 +589,7 @@ export const flashcards: Flashcard[] = [
       'I usually test my CSS across different browsers early on to catch issues. When problems arise, I inspect styles in dev tools to understand what’s different. Flexbox can sometimes cause inconsistencies, so I often prefer using CSS Grid for more predictable layouts. I also use vendor prefixes or @supports if needed. I also use browser support tables like Can I Use.',
     code: '',
     hint: 'Think testing early and choosing reliable CSS features.',
-    explanation:
+    expanded:
       'Browser differences often show up in how certain CSS features work, especially Flexbox. Testing early helps avoid surprises. CSS Grid tends to have better cross-browser consistency. Using vendor prefixes and fallback styles can help maintain support where needed.',
     tags: ['css', 'cross-browser', 'debugging', 'flexbox', 'grid'],
     reference: [
@@ -612,7 +612,7 @@ export const flashcards: Flashcard[] = [
       'I use progressive enhancement by building a solid baseline experience with simple, widely supported features first. Then, I layer on advanced CSS or JavaScript for browsers that support them. I also use feature detection tools like Modernizr and provide fallbacks or polyfills when necessary.',
     code: '',
     hint: 'Think progressive enhancement and fallback strategies.',
-    explanation:
+    expanded:
       'Serving feature-constrained browsers means ensuring core functionality and content are accessible even if advanced features aren’t supported. Progressive enhancement focuses on building up from a simple base, testing features before use, and providing alternatives to maintain usability.',
     tags: ['css', 'progressive enhancement', 'feature detection', 'fallbacks'],
     reference: [
@@ -635,7 +635,7 @@ export const flashcards: Flashcard[] = [
       'You can visually hide content using CSS techniques like `clip-path`, `position: absolute` with off-screen positioning, or the popular `.sr-only` class that moves content off-screen but keeps it in the accessibility tree.',
     code: '',
     hint: 'Think hiding visually but keeping for assistive tech.',
-    explanation:
+    expanded:
       'The key is to remove content from visual flow without removing it from the accessibility tree. Common methods include using `position: absolute` with negative offsets, `clip-path: inset(50%)` or `clip: rect(0 0 0 0)`, and using dedicated screen-reader-only CSS classes that hide content visually but preserve it for screen readers.',
     tags: ['css', 'accessibility', 'screen readers', 'visual hiding'],
     reference: [
@@ -658,7 +658,7 @@ export const flashcards: Flashcard[] = [
       'Yes, I’ve used both traditional CSS grid frameworks like Bootstrap and modern CSS Grid layout. I prefer CSS Grid because it provides more flexibility and control for creating complex, responsive layouts without relying on external libraries.',
     code: '',
     hint: 'Think native CSS Grid vs frameworks.',
-    explanation:
+    expanded:
       'While frameworks like Bootstrap offer quick setup with predefined classes, CSS Grid gives full control over layout structure and alignment, making it ideal for custom designs. It also integrates well with Flexbox for one-dimensional layouts.',
     tags: ['css', 'grid', 'css grid', 'frameworks', 'layout'],
     reference: [
@@ -681,7 +681,7 @@ export const flashcards: Flashcard[] = [
       'Yes, I regularly use media queries to create responsive, mobile-first designs. This includes adjusting layouts, font sizes, and visibility of elements based on screen size to ensure a smooth experience across devices.',
     code: '',
     hint: 'Think adapting design to different screen sizes.',
-    explanation:
+    expanded:
       'Media queries allow CSS to adapt styles depending on device characteristics like width or resolution. Using them early in development ensures designs work well on mobile devices and scale up for larger screens.',
     tags: ['css', 'media queries', 'responsive design', 'mobile-first'],
     reference: [
@@ -703,7 +703,7 @@ export const flashcards: Flashcard[] = [
       'Yes, I usually import SVGs as React components or inline them when I need to style or animate parts, like on hover. Inline SVG lets me directly target elements with CSS or manipulate them with JavaScript.',
     code: '',
     hint: 'Think React imports and inline SVG for styling control.',
-    explanation:
+    expanded:
       'Importing SVG as React components allows easy integration and styling via props or CSS. Inline SVG provides full control over shapes and allows dynamic styling and animations using CSS or JS, making it ideal for interactive icons or graphics.',
     tags: ['css', 'svg', 'react', 'inline svg', 'styling'],
     reference: [
@@ -726,7 +726,7 @@ export const flashcards: Flashcard[] = [
       'Yes, for example, the `print` media type targets styles when printing a page. You can adjust layout, font size, and colors specifically for print output.',
     code: '',
     hint: 'Think about how pages look when printed.',
-    explanation:
+    expanded:
       'Media queries can target different media types like screen, print, speech, etc. Using `@media print` lets you define styles that only apply when a user prints the page, improving print readability and layout.',
     tags: ['css', 'media-queries', 'print', 'responsive-design'],
     reference: [
@@ -744,7 +744,7 @@ export const flashcards: Flashcard[] = [
       'Common gotchas include using overly specific selectors, deep nesting, redundant rules, and ignoring browser rendering performance. Also, large CSS files without modularity can slow down load times and maintenance.',
     code: '',
     hint: 'Think specificity, redundancy, and performance.',
-    explanation:
+    expanded:
       'Efficient CSS avoids unnecessarily specific selectors that increase complexity, limits nesting depth for readability, removes duplicate styles, and considers how browsers parse and render styles. Modular CSS and minimizing file size help maintain performance and ease of updates.',
     tags: ['css', 'performance', 'specificity', 'modularity', 'best-practices'],
     reference: [
@@ -767,7 +767,7 @@ export const flashcards: Flashcard[] = [
       'I’ve used Sass with SCSS syntax. I like that it gives you variables, nesting, mixins, and functions—it makes organizing styles much easier and keeps code DRY. The downside is adding a build step and that debugging compiled CSS can sometimes be less straightforward. I know of Less but haven’t worked with it directly.',
     code: '',
     hint: 'Think convenience vs extra complexity.',
-    explanation:
+    expanded:
       'Sass (especially SCSS syntax) is still widely used and adds many features that help manage larger stylesheets. It improves maintainability but adds tooling complexity. As native CSS adds similar features, the need for preprocessors is shrinking, but they’re still helpful in many cases.',
     tags: ['css', 'sass', 'scss', 'preprocessors', 'less'],
     reference: [
@@ -790,7 +790,7 @@ export const flashcards: Flashcard[] = [
       'I’d load the custom fonts using `@font-face` if I have the files, or through a service like Google Fonts. I use `font-family` in CSS with proper fallbacks, and I often preload key fonts in the <head> to improve performance and reduce layout shifts.',
     code: '',
     hint: 'Think about loading, fallback fonts, and performance.',
-    explanation:
+    expanded:
       'Non-standard fonts aren’t guaranteed to be available on a user’s system, so they must be loaded from a server. `@font-face` lets you define font sources locally or via CDN. Always include fallback fonts to maintain legibility and test for performance impact, especially on mobile networks.',
     tags: ['css', 'fonts', 'typography', 'web-fonts', '@font-face'],
     reference: [
@@ -813,7 +813,7 @@ export const flashcards: Flashcard[] = [
       'The browser parses the CSS and then matches selectors against elements in the DOM, usually right to left—from the most specific part of the selector back to its ancestors.',
     code: '',
     hint: 'Think about how the DOM is matched by selectors.',
-    explanation:
+    expanded:
       'Browsers optimize selector matching by starting from the rightmost part of a selector (the key element) and working backward through the DOM tree. For example, in `article h2 span`, the browser first finds all `span` elements, then checks if they’re inside an `h2` inside an `article`. This is why overly complex or inefficient selectors can hurt performance.',
     tags: ['css', 'selectors', 'dom', 'rendering', 'performance'],
     reference: [
@@ -836,7 +836,7 @@ export const flashcards: Flashcard[] = [
       'The box model describes how elements are rendered as rectangular boxes made up of content, padding, border, and margin. By default, width and height only apply to the content area. To change this, I use `box-sizing: border-box` so padding and border are included inside the declared width and height.',
     code: '',
     hint: 'Think content + padding + border + margin.',
-    explanation:
+    expanded:
       'In the standard (content-box) model, padding and border are added to the content width, which can affect layout size unexpectedly. Setting `box-sizing: border-box` tells the browser to include padding and border inside the set width/height, which helps with predictable sizing and layout control.',
     tags: ['css', 'box model', 'layout', 'box-sizing'],
     reference: [
@@ -859,7 +859,7 @@ export const flashcards: Flashcard[] = [
       'It tells the browser to include padding and border within an element’s total width and height. This makes sizing more predictable and easier to manage when building layouts.',
     code: '',
     hint: 'Think about how width and padding interact.',
-    explanation:
+    expanded:
       'By default, browsers use `box-sizing: content-box`, which does not include padding or border in the element’s width. Setting `box-sizing: border-box` globally means when you set a width, it includes content, padding, and border—avoiding layout overflow issues and simplifying calculations.',
     tags: ['css', 'box-model', 'layout', 'border-box'],
     reference: [
@@ -882,7 +882,7 @@ export const flashcards: Flashcard[] = [
       'The display property controls how an element is displayed on the page, determining its box type and layout behavior. Examples include `block`, `inline`, `inline-block`, `flex`, and `grid`.',
     code: '',
     hint: 'Think block vs inline vs flex vs grid.',
-    explanation:
+    expanded:
       'Display sets whether an element generates a block box, inline box, flex container, grid container, or is hidden (`none`). For example, `display: block` makes the element take full width and start on a new line, while `inline` keeps it within a line. `flex` and `grid` enable advanced layout techniques.',
     tags: ['css', 'display', 'layout', 'flexbox', 'grid'],
     reference: [
@@ -904,7 +904,7 @@ export const flashcards: Flashcard[] = [
       'Inline elements flow within text and cannot have width or height set, while inline-block elements also flow inline but can have width, height, padding, and margins.',
     code: '',
     hint: 'Think text flow and box sizing.',
-    explanation:
+    expanded:
       'Inline elements like `<span>` don’t accept width or height, and their box is only as big as their content. Inline-block elements behave like inline elements in flow but act like blocks in allowing box model properties like width, height, and vertical margins.',
     tags: ['css', 'display', 'inline', 'inline-block', 'layout'],
     reference: [
@@ -927,7 +927,7 @@ export const flashcards: Flashcard[] = [
       '`nth-child()` selects the nth child element regardless of type, while `nth-of-type()` selects the nth child of its type among siblings.',
     code: '',
     hint: 'Think element position vs element type position.',
-    explanation:
+    expanded:
       '`nth-child(n)` matches the nth child of its parent counting all types of elements. `nth-of-type(n)` counts only siblings of the same element type, so it’s more specific when you want to target elements by their type position.',
     tags: ['css', 'selectors', 'nth-child', 'nth-of-type'],
     reference: [
@@ -950,7 +950,7 @@ export const flashcards: Flashcard[] = [
       'Static is the default positioning where elements follow normal document flow. Relative moves the element relative to its normal position without affecting others. Absolute positions the element relative to the nearest positioned ancestor, removing it from normal flow. Fixed positions the element relative to the viewport, staying put on scroll.',
     code: '',
     hint: 'Think document flow and reference points.',
-    explanation:
+    expanded:
       'Static elements are placed in normal flow with no offset. Relative elements shift relative to their original spot but keep space in the layout. Absolute elements are removed from the flow and positioned relative to the closest ancestor that has a position other than static. Fixed elements stay fixed relative to the viewport, unaffected by scrolling.',
     tags: [
       'css',
@@ -977,7 +977,7 @@ export const flashcards: Flashcard[] = [
       'I’ve used Bootstrap and Tailwind CSS in production. I like Bootstrap for quick prototyping but find it heavy and sometimes restrictive. Tailwind offers great utility-first flexibility, but I’d improve it by optimizing bundle size and adding better defaults for accessibility.',
     code: '',
     hint: 'Think Bootstrap, Tailwind, pros and cons.',
-    explanation:
+    expanded:
       'Bootstrap provides a solid grid and components but can add extra unused CSS, impacting performance. Tailwind’s utility classes offer customization but may require a learning curve and tooling to remove unused styles. Improvements often focus on performance optimization and accessibility enhancements.',
     tags: [
       'css',
@@ -1007,7 +1007,7 @@ export const flashcards: Flashcard[] = [
       'Yes, I use CSS Grid regularly for creating two-dimensional layouts. It offers precise control over rows and columns, making complex designs easier to build and maintain compared to older layout methods. Its also more accepted across browsers over flex',
     code: '',
     hint: 'Think two-dimensional layout system.',
-    explanation:
+    expanded:
       'CSS Grid allows defining rows and columns explicitly and placing items anywhere within that grid. It simplifies layout creation that was previously complex with floats or flexbox alone, especially for grid-based and magazine-style designs.',
     tags: ['css', 'grid', 'layout'],
     reference: [
@@ -1030,7 +1030,7 @@ export const flashcards: Flashcard[] = [
       'Yes, I have. To support retina displays, I provide higher resolution images, typically at 2x or 3x the normal size, and use `srcset` and `sizes` attributes in `<img>` tags. I also optimize image formats and use SVGs when possible for scalability.',
     code: '',
     hint: 'Think high resolution and responsive images.',
-    explanation:
+    expanded:
       'Retina or high-density displays require images with more pixels to appear crisp. Using `srcset` allows the browser to select the appropriate image resolution based on device capabilities. SVGs are ideal for graphics because they scale without loss of quality, reducing the need for multiple versions.',
     tags: ['css', 'images', 'retina', 'responsive', 'srcset', 'svg'],
     reference: [
@@ -1053,7 +1053,7 @@ export const flashcards: Flashcard[] = [
       '`translate()` is better when you want smoother animations or to avoid affecting layout, while `position: absolute` is used to place elements precisely within a container. Use `translate()` for movement without triggering reflow, and `absolute` when layout placement is critical.',
     code: '',
     hint: 'Think layout vs performance.',
-    explanation:
+    expanded:
       '`translate()` works in the transform layer, so it doesn’t trigger layout recalculations, which makes it great for performant animations and transitions. Absolute positioning removes the element from normal flow and places it relative to a positioned ancestor, which is more layout-focused. The choice depends on whether you care more about performance or structural layout.',
     tags: ['css', 'positioning', 'translate', 'absolute', 'performance'],
     reference: [
@@ -1075,7 +1075,7 @@ export const flashcards: Flashcard[] = [
       'Clearfix is used to clear floated child elements so the parent can properly wrap around them. Without it, the parent’s height may collapse.',
     code: '',
     hint: 'Think float layout issues.',
-    explanation:
+    expanded:
       'When child elements are floated, their parent may not expand to contain them, leading to layout issues. The clearfix method adds a pseudo-element (`::after`) that clears the float, allowing the parent to correctly calculate its height. It’s commonly used in older float-based layouts or when mixing floated elements in modern code.',
     tags: ['css', 'clearfix', 'float', 'layout'],
     reference: [
@@ -1100,7 +1100,7 @@ export const flashcards: Flashcard[] = [
       'Event delegation is when you attach a single event listener to a parent element to handle events from its child elements. It works by taking advantage of event bubbling.',
     code: '',
     hint: 'Think bubbling from child to parent.',
-    explanation:
+    expanded:
       'Instead of adding event listeners to many child elements, you attach one listener to a common ancestor. When an event happens, it bubbles up through the DOM, and you can check `event.target` to see which child triggered it. This improves performance and is useful for dynamic content.',
     tags: ['javascript', 'dom', 'delegation', 'event-bubbling'],
     reference: [
@@ -1123,7 +1123,7 @@ export const flashcards: Flashcard[] = [
       '`this` refers to the object that’s currently executing the function. In ES6, arrow functions were introduced, which don’t have their own `this` — they inherit it from their surrounding scope.',
     code: '',
     hint: 'Think function context and arrow functions.',
-    explanation:
+    expanded:
       '`this` behaves differently depending on how a function is called. In regular functions, `this` depends on the calling context. In ES6, arrow functions help avoid confusion by capturing the `this` value of their lexical scope, which is especially useful in callbacks or event handlers.',
     tags: ['javascript', 'this', 'arrow-functions', 'es6'],
     reference: [
@@ -1145,7 +1145,7 @@ export const flashcards: Flashcard[] = [
       'Prototypal inheritance allows objects to inherit properties and methods from other objects through a prototype chain. Every object in JavaScript has an internal [[Prototype]] property, which points to another object. When you access a property on an object and it doesn’t exist on the object itself, the JavaScript engine looks up the chain to its prototype, and so on, until it either finds the property or reaches the end of the chain (`null`). You can create inheritance using constructor functions with `prototype`, with `Object.create()`, or with ES6 `class` syntax, which is syntactic sugar over prototype-based inheritance.',
     code: '',
     hint: 'Think "lookup chain" and shared methods.',
-    explanation:
+    expanded:
       'Prototypal inheritance enables efficient memory usage and method sharing across object instances. Instead of copying methods onto each object, shared behavior lives on the prototype. For example, functions defined on `ConstructorFunction.prototype` will be available to all instances created with `new ConstructorFunction()`. Similarly, objects created with `Object.create(parentObj)` will delegate property access to `parentObj` via the prototype chain.',
     tags: ['javascript', 'inheritance', 'prototypes', 'oop'],
     reference: [
@@ -1168,7 +1168,7 @@ export const flashcards: Flashcard[] = [
       '`undefined` means a variable has been declared but not assigned a value. `null` is an intentional absence of any value. An undeclared variable hasn’t been declared in any scope and throws a ReferenceError if accessed.',
     code: '',
     hint: 'Think assigned vs unassigned vs not declared at all.',
-    explanation:
+    expanded:
       '`undefined` happens when you declare a variable but don’t assign anything to it. `null` is explicitly assigned by a developer to indicate "no value." An undeclared variable hasn’t been defined at all — trying to access it results in a `ReferenceError`. To check: use `typeof` to safely check if a variable is undeclared (`typeof foo === "undefined"`), compare directly to `null`, and use strict equality (`===`) when testing for either.',
     tags: ['javascript', 'variables', 'null', 'undefined', 'scope'],
     reference: [
@@ -1190,7 +1190,7 @@ export const flashcards: Flashcard[] = [
       'A closure is a function that retains access to variables from its outer (enclosing) scope even after that outer function has finished executing. It’s useful for data privacy and maintaining state between function calls.',
     code: '',
     hint: 'Think inner function remembering outer variables.',
-    explanation:
+    expanded:
       'Closures are created whenever a function is defined inside another function and references variables from the outer function. Since the inner function retains access to that scope, you can use closures to encapsulate data, like in a counter or private state in a module. Closures are the foundation for many JavaScript patterns, including callbacks, function factories, and module patterns.',
     tags: ['javascript', 'closures', 'scope', 'functions'],
     reference: [
@@ -1213,7 +1213,7 @@ export const flashcards: Flashcard[] = [
       'For arrays, I use `for`, `for...of`, `forEach`, `map`, and other array methods. For objects, I use `for...in`, `Object.keys()`, `Object.entries()`, or `Object.values()` combined with array methods.',
     code: '',
     hint: 'Think arrays vs plain objects.',
-    explanation:
+    expanded:
       'Arrays offer several looping options: classic `for` loops, `for...of` for values, and array methods like `forEach`, `map`, and `reduce`. For objects, `for...in` iterates over all enumerable properties (including inherited ones), so it’s often safer to use `Object.keys()`, `Object.entries()`, or `Object.values()` with array iteration methods to avoid inherited keys.',
     tags: ['javascript', 'iteration', 'arrays', 'objects', 'loops'],
     reference: [
@@ -1236,7 +1236,7 @@ export const flashcards: Flashcard[] = [
       '`forEach()` is used for executing a function on each array item when you don’t need a return value. `map()` is used when you want to transform an array and return a new one with the results.',
     code: '',
     hint: 'Think: forEach is side-effects, map returns a new array.',
-    explanation:
+    expanded:
       '`forEach()` is great when you just want to perform side effects, like logging or updating external state. It does not return anything useful. `map()` is used when you want to transform each element of the array and return a brand new array, leaving the original untouched. If you need a result, use `map`. If you just want to loop over items, use `forEach`.',
     tags: ['javascript', 'arrays', 'iteration', 'map', 'foreach'],
     reference: [
@@ -1258,7 +1258,7 @@ export const flashcards: Flashcard[] = [
       'Anonymous functions are often used as callbacks or when you need a function temporarily, like in array methods (`map`, `filter`, `forEach`) or event handlers.',
     code: '',
     hint: 'Think quick callbacks or one-time logic.',
-    explanation:
+    expanded:
       'Anonymous functions are functions without a name. They’re useful when you don’t need to reuse the function elsewhere. Common use cases include passing them directly into methods like `setTimeout()`, `addEventListener()`, or array methods. They keep your code concise when a named function isn’t necessary.',
     tags: ['javascript', 'functions', 'anonymous', 'callbacks'],
     reference: [
@@ -1284,7 +1284,7 @@ export const flashcards: Flashcard[] = [
       'Native objects are built into the JavaScript language (like Array, Object, or Date). Host objects are provided by the environment, such as the browser or Node.js (like window, document, or process).',
     code: '',
     hint: 'Think: JS core vs environment-specific.',
-    explanation:
+    expanded:
       'Native objects are defined by the ECMAScript specification and are always available in any JS environment. Host objects, on the other hand, are provided by the runtime environment — for example, browsers expose host objects like `window`, `document`, and `XMLHttpRequest`, while Node.js provides objects like `fs` or `process`. The availability of host objects depends on where your code is running.',
     tags: ['javascript', 'environment-objects'],
     reference: [
@@ -1307,7 +1307,7 @@ export const flashcards: Flashcard[] = [
       '`function Person(){}` declares a function. `Person()` calls that function like a regular function. `new Person()` creates a new object using the function as a constructor.',
     code: '',
     hint: 'Think declaration vs invocation vs instantiation.',
-    explanation:
+    expanded:
       '`function Person(){}` defines a reusable function. If you call `Person()` directly, it runs the function but doesn’t create a new object — any `this` inside it will refer to the global object (or be undefined in strict mode). When you use `new Person()`, it creates a new object, sets `this` to that new object, and links it to `Person.prototype`, making it act like a constructor. This is the correct way to create instances from a constructor function.',
     tags: ['javascript', 'functions', 'constructors', 'new', 'this'],
     reference: [
@@ -1330,7 +1330,7 @@ export const flashcards: Flashcard[] = [
       '`function foo() {}` is a function declaration and is hoisted entirely. `var foo = function() {}` is a function expression and only the variable `foo` is hoisted, not the function itself.',
     code: '',
     hint: 'Think hoisting and when the function becomes usable.',
-    explanation:
+    expanded:
       'Function declarations (`function foo() {}`) are hoisted with their entire definition, so you can call `foo()` even before it’s defined in the code. Function expressions (`var foo = function() {}`) only hoist the variable `foo`, which is `undefined` until the assignment runs — calling `foo()` before that line will throw an error. Also, function expressions can be anonymous or named, and are often used for inline functions or to limit scope.',
     tags: ['javascript', 'functions', 'hoisting', 'declaration', 'expression'],
     reference: [
@@ -1353,7 +1353,7 @@ export const flashcards: Flashcard[] = [
       '`call` and `apply` are methods to invoke functions with a specified `this` value. The difference is in how they accept arguments: `call` takes them as a comma-separated list, while `apply` takes them as an array.',
     code: '',
     hint: 'Think calling functions with custom this and different argument passing.',
-    explanation:
+    expanded:
       'Both `call` and `apply` let you invoke a function with an explicit `this` context. For example, `func.call(obj, arg1, arg2)` calls `func` with `this` set to `obj` and arguments `arg1`, `arg2`. `func.apply(obj, [arg1, arg2])` does the same but expects the arguments as an array. `apply` is useful when you have arguments in an array or array-like object, while `call` is more straightforward when you know each argument.',
     tags: ['javascript', 'functions', 'call-apply-bind', 'invocation', 'this'],
     reference: [
@@ -1375,7 +1375,7 @@ export const flashcards: Flashcard[] = [
       '`bind` creates a new function that, when called, has its `this` keyword set to the provided value, with optional arguments prepended.',
     code: '',
     hint: 'Think permanently setting this context.',
-    explanation:
+    expanded:
       '`bind` returns a new function that is like the original but with its `this` permanently set to the value you provide. This is helpful for passing methods as callbacks while keeping the correct `this`, or for partial function application by pre-setting some arguments. Unlike `call` or `apply`, `bind` does not invoke the function immediately; it returns a new function you can call later.',
     tags: ['javascript', 'functions', 'call-apply-bind', 'this', 'context'],
     reference: [
@@ -1394,7 +1394,7 @@ export const flashcards: Flashcard[] = [
       'Feature detection checks if a browser supports a feature directly by testing it. Feature inference guesses support based on related features. Using the UA string relies on identifying the browser from its user agent to decide compatibility.',
     code: '',
     hint: 'Think direct test vs guess vs browser sniffing.',
-    explanation:
+    expanded:
       'Feature detection is the most reliable method — it tests if a specific API or behavior exists before using it. Feature inference assumes support based on other known capabilities but can be unreliable. Using the UA (user agent) string means detecting the browser version and making assumptions, which is fragile because UA strings can be spoofed or change over time.',
     tags: [
       'javascript',
@@ -1421,7 +1421,7 @@ export const flashcards: Flashcard[] = [
       'Hoisting is JavaScript’s behavior of moving variable and function declarations to the top of their scope before code execution. This means you can use functions and variables before they are declared in the code.',
     code: '',
     hint: 'Think declarations are “lifted” to the top.',
-    explanation:
+    expanded:
       'In JavaScript, variable declarations (`var`) and function declarations are processed before any code runs, so they’re “hoisted” to the top of their enclosing scope. However, only the declarations are hoisted, not initializations. For example, a `var` variable is hoisted but undefined until assigned, while function declarations are fully hoisted and can be called before their declaration. `let` and `const` are hoisted differently and are in a temporal dead zone until initialized.',
     tags: ['javascript', 'hoisting', 'variables', 'functions', 'scope'],
     reference: [
@@ -1443,7 +1443,7 @@ export const flashcards: Flashcard[] = [
       'Event bubbling is the process where an event starts at the most specific element (the target) and then propagates upward through its ancestors in the DOM tree.',
     code: '',
     hint: 'Think event flows from child to parent elements.',
-    explanation:
+    expanded:
       'When an event occurs on an element, it first triggers any handlers on that element, then moves up to its parent, then the parent’s parent, and so on, until it reaches the root of the document. This propagation allows a single event listener on a parent to handle events from many child elements. Event bubbling is the default phase in most browsers.',
     tags: ['javascript', 'events', 'dom', 'event-bubbling', 'propagation'],
     reference: [
@@ -1465,7 +1465,7 @@ export const flashcards: Flashcard[] = [
       'Event capturing is the phase where an event propagates from the root of the DOM down to the target element before the event is handled.',
     code: '',
     hint: 'Think event flows from parent to child elements.',
-    explanation:
+    expanded:
       'In event capturing, the event starts at the top of the DOM tree and travels down through ancestor elements to the target element. This phase happens before event bubbling. You can listen for events during the capturing phase by setting the `capture` option to `true` when adding an event listener. Capturing is less commonly used than bubbling but useful for intercepting events early.',
     tags: ['javascript', 'events', 'dom', 'event-capturing', 'propagation'],
     reference: [
@@ -1488,7 +1488,7 @@ export const flashcards: Flashcard[] = [
     code: '',
     hint: 'Think HTML vs live DOM.',
 
-    explanation: `Attributes are static and come from the HTML. For example, <input type="text" value="initial value" /> has a value attribute that sets the initial input content. Properties are dynamic and part of the DOM object. The input’s value property reflects the current content, which can change as the user types or via JavaScript.`,
+    expanded: `Attributes are static and come from the HTML. For example, <input type="text" value="initial value" /> has a value attribute that sets the initial input content. Properties are dynamic and part of the DOM object. The input’s value property reflects the current content, which can change as the user types or via JavaScript.`,
     tags: ['javascript', 'dom', 'attributes', 'properties', 'html'],
     reference: [
       {
@@ -1510,7 +1510,7 @@ export const flashcards: Flashcard[] = [
       'Extending built-in objects lets you add custom methods or properties to native types like Array or String, which can make your code more expressive. However, it can lead to conflicts with future JavaScript versions or third-party libraries and can cause unexpected behavior.',
     code: '',
     hint: 'Think custom enhancements vs risks and conflicts.',
-    explanation:
+    expanded:
       'Pros: You can add useful utilities directly to native prototypes, making code cleaner and more intuitive. Cons: Modifying built-ins can cause compatibility issues if future JavaScript adds methods with the same names. It can also break code relying on standard behavior or cause conflicts with libraries that expect native objects to be unchanged. For these reasons, extending built-ins is generally discouraged unless done carefully.',
     tags: ['javascript', 'prototypes', 'extend', 'built-in-objects', 'risks'],
     reference: [
@@ -1532,7 +1532,7 @@ export const flashcards: Flashcard[] = [
       '`==` compares values with type coercion, meaning it converts types to match before comparing. `===` compares values without type coercion, so both type and value must be the same.',
     code: '',
     hint: 'Think loose equality vs strict equality.',
-    explanation:
+    expanded:
       '`==` allows different types to be considered equal after conversion (e.g., 5 == "5" is true). `===` requires both type and value to match exactly (e.g., 5 === "5" is false). It’s generally recommended to use `===` to avoid unexpected bugs caused by type coercion.',
     tags: [
       'javascript',
@@ -1560,7 +1560,7 @@ export const flashcards: Flashcard[] = [
       'The same-origin policy is a security measure that prevents scripts running on one origin from accessing resources on a different origin. An origin is defined by the protocol, domain, and port.',
     code: '',
     hint: 'Think: protection between different websites.',
-    explanation:
+    expanded:
       'This policy helps prevent malicious scripts on one site from interacting with sensitive data on another. For example, a script on `https://example.com` can’t read cookies or make DOM changes on `https://other.com`. Cross-origin communication is possible but must be explicitly allowed via mechanisms like CORS (Cross-Origin Resource Sharing).',
     tags: ['javascript', 'security', 'same-origin', 'cors', 'browser-policy'],
     reference: [
@@ -1583,7 +1583,7 @@ export const flashcards: Flashcard[] = [
       'It’s called a "ternary" operator because it takes three operands: a condition, a value if true, and a value if false. The word "ternary" means composed of three parts.',
     code: '',
     hint: 'Think condition ? ifTrue : ifFalse.',
-    explanation:
+    expanded:
       'The ternary operator is a concise alternative to an `if...else` statement. The syntax is `condition ? expr1 : expr2`, where `expr1` runs if the condition is true, and `expr2` runs if it’s false. It’s called ternary because it’s the only JavaScript operator that takes three operands.',
     tags: ['javascript', 'ternary', 'operators', 'conditional'],
     reference: [
@@ -1606,7 +1606,7 @@ export const flashcards: Flashcard[] = [
       'Strict mode is a way to opt into a more secure and error-checked version of JavaScript by adding "use strict" at the top of a script or function. It helps catch silent errors, disallows unsafe actions like using undeclared variables, and generally makes your code cleaner. A downside is that it can break older scripts and makes certain things (like `this` in functions) behave differently.',
     code: '',
     hint: 'Think: safer JavaScript, fewer silent bugs.',
-    explanation:
+    expanded:
       'Strict mode prevents the use of undeclared variables, disables `with` statements, makes assignments to non-writable properties throw errors, and changes how `this` behaves in functions (defaults to `undefined` instead of the global object). While it improves safety and helps avoid common bugs, it may also introduce compatibility issues with legacy code and has stricter rules that might confuse beginners at first.',
     tags: ['javascript', 'strict-mode', 'safety', 'debugging', 'this'],
     reference: [
@@ -1629,7 +1629,7 @@ export const flashcards: Flashcard[] = [
       'Languages like TypeScript, CoffeeScript, or Elm compile to JavaScript and offer features JavaScript doesn’t natively support (or didn’t at the time), such as type checking, cleaner syntax, or better modularity. The main advantage is improved developer experience—features like static typing or modern syntax can reduce bugs and make code easier to maintain. On the downside, these tools add build complexity, may hide native JavaScript behavior, and require team familiarity and tooling support. Also, debugging can be harder if source maps are not used properly.',
     code: '',
     hint: 'Think TypeScript, build step, and developer ergonomics.',
-    explanation:
+    expanded:
       'Using a compile-to-JavaScript language can help enforce coding standards, catch errors at compile time, and introduce advanced abstractions or syntactic sugar. TypeScript, for instance, improves tooling with autocompletion and better refactoring support. However, it introduces a build step that adds overhead, may slow down development for small projects, and can make hiring or onboarding harder if your team is unfamiliar with the language. Additionally, debugging requires maintaining accurate source maps to trace back to the original code.',
     tags: [
       'javascript',
@@ -1659,7 +1659,7 @@ export const flashcards: Flashcard[] = [
       'I primarily use browser dev tools (like Chrome or Firefox DevTools) to inspect elements, set breakpoints, and step through code. I also use `console.log()` for quick insights, and tools like source maps when working with transpiled code. For more complex debugging, I might use a debugger statement, performance profiling, or third-party tools like ESLint for static code analysis.',
     code: '',
     hint: 'Think breakpoints, logs, and static analysis.',
-    explanation:
+    expanded:
       'Debugging often starts with narrowing down where the issue occurs. Browser developer tools let you pause execution, inspect variables, check call stacks, and evaluate expressions in real time. `console.log()` is fast and simple for checking values, but setting breakpoints and using the debugger allows for deeper analysis. Static analysis tools like ESLint help catch errors before they happen. Source maps are useful when debugging minified or compiled code like TypeScript or SCSS.',
     tags: ['javascript', 'debugging', 'tools', 'devtools', 'console', 'eslint'],
     reference: [
@@ -1686,7 +1686,7 @@ export const flashcards: Flashcard[] = [
       'A mutable object can be changed after it’s created—its properties or values can be modified. An immutable object cannot be changed once it’s created. In JavaScript, most objects and arrays are mutable, while primitives like strings, numbers, and booleans are immutable.\n\nAn example of an immutable object is a string. When you modify a string, you actually create a new one rather than changing the original.\n\nThe pros of immutability include easier debugging, safer state management (especially in React or Redux), and predictable behavior. The cons are that it can lead to performance costs due to creating new objects rather than modifying existing ones.\n\nYou can achieve immutability using techniques like `Object.freeze()` to prevent changes to an object, spreading objects or arrays to create copies (`{...obj}`, `[...arr]`), or using libraries like Immer or Immutable.js to enforce and manage immutability more efficiently.',
     code: '',
     hint: 'Think about strings vs objects. Also consider Redux state.',
-    explanation:
+    expanded:
       'Mutable structures are commonly used in JavaScript but can lead to side effects when state changes are shared across components. Immutability helps you track changes over time and avoid accidental mutations. Although `Object.freeze()` can prevent mutations, it only performs a shallow freeze. For deeper immutability or convenience, libraries like Immer allow you to write mutable-style code while maintaining immutability under the hood.',
     tags: [
       'javascript',
@@ -1719,7 +1719,7 @@ export const flashcards: Flashcard[] = [
       'Synchronous functions run sequentially—each task must complete before the next begins. If one function takes a long time to finish, it blocks the rest of the code from running. Asynchronous functions, on the other hand, allow your code to start a task and continue running other code while waiting for that task to complete. They often rely on callbacks, promises, or async/await syntax to handle operations like network requests or file reading without blocking the main thread.',
     code: '',
     hint: 'Think blocking vs non-blocking, and how `await` works.',
-    explanation:
+    expanded:
       'In synchronous code, operations are executed one after another, which works fine for tasks that finish quickly. But for time-consuming operations (like fetching data), this can freeze your app. Asynchronous code solves this by using the event loop and task queue. With callbacks, promises, and async/await, you can run long tasks in the background and respond when they’re done—keeping the user experience smooth and responsive.',
     tags: [
       'javascript',
@@ -1748,7 +1748,7 @@ export const flashcards: Flashcard[] = [
       'The event loop is a JavaScript mechanism that manages the execution of multiple tasks, allowing asynchronous operations to run without blocking the main thread. The call stack keeps track of the currently executing functions, while the task queue holds functions waiting to be executed after the stack is empty.',
     code: '',
     hint: 'Think of event loop as the manager between call stack and task queue.',
-    explanation:
+    expanded:
       'JavaScript is single-threaded, meaning it can execute only one task at a time using the call stack. When asynchronous operations (like timers, fetch requests) complete, their callback functions are pushed into the task queue. The event loop constantly checks if the call stack is empty; if it is, it moves the next task from the task queue onto the call stack for execution. This process enables non-blocking asynchronous behavior and keeps the UI responsive.',
     tags: [
       'javascript',
@@ -1777,7 +1777,7 @@ export const flashcards: Flashcard[] = [
       '`var` is function-scoped and hoisted, allowing redeclaration and can lead to bugs. `let` and `const` are block-scoped, not hoisted in the same way, and help prevent redeclaration errors. `const` declares constants that cannot be reassigned, while `let` allows reassignment.',
     code: '',
     hint: 'Think scope, hoisting, and reassignment.',
-    explanation:
+    expanded:
       "`var` is hoisted and function-scoped, which means variables declared with `var` are accessible before their declaration (due to hoisting) and exist throughout the enclosing function. It also allows redeclaration, which can cause unexpected behavior. `let` and `const` were introduced in ES6 to address these issues; both are block-scoped, meaning they only exist within the nearest enclosing block (like loops or conditionals). `let` allows you to reassign the variable, but not redeclare it in the same scope. `const` must be assigned at declaration and cannot be reassigned, though if the value is an object, the object's properties can still be modified.",
     tags: [
       'javascript',
@@ -1812,7 +1812,7 @@ export const flashcards: Flashcard[] = [
       'ES5 function constructors use regular functions to create objects and set up inheritance via prototypes manually. ES6 classes provide cleaner, more concise syntax for creating constructors and handling inheritance but are mostly syntactic sugar over the prototype system.',
     code: '',
     hint: 'Think syntax sugar and prototypes.',
-    explanation:
+    expanded:
       "Function constructors in ES5 involve defining a function and attaching methods to its prototype to share behavior across instances. ES6 classes introduced a clearer, more intuitive syntax for defining constructors, instance methods, and inheritance with `extends` and `super`. Although classes look like classical OOP constructs, under the hood they still use JavaScript's prototype-based inheritance. Classes also come with stricter rules, such as requiring the use of `new` for instantiation and methods being non-enumerable by default.",
     tags: [
       'javascript',
@@ -1842,7 +1842,7 @@ export const flashcards: Flashcard[] = [
       'Arrow functions provide a shorter syntax and don’t have their own `this` binding. They inherit `this` from their surrounding scope, making them great for callbacks or methods where you want to keep the current `this` context without using `.bind()`.',
     code: '',
     hint: 'Think concise syntax and lexical this.',
-    explanation:
+    expanded:
       'Unlike regular functions, arrow functions don’t create their own `this`, `arguments`, or `super`. This means `this` inside an arrow function is the same as the enclosing scope, which helps avoid common bugs with `this` in callbacks or event handlers. They are also more concise, especially for inline functions. However, arrow functions cannot be used as constructors and don’t have a `prototype` property.',
     tags: ['javascript', 'arrow-functions', 'this', 'syntax', 'callbacks'],
     reference: [
@@ -1865,7 +1865,7 @@ export const flashcards: Flashcard[] = [
       'Using arrow functions for methods inside a constructor automatically binds `this` to the instance, so you don’t have to manually bind the method. This is especially helpful for passing methods as callbacks where the context might otherwise get lost.',
     code: '',
     hint: 'Think automatic binding of this.',
-    explanation:
+    expanded:
       'Normally, methods defined in constructors need explicit `.bind(this)` calls to keep the right context when passed around. Arrow functions capture the `this` value from their defining scope (the constructor instance), so they stay correctly bound without extra code. This reduces boilerplate and avoids common bugs with `this` in event handlers or async callbacks.',
     tags: ['javascript', 'arrow-functions', 'constructor', 'this', 'binding'],
     reference: [
@@ -1887,7 +1887,7 @@ export const flashcards: Flashcard[] = [
       'A higher-order function is a function that takes one or more functions as arguments, or returns a function as its result.',
     code: '',
     hint: 'Think functions that work with other functions.',
-    explanation:
+    expanded:
       'Higher-order functions allow you to abstract and reuse behavior by accepting functions as parameters or returning new functions. Common examples include `map`, `filter`, and `reduce` which take callback functions to process data. They are a key concept in functional programming and help write cleaner, more flexible code.',
     tags: ['javascript', 'functions', 'higher-order', 'functional-programming'],
     reference: [
@@ -1910,7 +1910,7 @@ export const flashcards: Flashcard[] = [
       'Destructuring lets you unpack values from objects or arrays into distinct variables in a concise way. For example, from an object: `const { name, age } = person;` or from an array: `const [first, second] = colors;`',
     code: '',
     hint: 'Think unpacking with curly braces for objects and square brackets for arrays.',
-    explanation:
+    expanded:
       'Destructuring is a convenient ES6 syntax that helps extract values from objects or arrays quickly and clearly. It improves readability and reduces the need to write repetitive code. You can also assign default values and rename variables during destructuring.',
     tags: ['javascript', 'destructuring', 'es6', 'syntax'],
     reference: [
@@ -1933,7 +1933,7 @@ export const flashcards: Flashcard[] = [
       'Template literals let you create strings with embedded expressions using backticks (`). For example: `const greeting = `Hello, ${name}!`;` This inserts the value of `name` directly into the string.',
     code: '',
     hint: 'Think backticks and ${expression} syntax.',
-    explanation:
+    expanded:
       'Template literals improve readability and ease of string creation compared to concatenation. They allow multiline strings and expression interpolation, making dynamic string building cleaner and less error-prone.',
     tags: ['javascript', 'es6', 'template-literals', 'strings', 'syntax'],
     reference: [
@@ -1952,7 +1952,7 @@ export const flashcards: Flashcard[] = [
       'Currying is transforming a function that takes multiple arguments into a sequence of functions each taking a single argument. For example: `const add = a => b => a + b;` allows calling `add(2)(3)` to get `5`.',
     code: '',
     hint: 'Think functions returning functions one argument at a time.',
-    explanation:
+    expanded:
       'Currying lets you create reusable, more modular functions by fixing some arguments and returning new functions that wait for the rest. This can improve code clarity, enable partial application, and support functional programming patterns.',
     tags: ['javascript', 'functions', 'currying', 'functional-programming'],
     reference: [
@@ -1975,7 +1975,7 @@ export const flashcards: Flashcard[] = [
       'Spread syntax (`...`) expands iterable values (like arrays or objects) into individual elements, useful for copying or combining data. Rest syntax collects multiple elements into a single array parameter, handy for functions with variable arguments.',
     code: '',
     hint: 'Think: spread unpacks, rest packs.',
-    explanation:
+    expanded:
       'Spread syntax helps create shallow copies, merge arrays or objects, and pass elements as separate arguments. Rest syntax is used in function parameters to gather all remaining arguments into an array, enabling flexible argument handling. Though both use `...`, their usage context differs—spread in calls or literals, rest in parameter definitions.',
     tags: [
       'javascript',
@@ -2005,7 +2005,7 @@ export const flashcards: Flashcard[] = [
       'You can share code between files by using modules—exporting variables, functions, or classes from one file and importing them into another. In modern JavaScript, this is done using ES6 `export` and `import` statements.',
     code: '',
     hint: 'Think export/import and modular code.',
-    explanation:
+    expanded:
       'Modules help keep code organized and reusable by splitting functionality into separate files. You use `export` to expose parts of a file, and `import` to include them where needed. This promotes maintainability and avoids polluting the global scope. Before ES6, tools like CommonJS (`require`/`module.exports`) were used, especially in Node.js.',
     tags: ['javascript', 'modules', 'import', 'export', 'code-sharing', 'es6'],
     reference: [
@@ -2027,7 +2027,7 @@ export const flashcards: Flashcard[] = [
       'Static class members belong to the class itself rather than any instance. They’re useful for utility functions, constants, or properties that should be shared across all instances without duplication.',
     code: '',
     hint: 'Think class-level properties and methods.',
-    explanation:
+    expanded:
       'Static members allow you to define methods or values that don’t rely on instance data and can be accessed without creating an object. For example, helper functions, configuration constants, or counters shared by all instances can be static. This keeps instance objects smaller and your API clear.',
     tags: ['javascript', 'classes', 'static', 'oop', 'design-patterns'],
     reference: [
@@ -2050,7 +2050,7 @@ export const flashcards: Flashcard[] = [
       '`while` loops test the condition before each iteration, so the loop body may not run at all if the condition is false initially. `do-while` loops run the loop body first and then test the condition, ensuring the loop executes at least once.',
     code: '',
     hint: 'Think: pre-check vs post-check loops.',
-    explanation:
+    expanded:
       '`while` loops are good when you want to run code only if a condition is true from the start. `do-while` loops are useful when the loop body must execute at least once regardless of the condition, like prompting for user input and then validating it.',
     tags: ['javascript', 'loops', 'while', 'do-while', 'control-flow'],
     reference: [
@@ -2075,7 +2075,7 @@ export const flashcards: Flashcard[] = [
       'jQuery was traditionally used to simplify DOM manipulation, event handling, and AJAX requests across browsers with inconsistent APIs. It’s still useful for legacy projects or when you need quick solutions in older codebases without modern JavaScript frameworks.',
     code: '',
     hint: 'Think older browser support and simpler syntax for common tasks.',
-    explanation:
+    expanded:
       'jQuery abstracts away browser inconsistencies and provides a concise syntax for common JavaScript tasks. However, with modern JavaScript (ES6+), native APIs have improved dramatically — querySelector, fetch, classList, etc. — reducing the need for jQuery. Additionally, it adds unnecessary weight to the bundle in modern apps and can encourage outdated coding practices if not used thoughtfully.',
     tags: ['jquery', 'legacy-support', 'dom', 'ajax', 'libraries'],
     reference: [
@@ -2102,7 +2102,7 @@ export const flashcards: Flashcard[] = [
       'I’d focus on replicating the most common jQuery features using modern Web APIs — like element selection, event handling, and AJAX. I’d use `querySelectorAll` for DOM selection, `addEventListener` for event handling, and `fetch` for AJAX requests.',
     code: '',
     hint: 'Use built-in browser features available in modern JavaScript.',
-    explanation:
+    expanded:
       'A lightweight alternative to jQuery could be built by wrapping core Web APIs in a small utility library. For example, you might create a function like `$()` that uses `document.querySelectorAll()` to return elements, and prototype chain methods like `.on()` to simplify event binding. Modern methods like `classList`, `closest()`, and `fetch()` make it easy to replicate most jQuery functionality without the overhead. The idea is to give a cleaner API for the most commonly used tasks.',
     tags: ['jquery', 'dom', 'custom-library', 'web-api', 'modern-js'],
     reference: [
@@ -2129,7 +2129,7 @@ export const flashcards: Flashcard[] = [
       'I’d consider factors like project size, team experience, and long-term maintenance. Angular is a full-fledged framework with batteries-included, while React is a library that’s more flexible and lightweight but requires piecing together additional tools.',
     code: '',
     hint: 'Think framework vs library, opinionated vs flexible.',
-    explanation:
+    expanded:
       'Angular is a comprehensive framework with built-in solutions for routing, state management, form handling, and more. It uses TypeScript by default and follows a more structured, opinionated approach. React, on the other hand, focuses only on the view layer and gives you freedom to choose your own libraries for routing, state management, etc. React uses JSX and encourages functional components and hooks for logic reuse. You might choose Angular for enterprise-scale apps with large teams, or React if you want more flexibility, a smaller learning curve, or to build something incrementally.',
     tags: [
       'react',
@@ -2158,7 +2158,7 @@ export const flashcards: Flashcard[] = [
       'In React, I structure components by breaking UI into reusable, self-contained pieces, often following a hierarchy of presentational (UI) and container (logic/state) components. React doesn’t strictly follow MVC; instead, components combine view and controller logic, while state management tools (like Redux or Context) handle the model layer.',
     code: '',
     hint: 'Think components as UI + controller, separate state management.',
-    explanation:
+    expanded:
       'React’s architecture centers around components which encapsulate both rendering and some controller logic. Presentational components focus on how things look and receive data via props, while container components manage state and business logic. Unlike traditional MVC where model, view, and controller are separate layers, React components blend view and controller roles. For complex state, external libraries manage the model/data layer. This approach promotes modularity, reusability, and easier maintenance.',
     tags: [
       'react',
@@ -2187,7 +2187,7 @@ export const flashcards: Flashcard[] = [
       'React is often chosen for its flexibility, strong community support, and a component-based architecture that integrates well with various tools and libraries. Unlike Angular, which is a full-fledged framework, React focuses on the UI layer, giving developers more freedom in choosing their stack. Compared to Vue, React has a larger ecosystem and corporate backing from Facebook, which can mean better long-term support.',
     code: '',
     hint: 'Think flexibility, ecosystem, and control.',
-    explanation:
+    expanded:
       'React’s unopinionated nature allows developers to build their own architecture and choose libraries for routing, state management, and more, whereas Angular provides a more opinionated all-in-one solution. Vue is easier to get started with and offers a gentle learning curve, but React’s massive community and widespread adoption mean more resources, job opportunities, and third-party tools. React also emphasizes declarative programming and a virtual DOM for efficient rendering.',
     tags: [
       'react',
@@ -2221,7 +2221,7 @@ export const flashcards: Flashcard[] = [
       'Historically, browsers limited the number of concurrent connections they could make to a single domain (often around 6). By serving assets from multiple domains (also called domain sharding), websites could load resources like images, scripts, and stylesheets in parallel, improving page load times.',
     code: '',
     hint: 'Think about how browsers open connections.',
-    explanation:
+    expanded:
       'Older HTTP/1.1 limitations meant browsers could only open a few simultaneous requests to a domain. Using additional subdomains allowed more assets to load in parallel. However, with HTTP/2 and HTTP/3, this practice is now often discouraged since multiplexing allows multiple requests over a single connection, making domain sharding unnecessary and even potentially harmful due to extra DNS lookups and SSL handshakes.',
     tags: ['networking', 'performance', 'http', 'domain-sharding'],
     reference: [
@@ -2244,7 +2244,7 @@ export const flashcards: Flashcard[] = [
       'When you type a URL and hit enter, the browser first checks its cache or makes a DNS request to resolve the domain name to an IP address. Then, it initiates a TCP connection (or QUIC with HTTP/3), often followed by a TLS handshake for HTTPS. Once connected, the browser sends an HTTP request to the server, and the server responds with the HTML. The browser parses the HTML, makes additional requests for resources like CSS, JS, and images, and builds the DOM, CSSOM, and render tree. It then paints pixels to the screen while continuing to load and execute scripts. Modern browsers may progressively render content as it loads.',
     code: '',
     hint: 'Think DNS → TCP → TLS → HTTP → parse/render.',
-    explanation:
+    expanded:
       "This process involves many layers of networking and rendering. DNS resolution maps the domain to an IP address. The browser opens a connection, secures it if necessary, and makes an HTTP request. When the response comes back, parsing begins immediately. The browser constructs the DOM and CSSOM, merges them into a render tree, and begins rendering. JavaScript may block rendering depending on how it's loaded. As more resources arrive, the browser reflows/repaints as needed.",
     tags: ['networking', 'dns', 'http', 'rendering', 'browser'],
     reference: [
@@ -2267,7 +2267,7 @@ export const flashcards: Flashcard[] = [
       'Long-polling is a technique where the client repeatedly makes HTTP requests to the server, holding the connection open until new data is available. WebSockets provide full-duplex communication over a single persistent connection, allowing real-time bidirectional data transfer. Server-Sent Events (SSE) allow the server to push updates to the client over a single HTTP connection, but only in one direction (server → client).',
     code: '',
     hint: 'Think about the direction of data flow and how persistent the connection is.',
-    explanation:
+    expanded:
       'Long-polling emulates real-time by repeatedly opening and closing HTTP connections, which is resource-intensive. WebSockets use a persistent TCP connection for real-time two-way communication, ideal for chat apps or games. SSE uses a persistent connection for one-way updates, making it lightweight and simple for live feeds or notifications. WebSockets are more complex but powerful. SSE is easier to implement but only supports server-to-client streams.',
     tags: ['networking', 'realtime', 'websockets', 'sse', 'long-polling'],
     reference: [
@@ -2294,7 +2294,7 @@ export const flashcards: Flashcard[] = [
       '`Expires`, `Date`, and `Age` are headers used for cache control. `Expires` sets a timestamp when the content is considered stale. `Date` is when the response was generated by the server. `Age` tells how long the content has been cached by a proxy or browser. `If-Modified-Since` is a request header that asks the server to return a 304 Not Modified response if the content hasn’t changed since the given date. `Do Not Track` is a request header sent by browsers to signal user tracking preferences. `Cache-Control` provides more flexible cache instructions than `Expires`. `Transfer-Encoding` specifies how the message body is formatted — for example, using `chunked` encoding. `ETag` is a unique identifier for a resource version, useful for validating caches. `X-Frame-Options` prevents your site from being embedded in an iframe, helping avoid clickjacking attacks.',
     code: '',
     hint: 'Think about which are for freshness, which are for security, and which help optimize communication between browser and server.',
-    explanation:
+    expanded:
       '`Expires`, `Date`, `Age`, and `If-Modified-Since` all deal with caching and content freshness. `Cache-Control` gives fine-grained cache rules like `max-age`, `no-store`, and `must-revalidate`. `ETag` helps with efficient revalidation by letting the browser send `If-None-Match`. `Transfer-Encoding: chunked` allows streaming content in pieces. `Do Not Track` (DNT) is a user preference header, but not all servers honor it. `X-Frame-Options` (`DENY`, `SAMEORIGIN`) defends against UI redress attacks by disallowing or restricting embedding in other pages.',
     tags: [
       'networking',
@@ -2330,7 +2330,7 @@ export const flashcards: Flashcard[] = [
       'HTTP methods define the type of action a client wants to perform on a resource. Common methods include:\n\n- `GET`: Retrieve data.\n- `POST`: Send data to the server to create a resource.\n- `PUT`: Update a resource completely.\n- `PATCH`: Partially update a resource.\n- `DELETE`: Remove a resource.\n- `HEAD`: Same as `GET`, but only returns headers.\n- `OPTIONS`: Describes allowed methods for a resource (often used in CORS).\n- `CONNECT`: Establish a tunnel, typically used for HTTPS.\n- `TRACE`: Echoes the request, mainly used for debugging.',
     code: '',
     hint: 'Think CRUD operations and how the client communicates intent.',
-    explanation:
+    expanded:
       'HTTP methods are verbs that describe how to interact with server-side resources. RESTful APIs are built around these methods to represent create, read, update, and delete operations. Understanding the difference between `PUT` and `PATCH`, or `GET` and `HEAD`, is crucial for building efficient and secure APIs.',
     tags: ['http', 'networking', 'http-methods', 'rest', 'crud'],
     reference: [
@@ -2353,7 +2353,7 @@ export const flashcards: Flashcard[] = [
       'Domain pre-fetching is a performance optimization technique where the browser is instructed to perform DNS lookups for specified domains ahead of time. This reduces latency when users eventually navigate to or request resources from those domains.',
     code: '',
     hint: 'Think DNS lookups done proactively.',
-    explanation:
+    expanded:
       'Browsers must perform a DNS lookup to resolve a domain name to an IP address before making a request. Domain pre-fetching uses the `<link rel="dns-prefetch" href="//example.com">` tag to tell the browser to resolve external domains early. This is helpful when loading assets from third-party sources like CDNs, fonts, or analytics tools. While it doesn’t download the resource, it gets the domain ready faster, improving perceived speed.',
     tags: ['performance', 'dns', 'prefetching', 'networking', 'html'],
     reference: [
@@ -2375,7 +2375,7 @@ export const flashcards: Flashcard[] = [
       'A CDN (Content Delivery Network) is a network of distributed servers that deliver content to users based on their geographic location. The main benefit is faster load times by serving assets from a nearby server, reducing latency. CDNs also help reduce server load, handle traffic spikes, and improve reliability and security.',
     code: '',
     hint: 'Think edge caching and geographic distribution.',
-    explanation:
+    expanded:
       'When a user requests content, a CDN routes that request to the nearest edge node, serving static assets like images, CSS, and JavaScript files more quickly than a centralized origin server could. CDNs can also handle DDoS protection, TLS termination, and caching strategies that enhance both performance and scalability.',
     tags: ['cdn', 'performance', 'caching', 'delivery', 'networking'],
     reference: [
@@ -2401,7 +2401,7 @@ export const flashcards: Flashcard[] = [
       'Global and static objects can lead to tightly coupled code, make testing difficult, and increase the risk of name collisions or unintended side effects. They can also be modified from anywhere, which makes behavior harder to predict. For example:\n\n```js\nvar globalConfig = { theme: "dark" };\n\nfunction render() {\n  console.log(globalConfig.theme);\n}\n```\n\nThis makes it hard to isolate and test `render()`, since it depends on a global. A better approach would be to pass the config as an argument.',
     code: '',
     hint: 'Think about scope, coupling, and testability. ',
-    explanation:
+    expanded:
       'Using global or static objects means that state is shared and accessible from anywhere in the application. This can introduce hidden dependencies, unexpected mutations, and makes unit testing harder because you can’t isolate behavior. Instead, it’s better to use dependency injection or modular patterns to manage state and access.',
     tags: [
       'design-patterns',
@@ -2430,7 +2430,7 @@ export const flashcards: Flashcard[] = [
       'Inversion of Control (IoC) is a design principle where the control of object creation and the flow of a program is inverted—from being handled by your own code to being managed by an external framework or component. This improves modularity and makes code easier to maintain, test, and extend.',
     code: '',
     hint: 'Think about control flow and who is responsible for what.',
-    explanation:
+    expanded:
       'Instead of your code manually managing dependencies or execution flow, IoC delegates that responsibility. A common form of IoC is Dependency Injection (DI), where objects are given their dependencies rather than creating them internally. This decouples components, promotes reusability, and makes unit testing easier by allowing mock implementations to be injected.',
     tags: [
       'design-patterns',
@@ -2459,7 +2459,7 @@ export const flashcards: Flashcard[] = [
       'A violation of the Law of Demeter looks like this:\n\n```js\nuser.getProfile().getSettings().getTheme();\n```\n\nThis is bad design because it exposes the internal structure of objects and creates tight coupling between components. If any part of that chain changes, the code breaks. A better approach:\n\n```js\nuser.getTheme();\n```\n\nNow `user` encapsulates the traversal and provides a clear, stable interface.',
     code: '',
     hint: 'Think about chaining vs direct responsibility.',
-    explanation:
+    expanded:
       'The Law of Demeter promotes low coupling and better encapsulation by discouraging objects from navigating through the internals of other objects. When you "reach through" multiple layers to get data, your code becomes fragile and harder to maintain. Instead, expose necessary methods at the top level of each object and delegate internally. This reduces dependencies and makes objects easier to reuse and test.',
     tags: [
       'design-patterns',
@@ -2492,7 +2492,7 @@ export const flashcards: Flashcard[] = [
       'Active-Record tightly couples domain logic with database operations, which can lead to challenges in complex applications. It can make unit testing harder because business logic is mixed with persistence code. Also, it may not handle complex queries or relationships well, leading to bloated models and less flexibility.',
     code: '',
     hint: 'Think coupling, testability, and model bloat.',
-    explanation:
+    expanded:
       'While Active-Record is simple and convenient for CRUD operations, it mixes data access and business logic, violating separation of concerns. This can make the code harder to maintain, especially as applications grow in complexity. It often leads to "fat models" with too many responsibilities. Alternatives like Data Mapper patterns or Repository patterns can help decouple business logic from database details.',
     tags: [
       'design-patterns',
@@ -2525,7 +2525,7 @@ export const flashcards: Flashcard[] = [
       'Active-Record is simpler and faster to implement, making it suitable for small to medium projects with straightforward CRUD needs. Data-Mapper provides better separation of concerns, making it ideal for complex domains, better testability, and when business logic must be decoupled from persistence.',
     code: '',
     hint: 'Think simplicity vs separation of concerns.',
-    explanation:
+    expanded:
       'Active-Record mixes data and behavior, which is convenient but can cause issues as complexity grows. Data-Mapper abstracts database interactions into a separate layer, allowing domain models to focus purely on business logic. Use Active-Record for simpler apps or rapid development, and Data-Mapper when you need flexibility, easier testing, or work with complex data relationships.',
     tags: [
       'design-patterns',
@@ -2558,7 +2558,7 @@ export const flashcards: Flashcard[] = [
       'Composition favors building complex objects by combining simpler ones, promoting greater flexibility and reuse compared to inheritance, which creates tight coupling between parent and child classes. Composition allows changing behavior at runtime by swapping components, avoids problems like the fragile base class, and leads to more maintainable and modular code.',
     code: '',
     hint: 'Think flexibility, coupling, and reuse.',
-    explanation:
+    expanded:
       'Inheritance can lead to rigid hierarchies and tight coupling, making changes difficult and risking unintended side effects when parent classes change. Composition, by assembling behavior from smaller, reusable components, encourages loose coupling and better encapsulation. It enables easier testing and extension since components can be replaced or modified independently without affecting unrelated parts of the system.',
     tags: [
       'design-patterns',
@@ -2586,7 +2586,7 @@ export const flashcards: Flashcard[] = [
       'An Anti-corruption Layer (ACL) is a design pattern used to create a boundary between two different systems or bounded contexts, translating and adapting communication to prevent external systems from corrupting the internal domain model.',
     code: '',
     hint: 'Think integration, isolation, and translation between systems.',
-    explanation:
+    expanded:
       'The ACL acts as a protective barrier when integrating with legacy systems, third-party services, or other bounded contexts that have different models or assumptions. It translates data and operations between systems, allowing each to evolve independently without leaking unwanted complexity or inconsistencies. This improves maintainability and reduces coupling across system boundaries.',
     tags: [
       'design-patterns',
@@ -2615,7 +2615,7 @@ export const flashcards: Flashcard[] = [
       'A Singleton ensures only one instance of a class exists and provides a global access point to it. Thread safety means ensuring this property holds even when multiple threads attempt to create an instance simultaneously. In JavaScript, because it runs single-threaded, thread safety isn’t usually a concern, but in multi-threaded environments (like Java or C#), you need synchronization techniques.',
     code: 'public class Singleton {\n  private static volatile Singleton instance;\n  private Singleton() {}\n\n  public static Singleton getInstance() {\n    if (instance == null) {\n      synchronized(Singleton.class) {\n        if (instance == null) {\n          instance = new Singleton();\n        }\n      }\n    }\n    return instance;\n  }\n}',
     hint: 'Think instance control and thread synchronization.',
-    explanation:
+    expanded:
       'To write a thread-safe Singleton, you typically use locking mechanisms to ensure only one thread can create the instance at a time. The above example uses double-checked locking in Java to ensure lazy initialization with minimal synchronization overhead. In JavaScript, a module pattern or closure is typically sufficient due to its single-threaded runtime.',
     tags: [
       'design-patterns',
@@ -2644,7 +2644,7 @@ export const flashcards: Flashcard[] = [
       'Violating data abstraction means clients depend directly on implementation details, making changes risky. Below is an example of violating this principle, followed by a corrected version that preserves abstraction.',
     code: '// Violating abstraction\nclass User {\n  constructor() {\n    this.details = { name: "Alice", age: 30 };\n  }\n}\n\nconst user = new User();\nconsole.log(user.details.name); // Client accesses internal structure directly\n\n//Preserving abstraction\nclass User {\n  constructor() {\n    this._details = { name: "Alice", age: 30 };\n  }\n\n  getName() {\n    return this._details.name;\n  }\n}\n\nconst user = new User();\nconsole.log(user.getName()); // Client uses abstraction, internal structure can change',
     hint: 'Think about hiding internal details behind methods.',
-    explanation:
+    expanded:
       'Data abstraction hides internal details, exposing only what clients need. This decouples clients from internal changes, making the code more maintainable. Violating this means clients depend on specific data shapes or properties, so refactoring breaks them. Using getter methods or interfaces preserves abstraction and flexibility.',
     tags: [
       'design-patterns',
@@ -2673,7 +2673,7 @@ export const flashcards: Flashcard[] = [
       'Violating the DRY principle means duplicating logic or data in multiple places, which increases maintenance costs and the risk of bugs. Here’s an example of repeated logic, followed by a refactored version using a reusable function.',
     code: '// Violating DRY\nfunction getUserGreeting(user) {\n  return "Hello, " + user.firstName + " " + user.lastName;\n}\n\nfunction getUserFullName(user) {\n  return user.firstName + " " + user.lastName;\n}\n\n// Fixing DRY\nfunction getFullName(user) {\n  return user.firstName + " " + user.lastName;\n}\n\nfunction getUserGreeting(user) {\n  return "Hello, " + getFullName(user);\n}',
     hint: 'Look for repeated logic that could be extracted into a function.',
-    explanation:
+    expanded:
       'The DRY principle encourages reusing logic by extracting it into functions or modules. Repeating the same logic in multiple places makes code harder to maintain. In this example, the user’s full name was computed twice in different ways. By creating a single `getFullName()` function, you reduce duplication and improve maintainability.',
     tags: ['design-patterns', 'dry', 'clean-code', 'refactoring'],
     reference: [
@@ -2695,7 +2695,7 @@ export const flashcards: Flashcard[] = [
       'Dependency Hell arises when managing dependencies becomes complex due to version conflicts, incompatible updates, or deeply nested dependencies causing errors and failures.',
     code: '',
     hint: 'Think version conflicts, lockfiles, and modularization.',
-    explanation:
+    expanded:
       'To handle Dependency Hell, you can:\n' +
       '- Use package managers with lockfiles (like npm’s package-lock.json or yarn.lock) to ensure consistent dependency versions.\n' +
       '- Follow semantic versioning carefully to avoid breaking changes.\n' +
@@ -2736,7 +2736,7 @@ export const flashcards: Flashcard[] = [
       'The `goto` statement is generally discouraged because it can make code harder to read, reason about, and maintain. It breaks the structured flow of control, leading to "spaghetti code".',
     code: '',
     hint: 'Think about readability, maintainability, and structured flow.',
-    explanation:
+    expanded:
       'GOTO was once a common control structure, but overuse led to unpredictable and tangled code flows. Dijkstra’s criticism highlighted that structured alternatives like loops and conditionals make code more reliable and easier to understand.\n\nHowever, there are rare cases (such as in low-level programming, error handling in C, or optimizing performance-critical code) where `goto` can be justified.\n\nIn modern high-level languages like JavaScript, `goto` isn’t even supported, and structured constructs offer cleaner and safer alternatives. Overall, while not inherently evil, `goto` is usually a sign of poor design in higher-level programming.',
     tags: [
       'goto',
@@ -2765,7 +2765,7 @@ export const flashcards: Flashcard[] = [
       'The robustness principle encourages developers to write code that communicates clearly and consistently while being flexible when interpreting inputs from others. This helps ensure systems remain interoperable even when one party is slightly non-compliant.',
     code: '',
     hint: 'Think about interoperability, fault tolerance, and graceful degradation.',
-    explanation:
+    expanded:
       'This principle originated in the context of network protocol design, where systems often had to interact with imperfect implementations. By being strict about what your software emits (e.g. well-formed data, standardized formats) and forgiving about what it receives (e.g. allowing optional fields or variations), you increase the chances of smooth communication across systems.\n\nHowever, some criticize this principle for potentially encouraging bad behavior in others—accepting invalid input may hide bugs. Therefore, it’s important to strike a balance: tolerate variation without allowing violations that could cause security issues or propagate broken data.',
     tags: [
       'design-principles',
@@ -2794,7 +2794,7 @@ export const flashcards: Flashcard[] = [
       'Separation of Concerns (SoC) is about organizing code so that each part of a system deals with one specific responsibility. This makes software easier to develop, test, maintain, and scale.',
     code: '',
     hint: 'Think about modularity, readability, and maintainability.',
-    explanation:
+    expanded:
       'SoC helps reduce complexity by dividing a system into distinct sections, each with a single, well-defined role. For example, in web development, HTML handles structure, CSS handles styling, and JavaScript handles behavior—each concern is separated.\n\nCommon methods to achieve SoC include:\n- Functions to isolate logic.\n- Classes and objects to encapsulate behavior.\n- Modules to separate reusable units of code.\n- Architectural patterns like MVC (Model-View-Controller), where:\n  - The Model handles data and business logic,\n  - The View handles the UI,\n  - The Controller handles user input.\n\nGood SoC promotes cleaner codebases, makes onboarding easier, and allows teams to work in parallel without stepping on each other’s toes.',
     tags: [
       'design-patterns',
@@ -2826,7 +2826,7 @@ export const flashcards: Flashcard[] = [
       'High cohesion means a component or class focuses on a single task or responsibility. Loose coupling means components or classes have minimal dependencies on each other. Together, they lead to modular, maintainable, and testable code.',
     code: '',
     hint: 'Focus on modular responsibilities and minimal interdependence.',
-    explanation:
+    expanded:
       'High cohesion ensures that the responsibilities of a component are tightly related, making the component easier to understand and maintain. Loose coupling minimizes the impact of changes by reducing dependencies between components.\n\nBenefits of high cohesion and loose coupling include:\n- Easier testing and debugging\n- Greater code reuse\n- Faster onboarding for new developers\n- Lower risk of introducing bugs when making changes\n\nHow to achieve it:\n- Use clear, single-purpose classes and functions (e.g., Single Responsibility Principle)\n- Use interfaces or abstractions to separate implementation from usage\n- Apply dependency injection instead of hardcoding dependencies\n- Favor composition over inheritance\n\nFor example, rather than having one large class that manages both user data and rendering, split it into separate classes: one for user logic, one for UI logic.',
     tags: [
       'code-design',
@@ -2855,7 +2855,7 @@ export const flashcards: Flashcard[] = [
       'Array indexing starts at 0 in most programming languages for historical and performance reasons. It aligns with how memory is addressed in low-level languages like C, where the index is treated as an offset from the start of the array.',
     code: '',
     hint: 'Think about how memory and pointers work in low-level languages.',
-    explanation:
+    expanded:
       "When arrays are implemented at a low level, they are blocks of contiguous memory. The index is used as an offset from the starting address of the array. So:\n\n`array[0]` = start of the array (`base_address + 0 * element_size`)\n\nIf arrays started at 1, you'd need to subtract 1 from the index internally, adding overhead and complexity. This zero-based indexing is efficient and consistent with pointer arithmetic, which is why it became the standard in many languages influenced by C.",
     tags: [
       'arrays',
@@ -2884,7 +2884,7 @@ export const flashcards: Flashcard[] = [
       'Tests—and especially Test-Driven Development (TDD)—encourage writing modular, loosely coupled, and well-encapsulated code. They influence design by requiring code to be easily testable, which naturally leads to better separation of concerns and smaller, single-responsibility components.',
     code: '',
     hint: 'Think about testability, modularity, and feedback loops.',
-    explanation:
+    expanded:
       'TDD guides development by writing tests before implementation, which helps define clear expectations for what the code should do. This leads to smaller units of functionality and encourages practices like dependency injection, interface segregation, and decoupling.\n\nAs a result, codebases tend to be more maintainable, easier to refactor, and better documented through tests. However, over-emphasis on testability can sometimes lead to over-abstraction or unnatural design decisions, so balance is key.',
     tags: [
       'tdd',
@@ -2914,7 +2914,7 @@ export const flashcards: Flashcard[] = [
       'Violating the DRY principle means duplicating logic in multiple places. This makes maintenance harder and increases the chance of bugs when changes are needed. Here’s an example:',
     code: '// Repeating logic (violates DRY)\nfunction getAdminEmails(users) {\n  return users.filter(u => u.role === "admin").map(u => u.email);\n}\n\nfunction getAdminUsernames(users) {\n  return users.filter(u => u.role === "admin").map(u => u.username);\n}\n\n// DRY version\nfunction getAdmins(users) {\n  return users.filter(u => u.role === "admin");\n}\n\nfunction getAdminEmails(users) {\n  return getAdmins(users).map(u => u.email);\n}\n\nfunction getAdminUsernames(users) {\n  return getAdmins(users).map(u => u.username);\n}',
     hint: 'Look for repeated filtering logic or transformation.',
-    explanation:
+    expanded:
       'In the original code, the same filtering logic is repeated in two places. If the criteria for identifying an admin changes, you’d have to update both places, increasing maintenance overhead and the likelihood of errors. By centralizing shared logic into a single function (`getAdmins`), we reduce duplication and make the code more maintainable and expressive.',
     tags: ['dry', 'clean-code', 'code-design', 'refactoring'],
     reference: [
@@ -2936,7 +2936,7 @@ export const flashcards: Flashcard[] = [
       'Cohesion refers to how closely related and focused the responsibilities of a single module are. Coupling describes how dependent modules are on each other.',
     code: '',
     hint: 'Think about internal unity vs. external dependency.',
-    explanation:
+    expanded:
       'High cohesion means a module does one thing well and its internal parts work together toward a common purpose. Low cohesion often indicates a module is trying to do too many unrelated things. Loose coupling means modules interact through well-defined interfaces and don’t rely heavily on each other’s internal details. Tightly coupled code is harder to maintain, test, and reuse. Ideally, strive for high cohesion and loose coupling to improve code readability, flexibility, and maintainability.',
     tags: ['code-design', 'cohesion', 'coupling', 'architecture', 'clean-code'],
     reference: [
@@ -2958,7 +2958,7 @@ export const flashcards: Flashcard[] = [
       'Refactoring is the process of restructuring existing code without changing its external behavior. It’s useful for improving the internal structure, readability, and maintainability of code.',
     code: '',
     hint: 'It doesn’t change what the code does, only how it’s written.',
-    explanation:
+    expanded:
       'Refactoring helps developers clean up messy or overly complex code, reduce duplication, improve naming and modularity, and make future changes easier. It supports better testing, debugging, and onboarding of new team members. Refactoring should be done in small steps, ideally alongside tests that ensure behavior stays the same. While it doesn’t add new features, it lays the groundwork for building features more reliably.',
     tags: ['code-design', 'refactoring', 'clean-code', 'maintenance'],
     reference: [
@@ -2981,7 +2981,7 @@ export const flashcards: Flashcard[] = [
       'Comments can be useful, but they should not replace clean, self-explanatory code. Ideally, your code should be clear enough that comments are rarely needed.',
     code: '',
     hint: 'Consider why the code needs a comment in the first place.',
-    explanation:
+    expanded:
       'Comments are helpful when they explain “why” something is done, especially when the reasoning is non-obvious or business-driven. However, excessive comments or ones that explain “what” the code is doing (when the code is already readable) can become noise. Worse, outdated comments can mislead developers. Clean code, with good naming, modular functions, and clear logic, reduces the need for comments. In general: prefer code that doesn’t need comments, but don’t avoid comments when they clarify intent.',
     tags: ['code-design', 'comments', 'clean-code', 'documentation'],
     reference: [
@@ -3003,7 +3003,7 @@ export const flashcards: Flashcard[] = [
       'Design and architecture are both concerned with structuring software, but they differ in scale and abstraction. Architecture refers to the high-level structure and fundamental choices of a system, while design focuses on lower-level implementation details within that architecture.',
     code: '',
     hint: 'Think of architecture as the blueprint and design as the construction plan for each room.',
-    explanation:
+    expanded:
       'Software architecture deals with the major components, their responsibilities, and how they interact. It involves decisions like choosing microservices vs. monolith, defining layers (UI, business logic, data), and technology stacks. Design, on the other hand, focuses on classes, methods, algorithms, patterns, and object relationships within a component. Architecture is harder to change once in place, so it emphasizes scalability, maintainability, and robustness. Good design supports the architecture by making it easier to evolve and maintain.',
     tags: [
       'code-design',
@@ -3030,7 +3030,7 @@ export const flashcards: Flashcard[] = [
       'Writing tests before code helps clarify requirements, define expected behavior upfront, and guide the development process. It ensures the code you write is directly aimed at passing the tests, promoting simpler, more focused implementations.',
     code: '',
     hint: 'Think about “Red-Green-Refactor” and how tests drive design.',
-    explanation:
+    expanded:
       'In Test-Driven Development (TDD), writing tests first encourages developers to think about the desired functionality and edge cases before implementation. This approach leads to better designed, more modular, and testable code. It also provides immediate feedback when changes break functionality, reducing bugs and regression issues. The TDD cycle — write a failing test (red), write code to pass it (green), then refactor — helps maintain code quality and prevents over-engineering.',
     tags: ['testing', 'tdd', 'test-driven-development', 'code-quality'],
     reference: [
@@ -3053,7 +3053,7 @@ export const flashcards: Flashcard[] = [
       'Using multiple inheritance or multiple interfaces increases flexibility in composing behaviors but affects orthogonality differently. Multiple inheritance can introduce complexity and ambiguity (e.g., the diamond problem), potentially reducing orthogonality by creating tightly coupled and interdependent hierarchies. Multiple interfaces promote orthogonality by allowing classes to adopt multiple contracts without sharing implementation, keeping concerns separated and reducing coupling.',
     code: '',
     hint: 'Consider coupling, reuse, and code complexity differences between inheritance, interfaces, and delegation.',
-    explanation:
+    expanded:
       'Orthogonality means components can be changed independently without unexpected side effects. Multiple inheritance may violate this by intertwining behaviors and state, making the system harder to understand and maintain. Interfaces preserve orthogonality by separating "what" from "how", allowing independent implementations.\n\nDelegation differs from inheritance in that objects explicitly forward tasks to helper objects rather than inheriting behavior. Delegation promotes composition over inheritance, encouraging loose coupling, greater flexibility, and more modular, orthogonal designs that avoid the complexity of deep inheritance trees.',
     tags: [
       'design-patterns',
@@ -3083,7 +3083,7 @@ export const flashcards: Flashcard[] = [
       'Storing domain logic in Stored Procedures means placing business rules and operations directly inside the database layer rather than in application code.',
     code: '',
     hint: 'Think about performance, maintainability, and separation of concerns.',
-    explanation:
+    expanded:
       'Pros include improved performance due to execution close to the data, reduced network traffic, and potential for centralized logic that multiple applications can reuse. Stored Procedures can also encapsulate complex queries and enforce data integrity.\n\nCons involve tight coupling between business logic and the database, making it harder to version, test, and maintain. It can reduce portability across different database systems and lead to difficulties in scaling and deploying changes independently from the application code. Debugging and source control can also be more challenging compared to application-level logic.',
     tags: [
       'design-patterns',
@@ -3113,7 +3113,7 @@ export const flashcards: Flashcard[] = [
       'Object-Oriented Design (OOD) has dominated because it naturally models real-world entities and relationships, making it intuitive and accessible for developers and stakeholders. It promotes code reuse through inheritance and composition, encapsulates data and behavior, and supports modular, maintainable, and extensible systems.',
     code: '',
     hint: 'Consider how OOD relates to problem modeling and software scalability.',
-    explanation:
+    expanded:
       'OOD aligns well with human thinking by representing software as interacting objects with clear responsibilities, which simplifies complex system design. Its principles like encapsulation, inheritance, and polymorphism encourage reusable and flexible code. The availability of mature languages, tools, and design patterns has reinforced its dominance. Moreover, OOD facilitates team collaboration by promoting clear interfaces and modular components, which is critical in large projects. While newer paradigms exist, OOD’s deep ecosystem and proven effectiveness have kept it central in software engineering.',
     tags: [
       'design-patterns',
@@ -3142,7 +3142,7 @@ export const flashcards: Flashcard[] = [
       'To determine if your code has a bad design, look for common symptoms like high coupling, low cohesion, duplicated code, lack of modularity, poor readability, and difficulty in testing or extending the code.',
     code: '',
     hint: 'Consider maintainability, readability, testability, and flexibility.',
-    explanation:
+    expanded:
       'Bad design often manifests as code that is hard to change, understand, or reuse. Signs include large monolithic functions or classes, frequent code duplication, tight dependencies between modules, and violation of design principles like SOLID. Tools like code reviews, static analysis, and design metrics (e.g., cyclomatic complexity, code smells) help identify problems. Regular refactoring and adherence to design best practices can prevent or fix bad design.',
     tags: [
       'design-patterns',
@@ -3173,7 +3173,7 @@ export const flashcards: Flashcard[] = [
       'Every programming language has its drawbacks, including my preferred one. Here are three common defects often cited:',
     code: '// Example for JavaScript\n// 1. Dynamic typing can lead to runtime errors\nlet value = "10";\nvalue = value + 5; // Results in "105" (string concatenation)\n\n// 2. Lack of true integer types can cause precision issues\nconst largeNumber = 9007199254740991 + 1;\nconsole.log(largeNumber); // May not behave as expected\n\n// 3. Asynchronous programming model complexity\nfetch("url").then(response => response.json())\n  .catch(err => console.error(err));\n',
     hint: 'Think about language quirks, runtime behavior, and developer experience.',
-    explanation:
+    expanded:
       "Dynamic typing, while flexible, can cause bugs that are hard to detect early. JavaScript's numeric precision limits may lead to unexpected results with large integers. Also, handling asynchronous code requires understanding of promises or async/await, which can add complexity. These defects are balanced by language strengths like flexibility and ubiquity, but awareness helps write better code.",
     tags: ['languages', 'javascript', 'language-defects', 'programming'],
     reference: [
@@ -3195,7 +3195,7 @@ export const flashcards: Flashcard[] = [
       'Functional Programming (FP) emphasizes pure functions, immutability, and declarative code, making programs easier to test, reason about, and maintain. Its principles help avoid side effects and promote predictability.',
     code: '// Example of a pure function in JavaScript\nfunction add(a, b) {\n  return a + b;\n}\n\n// This function is pure: no side effects, same output for same input\nconsole.log(add(2, 3)); // 5\n',
     hint: 'Think about state management, side effects, and predictability.',
-    explanation:
+    expanded:
       'As software systems grow more complex and multi-threaded, avoiding side effects and managing shared state becomes increasingly important. FP’s focus on immutability and stateless functions aligns well with modern development challenges, such as building reliable UI components or working with concurrency. Libraries like Redux and frameworks like React encourage a more functional style, further driving interest. Additionally, FP concepts help reduce bugs and improve modularity, making it a popular paradigm for modern developers.',
     tags: [
       'functional-programming',
@@ -3224,7 +3224,7 @@ export const flashcards: Flashcard[] = [
       'A closure is a function that retains access to its lexical scope even when executed outside of that scope. It’s useful for encapsulating state, creating private variables, and building factory functions.',
     code: '// Closure example\nfunction makeCounter() {\n  let count = 0;\n  return function () {\n    return ++count;\n  };\n}\n\nconst counter = makeCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2\n',
     hint: 'Closures can be used to preserve state without using global variables.',
-    explanation:
+    expanded:
       'Closures allow functions to “remember” variables from their surrounding scope. This makes them powerful for managing state in a controlled, encapsulated way—similar to how classes manage state with private fields. Both closures and classes support encapsulation: closures via lexical scope, and classes via object instances. However, closures are generally lighter-weight and are often used in functional programming patterns, while classes provide a formal structure for creating objects and behavior in object-oriented programming.',
     tags: [
       'closures',
@@ -3253,7 +3253,7 @@ export const flashcards: Flashcard[] = [
       'Generics allow you to create reusable, type-safe code that works with a variety of data types without sacrificing type safety.',
     code: '// TypeScript generic function example\nfunction identity<T>(arg: T): T {\n  return arg;\n}\n\nconst num = identity<number>(42);\nconst str = identity<string>("hello");',
     hint: 'Think about how you might avoid repeating similar code for different types.',
-    explanation:
+    expanded:
       'Generics are a feature of statically typed languages like TypeScript, Java, or C# that enable functions, classes, and interfaces to operate on a variety of types without rewriting code for each one. They help ensure type safety by allowing the compiler to catch type mismatches at compile time. This improves code maintainability, reusability, and documentation. Without generics, developers would need to use type `any` or create multiple versions of the same function for different types, which increases redundancy and risk of errors.',
     tags: [
       'generics',
@@ -3282,7 +3282,7 @@ export const flashcards: Flashcard[] = [
       'A higher-order function is a function that either takes one or more functions as arguments, returns a function, or both. They are useful for abstraction, reusability, and functional programming patterns like composition, currying, and callbacks.',
     code: '// JavaScript higher-order function example\nfunction repeat(n, action) {\n  for (let i = 0; i < n; i++) {\n    action(i);\n  }\n}\n\nrepeat(3, console.log); // Logs 0, 1, 2',
     hint: 'Think functions that work with or return other functions.',
-    explanation:
+    expanded:
       'Higher-order functions treat functions as first-class citizens, allowing them to be passed around like any other value. This enables powerful programming patterns such as callbacks (e.g., `setTimeout`, `map`, `filter`), decorators, and function composition. For example, `Array.prototype.map()` is a built-in higher-order function that transforms arrays by applying a function to each element. Using higher-order functions can lead to cleaner, more expressive, and reusable code.',
     tags: [
       'higher-order-functions',
@@ -3323,7 +3323,7 @@ function printNums(n, limit) {
 
 printNums(0, 5);`,
     hint: 'Pass state through parameters instead of using mutable variables.',
-    explanation:
+    expanded:
       'Using recursion with immutable structures encourages purity and reduces side effects. Each recursive call receives a new set of parameters rather than modifying shared state. This improves testability and avoids issues like race conditions. However, recursion can be less readable and may cause stack overflow if not optimized (e.g., with tail call optimization). In languages like JavaScript, iteration is often more efficient due to lack of guaranteed tail-call support.',
     tags: [
       'recursion',
@@ -3352,7 +3352,7 @@ printNums(0, 5);`,
       'It means functions in that language are treated like any other value—they can be assigned to variables, passed as arguments, and returned from other functions. This feature is fundamental to functional programming and allows for powerful abstractions and flexible code structures.',
     code: 'const sayHello = () => console.log("Hello");\n\nfunction runTwice(fn) {\n  fn();\n  fn();\n}\n\nrunTwice(sayHello); // Outputs "Hello" twice',
     hint: 'Think about using a function as a value.',
-    explanation:
+    expanded:
       'In a language where functions are first-class citizens, you can store them in data structures, assign them to variables, and pass them around like strings or numbers. This enables higher-order functions, callbacks, currying, and many other functional programming techniques. It also supports cleaner, more modular code by treating behavior as data.',
     tags: [
       'languages',
@@ -3380,7 +3380,7 @@ printNums(0, 5);`,
       'Anonymous functions are useful when you need a function for a short period, usually as an argument to another function, without the need to name it. They help keep code concise and readable, especially for callbacks, event handlers, or immediately invoked function expressions (IIFEs).',
     code: 'const numbers = [1, 2, 3, 4, 5];\n\n// Using an anonymous function as a callback\nconst doubled = numbers.map(function(num) {\n  return num * 2;\n});\n\nconsole.log(doubled); // [2, 4, 6, 8, 10]',
     hint: 'Think about callbacks and inline functions.',
-    explanation:
+    expanded:
       'Anonymous functions let you define behavior right where it’s needed without cluttering the scope with a function name. They’re often used in functional programming patterns and event-driven code, allowing you to write short, inline functions that don’t require reuse elsewhere.',
     tags: ['languages', 'anonymous-functions', 'callbacks', 'javascript'],
     reference: [
@@ -3403,7 +3403,7 @@ printNums(0, 5);`,
       'Static type systems check types at compile time, catching many errors early before running the program. Dynamic type systems check types at runtime, offering flexibility but potentially more runtime errors. Strong typing enforces strict type rules and conversions, while weak typing allows implicit coercion that can lead to unpredictable behavior.',
     code: '// Static typing example (TypeScript)\nfunction add(a: number, b: number): number {\n  return a + b;\n}\n\n// Dynamic typing example (JavaScript)\nfunction add(a, b) {\n  return a + b;\n}\n\nconsole.log(add(5, "10")); // "510" due to implicit coercion in JS',
     hint: 'Consider safety versus flexibility, and error detection timing.',
-    explanation:
+    expanded:
       'Static typing is often preferred in enterprise environments for its early error detection, better tooling (like autocomplete and refactoring), and clearer API contracts, which improve maintainability and collaboration. Dynamic typing favors rapid prototyping and flexibility but requires thorough testing to avoid runtime errors.\n\nStrong typing reduces bugs caused by unintended type coercion, making code more predictable. Weak typing can speed up development but risks subtle bugs.\n\nChoosing depends on project needs: safety and scalability favor static, strong typing; quick iteration and scripting may favor dynamic typing.',
     tags: [
       'languages',
@@ -3436,7 +3436,7 @@ printNums(0, 5);`,
       'Namespaces provide a way to group and organize code entities (such as classes, functions, and variables) under a unique name to avoid naming collisions and improve modularity. They help maintain a clean global scope, especially in large codebases or when integrating multiple libraries.',
     code: '// Example of a namespace in TypeScript\nnamespace Geometry {\n  export function areaCircle(radius: number): number {\n    return Math.PI * radius * radius;\n  }\n}\n\nconsole.log(Geometry.areaCircle(5)); // 78.5398...',
     hint: 'Think about preventing naming conflicts in large projects.',
-    explanation:
+    expanded:
       'Without namespaces, different parts of a large program might use the same names for variables or functions, leading to conflicts and bugs. Namespaces logically group related code and clarify ownership.\n\nAn alternative approach could be to use module systems (like ES Modules) that isolate code within files and expose only selected parts. Another alternative is prefixing identifiers manually (e.g., using unique prefixes) or using object literals as containers to simulate namespaces.',
     tags: ['languages', 'namespaces', 'code-organization', 'modules', 'scope'],
     reference: [
@@ -3459,7 +3459,7 @@ printNums(0, 5);`,
       'Interoperability between Java and C# is challenging because they run on different virtual machines (JVM vs. CLR) and use different runtime environments. Directly calling C# code from Java or vice versa is not straightforward, requiring bridges or intermediate communication methods like web services, REST APIs, or message queues.\n\nSome tools and approaches to bridge these worlds include:\n- Using web services or REST APIs for communication over HTTP.\n- JNI (Java Native Interface) combined with C++ to interact with .NET code.\n- Projects like IKVM (a JVM implementation on .NET) that attempt to bridge bytecode compatibility.\n\nAlternative interoperability examples include Python and C integration, where Python can call C libraries via ctypes or Cython, enabling high performance and seamless extension of Python with C.',
     code: '',
     hint: 'Consider virtual machines, runtime differences, and communication bridges.',
-    explanation:
+    expanded:
       'Java and C# are both statically typed, object-oriented languages with similar syntax, but their ecosystems and runtimes differ. This divergence means interoperability usually happens through loosely coupled mechanisms (APIs, services) rather than direct code sharing.\n\nIn contrast, languages like Python and C have well-established interoperability using foreign function interfaces, allowing Python programs to leverage performant C code. Understanding these approaches helps design systems that integrate diverse technologies effectively.',
     tags: [
       'languages',
@@ -3492,7 +3492,7 @@ printNums(0, 5);`,
       'Many developers criticize Java for its verbosity, boilerplate-heavy syntax, and sometimes slow compilation times. Its strict static typing and checked exceptions can lead to verbose error handling. Additionally, older versions of Java lacked modern language features, making the code less expressive compared to newer languages.',
     code: '',
     hint: 'Think about syntax verbosity, error handling, and language evolution.',
-    explanation:
+    expanded:
       'Java’s verbosity requires writing a lot of repetitive code for simple tasks, which can reduce developer productivity and readability. Checked exceptions, while designed for robustness, often lead to cluttered code due to mandatory try-catch blocks. Although Java has evolved significantly (e.g., lambdas in Java 8, records in Java 14+), some engineers feel it still lags behind more modern languages in expressiveness and developer ergonomics. Despite these critiques, Java remains popular due to its performance, ecosystem, and cross-platform capabilities.',
     tags: [
       'languages',
@@ -3520,7 +3520,7 @@ printNums(0, 5);`,
       'A good programming language enables developers to write clear, efficient, and maintainable code with minimal effort, while a bad language introduces unnecessary complexity, ambiguity, or restrictions that hinder productivity and code quality.',
     code: '',
     hint: 'Consider readability, expressiveness, tooling, community, and learning curve.',
-    explanation:
+    expanded:
       'Good languages have clear syntax, powerful abstractions, strong tooling, and active communities, making development smoother and less error-prone. They balance performance, safety, and flexibility, allowing developers to focus on solving problems rather than language quirks. Bad languages often suffer from poor design choices like inconsistent syntax, lack of abstractions, insufficient tooling, or obscure error messages, which can frustrate developers and lead to buggy, hard-to-maintain code. Ultimately, a language’s goodness depends on how well it fits the problem domain and the developers’ needs.',
     tags: [
       'languages',
@@ -3558,7 +3558,7 @@ function increment() {
   return counter;
 }`,
     hint: 'Think pure functions vs functions with side effects.',
-    explanation:
+    expanded:
       'The "add" function is referentially transparent because for any inputs a and b, it always returns the same result without modifying external state. This predictability helps with testing and reasoning about code. The "increment" function depends on and modifies an external variable "counter", making it referentially opaque — its output depends on external state and it causes side effects. Referential transparency is a key concept in functional programming, promoting safer and more maintainable code.',
     tags: [
       'languages',
@@ -3594,7 +3594,7 @@ function factorial(n) {
 const obj = { name: "Alice", age: 30 }; // stored in heap`,
 
     hint: 'Think about memory management and function calls.',
-    explanation:
+    expanded:
       "The stack manages memory for function execution contexts: when a function is called, a stack frame with local variables and return address is pushed onto the stack, and popped off when the function returns. This makes stack allocation very fast but limited in size. The heap stores objects and data that need to persist beyond function calls or vary in size. A stack overflow happens if too many nested calls occur without returning, exhausting the stack's fixed size. Understanding the stack vs heap is key to grasping memory management and program performance.",
     tags: ['languages', 'memory-management', 'stack', 'heap', 'stack-overflow'],
     reference: [
@@ -3627,7 +3627,7 @@ function sayHello(fn, name) {
 sayHello(greet, 'Alice'); // Hello, Alice`,
 
     hint: 'Think about functions as values and their flexible use.',
-    explanation:
+    expanded:
       'First-class functions allow programs to treat behavior as data, enabling concise, reusable, and modular code. They support callbacks, event handlers, functional composition, and declarative programming styles. Without this, many advanced and elegant coding techniques would be cumbersome or impossible, limiting language expressiveness and developer productivity.',
     tags: [
       'languages',
@@ -3679,7 +3679,7 @@ switch (shape.type) {
     console.log('Unknown shape');
 }`,
     hint: 'Think about matching complex data structures and extracting values.',
-    explanation:
+    expanded:
       'Switch statements typically compare simple values (e.g., numbers or strings) for equality and execute corresponding code blocks. Pattern matching goes beyond this by enabling matching of complex data shapes (like tuples, lists, or objects), supporting nested and conditional patterns, and allowing direct extraction of values within the matched pattern. This leads to clearer, less error-prone, and more expressive code, especially in handling algebraic data types common in functional programming.',
     tags: [
       'languages',
@@ -3721,7 +3721,7 @@ match divide(4.0, 0.0) {
     Err(e) => println!("Error: {}", e),
 }`,
     hint: 'Consider control flow, readability, and error visibility.',
-    explanation:
+    expanded:
       'Pros of no-exception design include clearer control flow, as all errors must be explicitly handled; better compiler checks for unhandled errors; and avoiding unexpected runtime crashes caused by uncaught exceptions. However, it can lead to verbose code, requiring manual error checking after every operation. In contrast, exceptions simplify propagating errors up the call stack but can obscure control flow and cause hidden bugs if not carefully managed.',
     tags: [
       'languages',
@@ -3768,7 +3768,7 @@ const catCare = new TakeCare<Cat>(new Cat());
 const animalCare: TakeCare<Animal> = catCare; // Error in most languages unless explicitly allowed
 `,
     hint: 'This relates to generics and type variance (covariance, contravariance, invariance).',
-    explanation:
+    expanded:
       'In most statically typed languages like Java and TypeScript, generics are *invariant* by default. That means `TakeCare<Cat>` is **not** considered a subtype of `TakeCare<Animal>`, even though `Cat` is a subtype of `Animal`. Covariance would allow this substitution, but only if the generic is read-only (like `List<? extends Animal>` in Java). Contravariance works in reverse: `TakeCare<Animal>` could be used as `TakeCare<Cat>` only if the generic is write-only. This prevents type errors that can arise from writing the wrong type into a container.',
     tags: [
       'generics',
@@ -3815,7 +3815,7 @@ class Dog implements Animal {
 // The interface does not (and cannot) declare: Dog()
 `,
     hint: 'Interfaces are about behavior, while constructors are about object creation.',
-    explanation:
+    expanded:
       'Interfaces in Java, C#, and similar languages are meant to define capabilities or behaviors that a class must implement. They are not concerned with how objects are created, which is what constructors handle. Including constructors would break abstraction and make interfaces harder to decouple from specific implementations. Object creation is typically handled through patterns like dependency injection or factories, keeping interfaces clean and focused only on what objects *do*, not how they are built.',
     tags: [
       'interfaces',
@@ -3854,7 +3854,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(3000);`,
     hint: 'Consider performance, developer experience, and ecosystem.',
-    explanation:
+    expanded:
       'Node.js made JavaScript viable on the backend by introducing an event-driven, non-blocking I/O model, which is ideal for scalable network applications. It enables full-stack development with a single language, reducing context switching and enabling code reuse (e.g., validation logic). Its massive npm ecosystem also accelerates development. However, JavaScript’s lack of type safety and historical single-threaded model can pose maintainability and performance concerns for CPU-bound or enterprise-scale applications. Tools like TypeScript and worker threads help mitigate these drawbacks.',
     tags: [
       'nodejs',
@@ -3898,7 +3898,7 @@ for t in threads:
 
 # Despite using 4 threads, GIL prevents true parallel CPU execution`,
     hint: 'Focus on concurrency and performance limitations in Python.',
-    explanation:
+    expanded:
       "The Global Interpreter Lock (GIL) limits Python's ability to utilize multiple CPU cores in standard CPython, which makes it less ideal for high-performance, CPU-bound applications. While Python shines in readability, rapid development, and flexibility, its concurrency model has long been a known pain point. Removing the GIL or redesigning Python with better native concurrency support (as seen in languages like Go or Rust) could have made Python more viable for system-level programming and heavy computational tasks.",
     tags: [
       'python',
@@ -3930,7 +3930,7 @@ for t in threads:
       'First-party cookies are created by the website a user is directly visiting, while third-party cookies are created by other domains (usually ad networks or analytics tools) embedded in the site. The key difference lies in privacy and control.',
     code: '',
     hint: 'Consider privacy concerns and browser policy changes.',
-    explanation:
+    expanded:
       'First-party cookies are generally considered safer because they are controlled by the domain the user is interacting with. They’re used for things like remembering login status or preferences. In contrast, third-party cookies can track users across many sites, leading to concerns over surveillance and privacy violations. As a result, browsers like Safari and Firefox have blocked third-party cookies by default, and Chrome is phasing them out. This shift is part of a broader effort to protect user privacy and give users more control over their data.',
     tags: [
       'cookies',
@@ -3959,7 +3959,7 @@ for t in threads:
       'API versioning is crucial for evolving your API without breaking existing clients. You can version APIs through the URL path, request headers, or query parameters. Each approach has trade-offs, but the goal is to ensure backward compatibility while allowing incremental improvements.',
     code: '',
     hint: 'Think about client compatibility and long-term maintainability.',
-    explanation:
+    expanded:
       'Common strategies include:\n\n- **URI Versioning** (e.g., `/api/v1/users`): Clear and simple, often preferred for public APIs.\n- **Header Versioning** (e.g., custom `Accept` header like `application/vnd.api+json;version=1`): Keeps URLs clean but can be harder to test/debug.\n- **Query Parameter Versioning** (e.g., `/users?version=1`): Easy to implement but less standard.\n\nBest practices include deprecating old versions with clear communication, providing change logs, and minimizing breaking changes. Good versioning allows different clients to coexist while your API evolves over time.',
     tags: ['api', 'versioning', 'web-services', 'rest', 'web-development'],
     reference: [
@@ -3982,7 +3982,7 @@ for t in threads:
       'Yes, Single Page Applications (SPAs) introduce several backend-related challenges, especially when compared to traditional multi-page applications (MPAs). These include SEO limitations, more complex authentication flows, and a shift of rendering responsibility to the frontend.',
     code: '',
     hint: 'Think about authentication, SEO, and request/response handling.',
-    explanation:
+    expanded:
       'From a backend point of view, SPAs bring drawbacks such as:\n\n- **SEO Challenges**: Since content is rendered on the client side, it can be harder for search engine crawlers to index pages properly unless server-side rendering (SSR) or pre-rendering is used.\n- **Increased API Load**: SPAs rely heavily on APIs for fetching data. This increases the number of requests and may require more sophisticated rate limiting and caching.\n- **Authentication Complexity**: Handling tokens (like JWT) and protecting endpoints in SPAs often involves more complexity than session-based auth.\n- **Routing and Error Handling**: The frontend controls routing, so traditional HTTP status codes and redirects need special handling by the backend to cooperate with the SPA’s logic.\n- **Initial Load Time**: SPAs often require loading a large JavaScript bundle upfront, which can delay rendering unless backend and frontend teams coordinate optimizations.\n\nDespite these drawbacks, SPAs offer a smooth user experience. Backend developers must adapt to a more service-oriented, API-first mindset to support SPAs effectively.',
     tags: ['spa', 'web-development', 'backend', 'api', 'seo', 'authentication'],
     reference: [
@@ -4005,7 +4005,7 @@ for t in threads:
       'Stateless services are simpler to scale, easier to test, and more resilient. By not relying on internal memory between requests, they avoid issues with concurrency, session management, and server affinity. Statelessness is especially useful in distributed systems like microservices or serverless environments.',
     code: '',
     hint: 'Think scalability, testability, and reliability.',
-    explanation:
+    expanded:
       'Stateless services treat every request as independent, containing all the information needed to process it. This approach offers several benefits:\n\n- **Scalability**: New instances can be added or removed without worrying about local memory/state synchronization.\n- **Resilience**: If one instance fails, another can take over without losing state.\n- **Simplicity**: Stateless logic is easier to reason about, test, and debug because the outcome of a request doesn’t depend on prior interactions.\n- **Load balancing**: Any server can handle any request without needing sticky sessions.\n\nStateful services can introduce challenges:\n- They require session persistence (often in memory or databases), which complicates horizontal scaling.\n- Failure recovery is harder if the state is lost.\n\n**When statefulness is needed**: For features like shopping carts, real-time collaboration, or user sessions, where continuity is required, state can be stored in external systems (e.g., Redis, databases) to preserve flexibility while keeping the core service stateless.',
     tags: [
       'stateless',
@@ -4038,7 +4038,7 @@ for t in threads:
       'REST (Representational State Transfer) is an architectural style for designing networked applications. It uses standard HTTP methods to perform CRUD operations on resources, which are identified by URIs (Uniform Resource Identifiers).',
     code: '',
     hint: 'Think about resources, HTTP methods, and stateless interactions.',
-    explanation:
+    expanded:
       'REST is based on a set of principles that define how web standards like HTTP should be used:\n\n- **Resources**: Data is treated as resources (e.g., `/users/123`) that can be accessed and manipulated using URIs.\n- **HTTP Methods**: Common actions are mapped to HTTP verbs:\n  - `GET`: Retrieve a resource\n  - `POST`: Create a new resource\n  - `PUT`/`PATCH`: Update a resource\n  - `DELETE`: Remove a resource\n- **Statelessness**: Each request must contain all the information needed to understand and process it. The server does not store client context between requests.\n- **Representations**: Resources can be returned in multiple formats (usually JSON or XML).\n- **Uniform Interface**: A consistent structure across the API improves usability and understanding.\n\nRESTful APIs are widely adopted for their simplicity, scalability, and alignment with HTTP standards.',
     tags: [
       'rest',
@@ -4067,7 +4067,7 @@ for t in threads:
       'REST and SOAP are both web service communication protocols, but they have different use cases. REST is simpler, more lightweight, and ideal for web-based, stateless, resource-oriented APIs. SOAP is more rigid and feature-rich, better suited for enterprise-level services where formal contracts, security, and ACID-compliance are critical.',
     code: '',
     hint: 'Compare flexibility and simplicity vs. features and robustness.',
-    explanation:
+    expanded:
       'REST (Representational State Transfer):\n- **Best for**: Public web APIs, mobile applications, microservices.\n- **Advantages**: Lightweight, uses standard HTTP methods, easily readable (usually JSON), cacheable, scalable.\n- **Drawbacks**: No built-in standard for security, transactions, or state.\n\nSOAP (Simple Object Access Protocol):\n- **Best for**: Enterprise applications, financial services, operations requiring high security and strict contracts.\n- **Advantages**: Built-in standards for security (WS-Security), ACID-compliant transactions, retry logic, and formal service contracts via WSDL.\n- **Drawbacks**: More verbose, relies on XML, more complex setup, not ideal for mobile or lightweight communication.\n\nChoose **REST** for performance and simplicity, especially in web and mobile apps. Choose **SOAP** when you need high reliability, strict contracts, or integration with legacy systems.',
     tags: [
       'rest',
@@ -4098,7 +4098,7 @@ for t in threads:
       'MVC and MVVM are architectural patterns that help organize code by separating concerns. They improve maintainability, scalability, and testability by dividing application logic into distinct layers: data (Model), user interface (View), and logic/control (Controller or ViewModel).',
     code: '',
     hint: 'Focus on separation of concerns and how each component communicates.',
-    explanation:
+    expanded:
       '**MVC (Model-View-Controller):**\n- **Model**: Represents the data and business logic.\n- **View**: Displays the data (UI).\n- **Controller**: Handles user input, updates the model, and selects the view.\n- **Used in**: Frameworks like Ruby on Rails, Express (Node), Laravel.\n\n**MVVM (Model-View-ViewModel):**\n- **Model**: Data and business logic.\n- **View**: UI elements.\n- **ViewModel**: Acts as a binding layer between the Model and View; handles presentation logic and data binding.\n- **Used in**: Frameworks like Angular, Vue, and Knockout.\n\n**Why advisable:**\n- Promotes **separation of concerns**, allowing developers to work independently on UI, logic, and data.\n- Makes applications more **testable and maintainable**.\n- Encourages **reusability** of components.\n\nChoose the right pattern based on your framework, team structure, and project complexity.',
     tags: [
       'mvc',
@@ -4132,7 +4132,7 @@ for t in threads:
       'Database migration involves transferring schema, data, and application logic from one system to another. A typical process includes assessing compatibility, exporting schema/data, transforming SQL dialects, testing, and deploying with validation.',
     code: '',
     hint: 'Think about schema differences, data types, SQL dialects, and testing.',
-    explanation:
+    expanded:
       'Migrating from MySQL to PostgreSQL requires careful planning and testing:\n\n**Steps:**\n1. **Assess differences** in data types, indexes, default behaviors (e.g., `AUTO_INCREMENT` vs `SERIAL`).\n2. Use tools like `pgloader` or `AWS DMS` to automate the migration.\n3. **Convert SQL dialects** and stored procedures/functions (PostgreSQL uses PL/pgSQL).\n4. Refactor application queries that are vendor-specific (e.g., `LIMIT`/`OFFSET` nuances, string comparisons, date/time functions).\n5. **Migrate schema**, then **migrate and validate data integrity**.\n6. Test all data access and business logic thoroughly.\n7. Set up replication or change data capture (CDC) for a smooth cutover, especially in production.\n\n**Challenges:**\n- Data type mismatches (e.g., `TINYINT(1)` in MySQL vs `BOOLEAN` in PostgreSQL).\n- SQL function differences.\n- Character encoding issues.\n- Performance tuning and index strategy might need to change.\n\nSuccessful migration often involves both DBAs and application developers working closely to identify incompatibilities early.',
     tags: [
       'databases',
@@ -4166,7 +4166,7 @@ for t in threads:
       'In SQL, `NULL` represents an unknown or missing value, not a concrete value like an empty string or zero. Comparisons involving `NULL` using `=` or `!=` will not return true because `NULL` is not equal to anything, not even itself.',
     code: '-- Incorrect: this will not match NULLs\nSELECT * FROM users WHERE email = NULL;\n\n-- Correct: use IS NULL\nSELECT * FROM users WHERE email IS NULL;',
     hint: 'Think of NULL as "unknown", and unknown values can’t be compared using standard operators.',
-    explanation:
+    expanded:
       'Databases treat `NULL` as a marker for "missing" or "unknown" information. Since it’s not a specific value, logical comparisons like `= NULL` or `!= NULL` do not work as expected. Instead, SQL uses `IS NULL` or `IS NOT NULL` to test for null values. This behavior ensures that queries behave consistently with the concept of unknown data—e.g., you can’t say two unknowns are equal because you don’t know what either is. This logic follows the rules of three-valued logic (true, false, unknown), which SQL uses when dealing with `NULL`.',
     tags: [
       'databases',
@@ -4196,7 +4196,7 @@ for t in threads:
       'ACID is a set of properties that ensure reliable processing of database transactions. Each letter represents a key guarantee that prevents data corruption or inconsistency during operations.',
     code: '-- Example: Transferring money between two accounts\nBEGIN;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT;',
     hint: 'Think about what ensures a transaction either fully completes or doesn’t affect the system at all.',
-    explanation:
+    expanded:
       'ACID stands for:\n- **Atomicity**: Transactions are all-or-nothing. If any part fails, the entire transaction is rolled back.\n- **Consistency**: Transactions move the database from one valid state to another, preserving all rules and constraints.\n- **Isolation**: Concurrent transactions don’t interfere with each other. Results are the same as if run sequentially.\n- **Durability**: Once a transaction commits, its changes are permanent—even in the case of system failure.\n\nThese guarantees are crucial in systems where data integrity matters, like banking, inventory, or reservation systems.',
     tags: [
       'databases',
@@ -4225,7 +4225,7 @@ for t in threads:
       'Database schema migrations are managed by applying incremental, versioned changes to the schema using migration scripts or tools that track which migrations have been applied.',
     code: '-- Example of a simple migration script (SQL)\nALTER TABLE users ADD COLUMN last_login TIMESTAMP;\n\n-- Using migration tools (e.g., with Node.js Sequelize CLI)\n// sequelize migration:generate --name add-last-login\n// sequelize db:migrate',
     hint: 'Think about version control for your database schema and rollback strategies.',
-    explanation:
+    expanded:
       'Schema migrations help evolve the database schema safely and predictably over time.\n\nCommon practices include:\n- Using migration files/scripts that describe changes (add/drop columns, indexes, tables).\n- Keeping track of applied migrations in a dedicated table to avoid reapplying.\n- Supporting forward and backward migrations (up/down) to apply or rollback changes.\n- Integrating migrations into the deployment process for automation.\n\nPopular tools: Liquibase, Flyway, Django Migrations, Rails ActiveRecord Migrations, Sequelize CLI.\n\nAutomating migrations reduces manual errors, keeps schema in sync with code, and supports team collaboration.',
     tags: ['databases', 'schema', 'migrations', 'automation', 'devops'],
     reference: [
@@ -4248,7 +4248,7 @@ for t in threads:
       'Lazy loading is a technique where resources (e.g., related records or large blobs) are fetched only when needed rather than upfront, deferring data retrieval until it is actually required by the application.',
     code: '// Example: Lazy loading in ORM (e.g., Sequelize in Node.js)\nconst user = await User.findByPk(1);\n// Related posts are loaded only when requested\nconst posts = await user.getPosts();',
     hint: 'Think about optimizing performance by delaying data fetching.',
-    explanation:
+    expanded:
       'Lazy loading helps reduce initial database load and memory usage by fetching only necessary data. It is especially useful when dealing with large datasets or relations that may not always be accessed.\n\nPitfalls include:\n- Potentially increased number of database queries, leading to the "N+1 query problem".\n- Added complexity in code management.\n- Possible performance degradation if overused or improperly implemented.',
     tags: ['databases', 'lazy-loading', 'performance', 'orm', 'optimization'],
     reference: [
@@ -4271,7 +4271,7 @@ for t in threads:
       'The "N + 1 problem" happens when an ORM lazily loads related data by issuing one query to fetch parent records, then N additional queries for each parent’s children. This leads to performance bottlenecks due to excessive database calls.',
     code: '// Fix with eager loading (example with Sequelize):\nconst usersWithPosts = await User.findAll({\n  include: [Post] // loads posts together with users in a single query\n});',
     hint: 'Use eager loading or batch queries to minimize round-trips.',
-    explanation:
+    expanded:
       'To fix the N + 1 problem, use eager loading to fetch related records in a single query or a minimal number of queries. Most ORMs support this via "include", "join", or "fetch" options. This reduces database round-trips and improves performance.\n\nAlternatively, batch queries or manual joins can be used. However, eager loading must be balanced against fetching unnecessary data when relationships are large or rarely accessed.',
     tags: [
       'databases',
@@ -4288,7 +4288,7 @@ for t in threads:
       },
       {
         label: 'Medium: N + 1 Problem explained',
-        url: 'https://medium.com/databases-in-simple-words/the-n-1-database-query-problem-a-simple-explanation-and-solutions-ef11751aef8a',
+        url: 'https://medium.com/databases-in-simple-words/the-n-1-database-query-problem-a-simple-expanded-and-solutions-ef11751aef8a',
       },
     ],
   },
@@ -4301,7 +4301,7 @@ for t in threads:
       'To find the most expensive queries, you can analyze query performance metrics using database-provided tools and logs that track execution time, resource usage, and frequency.',
     code: '',
     hint: 'Look for slow query logs, execution plans, and monitoring tools.',
-    explanation:
+    expanded:
       'Most database systems provide ways to identify expensive queries. For example, enabling slow query logs in MySQL or PostgreSQL captures queries exceeding a threshold time. You can also use EXPLAIN or EXPLAIN ANALYZE to see query execution plans and understand inefficiencies.\n\nAdditionally, database monitoring tools (like pg_stat_statements for PostgreSQL, or performance schema for MySQL) aggregate query statistics such as execution count, total time, and average time.\n\nProfiling queries helps prioritize optimization efforts, such as adding indexes or rewriting queries for better performance.',
     tags: [
       'databases',
@@ -4330,7 +4330,7 @@ for t in threads:
       'Normalization is essential for reducing data redundancy and ensuring data integrity, but it is not always required. Denormalization can be advisable when performance optimization and faster read access are priorities.',
     code: '',
     hint: 'Consider trade-offs between data consistency and query performance.',
-    explanation:
+    expanded:
       'Database normalization organizes data into related tables to minimize duplication and maintain integrity, which simplifies updates and reduces anomalies.\n\nHowever, normalization can lead to complex joins and slower read performance in certain scenarios, such as in reporting, analytics, or high-read applications.\n\nDenormalization duplicates some data intentionally to speed up read queries and simplify data retrieval at the cost of increased storage and potential data inconsistency.\n\nChoosing normalization vs denormalization depends on use cases: transactional systems benefit from normalization, while analytical or caching layers may benefit from denormalization.',
     tags: [
       'databases',
@@ -4360,7 +4360,7 @@ for t in threads:
       'Blue-Green Deployment allows seamless releases with minimal downtime by switching traffic between two identical production environments. However, when database schema or data changes are involved, the process becomes more complex due to the need for data consistency and backward compatibility.',
     code: '',
     hint: 'Think about database migrations, compatibility, and rollback strategies.',
-    explanation:
+    expanded:
       'Deploying database changes during Blue-Green Deployment requires careful planning to maintain data integrity and system availability. Key considerations include:\n\n- Applying backward-compatible schema changes that support both old and new versions simultaneously (e.g., additive schema changes).\n- Using feature toggles to control the exposure of new features relying on database changes.\n- Running data migration scripts carefully in phases.\n- Planning rollback strategies that include reverting database and application code changes.\n- Coordinating closely between developers, DBAs, and ops teams.\n\nAutomation and extensive testing help reduce risks during this complex deployment process.',
     tags: [
       'databases',
@@ -4391,7 +4391,7 @@ for t in threads:
       'Eventual consistency is a consistency model used in distributed systems where updates to a data item will propagate to all nodes over time, and eventually, all replicas will reflect the same value. It does not guarantee immediate consistency after a write, but rather that the system will become consistent if no new updates are made.',
     code: '',
     hint: 'Think about distributed systems that prioritize availability over strict consistency.',
-    explanation:
+    expanded:
       'In systems like NoSQL databases (e.g., Amazon DynamoDB, Cassandra), availability and partition tolerance are prioritized (as per the CAP theorem). Eventual consistency allows these systems to handle high volumes of data and continue operating despite network partitions. However, it means that a read may temporarily return stale data until the system reaches a consistent state. This model is suitable for applications that can tolerate slight delays in consistency, such as social media feeds or shopping carts.',
     tags: [
       'nosql',
@@ -4420,7 +4420,7 @@ for t in threads:
       "The CAP theorem says that in a distributed system, it's impossible to guarantee all three: Consistency, Availability, and Partition Tolerance simultaneously. Systems must choose two:\n\n- **CP (Consistency + Partition Tolerance)**: Prioritize accuracy over availability. If a network partition occurs, the system will reject requests rather than risk inconsistent data.\n- **AP (Availability + Partition Tolerance)**: Ensure availability even at the cost of consistency. Data might be temporarily inconsistent.\n- **CA (Consistency + Availability)**: Only achievable in systems that do not partition—typically centralized systems or those with strong network guarantees.",
     code: '',
     hint: 'Think about real-world distributed systems and what tradeoffs they make.',
-    explanation:
+    expanded:
       "**CP systems** (e.g., HBase, MongoDB in some configurations) ensure consistency and tolerate partitioning, but may become unavailable under network failure.\n\n**AP systems** (e.g., CouchDB, Cassandra, DynamoDB) prioritize uptime even during partitions, but might return stale or inconsistent data temporarily.\n\n**CA systems** (e.g., traditional relational databases like PostgreSQL or MySQL running on a single node) can provide consistency and availability because partition tolerance isn't required in a non-distributed setup. In truly distributed environments, CA is theoretically unachievable.",
     tags: [
       'nosql',
@@ -4449,7 +4449,7 @@ for t in threads:
       'The rise of NoSQL is largely driven by the need for scalability, flexibility, and high availability in modern web and cloud applications. Traditional relational databases can struggle with horizontal scaling and dynamic data structures, which NoSQL databases handle more naturally.',
     code: '',
     hint: 'Think about modern app needs: speed, scale, and flexible schemas.',
-    explanation:
+    expanded:
       'NoSQL databases have gained popularity due to several factors:\n\n- **Scalability**: NoSQL databases are designed to scale out horizontally across distributed systems, making them suitable for large-scale applications.\n- **Flexible schemas**: They allow dynamic and nested data structures (e.g., JSON), which makes it easier to evolve applications over time.\n- **Performance**: For certain workloads (e.g., real-time analytics, caching, event logging), NoSQL can outperform traditional RDBMS.\n- **Big Data and cloud computing**: The growth of large-scale, cloud-native apps has created demand for databases that are optimized for distributed, unstructured, or semi-structured data.',
     tags: [
       'nosql',
@@ -4478,7 +4478,7 @@ for t in threads:
       'NoSQL databases are designed to scale horizontally, meaning they can distribute data across multiple servers (nodes) instead of relying on a single powerful machine. This allows them to handle large volumes of traffic and data efficiently.',
     code: '',
     hint: 'Think about distributed systems and horizontal scaling.',
-    explanation:
+    expanded:
       'NoSQL databases handle scalability by embracing horizontal scaling—spreading data across a cluster of machines. This is often achieved using techniques such as **sharding** (partitioning data across nodes), **replication** (copying data to ensure fault tolerance), and **eventual consistency** models that trade strict consistency for high availability and partition tolerance. These approaches help systems grow elastically with demand and reduce bottlenecks, making NoSQL ideal for high-traffic, big data, and cloud-native applications.',
     tags: [
       'nosql',
@@ -4508,7 +4508,7 @@ for t in threads:
       'A document database like MongoDB is ideal when you need flexible schemas, rapid development, and horizontal scalability. It works well with hierarchical or nested data that doesn’t fit neatly into tables.',
     code: '',
     hint: 'Think about data structure flexibility and evolving schemas.',
-    explanation:
+    expanded:
       'Document databases store data in JSON-like formats, making them suitable for applications with varying or evolving data structures—such as content management systems, product catalogs, and user-generated content. Unlike relational databases, document stores don’t require predefined schemas, allowing for faster iteration. They are also better suited for workloads with high read/write demands, large-scale data distribution, or complex object-like data. However, if you need strict relationships, ACID transactions, or strong data integrity guarantees, a relational database may be more appropriate.',
     tags: [
       'nosql',
@@ -4541,7 +4541,7 @@ for t in threads:
       'Branching with Git or Mercurial is easier because these systems are distributed, and branches are lightweight, local, and fast to create and manage compared to SVN.',
     code: '',
     hint: 'Think about local repositories, lightweight branches, and merging tools.',
-    explanation:
+    expanded:
       'In Git and Mercurial, each developer has a full local repository with complete version history, making branch operations like creation, switching, and merging fast and independent of a central server. Branches are simply pointers to commits, so they are lightweight and cost almost nothing to create. In contrast, SVN branches are implemented as directories in the central repository, making them heavier, harder to track, and more dependent on network operations. Git and Mercurial also offer more advanced merging and history visualization tools, which simplify working with multiple branches.',
     tags: ['git', 'mercurial', 'svn', 'branching', 'version-control', 'dvcs'],
     reference: [
@@ -4565,7 +4565,7 @@ for t in threads:
       'Distributed version control systems (DVCS) like Git provide better flexibility, offline capabilities, and faster operations, but they can be more complex to learn and manage in large teams compared to centralized systems like SVN.',
     code: '',
     hint: 'Think about collaboration models, network dependency, and workflow complexity.',
-    explanation:
+    expanded:
       'In DVCS like Git, every user has a complete copy of the repository, including full history, which allows commits, diffs, and branches to be handled locally without needing a network connection. This improves speed and enables offline work. It also encourages more flexible workflows, such as feature branching and pull requests.\n\nHowever, Git’s complexity, especially around concepts like rebasing, staging, and multiple remotes, can create a steeper learning curve. SVN, being centralized, is simpler and can be easier to manage for small teams with straightforward needs, but it lacks the performance and flexibility of DVCS, and network reliance can slow down or block development work.',
     tags: [
       'git',
@@ -4594,7 +4594,7 @@ for t in threads:
       'GitHub Flow is a lightweight, branch-based workflow ideal for continuous deployment and frequent releases. GitFlow is a more structured workflow that separates development and production code, using long-lived branches like `develop` and `main` along with supporting branches like `feature`, `release`, and `hotfix`.',
     code: '',
     hint: 'Think about project size, release frequency, and complexity when comparing workflows.',
-    explanation:
+    expanded:
       'GitHub Flow works well for teams that deploy often. It involves creating a feature branch from `main`, working on it, opening a pull request, reviewing, testing, and then merging it back into `main`. Every change can be deployed after merge.\n\nGitFlow is better suited for projects with scheduled releases and larger teams. It uses multiple primary branches: `main` for production-ready code and `develop` for ongoing development. Features are built in `feature/*` branches, tested and merged into `develop`, then prepared for release in `release/*` branches. Urgent fixes are handled in `hotfix/*` branches and merged into both `main` and `develop`.',
     tags: [
       'git',
@@ -4624,7 +4624,7 @@ for t in threads:
       'Rebase is a Git command that moves or “replays” a sequence of commits from one branch onto another, creating a linear commit history. It rewrites commit history by changing the parent of commits.',
     code: '',
     hint: 'Think about linear history and avoiding unnecessary merge commits.',
-    explanation:
+    expanded:
       'When you run `git rebase`, Git moves the base of your branch to a new starting point (usually the latest commit of the target branch) and re-applies your commits on top of it. This results in a cleaner, linear history without merge commits. It’s often used to integrate changes from `main` into a feature branch before merging back.\n\nHowever, since it rewrites history, rebase should be used with caution on shared branches. For example:\n\n1. `git checkout feature`\n2. `git rebase main`\n\nNow, your `feature` branch contains the latest `main` changes, and your changes are replayed on top of them.',
     tags: [
       'git',
@@ -4657,7 +4657,7 @@ for t in threads:
       'Merges are easier with Git and Mercurial because they are distributed version control systems that track changesets and entire project history locally, allowing more intelligent and accurate merge handling.',
     code: '',
     hint: 'Consider how Git and Mercurial record changes versus SVN and CVS.',
-    explanation:
+    expanded:
       'Git and Mercurial manage merging more effectively by storing snapshots (rather than just file diffs) and using a directed acyclic graph (DAG) to track branching and merging history. This allows them to automatically identify the common ancestor during a merge, making it less error-prone and more automatic.\n\nSVN and CVS, being centralized and less sophisticated in their branching models, often lack a complete view of the commit history. They rely more heavily on manual intervention and are prone to conflicts due to weaker merge-tracking capabilities.',
     tags: [
       'git',
@@ -4690,7 +4690,7 @@ for t in threads:
       'Concurrency allows a system to handle multiple tasks at once, improving efficiency, responsiveness, and resource utilization—especially important in modern applications with I/O-bound or CPU-bound operations.',
     code: '',
     hint: 'Think about responsiveness, resource sharing, and parallelism.',
-    explanation:
+    expanded:
       'Concurrency is essential for designing systems that remain responsive and performant. It enables tasks like UI rendering, file I/O, or network communication to run alongside one another without blocking. In multicore systems, concurrency can also mean true parallelism, which maximizes CPU usage. Without concurrency, applications would perform tasks one at a time, potentially freezing or delaying user interactions while waiting for long-running operations to complete.',
     tags: [
       'concurrency',
@@ -4719,7 +4719,7 @@ for t in threads:
       'Testing multithreaded or concurrent code is difficult because of nondeterministic behavior caused by thread scheduling, race conditions, and timing issues, which can lead to unpredictable and hard-to-reproduce bugs.',
     code: '',
     hint: 'Think about timing, thread interaction, and race conditions.',
-    explanation:
+    expanded:
       'Concurrent code involves multiple threads or processes executing simultaneously, which introduces nondeterminism—different executions can produce different outcomes. Bugs like race conditions, deadlocks, and livelocks can appear only under certain timing scenarios, making them hard to detect and reproduce in tests. This complexity requires specialized testing approaches like stress testing, thread sanitizers, deterministic schedulers, and careful synchronization to ensure correctness.',
     tags: [
       'concurrency',
@@ -4749,7 +4749,7 @@ for t in threads:
       'A race condition occurs when multiple threads or processes access and modify shared data concurrently, and the final outcome depends on the timing or sequence of their execution. This can lead to unpredictable and erroneous behavior.',
     code: '// JavaScript example simulating a race condition using async operations\nlet counter = 0;\n\nfunction increment() {\n  let temp = counter;\n  // Simulate some async work\n  setTimeout(() => {\n    counter = temp + 1;\n    console.log("Counter:", counter);\n  }, Math.random() * 100);\n}\n\n// Two increments started almost simultaneously\nincrement();\nincrement();\n\n// Output might be:\n// Counter: 1\n// Counter: 1\n// Instead of expected 2, due to race condition',
     hint: 'Race conditions happen when shared state is accessed without proper synchronization.',
-    explanation:
+    expanded:
       "When two or more concurrent operations read and write shared data without coordination, they may overwrite each other's changes. In the example, both increments read the same initial value, increment it separately, and write back the same result, losing one increment. Proper synchronization or atomic operations prevent race conditions.",
     tags: [
       'concurrency',
@@ -4848,7 +4848,7 @@ task2();
 // causing a deadlock (no further progress).
 `,
     hint: 'Deadlocks often happen when two async tasks wait on each other’s locks.',
-    explanation:
+    expanded:
       'In this JavaScript example, each task acquires one lock and then waits for another lock held by the other task, resulting in a circular wait condition and deadlock. JavaScript’s async nature allows simulating this scenario with Promises. Deadlocks can be avoided by acquiring locks in a consistent order or by using timeout-based lock acquisition.',
     tags: ['concurrency', 'deadlock', 'async', 'locks', 'javascript'],
     reference: [
@@ -4910,7 +4910,7 @@ setInterval(() => {
 // because high priority tasks keep preempting it — this is starvation.
 `,
     hint: 'Starvation happens due to unfair resource allocation, often with priority-based scheduling.',
-    explanation:
+    expanded:
       'Starvation is a problem where low-priority processes wait indefinitely because higher-priority processes monopolize the resources. Unlike deadlocks, starvation is caused by scheduling policies that don’t guarantee fairness. Solutions include aging (gradually increasing priority of waiting tasks) or fair scheduling algorithms to ensure all processes get a chance to run.',
     tags: [
       'concurrency',
@@ -4952,7 +4952,7 @@ function waitFreeIncrement() {
 // Multiple threads calling waitFreeIncrement concurrently will complete without waiting indefinitely.
 `,
     hint: 'Wait-free algorithms guarantee completion in a bounded number of steps for all threads.',
-    explanation:
+    expanded:
       'Wait-free algorithms are the strongest type of non-blocking synchronization. They guarantee system progress by ensuring each thread can complete its operation independently of others, preventing delays caused by locks or waiting. This makes them highly desirable for concurrent programming but often complex to design and implement.',
     tags: [
       'concurrency',
@@ -4994,7 +4994,7 @@ function waitFreeIncrement() {
 // Multiple threads calling waitFreeIncrement concurrently will complete without waiting indefinitely.
 `,
     hint: 'Wait-free algorithms guarantee completion in a bounded number of steps for all threads.',
-    explanation:
+    expanded:
       'Wait-free algorithms are the strongest type of non-blocking synchronization. They guarantee system progress by ensuring each thread can complete its operation independently of others, preventing delays caused by locks or waiting. This makes them highly desirable for concurrent programming but often complex to design and implement.',
     tags: [
       'concurrency',
@@ -5024,7 +5024,7 @@ function waitFreeIncrement() {
       "Testing distributed systems involves validating the system's behavior across multiple independent nodes that communicate over a network, which introduces challenges such as network failures, latency, concurrency, and partial failures. Testing strategies must cover functional correctness, fault tolerance, and performance under various conditions.",
     code: '',
     hint: 'Consider the complexity of distributed interactions, failure modes, and consistency.',
-    explanation:
+    expanded:
       'Effective testing of distributed systems requires multiple approaches: unit tests for individual components, integration tests for communication and data exchange between nodes, and end-to-end tests simulating real-world scenarios including network partitions, node failures, and message delays. Techniques such as chaos engineering intentionally introduce faults to observe system resilience. Monitoring and logging help detect issues in production. Due to the nondeterministic nature of distributed systems, tests often include retries, timeouts, and assertions on eventual consistency rather than immediate consistency.',
     tags: [
       'distributed-systems',
@@ -5053,7 +5053,7 @@ function waitFreeIncrement() {
       'Asynchronous communication is used when the sender and receiver systems operate independently and do not require an immediate response. It enables decoupling, improves scalability, and allows the sender to continue processing without waiting for the receiver to respond.',
     code: '',
     hint: 'Think about system decoupling, latency tolerance, and load handling.',
-    explanation:
+    expanded:
       'You would apply asynchronous communication in scenarios where real-time interaction is not critical, such as processing jobs in a queue, event-driven architectures, or handling high throughput where blocking would degrade performance. It is ideal when systems need to be loosely coupled, improving fault tolerance by allowing retries and buffering messages during downtime. Examples include messaging systems (e.g., RabbitMQ, Kafka), email sending, or background processing tasks. However, it introduces complexity in error handling, ordering, and eventual consistency that must be managed.',
     tags: [
       'distributed-systems',
@@ -5081,7 +5081,7 @@ function waitFreeIncrement() {
       'Remote Procedure Calls (RPC) abstract communication between distributed systems by allowing one system to invoke methods on another as if they were local. However, this abstraction can hide the complexities and unreliability of the network, leading to pitfalls.',
     code: '',
     hint: 'Consider network unreliability, latency, and failure modes.',
-    explanation:
+    expanded:
       'Common pitfalls of RPC include:\n\n1. **Network Failures:** Unlike local calls, RPCs can fail due to network issues, leading to partial failures and timeouts.\n2. **Latency:** Remote calls are significantly slower than local ones, which can degrade performance if not managed carefully.\n3. **Tight Coupling:** RPC encourages synchronous communication and can lead to tightly coupled systems, reducing scalability and fault tolerance.\n4. **Complex Error Handling:** Network errors, retries, and partial failures require sophisticated handling.\n5. **Versioning Issues:** Different versions of client and server can cause compatibility problems.\n6. **Serialization Overhead:** Data must be serialized and deserialized, adding overhead.\n\nDesigners often mitigate these pitfalls by using asynchronous messaging, timeouts, retries, and designing for eventual consistency.',
     tags: [
       'distributed-systems',
@@ -5110,7 +5110,7 @@ function waitFreeIncrement() {
       'Designing distributed systems in closed environments differs significantly from designing them in public, globally distributed settings. In closed, secure networks, you can optimize for performance and internal trust. In public, distributed systems, you must design for untrusted environments, higher latency, and fault tolerance.',
     code: '',
     hint: 'Focus on trust, latency, fault tolerance, and security assumptions.',
-    explanation:
+    expanded:
       'In a **closed, secure network environment**, you can:\n- Assume **low latency** and **high reliability**.\n- Trust nodes more easily, requiring **less stringent security**.\n- Use **simpler coordination and consensus algorithms**.\n- Optimize aggressively for **performance** without heavy encryption or access control.\n\nIn a **geographically distributed, public system**, you must:\n- Account for **high latency** and **network partitions**.\n- Design for **partial failures** and **asynchronous communication**.\n- Emphasize **security**: encrypt data in transit, authenticate nodes, prevent attacks.\n- Use **robust consensus mechanisms** like Raft or Paxos.\n- Build with **fault-tolerance** and **resilient failover mechanisms**.\n- Handle **data replication** and **eventual consistency** across zones.\n\nThese environmental differences influence choices in architecture, protocols, data handling, and reliability strategies.',
     tags: [
       'distributed-systems',
@@ -5140,7 +5140,7 @@ function waitFreeIncrement() {
       'Fault tolerance ensures that applications continue to function correctly even when components fail. In web and desktop applications, fault tolerance is handled differently due to architectural differences. Web apps emphasize redundancy and distributed resilience, while desktop apps rely more on local recovery and state preservation.',
     code: '',
     hint: 'Compare distributed vs local failure handling.',
-    explanation:
+    expanded:
       '**In a web application**, fault tolerance is achieved by:\n- **Redundancy**: Deploying multiple instances behind load balancers.\n- **Graceful degradation**: Maintaining partial functionality if some services fail.\n- **Retries and timeouts**: Retrying failed requests with backoff strategies.\n- **Circuit breakers**: Preventing cascading failures.\n- **Failover**: Automatically switching to backup systems or regions.\n- **Monitoring and alerts**: Detecting issues early and triggering auto-recovery.\n- **Statelessness**: Making services easier to replicate and recover.\n\n**In a desktop application**, fault tolerance includes:\n- **Autosaving state**: Recovering user data after a crash.\n- **Error boundaries**: Catching and handling exceptions to prevent full app crashes.\n- **Isolating modules**: Preventing failures in one component from affecting others.\n- **Graceful exits**: Saving logs and user context for debugging or recovery.\n- **Background updates and rollback**: Ensuring failed updates can be reversed.\n\nEach platform uses techniques suited to its environment, but both aim to preserve user experience and minimize data loss.',
     tags: [
       'fault-tolerance',
@@ -5169,7 +5169,7 @@ function waitFreeIncrement() {
       'Failures in distributed systems are inevitable, so the system must be designed to detect, isolate, and recover from them gracefully. Strategies vary depending on the type of failure—network, hardware, software, or data inconsistency.',
     code: '',
     hint: 'Think about detection, isolation, recovery, and resilience patterns.',
-    explanation:
+    expanded:
       "To deal with failures in a distributed system:\n\n1. **Failure Detection**: Use health checks, heartbeats, and monitoring tools to identify failing nodes or services.\n\n2. **Timeouts and Retries**: Set appropriate timeouts and implement retry mechanisms with exponential backoff to handle temporary issues.\n\n3. **Circuit Breakers**: Prevent cascading failures by temporarily cutting off requests to a failing service.\n\n4. **Redundancy and Replication**: Duplicate critical services and data to ensure availability even if some nodes fail.\n\n5. **Graceful Degradation**: Allow the system to continue operating in a reduced capacity when some components are unavailable.\n\n6. **Idempotency**: Ensure that retrying an operation doesn't cause unintended effects.\n\n7. **Fallbacks and Defaults**: Provide default responses or cached data when live data is unavailable.\n\n8. **Monitoring and Alerting**: Continuously observe system behavior and notify operators when something breaks.\n\n9. **Logging and Tracing**: Enable detailed logs and distributed tracing to diagnose and debug issues.\n\n10. **Partition Tolerance**: Design the system to handle network splits (CAP theorem) by choosing between consistency and availability based on the context.\n\nThese practices help make distributed systems more robust and resilient to partial or total service disruptions.",
     tags: [
       'distributed-systems',
@@ -5198,7 +5198,7 @@ function waitFreeIncrement() {
       'After a network partition heals, systems need to reconcile divergent data or state between the partitions. There are several reconciliation strategies depending on system requirements for consistency, availability, and performance.',
     code: '',
     hint: 'Think about consistency models, conflict resolution, and data synchronization.',
-    explanation:
+    expanded:
       "When a network partition occurs (P in the CAP theorem), parts of a distributed system may become isolated and make independent changes. Once the partition heals, reconciling differences is critical.\n\nHere are common reconciliation strategies:\n\n1. **Last-Write-Wins (LWW)**: The system chooses the most recent update based on timestamps. It's simple but can lead to data loss if concurrent updates occur.\n\n2. **Vector Clocks**: Each node keeps track of version history to detect conflicts. When conflicts are detected, the system can merge or ask for human intervention.\n\n3. **Operational Transformation / CRDTs**: Used in collaborative systems (like Google Docs), these allow concurrent changes to be merged automatically and deterministically without conflicts.\n\n4. **Manual Resolution**: In critical systems (e.g., banking), reconciliation might involve audits or user intervention to ensure accuracy.\n\n5. **Application-Level Merging**: The application defines custom logic to resolve conflicting updates based on domain knowledge (e.g., merging two versions of a shopping cart).\n\n6. **Consensus Protocols**: Systems using protocols like Paxos or Raft avoid divergence altogether by blocking writes during a partition, ensuring strong consistency at the cost of availability.\n\nChoosing the right approach depends on your consistency model (eventual vs strong), the criticality of the data, and user expectations.",
     tags: [
       'distributed-systems',
@@ -5227,7 +5227,7 @@ function waitFreeIncrement() {
       'The fallacies of distributed computing are a set of common assumptions that developers often make when designing distributed systems. These assumptions usually turn out to be incorrect and lead to fragile, inefficient, or insecure systems if not accounted for.',
     code: '',
     hint: 'Think about assumptions related to networks, latency, bandwidth, and reliability.',
-    explanation:
+    expanded:
       'Originally proposed by Peter Deutsch and expanded by others at Sun Microsystems, there are eight classic fallacies:\n\n1. **The network is reliable** – Networks fail, and systems must be built to detect and recover from these failures.\n\n2. **Latency is zero** – Network delays are real and must be accounted for, especially in geographically distributed systems.\n\n3. **Bandwidth is infinite** – Bandwidth has limits, especially with large data transfers or under network congestion.\n\n4. **The network is secure** – Data can be intercepted or tampered with. Security should be explicitly designed into all distributed communications.\n\n5. **Topology doesn’t change** – Nodes may come and go, and IP addresses or paths can change, especially in cloud environments.\n\n6. **There is one administrator** – Distributed systems often span different organizations and administrative domains.\n\n7. **Transport cost is zero** – Moving data over the network incurs costs in time, CPU, and money (especially in cloud platforms).\n\n8. **The network is homogeneous** – Real-world networks consist of a mix of hardware, protocols, latencies, and failure modes.\n\nRecognizing and designing around these fallacies is critical to building resilient and scalable distributed systems.',
     tags: [
       'distributed-systems',
@@ -5255,7 +5255,7 @@ function waitFreeIncrement() {
       'Request/reply is best when a client needs a specific response from a known service, while publish/subscribe is ideal for broadcasting information to multiple receivers without expecting a direct response.',
     code: '',
     hint: 'Think about one-to-one communication vs. one-to-many event distribution.',
-    explanation:
+    expanded:
       'Request/reply is a synchronous or asynchronous communication pattern in which a requester sends a message and waits for a direct response. It’s useful in tightly coupled interactions such as:\n- Querying a service for data (e.g., requesting user details)\n- Performing actions that require confirmation (e.g., payment processing)\n\nPublish/subscribe (pub/sub), on the other hand, is an asynchronous, event-driven model. A publisher emits messages to a topic or channel, and multiple subscribers can independently receive and handle those messages. This model works well when:\n- Events need to be broadcast to many listeners (e.g., chat messages, logging systems)\n- Components are loosely coupled and should not know about each other\n\nIn summary:\n- **Use request/reply** when you need a direct answer.\n- **Use pub/sub** when you want to decouple components and enable broad communication.',
     tags: [
       'distributed-systems',
@@ -5284,7 +5284,7 @@ function waitFreeIncrement() {
       "To implement transactionality from scratch, you'd need to create mechanisms for atomicity, consistency, isolation, and durability (ACID) manually. This often involves using patterns like the Unit of Work or Saga pattern, along with write-ahead logs, retries, and compensation mechanisms.",
     code: '',
     hint: 'Think about guaranteeing ACID properties without native DB or framework support.',
-    explanation:
+    expanded:
       'When native transaction support is unavailable, you must emulate transactional behavior. Here’s how you might approach it:\n\n**1. Atomicity**: Use a Unit of Work pattern to group multiple operations into a logical transaction. If any part fails, roll back the entire group. In distributed systems, this might require a Saga pattern, where each step has a compensating action to undo its effect if something fails.\n\n**2. Consistency**: Implement validation before and after transactions to ensure the system never enters an invalid state. You may also need to write checkpoints or snapshots.\n\n**3. Isolation**: Use locking mechanisms or versioning (optimistic/pessimistic) to prevent race conditions and ensure concurrent processes don’t interfere.\n\n**4. Durability**: Use write-ahead logs or event sourcing to persist changes before applying them, so that operations can be replayed if interrupted.\n\nYou may also need to handle retries, idempotency, and state tracking for partial failures in multi-step workflows.',
     tags: [
       'distributed-systems',
@@ -5317,7 +5317,7 @@ function waitFreeIncrement() {
       'Agility refers to the ability of a software development team or organization to quickly adapt to change, respond to feedback, and deliver value incrementally. It’s about flexibility, collaboration, and continuous improvement over rigid planning or processes.',
     code: '',
     hint: 'Think about responsiveness, adaptability, and iterative development.',
-    explanation:
+    expanded:
       'In the context of software, agility means embracing short development cycles, cross-functional teams, and constant communication with stakeholders. Agile methodologies (like Scrum, Kanban, XP) emphasize working software, customer collaboration, and adapting to change rather than strictly following a plan. Agility helps teams deliver better software faster by continuously refining both the product and the process.',
     tags: [
       'agile',
@@ -5345,7 +5345,7 @@ function waitFreeIncrement() {
       'Dealing with legacy code requires understanding, stabilizing, and gradually improving it without introducing regressions. Start by identifying the business-critical areas, adding tests, and documenting behavior before making changes.',
     code: '',
     hint: 'Think about safety, testing, and incremental refactoring.',
-    explanation:
+    expanded:
       'Legacy code often lacks tests, documentation, or modern patterns. The first step is to treat it with care—avoid rewriting everything. Instead, focus on high-value areas and surround them with characterization tests (tests that describe what the code does). Once you have test coverage, you can safely refactor or modularize the code. It’s also important to communicate with the team and avoid introducing unnecessary complexity while improving maintainability.',
     tags: [
       'legacy-code',
@@ -5375,7 +5375,7 @@ function waitFreeIncrement() {
       'Yes, I would definitely explain it. Legacy code is existing software that’s hard to change or maintain, often because it’s poorly documented, lacks tests, or was written with outdated practices. I’d emphasize that code quality impacts project timelines, costs, and product reliability, so understanding this helps prioritize technical debt and refactoring efforts.',
     code: '',
     hint: 'Explain clearly and focus on business impact.',
-    explanation:
+    expanded:
       'When talking to a non-technical manager, I’d avoid jargon and relate code quality to real project outcomes — like delays, bugs, and cost overruns. I’d explain that legacy code slows down adding new features and fixing issues, which impacts delivery and customer satisfaction. Framing it this way helps non-technical stakeholders appreciate why investing in code quality is critical for the product’s success.',
     tags: [
       'legacy-code',
@@ -5403,7 +5403,7 @@ function waitFreeIncrement() {
       'The biggest difference is that Waterfall is a linear, sequential approach where each phase (requirements, design, implementation, testing, deployment) happens one after the other, while Agile is an iterative and incremental approach focused on flexibility, continuous feedback, and adapting to change.',
     code: '',
     hint: 'Think about project phases versus iterative cycles.',
-    explanation:
+    expanded:
       'Waterfall assumes all requirements are known upfront and emphasizes completing each phase before moving on, which can make adapting to changes difficult. Agile breaks work into smaller chunks called sprints, allowing frequent reassessment of priorities and delivering working software continuously. This makes Agile better suited for projects where requirements evolve or are unclear.',
     tags: [
       'software-culture',
@@ -5432,7 +5432,7 @@ function waitFreeIncrement() {
       'I would evaluate the purpose and necessity of each meeting, consolidate overlapping meetings, set clear agendas and time limits, and encourage asynchronous communication where possible to reduce meeting load.',
     code: '',
     hint: 'Focus on meeting effectiveness and alternative communication methods.',
-    explanation:
+    expanded:
       'Too many meetings can reduce productivity and cause burnout. By auditing meetings, canceling unnecessary ones, combining similar topics, and using tools like email, chat, or collaborative documents for updates and discussions, you can keep the team focused. Also, ensuring meetings have clear goals and strict timing helps maintain efficiency.',
     tags: ['software-culture', 'team-management', 'meetings', 'productivity'],
     reference: [
@@ -5454,7 +5454,7 @@ function waitFreeIncrement() {
       'I would start by assessing the current status, identifying the main causes of delay, and reprioritizing tasks to focus on critical features. Clear communication with stakeholders about realistic timelines and scope adjustments is key. Implementing incremental deliveries and increasing collaboration helps regain momentum.',
     code: '',
     hint: 'Focus on transparency, prioritization, and incremental progress.',
-    explanation:
+    expanded:
       'Managing a late project requires diagnosing root causes such as scope creep, resource constraints, or technical debt. Then, adjusting scope, timelines, and resources helps set achievable goals. Regular progress tracking and transparent communication build trust. Agile practices like iterative releases enable early value delivery, reducing risk and improving morale.',
     tags: [
       'software-culture',
@@ -5482,7 +5482,7 @@ function waitFreeIncrement() {
       'These values emphasize the importance of people and communication in software development. Agile prioritizes flexible, face-to-face collaboration and responsiveness to change rather than rigid adherence to processes or formal contracts. This human-centric approach fosters adaptability, trust, and better alignment with customer needs.',
     code: '',
     hint: 'Focus on why human relationships and collaboration matter more than strict procedures or paperwork.',
-    explanation:
+    expanded:
       'The Agile Manifesto recognizes that even the best tools and processes can’t replace effective communication and collaboration among team members and with customers. Prioritizing individuals ensures that teams can adapt quickly, solve problems creatively, and deliver value faster. Customer collaboration encourages ongoing feedback, reducing misunderstandings and enabling solutions that better meet real needs, while strict contracts can hinder flexibility.',
     tags: [
       'software-culture',
@@ -5511,7 +5511,7 @@ function waitFreeIncrement() {
       'As CTO, I would focus on fostering a culture of innovation, ensuring technical excellence, and aligning technology strategy with business goals. Key decisions would include investing in scalable infrastructure, prioritizing developer experience, adopting modern tools and practices like CI/CD and automated testing, and promoting continuous learning within the team.',
     code: '',
     hint: 'Think about technical leadership, team culture, and aligning tech with business.',
-    explanation:
+    expanded:
       'The CTO role requires balancing technology vision with practical delivery. Decisions should empower teams to build reliable, maintainable, and scalable products. Emphasizing collaboration, transparency, and user-centric development helps keep the company agile and competitive. Additionally, I would advocate for diversity, inclusion, and supporting professional growth to retain top talent and foster creativity.',
     tags: [
       'software-culture',
@@ -5539,7 +5539,7 @@ function waitFreeIncrement() {
       'Yes, program managers play a crucial role in coordinating multiple related projects, aligning them with business objectives, managing risks, and ensuring communication among teams and stakeholders. They help keep complex initiatives on track and facilitate strategic decision-making.',
     code: '',
     hint: 'Think about coordination, communication, and strategic alignment.',
-    explanation:
+    expanded:
       'Program managers oversee the broader scope beyond individual projects, focusing on how multiple projects interrelate and contribute to organizational goals. They handle resource allocation, timelines, and stakeholder expectations, reducing friction and helping teams deliver value effectively. Without program managers, teams might face misaligned priorities, duplicated efforts, or missed deadlines.',
     tags: [
       'software-culture',
@@ -5567,7 +5567,7 @@ function waitFreeIncrement() {
       'To organize a development team with flexible schedules and unlimited vacation, focus on clear communication, trust, and outcome-oriented goals rather than micromanagement of hours. Set expectations around deliverables and collaboration windows, and empower team members to manage their own time and work-life balance.',
     code: '',
     hint: 'Think about accountability, communication norms, and measuring output over hours worked.',
-    explanation:
+    expanded:
       'Flexible schedules and unlimited vacation policies work best when paired with a culture of trust and responsibility. Teams should agree on core hours or overlapping times for meetings and collaboration. Deliverables and milestones should be clearly defined so progress can be tracked without constant supervision. This approach improves morale and reduces burnout but requires strong communication and transparency to avoid misunderstandings and ensure project goals are met.',
     tags: [
       'software-culture',
@@ -5596,7 +5596,7 @@ function waitFreeIncrement() {
       'To reduce high turnover without raising pay, focus on improving work environment, career growth, recognition, and work-life balance. Foster a positive culture, provide learning opportunities, empower autonomy, and encourage open communication. Making developers feel valued and supported often outweighs compensation alone.',
     code: '',
     hint: 'Think beyond salary: culture, growth, recognition, autonomy, and support.',
-    explanation:
+    expanded:
       'Developers tend to stay where they feel engaged, respected, and challenged. Providing mentorship, clear career paths, flexible work options, meaningful projects, and regular feedback creates loyalty. Recognizing contributions and promoting psychological safety reduces burnout and dissatisfaction. Ultimately, investing in people and culture builds retention even when budgets are tight.',
     tags: [
       'software-culture',
@@ -5625,7 +5625,7 @@ function waitFreeIncrement() {
       'Beyond coding skills, I look for collaboration, communication, and a growth mindset. Great colleagues work well with others, communicate clearly, and are eager to learn and adapt.',
     code: '',
     hint: 'Think about teamwork, clarity, and continuous improvement.',
-    explanation:
+    expanded:
       'Technical skills are important, but the ability to collaborate fosters better team dynamics and project outcomes. Clear communication reduces misunderstandings and speeds up progress. A growth mindset means they embrace feedback, learn from mistakes, and evolve, which benefits the whole team over time.',
     tags: [
       'software-culture',
@@ -5655,7 +5655,7 @@ function waitFreeIncrement() {
       'First, code is not magic — it’s built through thoughtful planning and problem solving. Second, changing one small thing can have unexpected ripple effects. Third, good code takes time — rushed development often leads to long-term maintenance issues.',
     code: '',
     hint: 'Think about complexity, impact, and timelines.',
-    explanation:
+    expanded:
       'Understanding these points helps non-technical stakeholders have realistic expectations. Code is a complex system, and changes often require careful consideration. What may seem small can affect many parts of the system. And writing maintainable, scalable code requires more than just “getting it to work” — it involves testing, readability, and long-term thinking.',
     tags: [
       'software-culture',
@@ -5680,7 +5680,7 @@ function waitFreeIncrement() {
       "I'd focus on both comfort and collaboration. This might include upgrading ergonomic equipment, improving our shared tools (like automating common dev tasks), setting up a mental health day or wellness week, and maybe organizing a mini internal hackathon to explore fun or pain-relieving ideas together.",
     code: '',
     hint: 'Think comfort, morale, and lasting team impact.',
-    explanation:
+    expanded:
       'Improving developer experience goes beyond perks — it’s about removing friction and supporting well-being. Even small investments in tooling, communication processes, or physical comfort (e.g., chairs, screens) can boost morale and productivity. Creating space for team bonding or cross-project experimentation also builds a stronger, more resilient culture.',
     tags: [
       'software-culture',
@@ -5712,7 +5712,7 @@ function waitFreeIncrement() {
       'You can simulate a FIFO queue using two LIFO stacks by pushing to one and popping from the other, transferring elements only when necessary. To simulate a LIFO stack using FIFO queues, enqueue elements and rotate the queue after each insertion so the most recent item stays at the front.',
     code: '// FIFO Queue using two LIFO Stacks\nclass Queue {\n  constructor() {\n    this.inStack = [];\n    this.outStack = [];\n  }\n\n  enqueue(val) {\n    this.inStack.push(val);\n  }\n\n  dequeue() {\n    if (!this.outStack.length) {\n      while (this.inStack.length) {\n        this.outStack.push(this.inStack.pop());\n      }\n    }\n    return this.outStack.pop();\n  }\n}\n\n// LIFO Stack using two FIFO Queues\nclass Stack {\n  constructor() {\n    this.q1 = [];\n    this.q2 = [];\n  }\n\n  push(val) {\n    this.q2.push(val);\n    while (this.q1.length) {\n      this.q2.push(this.q1.shift());\n    }\n    [this.q1, this.q2] = [this.q2, this.q1];\n  }\n\n  pop() {\n    return this.q1.shift();\n  }\n}',
     hint: 'Think about transferring elements between two stacks or queues to simulate the opposite behavior.',
-    explanation:
+    expanded:
       'Stacks and queues are opposites in how they manage order—LIFO vs FIFO. By cleverly transferring elements between two structures, you can simulate the opposite behavior. For the queue with stacks, delay the reversal until necessary (lazy transfer). For the stack with queues, force order on every push (eager rotation). These techniques allow for structural inversion.',
     tags: [
       'data-structures',
@@ -5741,7 +5741,7 @@ function waitFreeIncrement() {
       'A stack overflow occurs when a program uses more stack memory than is available—usually by excessive or infinite recursion.',
     code: '// Infinite recursion leading to stack overflow\nfunction recurse() {\n  return recurse();\n}\n\nrecurse(); // ⚠️ Maximum call stack size exceeded',
     hint: 'Think about recursion without a base case.',
-    explanation:
+    expanded:
       'Each function call in JavaScript (and most languages) consumes stack space. Recursive functions must have base cases to stop calling themselves. Without one, like in this example, the call stack grows until the runtime throws an error (often "Maximum call stack size exceeded"). This is a stack overflow.',
     tags: [
       'recursion',
@@ -5770,7 +5770,7 @@ function waitFreeIncrement() {
       'A tail-recursive function performs the recursive call as its final action. This allows some languages (not JavaScript) to optimize and reuse the same stack frame.',
     code: '// Tail-recursive factorial (ES6+ style, not optimized in JS engines)\nfunction factorial(n, acc = 1) {\n  if (n <= 1) return acc;\n  return factorial(n - 1, n * acc);\n}\n\nconsole.log(factorial(5)); // Output: 120',
     hint: 'Use an accumulator to carry the result through recursive calls.',
-    explanation:
+    expanded:
       'In tail recursion, the recursive call is the last statement executed. Some languages (like Scheme, Scala, or newer versions of Python with optimizations) support Tail Call Optimization (TCO), which allows efficient recursion. JavaScript currently lacks guaranteed TCO, so the optimization may not apply, but the style is still useful for understanding recursion principles.',
     tags: [
       'recursion',
@@ -5801,7 +5801,7 @@ function waitFreeIncrement() {
       'A REPL (Read-Eval-Print Loop) continuously reads user input, evaluates it, and prints the result. Starting with an echo REPL is a good base. An RPN (Reverse Polish Notation) calculator uses a stack to evaluate expressions without parentheses.',
     code: "// Simple echo REPL (Node.js only)\nconst readline = require('readline');\nconst rl = readline.createInterface({ input: process.stdin, output: process.stdout });\n\nconsole.log('Echo REPL: Type something');\nrl.on('line', (input) => {\n  console.log(`You said: ${input}`);\n});\n\n// RPN Calculator (e.g. input: '3 4 +')\nrl.on('line', (input) => {\n  const tokens = input.trim().split(' ');\n  const stack = [];\n\n  for (let token of tokens) {\n    if (!isNaN(token)) {\n      stack.push(Number(token));\n    } else {\n      const b = stack.pop();\n      const a = stack.pop();\n      switch (token) {\n        case '+': stack.push(a + b); break;\n        case '-': stack.push(a - b); break;\n        case '*': stack.push(a * b); break;\n        case '/': stack.push(a / b); break;\n        default: console.log(`Unknown operator: ${token}`);\n      }\n    }\n  }\n\n  console.log('Result:', stack[0]);\n});",
     hint: 'Start with a readline loop. Then add a stack and evaluate operations from left to right.',
-    explanation:
+    expanded:
       'A REPL provides an interactive command-line interface. In JavaScript, this is done using Node’s `readline` module. To convert it into an RPN calculator, maintain a stack, push numbers onto it, and perform operations by popping values off. This demonstrates stack usage and control flow.',
     tags: ['javascript', 'repl', 'stack', 'rpn', 'nodejs', 'algorithms'],
     reference: [
@@ -5823,7 +5823,7 @@ function waitFreeIncrement() {
       'A "defragger" rearranges fragmented files on disk to occupy contiguous blocks, improving read/write performance. Designing one involves analyzing disk layout, identifying fragmented files, and moving their parts to contiguous spaces while updating file system metadata safely.',
     code: '',
     hint: 'Think about how files are stored in blocks and what fragmentation means for performance.',
-    explanation:
+    expanded:
       'File fragmentation occurs when files are split into scattered blocks on disk due to frequent modifications, deletions, or space limitations. A defragger scans the file system, identifies non-contiguous file blocks, and moves them into adjacent free blocks to make access faster. Key concerns include ensuring data integrity, minimizing downtime, and coordinating with the operating system to lock or schedule file movements safely. For SSDs, defragmentation is often discouraged, as it doesn’t improve performance and may reduce drive lifespan.',
     tags: [
       'algorithms',
@@ -5876,7 +5876,7 @@ const createMaze = (width, height) => {
 
 console.log(createMaze(21, 21));`,
     hint: 'Use depth-first search or another spanning tree algorithm to carve paths in a grid.',
-    explanation:
+    expanded:
       'Maze generation algorithms create complex paths while ensuring there is one or more ways to get from start to end. Recursive backtracking is a common approach where the algorithm carves out a path from a starting point and backtracks when it hits a dead end. Randomized Prim’s or Kruskal’s algorithms work by building a minimum spanning tree over the grid cells. These algorithms avoid loops and ensure that the resulting maze has a single connected component.',
     tags: [
       'algorithms',
@@ -5914,7 +5914,7 @@ function leakMemory() {
 // Call repeatedly to simulate leak over time
 setInterval(leakMemory, 1000);`,
     hint: 'Think about what happens when memory is referenced but never released.',
-    explanation:
+    expanded:
       'This example creates a large array and captures it inside a closure, which is then pushed into a global array. Because the reference to the data is never removed, the garbage collector cannot reclaim the memory. Over time, this will increase memory usage indefinitely. To avoid leaks, ensure objects no longer needed are dereferenced or removed from long-lived structures.',
     tags: [
       'memory',
@@ -5958,7 +5958,7 @@ function generateUniqueRandomNumbers(count, max) {
 const uniqueRandoms = generateUniqueRandomNumbers(10, 100);
 console.log(uniqueRandoms);`,
     hint: 'Shuffling an array is often easier than generating and checking for duplicates.',
-    explanation:
+    expanded:
       'By shuffling an array of numbers from 1 to max, you randomize the order without duplicates. Then, by slicing the first count numbers, you get a unique sequence. This approach is efficient and guarantees uniqueness without extra checks.',
     tags: [
       'random',
@@ -6053,7 +6053,7 @@ gc.addRoot(objA);
 gc.collect(); // Should collect D because it is unreachable
 `,
     hint: 'Think about marking reachable objects first, then removing the rest.',
-    explanation:
+    expanded:
       'The mark-and-sweep garbage collector starts from root objects and marks all reachable objects recursively. Then it removes all objects that were not marked, freeing memory. This simple simulation helps illustrate the concept but real-world GCs are much more complex and optimized.',
     tags: [
       'garbage-collection',
@@ -6123,7 +6123,7 @@ broker.unsubscribe('news', subscriber2);
 
 broker.publish('news', 'Second message');`,
     hint: 'Think about topics, subscriptions, and publishing messages.',
-    explanation:
+    expanded:
       'This simple broker maintains a list of topics and their subscribers. Subscribers register callback functions to topics. When a message is published to a topic, all subscribed callbacks are invoked with the message. This decouples senders and receivers, enabling asynchronous communication.',
     tags: [
       'message-broker',
@@ -6164,7 +6164,7 @@ server.listen(PORT, () => {
   console.log('Server running at http://localhost:' + PORT);
 });`,
     hint: 'Start simple: listen on a port, respond to any request.',
-    explanation:
+    expanded:
       'This server listens on port 3000 and responds with "Hello, world!" for any HTTP request. It forms the foundation for building more complex web servers. Future improvements include routing, static file serving, middleware, template rendering, REST API support, security, and performance enhancements.',
     tags: ['web-server', 'nodejs', 'http', 'backend', 'javascript'],
     reference: [
@@ -6196,7 +6196,7 @@ function externalMergeSort(file, chunkSize) {
   // Step 3: Merge temp files pairwise until one remains
 }`,
     hint: 'Think about memory limits and disk I/O; merge sorted chunks.',
-    explanation:
+    expanded:
       'For 10GB, external merge sort divides the file into manageable chunks, sorts them individually, and merges sorted chunks efficiently. For 10TB, single-machine external sort becomes impractical; you might use distributed systems like Hadoop or Spark to parallelize sorting across many nodes. Also, storage, network, and fault tolerance become critical factors.',
     tags: [
       'external-sort',
@@ -6252,7 +6252,7 @@ async function findDuplicates(files) {
 // findDuplicates(['file1.txt', 'file2.txt', 'file3.txt']).then(console.log);
 `,
     hint: 'Use file hashing to identify identical content without comparing full files directly.',
-    explanation:
+    expanded:
       'Computing cryptographic hashes uniquely represents file content. Files with matching hashes are likely duplicates. To optimize, you might first compare file sizes to avoid hashing files that differ in size, and only hash files with the same size. For large datasets, incremental or chunked hashing and caching results can improve performance.',
     tags: ['file-duplicates', 'hashing', 'crypto', 'file-system', 'efficiency'],
     reference: [
@@ -6277,7 +6277,7 @@ async function findDuplicates(files) {
       'A cache is not useful when the data changes very frequently, or when the cost of retrieving fresh data is low compared to the complexity and overhead of maintaining the cache. It can be dangerous if it serves stale data that leads to incorrect application behavior, or if it consumes too much memory or resources without clear benefits.',
     code: '',
     hint: 'Think about data freshness, consistency, and resource costs.',
-    explanation:
+    expanded:
       'Caching is beneficial when data is read often but updated infrequently. If data changes frequently or requires strong consistency, caching risks serving outdated or incorrect information, leading to bugs or security issues. Additionally, improperly managed caches can consume excessive memory or CPU, degrade performance, or introduce cache coherence problems. Therefore, caching strategies must balance performance gains with potential consistency and complexity costs.',
     tags: [
       'software-architecture',
@@ -6305,7 +6305,7 @@ async function findDuplicates(files) {
       'Event-Driven Architecture (EDA) improves scalability by decoupling producers and consumers of data, allowing systems to handle events asynchronously and independently, which enables horizontal scaling and better resource utilization.',
     code: '',
     hint: 'Think about decoupling, asynchronous processing, and independent scaling.',
-    explanation:
+    expanded:
       'In an Event-Driven Architecture, components communicate by emitting and reacting to events, rather than calling each other directly. This loose coupling means that components can evolve and scale independently. Since events are often handled asynchronously (e.g., via message queues or pub/sub systems), the system can process workloads in parallel and buffer spikes in demand. This allows for better fault isolation, load balancing, and the ability to scale consumers up or down based on event volume.',
     tags: [
       'software-architecture',
@@ -6334,7 +6334,7 @@ async function findDuplicates(files) {
       'Setting up a scalable server architecture involves designing systems that can handle increased load by adding resources efficiently. This includes using load balancers, stateless services, horizontal scaling, caching, and database optimization.',
     code: '',
     hint: 'Think in layers: load balancing, stateless services, horizontal scaling, data stores.',
-    explanation:
+    expanded:
       'A scalable server architecture typically begins with a **load balancer** to distribute traffic across multiple instances. Services should be **stateless** so they can be replicated or restarted without affecting the system. You should design for **horizontal scaling**, allowing the system to handle increased traffic by adding more servers. Use **caching** at different levels (CDN, in-memory caches like Redis) to reduce repeated computations and database load. For data storage, consider **read replicas**, **sharding**, or **NoSQL** solutions based on access patterns. Monitoring, auto-scaling, and infrastructure as code (IaC) tools help maintain scalability as demand changes.',
     tags: [
       'software-architecture',
@@ -6364,7 +6364,7 @@ async function findDuplicates(files) {
       'Readable code is clear, consistent, and easy to understand by others (or your future self). It uses meaningful names, follows consistent formatting, avoids deep nesting, and separates concerns.',
     code: '',
     hint: 'Think about naming, formatting, comments, and simplicity.',
-    explanation:
+    expanded:
       'Readable code follows principles that prioritize human understanding over cleverness. Good naming conventions help express purpose and intent. Consistent indentation and formatting make structure clear. Simplicity over complexity reduces cognitive load. Clear separation of concerns keeps functions and components focused on a single task. Comments, where necessary, explain why something is done, not what is done. Following established conventions and linters also improves readability across teams.',
     tags: [
       'software-architecture',
@@ -6393,7 +6393,7 @@ async function findDuplicates(files) {
       'Emergent design is about allowing the software’s internal structure to evolve as the system grows, using principles like refactoring and continuous feedback. Evolutionary architecture, on the other hand, focuses on enabling the *overall* architecture to evolve to meet changing business and technical requirements over time.',
     code: '',
     hint: 'Think of design as internal structure and architecture as high-level system shape.',
-    explanation:
+    expanded:
       'Emergent design happens at the code and component level, encouraging simplicity and flexibility through practices like TDD, YAGNI, and constant refactoring. It avoids over-engineering by letting the best design emerge naturally through iterations.\n\nEvolutionary architecture is a higher-level concept concerned with enabling large-scale system changes, such as switching databases, decomposing monoliths, or adapting to new protocols. It involves building in change as a core principle—e.g., using fitness functions, loose coupling, and modular components.\n\nBoth approaches aim to create systems that can adapt, but they operate at different layers.',
     tags: [
       'software-architecture',
@@ -6423,7 +6423,7 @@ async function findDuplicates(files) {
       'Scaling up means upgrading existing hardware (e.g., more CPU, RAM), while scaling out means adding more machines to distribute the load. Scaling out is often preferred for horizontal scalability and fault tolerance, especially in cloud environments.',
     code: '',
     hint: 'Think vertical (scale up) vs horizontal (scale out).',
-    explanation:
+    expanded:
       'Scaling up (vertical scaling) increases the capacity of a single server or system by adding more resources. It’s simpler but limited by hardware constraints and can create a single point of failure.\n\nScaling out (horizontal scaling) adds more servers to handle increased load. It offers better fault tolerance and elasticity, especially in distributed systems. However, it introduces complexity, like data distribution and consistency challenges.\n\nUse scale up for quick, low-complexity performance boosts. Use scale out for web-scale applications, systems with high availability needs, or when elasticity is a key concern.',
     tags: [
       'software-architecture',
@@ -6453,7 +6453,7 @@ async function findDuplicates(files) {
       'To ensure reliability and a good user experience during failover, user sessions should be decoupled from any single server and managed in a shared, persistent storage system. This way, if one server fails, another can resume the session seamlessly.',
     code: '',
     hint: 'Think about stateful vs stateless designs and external session storage.',
-    explanation:
+    expanded:
       'Failover is the ability of a system to switch to a backup component when one fails. If user sessions are stored in-memory on a single server (stateful), users will be logged out or lose progress during failover.\n\nTo prevent this, sessions should be managed externally using:\n- Distributed caches like Redis or Memcached\n- Databases (SQL or NoSQL)\n- Token-based authentication (like JWTs) for stateless session handling\n\nFor high availability, combine session replication, health checks, load balancing, and clustering. Stateless designs with token-based auth offer the most scalability but have limitations (e.g., token revocation).',
     tags: [
       'software-architecture',
@@ -6471,6 +6471,273 @@ async function findDuplicates(files) {
       {
         label: 'EnterpriseDB: Session State Failover',
         url: 'https://www.enterprisedb.com/blog/session-state-failover',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-8',
+    categoryId: 'software-architecture',
+    question:
+      'What is CQRS (Command Query Responsibility Segregation)? How is it different from the oldest Command-Query Separation Principle?',
+    answer:
+      'CQRS is an architectural pattern that separates read and write operations into different models to optimize performance, scalability, and maintainability. The older Command-Query Separation (CQS) principle simply states that a method should either perform an action (command) or return data (query), but not both.',
+    code: '',
+    hint: 'Think about the scale of application and system architecture vs individual method design.',
+    expanded:
+      'Command Query Responsibility Segregation (CQRS) applies at the architectural level: it separates the models used for reading (queries) from those used for writing (commands). This allows independent scaling, optimization, and security strategies for each side. For example, reads may use denormalized data optimized for performance, while writes enforce business rules and validations.\n\nCommand-Query Separation (CQS), proposed by Bertrand Meyer, is a design principle at the method level. It says that a function should either change state or return data—but never both. CQS supports code clarity and predictability.\n\nCQRS can be seen as applying CQS at a larger, system-wide scale, but with additional concerns like event sourcing and distributed processing.',
+    tags: [
+      'software-architecture',
+      'cqrs',
+      'cqs',
+      'read-write-separation',
+      'design-principles',
+      'architecture-patterns',
+    ],
+    reference: [
+      {
+        label: 'Microsoft Docs: Introduction to CQRS',
+        url: 'https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs',
+      },
+      {
+        label: 'Martin Fowler: CQRS',
+        url: 'https://martinfowler.com/bliki/CQRS.html',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-9',
+    categoryId: 'software-architecture',
+    question:
+      'The so-called "multi tier architecture" is an approach to design a client–server system aimed to keep physically and logically separated presentation, application processing, data management and other functions. The most widespread of the multi tier architectures is the three-tier architecture. Would you discuss the pros and cons of such an approach?',
+    answer:
+      'Three-tier architecture separates an application into presentation, business logic, and data storage layers. This separation promotes modularity, scalability, and maintainability but also introduces complexity and potential performance overhead.',
+    code: '',
+    hint: 'Think about modularity, scalability, complexity, and deployment.',
+    expanded:
+      'Pros:\n' +
+      '- **Modularity:** Each layer focuses on a specific responsibility, making the system easier to develop, test, and maintain.\n' +
+      '- **Scalability:** Layers can be scaled independently depending on load, improving resource utilization.\n' +
+      '- **Reusability:** Business logic can be reused across multiple user interfaces.\n' +
+      '- **Separation of concerns:** Encourages clear boundaries and team specialization.\n\n' +
+      'Cons:\n' +
+      '- **Increased complexity:** Managing multiple layers can complicate development and debugging.\n' +
+      '- **Performance overhead:** Communication between layers may introduce latency.\n' +
+      '- **Deployment challenges:** Coordinating deployments across layers requires careful planning.\n' +
+      '- **Potential over-engineering:** For small or simple applications, three-tier may be unnecessarily complex.\n\n' +
+      'Overall, three-tier architecture works well for medium to large applications requiring clear separation, scalability, and maintainability, but may be excessive for simpler projects.',
+    tags: [
+      'software-architecture',
+      'multi-tier',
+      'three-tier',
+      'modularity',
+      'scalability',
+      'design-patterns',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Multi-tier architecture',
+        url: 'https://www.geeksforgeeks.org/system-design/multitiered-architectures-in-distributed-system/',
+      },
+      {
+        label: 'GeeksforGeeks: Three Tier Architecture',
+        url: 'https://www.geeksforgeeks.org/computer-networks/three-tier-client-server-architecture-in-distributed-system/',
+      },
+      {
+        label: 'Medium: Multi-tier Architecture',
+        url: 'https://medium.com/software-architecture-patterns-and-styles/software-architecture-patterns-and-styles-part-1-multi-tier-architecture-bc5064ea6329',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-10',
+    categoryId: 'software-architecture',
+    question: 'How would you design a software system for scalability?',
+    answer:
+      'Designing for scalability means building a system that can handle increased load gracefully by adding resources or distributing work efficiently.',
+    code: '',
+    hint: 'Think about horizontal scaling, statelessness, caching, and decoupling components.',
+    expanded:
+      'Key strategies include:\n' +
+      '- **Horizontal scaling:** Add more machines or instances rather than relying on bigger hardware.\n' +
+      '- **Stateless design:** Keep services stateless so requests can be handled by any instance.\n' +
+      '- **Load balancing:** Distribute incoming traffic evenly among servers.\n' +
+      '- **Caching:** Use caches (in-memory, CDN) to reduce load on databases and services.\n' +
+      '- **Decoupling components:** Use message queues or event-driven architectures to reduce tight coupling.\n' +
+      '- **Database scaling:** Employ techniques like sharding, replication, and optimized indexing.\n' +
+      '- **Asynchronous processing:** Offload heavy or long-running tasks to background workers.\n\n' +
+      'By combining these approaches, systems can grow in capacity and reliability as demand increases.',
+    tags: [
+      'software-architecture',
+      'scalability',
+      'load-balancing',
+      'caching',
+      'distributed-systems',
+      'design-principles',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Guide for Designing Scalable Systems',
+        url: 'https://www.geeksforgeeks.org/system-design/guide-for-designing-highly-scalable-systems/',
+      },
+      {
+        label: 'Statsig: Disgning for Scalability',
+        url: 'https://www.statsig.com/perspectives/designing-for-scalability-principles',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-11',
+    categoryId: 'software-architecture',
+    question:
+      'Someone gave the name "The "C10k problem" to the problem of optimizing network sockets to handle over 10.000 open connections at once. While handling 10.000 concurrent clients is not the same as handling 10.000 open connections, the context is similar. It\'s a tough challenge anyway, and no one is expected to know every single detail to solve it. It may be interesting to discuss the strategies you know to deal with that problem. Would you like to try?',
+    answer:
+      'Yes. The C10k problem focuses on efficiently managing thousands of simultaneous connections without exhausting system resources or degrading performance. It requires moving beyond traditional blocking I/O and thread-per-connection models.',
+    code: '',
+    hint: 'Think about event-driven I/O, non-blocking sockets, and resource management.',
+    expanded:
+      'Key strategies include:\n' +
+      '- **Event-driven architectures:** Use non-blocking I/O with event loops (e.g., `epoll`, `kqueue`, or IOCP) to efficiently handle many connections with a small number of threads.\n' +
+      '- **Asynchronous programming:** Avoid blocking calls; use async APIs and callbacks or futures/promises.\n' +
+      '- **Connection lifecycle management:** Implement timeouts, keep-alive handling, and backpressure to prevent overload.\n' +
+      '- **Thread and process efficiency:** Avoid creating one thread per connection. Use thread pools, coroutines, or fibers (e.g., goroutines).\n' +
+      '- **Load balancing:** Use reverse proxies or load balancers (like HAProxy or Nginx) to spread the load across multiple servers.\n' +
+      '- **Kernel tuning:** Increase file descriptor limits, tune socket buffers, and optimize TCP stack settings.\n' +
+      '- **Efficient protocols:** Use multiplexed or connection-efficient protocols like HTTP/2 or QUIC.\n\n' +
+      'These techniques allow modern systems to scale to tens or even hundreds of thousands of concurrent open connections without significant performance degradation.',
+    tags: [
+      'software-architecture',
+      'networking',
+      'concurrency',
+      'performance',
+      'scalability',
+      'c10k-problem',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: The C10k problem',
+        url: 'https://en.wikipedia.org/wiki/C10k_problem',
+      },
+      {
+        label: 'Stack Overflow: The C10k problem',
+        url: 'https://stackoverflow.com/questions/17593699/tcp-ip-solving-the-c10k-with-the-thread-per-client-approach',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-12',
+    categoryId: 'software-architecture',
+    question:
+      'How would you design a decentralized (that is, with no central server) P2P system?',
+    answer:
+      'To design a decentralized peer-to-peer (P2P) system:\n' +
+      '- **Peer discovery:** Use a Distributed Hash Table (DHT) like Kademlia to enable nodes to find each other without a central server.\n' +
+      '- **Data distribution:** Break large data into chunks and replicate them across peers for fault tolerance and availability (similar to BitTorrent).\n' +
+      '- **Routing:** Implement an efficient routing algorithm like XOR-based lookup to minimize hops between nodes.\n' +
+      '- **Consistency and state:** Use eventual consistency or CRDTs if shared state is required.\n' +
+      '- **Security:** Encrypt communication between peers, sign data for authenticity, and validate peers through public key infrastructure.\n' +
+      '- **Fault tolerance:** Account for node churn by periodically verifying active peers and redistributing data when needed.\n' +
+      '- **Scalability:** Ensure that network overhead stays low as more peers join by distributing metadata and routing responsibilities.\n\n' +
+      'This design enables a system with no single point of failure, high availability, and resilience across unreliable nodes.',
+    code: '',
+    hint: 'Break the problem into how peers find each other, how data is shared, and how the system tolerates churn.',
+    expanded:
+      'A strong P2P design requires decentralized discovery, fault-tolerant data replication, scalable routing, and robust security. Technologies like Kademlia DHT, CRDTs, and encrypted peer communication play a key role.',
+    tags: [
+      'software-architecture',
+      'p2p',
+      'distributed-systems',
+      'scalability',
+      'networking',
+      'resilience',
+    ],
+    reference: [
+      {
+        label: '30DaysCoding: Designing for P2P Decentralized Networks',
+        url: 'https://30dayscoding.com/blog/designing-for-peer-to-peer-and-decentralized-networks',
+      },
+      {
+        label: 'Geeks for Geeks: Designing for P2P architecture',
+        url: 'https://www.geeksforgeeks.org/system-design/peer-to-peer-p2p-architecture/',
+      },
+      {
+        label:
+          'Kademlia: A Peer-to-peer Information System Based on the XOR Metric',
+        url: 'https://pdos.csail.mit.edu/~petar/papers/maymounkov-kademlia-lncs.pdf',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-13',
+    categoryId: 'software-architecture',
+    question:
+      'You may recall that Common Gateway Interface (CGI) is a standard protocol for web servers to execute programs (CGI scripts) that execute as Command-line programs on a server, and that dynamically generate HTML pages when invoked by a HTTP request. Perl and PHP used to be common languages for such scripts. In CGI, a HTTP request generally causes the invocation of a new process on the server, but FastCGI, SCGI and other approaches improved the mechanism, raising the performance, with techniques such as preforking processes. Can you discuss why CGI became obsolete, and was instead replaced with other architectural approaches?',
+    answer:
+      'CGI became obsolete primarily due to performance limitations, scalability challenges, and modern alternatives offering more efficient resource use:\n' +
+      '- **Process spawning overhead:** Each HTTP request required spawning a new OS process, which is expensive in terms of CPU and memory.\n' +
+      '- **Poor scalability:** As traffic increased, the server struggled under the load of managing thousands of concurrent processes.\n' +
+      '- **Limited reusability:** CGI scripts didn’t maintain state across requests and had to reload and reinitialize everything each time.\n' +
+      '- **Concurrency limitations:** No native support for handling multiple requests simultaneously in the same process.\n' +
+      "- **Security concerns:** Spawning shell processes exposed risks, especially if input wasn't sanitized properly.\n" +
+      'Modern alternatives like FastCGI, WSGI (Python), Node.js, or frameworks like Django, Rails, and Express use persistent processes, thread pools, and asynchronous I/O to handle multiple requests efficiently without the overhead of constant process creation. These models support better modularity, faster execution, and are more resource-efficient, making them well-suited for today’s high-traffic web environments.',
+    code: '',
+    hint: 'Think about performance, process creation overhead, and how modern frameworks and languages manage web requests.',
+    expanded:
+      'CGI was innovative for its time, enabling dynamic content on the web, but its design was tightly coupled to a model where each request spawned a fresh process. This doesn’t scale well. Over time, as web applications grew in complexity and traffic demands increased, alternatives that reused persistent processes, shared memory, or event loops became preferred. Approaches like FastCGI and application servers (e.g., Gunicorn, Puma) built on this by decoupling the web server from the app logic and introducing better resource management. Modern web architectures embrace concurrency, reusability, and separation of concerns — all things CGI lacked natively.',
+    tags: [
+      'software-architecture',
+      'cgi',
+      'fastcgi',
+      'web-servers',
+      'performance',
+      'scalability',
+      'obsolete-tech',
+    ],
+    reference: [
+      {
+        label: 'Wikipedia: Common Gateway Interface',
+        url: 'https://en.wikipedia.org/wiki/Common_Gateway_Interface',
+      },
+      {
+        label: 'FastCGI Specification',
+        url: 'https://fastcgi-archives.github.io/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-14',
+    categoryId: 'software-architecture',
+    question:
+      'How would you defend the design of your systems against vendor Lock-in?',
+    answer:
+      "Defending against vendor lock-in involves designing systems that maximize flexibility, portability, and interoperability to avoid dependency on a single vendor's proprietary technologies or services. Key strategies include:\n" +
+      '- **Use open standards and protocols:** Favor widely adopted, open-source technologies and industry standards to ensure compatibility and ease of migration.\n' +
+      '- **Abstraction layers:** Introduce abstraction between your application and vendor-specific APIs (e.g., using adapter or facade patterns), so components can be swapped without large rewrites.\n' +
+      '- **Modular architecture:** Design loosely coupled, modular components to isolate vendor-specific logic and minimize impact if changes are required.\n' +
+      '- **Multi-cloud or hybrid cloud strategies:** Avoid relying solely on one cloud provider; design for portability across providers using tools like Kubernetes or Terraform.\n' +
+      '- **Data portability and open formats:** Store data in portable, open formats that can be easily exported and imported.\n' +
+      '- **Thorough documentation and testing:** Maintain clear documentation and automated tests to reduce friction during migration.\n\n' +
+      'By incorporating these practices, systems can be more resilient to vendor changes, pricing shifts, or discontinuations, ensuring long-term maintainability and freedom of choice.',
+    code: '',
+    hint: 'Think about design abstractions, modularity, open standards, and multi-vendor strategies.',
+    expanded:
+      'Vendor lock-in can restrict future flexibility and increase costs. Designing defensively means acknowledging that no vendor lasts forever and that business needs evolve. Using abstraction layers (such as interfaces or service wrappers) decouples your business logic from vendor-specific implementations. Open standards like REST, OpenAPI, and standard database query languages help keep options open. Modular design allows swapping parts with minimal impact. Employing containerization and orchestration (e.g., Docker, Kubernetes) promotes portability. Data should never be trapped in proprietary formats. Regularly testing migration scenarios can identify hidden dependencies early. This proactive approach helps safeguard your architecture against lock-in risks.',
+    tags: [
+      'software-architecture',
+      'vendor-lock-in',
+      'portability',
+      'modularity',
+      'open-standards',
+      'cloud',
+      'design-principles',
+    ],
+    reference: [
+      {
+        label: 'Martin Fowler: Vendor Lock-In',
+        url: 'https://martinfowler.com/bliki/VendorLockIn.html',
+      },
+      {
+        label: 'AWS: How to Avoid Vendor Lock-In',
+        url: 'https://aws.amazon.com/whitepapers/avoiding-vendor-lock-in/',
       },
     ],
   },
