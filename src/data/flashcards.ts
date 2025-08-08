@@ -6732,12 +6732,339 @@ async function findDuplicates(files) {
     ],
     reference: [
       {
-        label: 'Martin Fowler: Vendor Lock-In',
-        url: 'https://martinfowler.com/bliki/VendorLockIn.html',
+        label: 'ISC2: Vendor Lock-In',
+        url: 'https://www.isc2.org/Insights/2024/04/Cloud-Exit-Strategies-Avoiding-Vendor-Lock-in',
       },
       {
-        label: 'AWS: How to Avoid Vendor Lock-In',
-        url: 'https://aws.amazon.com/whitepapers/avoiding-vendor-lock-in/',
+        label: 'AWS: 6 Lock-In Considerations',
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/unpicking-vendor-lock-in/six-lock-in-considerations.html',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-15',
+    categoryId: 'software-architecture',
+    question:
+      'What are the disadvantages of the publish-subscribe pattern at scale?',
+    answer:
+      'While the publish-subscribe (pub-sub) pattern decouples senders and receivers and scales well for many asynchronous use cases, it also introduces challenges at scale:\n' +
+      '- **Message ordering:** Maintaining message order across distributed consumers can be difficult or impossible without extra coordination.\n' +
+      '- **Delivery guarantees:** Ensuring at-least-once or exactly-once delivery can increase complexity and overhead.\n' +
+      '- **Debugging and tracing:** With loose coupling, it’s harder to trace message flows or identify failures across publishers, brokers, and subscribers.\n' +
+      '- **Subscriber overload:** A spike in messages can overwhelm subscribers unless they implement effective throttling or backpressure.\n' +
+      '- **Dead-letter handling:** Unprocessed messages can accumulate without proper handling mechanisms, leading to resource issues.\n' +
+      '- **Operational complexity:** Scaling message brokers (e.g., Kafka, RabbitMQ) introduces networking, replication, and partitioning complexities.\n\n' +
+      'At scale, pub-sub systems require careful design of observability, reliability mechanisms, and consumer strategies to avoid degraded performance or message loss.',
+    code: '',
+    hint: 'Think about ordering, backpressure, and delivery guarantees.',
+    expanded:
+      "The publish-subscribe model excels in decoupling components and enabling event-driven architecture, but its downsides become more pronounced with high throughput or many subscribers. Since publishers don't know their consumers, error tracing becomes harder. If one subscriber misbehaves, it won’t affect the publisher but could cause unnoticed data loss. Message duplication or disorder can occur, particularly in distributed environments. Some messaging platforms offer tools to address these issues, but those tools introduce trade-offs like increased latency or complexity. Observability, testing, and failover strategies must be integral to any pub-sub implementation at scale.",
+    tags: [
+      'software-architecture',
+      'publish-subscribe',
+      'messaging',
+      'event-driven',
+      'scalability',
+      'microservices',
+      'distributed-systems',
+    ],
+    reference: [
+      {
+        label: 'Martin Fowler: Event-Driven Architecture',
+        url: 'https://martinfowler.com/articles/201701-event-driven.html',
+      },
+      {
+        label: 'RedHat: Pros and Cons of Pub Sub',
+        url: 'https://www.redhat.com/en/blog/pub-sub-pros-and-cons',
+      },
+      {
+        label: 'Confluent: Kafka Design and Limitations',
+        url: 'https://docs.confluent.io/platform/current/kafka/design.html',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-16',
+    categoryId: 'software-architecture',
+    question:
+      "What's new in CPUs since the 80s, and how does it affect programming?",
+    answer:
+      'Modern CPUs have seen major changes since the 1980s, affecting how software is designed and optimized:\n' +
+      '- **Multi-core processors:** Instead of increasing clock speed indefinitely, CPUs now use multiple cores. This requires programs to be written with concurrency and parallelism in mind.\n' +
+      '- **Instruction pipelining and out-of-order execution:** Modern CPUs execute instructions more efficiently, but performance depends on branch prediction and cache-friendly code.\n' +
+      '- **SIMD and vector instructions:** CPUs support instructions that operate on multiple data points at once (e.g., SSE, AVX), pushing programmers to use data-parallel algorithms.\n' +
+      '- **Large, hierarchical caches:** Memory access patterns now have a huge impact on performance. Efficient use of L1/L2/L3 caches is key.\n' +
+      '- **Hardware threads (e.g., Hyper-threading):** Threads share core resources, requiring careful workload balancing.\n' +
+      '- **Energy efficiency & thermal limits:** CPUs throttle under thermal stress, so code efficiency affects not just speed but power use too.\n' +
+      '- **Security mitigations (e.g., Spectre, Meltdown):** Speculative execution vulnerabilities have led to patches that impact performance.\n\n' +
+      'These developments mean modern programmers must consider concurrency, memory hierarchy, vectorization, and power use to write performant code.',
+    code: '',
+    hint: 'Think beyond just clock speed—consider concurrency, memory, and hardware acceleration.',
+    expanded:
+      'In the 1980s, improvements in performance were largely driven by increases in clock speed and instruction throughput. But due to physical limits like heat and power, that strategy plateaued. Since then, CPUs evolved with multiple cores, deeper cache hierarchies, and smarter execution models. This has shifted the performance bottleneck from raw speed to how efficiently code utilizes CPU resources. Writing software today often requires understanding memory locality, avoiding cache misses, using parallel patterns, and leveraging platform-specific instructions. Tools like profilers and vector libraries are critical in optimizing for modern CPUs. Meanwhile, security issues like speculative execution have introduced new trade-offs between speed and safety.',
+    tags: [
+      'software-architecture',
+      'hardware-awareness',
+      'performance',
+      'concurrency',
+      'cpu-design',
+      'systems-programming',
+    ],
+    reference: [
+      {
+        label: 'Dan Luu: New CPU features',
+        url: 'https://danluu.com/new-cpu-features/',
+      },
+      {
+        label: 'Mechanical Sympathy by Martin Thompson',
+        url: 'https://mechanical-sympathy.blogspot.com/',
+      },
+    ],
+  },
+
+  {
+    id: 'software-arch-17',
+    categoryId: 'software-architecture',
+    question:
+      'At which stages of the software development lifecycle should performance be taken into consideration, and how?',
+    answer:
+      'Performance should be considered at **every stage** of the software development lifecycle:\n' +
+      '\n' +
+      '- **Requirements & Design:** Establish performance goals early. Choose scalable architecture patterns (e.g., microservices, event-driven systems).\n' +
+      '- **Development:** Write efficient algorithms, minimize I/O blocking, reduce unnecessary computation, and be aware of memory use.\n' +
+      '- **Testing:** Include performance testing (load, stress, soak) in your test suite.\n' +
+      '- **Deployment:** Monitor real-world usage using observability tools (APM, logging, metrics).\n' +
+      '- **Maintenance:** Continuously review performance metrics to guide refactoring and scaling decisions.\n' +
+      '\n' +
+      'Treating performance as an afterthought often leads to expensive rework. Instead, make it a first-class concern throughout development.',
+    code: '',
+    hint: 'Performance isn’t just a post-launch concern—it begins during planning.',
+    expanded:
+      'Thinking about performance only at the end of a project often results in fragile, hard-to-optimize systems. By incorporating performance awareness throughout design, development, testing, and operations, teams can build software that remains reliable and responsive as user demand grows.',
+    tags: ['performance', 'software-lifecycle', 'architecture', 'scalability'],
+    reference: [
+      {
+        label: 'Google: Web Fundamentals - Performance',
+        url: 'https://developers.google.com/web/fundamentals/performance',
+      },
+      {
+        label: 'AWS: What is SDLC',
+        url: 'https://aws.amazon.com/what-is/sdlc/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-18',
+    categoryId: 'software-architecture',
+    question:
+      'How could a denial of service arise not maliciously but due to a design or architectural problem?',
+    answer:
+      'A denial of service (DoS) can happen unintentionally due to poor architectural or design decisions:\n' +
+      '\n' +
+      '- **Synchronous bottlenecks:** Blocking I/O or long-running operations can tie up threads or processes.\n' +
+      '- **Lack of resource limits:** Unbounded memory or CPU usage (e.g., large file uploads, in-memory queues) can exhaust system resources.\n' +
+      '- **Inefficient algorithms:** Algorithms with poor time or space complexity can cause delays or crashes under load.\n' +
+      '- **Contention and locking:** Excessive locking or database contention can degrade responsiveness.\n' +
+      '- **Single points of failure:** Relying on a single service for a critical path can bring down the whole system.\n' +
+      '\n' +
+      'Such issues may emerge during traffic spikes, batch jobs, or unexpected user behavior—creating a DoS without malicious intent.',
+    code: '',
+    hint: 'Think about resource exhaustion, unbounded queues, and long processing times.',
+    expanded:
+      'Denial of service isn’t always caused by attackers. Even normal usage patterns—like many users uploading files or triggering expensive operations simultaneously—can overwhelm a system if it lacks rate limiting, timeouts, or asynchronous processing. Good architecture anticipates these risks and mitigates them through backpressure, isolation, and graceful degradation.',
+    tags: [
+      'architecture',
+      'dos',
+      'fault-tolerance',
+      'resource-management',
+      'availability',
+    ],
+    reference: [
+      {
+        label:
+          'Science Direct: DoS and DDoS attacks in Software Defined Networks: A survey of existing solutions and research challenges',
+        url: 'https://www.sciencedirect.com/science/article/pii/S0167739X21000911',
+      },
+      {
+        label: 'AWS: Well-Architected Framework Reliability Pillar',
+        url: 'https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-19',
+    categoryId: 'software-architecture',
+    question: 'What’s the relationship between performance and scalability?',
+    answer:
+      'Performance and scalability are related but distinct:\n' +
+      '\n' +
+      '- **Performance** refers to how fast a system performs under a given load (e.g., response time, throughput).\n' +
+      '- **Scalability** is the system’s ability to maintain or improve performance as the workload increases.\n' +
+      '\n' +
+      'A system with good performance might not scale well if it hits bottlenecks with higher load. Conversely, a scalable system might initially perform worse than a tightly optimized one but can handle growth gracefully. Designing for both involves trade-offs and requires measurement, load testing, and thoughtful architecture.',
+    code: '',
+    hint: 'Think about load vs speed: performance is “how fast?”, scalability is “how well does it stay fast?”',
+    expanded:
+      'Performance is often measured at a fixed load, while scalability considers how the system behaves under increasing load. Improving one can impact the other—for example, caching can improve performance but might introduce consistency challenges when scaling. Choosing appropriate patterns (e.g., stateless services, horizontal scaling) and monitoring both metrics in production is key.',
+    tags: [
+      'performance',
+      'scalability',
+      'architecture',
+      'system-design',
+      'load-testing',
+    ],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Performance vs Scalability',
+        url: 'https://www.geeksforgeeks.org/system-design/performance-vs-scalability-in-system-design/',
+      },
+      {
+        label: 'Dynatrace: Performance and Scalability',
+        url: 'https://www.dynatrace.com/resources/ebooks/javabook/performance-and-scalability/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-20',
+    categoryId: 'software-architecture',
+    question: 'When is it OK (if ever) to use tight coupling?',
+    answer:
+      'Tight coupling can be acceptable or even beneficial in some cases:\n' +
+      '\n' +
+      '- **Performance-critical components**: When two components must interact extremely fast with minimal overhead.\n' +
+      '- **Intra-module cohesion**: Within a single module or bounded context, tight coupling can make code simpler and more efficient.\n' +
+      '- **Short-lived or experimental projects**: Where maintainability and extensibility are not primary concerns.\n' +
+      '- **Platform-specific integrations**: Like OS drivers or embedded systems, where abstractions may add unnecessary complexity.\n' +
+      '\n' +
+      'However, tight coupling increases risk during changes and reduces testability and reuse. Use it consciously and document the reasons.',
+    code: '',
+    hint: 'Sometimes avoiding abstraction saves time—when change is unlikely or the parts are deeply related.',
+    expanded:
+      'Tight coupling means components are closely dependent on each other’s internal structure or behavior. While generally avoided in modern software design, it can reduce overhead and improve clarity in certain scenarios—especially when performance is critical or components evolve together. In layered or microservices architectures, though, loose coupling is almost always preferred.',
+    tags: [
+      'coupling',
+      'software-design',
+      'architecture',
+      'performance',
+      'trade-offs',
+    ],
+    reference: [
+      {
+        label: 'Nacelle: Downside of tight coupling',
+        url: 'https://nacelle.com/blog/the-downside-of-tight-coupling-in-business-operations',
+      },
+      {
+        label: 'We Need to Talk About Coupling',
+        url: 'https://frontendatscale.com/issues/27/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-21',
+    categoryId: 'software-architecture',
+    question: 'What characteristic should a system have to be cloud ready?',
+    answer:
+      'A cloud-ready system should have the following characteristics:\n' +
+      '\n' +
+      '- **Scalability**: The ability to scale horizontally and vertically to match resource demand.\n' +
+      '- **Statelessness**: Business logic should avoid relying on in-memory state across requests.\n' +
+      '- **Resilience**: Tolerance to failure, with retry logic, graceful degradation, and circuit breakers.\n' +
+      '- **Elasticity**: Can automatically grow/shrink resource usage in response to demand.\n' +
+      '- **Observability**: Includes logging, metrics, and tracing to monitor and debug in distributed environments.\n' +
+      '- **Externalized configuration**: Uses environment variables or external configuration services instead of hardcoded values.\n' +
+      '- **Automation-ready**: Easily deployed and managed through CI/CD pipelines and Infrastructure-as-Code.\n' +
+      '- **Security by design**: Applies principles like least privilege, encryption, and secure defaults.',
+    code: '',
+    hint: 'Think about how the system behaves in a distributed, ephemeral environment.',
+    expanded:
+      'To be cloud-ready, a system must be designed for the characteristics of cloud environments, including dynamic provisioning, network-based service communication, and shared infrastructure. Stateless services allow for easier scaling and fault tolerance. Observability and automation support rapid iteration and recovery. Security and configuration practices should assume infrastructure can change at any time.',
+    tags: [
+      'cloud-ready',
+      'cloud-computing',
+      'devops',
+      'distributed-systems',
+      'architecture',
+    ],
+    reference: [
+      {
+        label:
+          'Gibraltar Solutions: Becoming Cloud-Ready: 10 Key Considerations',
+        url: 'https://gibraltarsolutions.com/blog/becoming-cloud-ready/',
+      },
+      {
+        label:
+          'CloudThat: Cloud Ready vs. Cloud Native: Unveiling the Distinctions in Application Evolution',
+        url: 'https://www.cloudthat.com/resources/blog/cloud-ready-vs-cloud-native-unveiling-the-distinctions-in-application-evolution',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-22',
+    categoryId: 'software-architecture',
+    question:
+      'Does unity of design imply an aristocracy of architects? Putting it simple: can good design emerge from a collective effort of all developers?',
+    answer:
+      'Good design can absolutely emerge from a collective effort of all developers, but it requires strong coordination, shared principles, and clear communication. Unity of design doesn’t necessarily demand an "aristocracy" of architects, but some centralized architectural leadership often helps maintain consistency.\n\n' +
+      '- **Collective ownership** can foster innovation and broader understanding of the system.\n' +
+      '- **Architectural guidance** (from experienced leaders) ensures alignment and avoids fragmentation.\n' +
+      '- **Design principles and patterns** should be documented and discussed openly, not dictated.\n' +
+      '- **Code reviews, design reviews, and architecture guilds** help balance collective input with coherence.\n\n' +
+      'So while a small group may set the vision or boundaries, good design can and often should evolve through collective participation when structure and communication are strong.',
+    code: '',
+    hint: 'Consider how open source communities or cross-functional teams maintain coherent design.',
+    expanded:
+      'Unity of design is about coherence, not control. While a singular vision can simplify consistency, inclusive collaboration often leads to more resilient, context-aware designs. Practices like documented guidelines, shared review processes, and mentoring allow teams to maintain unity without enforcing hierarchy. Success lies in balancing architectural leadership with inclusive, ongoing collaboration.',
+    tags: [
+      'architecture',
+      'collaboration',
+      'design-principles',
+      'team-dynamics',
+      'software-design',
+    ],
+    reference: [
+      {
+        label:
+          'Net Solutions: Why You Should Pursue Collaborative Design to Build Products',
+        url: 'https://www.netsolutions.com/insights/why-collaborative-design-to-build-products/',
+      },
+      {
+        label: 'Team Topologies: Matthew Skelton & Manuel Pais',
+        url: 'https://teamtopologies.com/',
+      },
+    ],
+  },
+  {
+    id: 'software-arch-23',
+    categoryId: 'software-architecture',
+    question:
+      "What's the difference between design, architecture, functionality and aesthetic? Discuss.",
+    answer:
+      'These four concepts describe different but interconnected aspects of a system:\n\n' +
+      '- **Architecture**: The high-level structure of the system—its components, their relationships, and how they interact. It defines the foundational decisions that are hard to change later.\n' +
+      '- **Design**: More detailed planning of how individual components are implemented, structured, and interact. This sits closer to the code level than architecture.\n' +
+      '- **Functionality**: The actual capabilities and features the system provides—what it does, regardless of how it’s built.\n' +
+      '- **Aesthetic**: The visual or experiential qualities—how the system looks and feels to users, influencing usability and emotional impact.\n\n' +
+      'In short: architecture is the blueprint, design refines the blueprint into buildable plans, functionality is the purpose, and aesthetic is the polish and user experience.',
+    code: '',
+    hint: 'Think about "what it does" vs "how it’s structured" vs "how it feels."',
+    expanded:
+      'Architecture answers *"What are the main parts and how do they connect?"*; design answers *"How will each part work in detail?"*; functionality answers *"What can it do for the user?"*; aesthetic answers *"How pleasing or usable is it to interact with?"*. In software, these often overlap—architecture influences design, design affects functionality, and aesthetic can shape perceived quality. Strong systems balance all four so that technical soundness and user satisfaction reinforce each other.',
+    tags: [
+      'architecture',
+      'design',
+      'functionality',
+      'aesthetic',
+      'software-principles',
+      'ux',
+    ],
+    reference: [
+      {
+        label: 'IEEE Standard 1471: Architecture Description',
+        url: 'https://standards.ieee.org/standard/1471-2000.html',
+      },
+      {
+        label: 'Medium: Design Functionality and Aesthetics',
+        url: 'https://elloralph.medium.com/not-all-created-are-equal-design-functionality-vs-aesthetics-d4647aaf0c29',
       },
     ],
   },
