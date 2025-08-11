@@ -7068,4 +7068,245 @@ async function findDuplicates(files) {
       },
     ],
   },
+
+  // Service Oriented Architecture and Microservices -------------------------------------
+  {
+    id: 'soa-micro-1',
+    categoryId: 'soa-microservices',
+    question:
+      'Why, in a SOA, are long-lived transactions discouraged and sagas are suggested instead?',
+    answer:
+      'In Service-Oriented Architectures (SOA), long-lived transactions are discouraged because they often require distributed, two-phase commits (2PC) that lock resources across multiple services for extended periods. This creates scalability bottlenecks, increases coupling, and reduces system availability. Instead, sagas are preferred—they break a large transaction into a sequence of smaller, local transactions coordinated asynchronously. Each step has a compensating action to undo it if a later step fails, avoiding the need for global locks and enabling higher resilience.',
+    code: '',
+    hint: 'Think about distributed transactions, resource locking, and compensating actions.',
+    expanded:
+      'In a SOA environment, services are typically autonomous and may span multiple databases or systems, making traditional ACID transactions across them problematic. Long-lived transactions using two-phase commit introduce:\n' +
+      '- **Resource locking:** Holding locks across services can severely limit concurrency.\n' +
+      '- **High coupling:** Services must coordinate tightly, reducing flexibility.\n' +
+      '- **Failure sensitivity:** A single failure can stall the entire operation until rollback.\n\n' +
+      'Sagas offer an alternative by implementing a **sequence of local transactions** where each service updates its own data independently. Coordination happens through events or a saga orchestrator. If something goes wrong, previously completed steps are undone using **compensating transactions** rather than rolling back a single global transaction. This allows:\n' +
+      '- Better scalability\n' +
+      '- Loose coupling between services\n' +
+      '- Improved fault tolerance and eventual consistency\n\n' +
+      'Sagas fit well with asynchronous messaging patterns and are widely used in microservices to maintain data consistency without the drawbacks of distributed 2PC.',
+    tags: [
+      'soa',
+      'microservices',
+      'transactions',
+      'sagas',
+      'distributed-systems',
+      'consistency',
+    ],
+    reference: [
+      {
+        label: 'Microservices Patterns: Saga Pattern',
+        url: 'https://microservices.io/patterns/data/saga.html',
+      },
+      {
+        label: 'Medium: Transactions vs Sagas',
+        url: 'https://medium.com/@vadym.zakusylo.if/sagas-vs-transactions-adaa874f765',
+      },
+      {
+        label: 'Geeks for Geeks: Saga Design Pattern',
+        url: 'https://www.geeksforgeeks.org/system-design/saga-design-pattern/',
+      },
+    ],
+  },
+  {
+    id: 'soa-micro-2',
+    categoryId: 'soa-microservices',
+    question: 'What are the differences between SOA and microservice?',
+    answer:
+      'SOA (Service-Oriented Architecture) and microservices both focus on building systems from reusable, loosely coupled services, but differ in scope, granularity, and implementation. SOA is a broader architectural style that organizes business functions into interoperable services, often mediated by an enterprise service bus (ESB) and using standard protocols. Microservices is a more granular, decentralized approach where each service is small, independently deployable, and often communicates via lightweight protocols like HTTP/REST or messaging, without a central ESB.',
+    code: '',
+    hint: 'Think about service size, communication style, and deployment independence.',
+    expanded:
+      'Key differences include:\n' +
+      '- **Scope:** SOA is typically applied at the enterprise level, integrating large subsystems; microservices focus on smaller, independently deployable services.\n' +
+      '- **Granularity:** SOA services can be large and multi-functional; microservices are narrowly scoped around a single capability.\n' +
+      '- **Communication:** SOA often uses enterprise-grade protocols like SOAP over HTTP and an ESB; microservices favor lightweight protocols (HTTP/REST, gRPC, messaging) and avoid a central broker.\n' +
+      '- **Deployment:** SOA services may be deployed together and share infrastructure; microservices are independently deployable and scalable.\n' +
+      '- **Data management:** SOA may share a central database; microservices typically own their data storage.\n' +
+      '- **Governance:** SOA often involves centralized governance; microservices embrace decentralized governance and polyglot technology choices.\n\n' +
+      'While microservices can be seen as an evolution of SOA principles, they trade some of SOA’s centralized integration features for increased agility, resilience, and scalability.',
+    tags: [
+      'soa',
+      'microservices',
+      'architecture',
+      'distributed-systems',
+      'service-design',
+    ],
+    reference: [
+      {
+        label: 'Martin Fowler: Microservices vs. SOA',
+        url: 'https://martinfowler.com/articles/microservices.html#MicroservicesAndSoa',
+      },
+      {
+        label: 'Talend: Microservices vs SOA',
+        url: 'https://www.talend.com/resources/microservices-vs-soa/#:~:text=While%20SOA%20is%20based%20on,the%20need%20to%20share%20components.',
+      },
+    ],
+  },
+  {
+    id: 'soa-micro-3',
+    categoryId: 'soa-microservices',
+    question:
+      "Let's talk about web services versioning, version compatibility and breaking changes.",
+    answer:
+      'Web service versioning ensures that changes to a service do not unexpectedly break existing clients. Compatibility is about whether older clients can still interact with newer versions of a service without errors. Breaking changes occur when an update alters the contract or behavior in a way that existing clients cannot handle without modification.',
+    code: '',
+    hint: 'Think about backward compatibility, semantic versioning, and strategies to manage evolving APIs.',
+    expanded:
+      'Key considerations include:\n' +
+      '- **Backward compatibility:** Changes should preserve existing functionality so older clients continue to work.\n' +
+      '- **Forward compatibility:** Clients can interact with newer service versions even if they do not use new features.\n' +
+      '- **Breaking changes:** Modifications like removing fields, changing data formats, or altering response structures can disrupt clients.\n' +
+      '- **Versioning strategies:**\n' +
+      '  - **URI versioning:** Include version in the URL (e.g., `/v1/resource`).\n' +
+      '  - **Header-based versioning:** Indicate version in HTTP headers.\n' +
+      '  - **Content negotiation:** Use `Accept` headers for version control.\n' +
+      '- **Deprecation policies:** Communicate changes clearly and allow clients time to adapt.\n' +
+      '- **Semantic versioning:** Use MAJOR.MINOR.PATCH to signal breaking changes, new features, and bug fixes.\n\n' +
+      'Good versioning and compatibility practices allow services to evolve without causing widespread client disruption, balancing innovation with stability.',
+    tags: [
+      'soa',
+      'microservices',
+      'web-services',
+      'versioning',
+      'compatibility',
+      'api-design',
+    ],
+    reference: [
+      {
+        label: 'Oracle: Web Services Versioning',
+        url: 'https://www.oracle.com/technical-resources/articles/web-services-versioning.html',
+      },
+      {
+        label: 'Microsoft API Versioning Guidelines',
+        url: 'https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#versioning-a-restful-web-api',
+      },
+    ],
+  },
+  {
+    id: 'soa-micro-4',
+    categoryId: 'soa-microservices',
+    question:
+      "What's the difference between a transaction and a compensation operation in a saga, in SOA?",
+    answer:
+      'In a saga, a transaction is a local, atomic operation performed by a single service that moves the overall process forward. A compensation operation is the undo step that reverses the effects of a previously completed transaction when part of the saga fails.',
+    code: '',
+    hint: 'Think of transactions as “do” steps and compensations as “undo” steps in a distributed process.',
+    expanded:
+      'In the context of SOA and sagas:\n' +
+      '- **Transaction:**\n' +
+      '  - A local unit of work within a single service.\n' +
+      '  - Completes atomically at the service level (all-or-nothing for that service).\n' +
+      '  - Moves the overall workflow closer to completion.\n' +
+      '  - Example: Reserve inventory in the Inventory Service.\n' +
+      '- **Compensation operation:**\n' +
+      '  - A separate action designed to reverse the effects of a previously successful transaction.\n' +
+      '  - Triggered when a later step in the saga fails, requiring rollback.\n' +
+      '  - Example: Release previously reserved inventory if payment fails.\n' +
+      '- **Key difference:** Transactions perform the forward progress; compensation operations provide eventual consistency by undoing work instead of using a distributed rollback.\n\n' +
+      'Sagas use this approach because distributed ACID transactions are impractical across multiple services—compensations achieve consistency in a more scalable, fault-tolerant way.',
+    tags: [
+      'soa',
+      'microservices',
+      'saga-pattern',
+      'transactions',
+      'compensation',
+      'distributed-systems',
+    ],
+    reference: [
+      {
+        label: 'Microservices: Saga Pattern',
+        url: 'https://microservices.io/patterns/data/saga.html',
+      },
+      {
+        label: 'Compensating Transaction pattern',
+        url: 'https://learn.microsoft.com/en-us/azure/architecture/patterns/compensating-transaction',
+      },
+    ],
+  },
+  {
+    id: 'soa-micro-5',
+    categoryId: 'soa-microservices',
+    question: 'When is a microservice too micro?',
+    answer:
+      'A microservice is too micro when its scope is so narrow that it causes excessive operational overhead, communication complexity, and coordination challenges without delivering clear business or technical value as a standalone service.',
+    code: '',
+    hint: 'Think about service boundaries, cohesion, and the trade-off between granularity and maintainability.',
+    expanded:
+      'Signs a microservice is too micro include:\n' +
+      '- **Excessive service count:** You have many tiny services that could be combined without violating the single responsibility principle.\n' +
+      '- **High communication overhead:** Services spend more time making network calls to each other than doing useful work.\n' +
+      '- **Deployment and monitoring burden:** Managing builds, deployments, and observability for each service becomes unwieldy.\n' +
+      '- **Loss of cohesion:** The service’s functionality feels incomplete or meaningless without constant calls to other services.\n' +
+      '- **Minimal business value:** The service doesn’t encapsulate a significant business capability.\n' +
+      '- **Frequent changes across services:** A single feature requires touching multiple tiny services, reducing development speed.\n\n' +
+      'A healthy microservice should encapsulate a cohesive business capability, operate largely independently, and justify its operational cost. If the service boundaries are drawn too finely, the architecture suffers from *over-fragmentation*, hurting maintainability and performance.',
+    tags: [
+      'microservices',
+      'soa',
+      'service-design',
+      'granularity',
+      'architecture',
+    ],
+    reference: [
+      {
+        label: 'Martin Fowler: When to break up a microservice',
+        url: 'https://martinfowler.com/articles/microservice-trade-offs.html',
+      },
+      {
+        label: 'Microservice boundaries: Microservices.io',
+        url: 'https://microservices.io/patterns/microservices.html',
+      },
+      {
+        label: 'Altoros: When microservices are too micro',
+        url: 'https://www.altoros.com/blog/over-engineering-when-microservices-are-too-micro/',
+      },
+    ],
+  },
+  {
+    id: 'soa-micro-6',
+    categoryId: 'soa-microservices',
+    question: 'What are the pros and cons of microservice architecture?',
+    answer:
+      'Microservice architecture offers benefits such as scalability, independent deployment, and better alignment with business domains, but introduces challenges like operational complexity, distributed systems issues, and higher infrastructure costs.',
+    code: '',
+    hint: 'Think about benefits for development teams versus operational trade-offs.',
+    expanded:
+      '**Pros:**\n' +
+      '- **Independent deployability:** Teams can release features or fixes without coordinating with other services.\n' +
+      '- **Scalability per service:** You can scale only the services that need it, optimizing resource usage.\n' +
+      '- **Technology flexibility:** Each service can use the most appropriate language, framework, or database.\n' +
+      '- **Better fault isolation:** Failures are contained within a single service, reducing impact.\n' +
+      '- **Business domain alignment:** Services often map well to bounded contexts in Domain-Driven Design.\n\n' +
+      '**Cons:**\n' +
+      '- **Operational complexity:** More services mean more deployments, monitoring, logging, and alerting.\n' +
+      '- **Distributed systems challenges:** Network latency, retries, eventual consistency, and debugging across services.\n' +
+      '- **Data management difficulties:** Maintaining data integrity and avoiding tight coupling can be harder.\n' +
+      '- **Higher infrastructure cost:** Each service may require its own runtime, container, or VM.\n' +
+      '- **Complex testing:** End-to-end integration testing across many services can be slow and brittle.\n\n' +
+      'Microservices excel in large, complex systems with multiple teams, but for small or simple applications, the overhead may outweigh the benefits.',
+    tags: [
+      'microservices',
+      'soa',
+      'architecture',
+      'distributed-systems',
+      'trade-offs',
+    ],
+    reference: [
+      {
+        label:
+          'Geeks for Geeks: What are the Advantages and Disadvantages of Microservices Architecture?',
+        url: 'https://www.geeksforgeeks.org/system-design/what-are-the-advantages-and-disadvantages-of-microservices-architecture/',
+      },
+      {
+        label:
+          'Atlassian: Advantages of microservices and disadvantages to know',
+        url: 'https://www.atlassian.com/microservices/cloud-computing/advantages-of-microservices',
+      },
+    ],
+  },
 ];
