@@ -2331,8 +2331,356 @@ export const flashcards: Flashcard[] = [
     tags: ['react', 'state-management', 'lifting-state-up', 'props'],
     reference: [
       {
-        label: 'React Docs: Lifting State Up',
-        url: 'https://reactjs.org/docs/lifting-state-up.html',
+        label: 'Geeks for Geeks: Lifting State Up in ReactJS',
+        url: 'https://www.geeksforgeeks.org/reactjs/lifting-state-up-in-reactjs/',
+      },
+      {
+        label: 'React Docs: Sharing State Between Components',
+        url: 'https://react.dev/learn/sharing-state-between-components',
+      },
+    ],
+  },
+  {
+    id: 'react-10',
+    categoryId: 'react',
+    question:
+      'What are higher-order components (HOCs) and when would you use them?',
+    answer:
+      'A higher-order component (HOC) is a function that takes a component and returns a new enhanced component. They are used to share reusable logic or behavior between components without repeating code.',
+    code: '',
+    hint: 'Think of HOCs as functions that wrap components to add extra functionality.',
+    expanded:
+      'Higher-Order Components (HOCs) are advanced React patterns used for reusing component logic.\n\n' +
+      '**Definition:**\n' +
+      '- An HOC is a function that accepts a component and returns a new component with added props or behavior.\n\n' +
+      '**Common use cases:**\n' +
+      '- Code reuse (e.g., authentication, logging, theming)\n' +
+      '- Conditional rendering\n' +
+      '- Enhancing props or injecting data\n\n' +
+      '**Example:**\n' +
+      '```jsx\n' +
+      'function withAuth(Component) {\n' +
+      '  return function WrappedComponent(props) {\n' +
+      '    if (!userIsLoggedIn()) return <Login />;\n' +
+      '    return <Component {...props} />;\n' +
+      '  };\n' +
+      '}\n' +
+      'const DashboardWithAuth = withAuth(Dashboard);\n' +
+      '```',
+    tags: ['react', 'hoc', 'component-patterns', 'reusability'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Higher-Order Components',
+        url: 'https://www.geeksforgeeks.org/reactjs/react-js-higher-order-components/',
+      },
+      {
+        label: 'Geeks for Geeks: Why Would You Use Higher-Order Components',
+        url: 'https://www.geeksforgeeks.org/reactjs/why-would-you-use-a-higher-order-component-in-react/',
+      },
+    ],
+  },
+  {
+    id: 'react-11',
+    categoryId: 'react',
+    question: 'What is the Context API and how does it work?',
+    answer:
+      'The Context API allows sharing state across the component tree without prop drilling. It uses a Provider to supply values and a Consumer (or useContext hook) to access them.',
+    code: '',
+    hint: 'Think global state without Redux.',
+    expanded:
+      'React Context API provides a way to pass data through the component tree without manually passing props at every level.\n\n' +
+      '**How it works:**\n' +
+      '- **Create Context:** `const MyContext = React.createContext(defaultValue)`\n' +
+      '- **Provider:** Wraps components to provide the context value.\n' +
+      '- **Consumer / useContext:** Components access the value.\n\n' +
+      '**Example:**\n' +
+      '```jsx\n' +
+      "const ThemeContext = React.createContext('light');\n" +
+      "<ThemeContext.Provider value='dark'>\n" +
+      '  <App />\n' +
+      '</ThemeContext.Provider>\n' +
+      'const theme = useContext(ThemeContext);\n' +
+      '```',
+    tags: ['react', 'context', 'state-management', 'hooks'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Explain the New Context API in React',
+        url: 'https://www.geeksforgeeks.org/reactjs/explain-new-context-api-in-react/',
+      },
+      {
+        label: 'freeCodeCamp: React Context API Explained with Examples',
+        url: 'https://www.freecodecamp.org/news/react-context-api-explained-with-examples/',
+      },
+    ],
+  },
+  {
+    id: 'react-12',
+    categoryId: 'react',
+    question:
+      'When should you use Redux or another global state management library?',
+    answer:
+      'Use Redux or similar when multiple components need to share complex state, you want predictable state updates, or when debugging and dev tools are important.',
+    code: '',
+    hint: 'Think global state, multiple components, predictability.',
+    expanded:
+      'Redux is useful when:\n' +
+      '- Many components across the app rely on the same state.\n' +
+      '- State updates need to be predictable and traceable.\n' +
+      '- You want powerful debugging tools (Redux DevTools).\n\n' +
+      'For small apps, Context API or local state is often sufficient.',
+    tags: ['react', 'redux', 'state-management', 'global-state'],
+    reference: [
+      {
+        label: 'Reddit: State Management: When to Use Context API vs. Redux?',
+        url: 'https://www.reddit.com/r/react/comments/1fp27ek/state_management_when_to_use_context_api_vs_redux/',
+      },
+      {
+        label:
+          'freeCodeCamp: How to Manage State in Your Applications – useState() vs Redux',
+        url: 'https://www.freecodecamp.org/news/usestate-vs-redux-state-management/',
+      },
+    ],
+  },
+  {
+    id: 'react-13',
+    categoryId: 'react',
+    question:
+      'What are the trade-offs of using global state vs local component state?',
+    answer:
+      'Global state makes data accessible throughout the app but adds complexity and potential performance costs. Local state is simpler but can lead to prop drilling if shared across components.',
+    code: '',
+    hint: 'Think accessibility vs simplicity.',
+    expanded:
+      '**Trade-offs:**\n' +
+      '- **Global state:** Accessible anywhere, easier for shared data, but adds boilerplate and may impact performance if overused.\n' +
+      '- **Local state:** Simple, encapsulated, but sharing data requires passing props through multiple levels.\n' +
+      'Balance depends on app size and complexity.',
+    tags: ['react', 'state-management', 'performance', 'props'],
+    reference: [
+      {
+        label: 'Dev.to: Global vs Local State',
+        url: 'https://dev.to/fkrasnowski/global-vs-local-state-in-react-lp5',
+      },
+      {
+        label:
+          'Medium: Understanding the Differences between Local and Global State Management in React',
+        url: 'https://medium.com/@juniormarch48/understanding-the-differences-between-local-and-global-state-management-in-react-5665a16897ef',
+      },
+    ],
+  },
+  {
+    id: 'react-14',
+    categoryId: 'react',
+    question: 'How do you handle asynchronous state updates in React?',
+    answer:
+      'Asynchronous state updates can be handled with useEffect for side effects, async functions, or libraries like Redux Thunk or React Query for more complex data fetching.',
+    code: '',
+    hint: 'Think useEffect, async, and side effects.',
+    expanded:
+      'React state updates are asynchronous. To handle async actions:\n' +
+      '- Use `useEffect` to run code after render.\n' +
+      '- Wrap async code in functions inside `useEffect`.\n' +
+      '- For complex async logic, use middleware like Redux Thunk or data libraries like React Query.\n\n' +
+      'Example:\n' +
+      '```jsx\n' +
+      'useEffect(() => {\n' +
+      '  async function fetchData() {\n' +
+      "    const response = await fetch('/api/data');\n" +
+      '    setData(await response.json());\n' +
+      '  }\n' +
+      '  fetchData();\n' +
+      '}, []);\n' +
+      '```',
+    tags: ['react', 'state', 'async', 'hooks'],
+    reference: [
+      {
+        label: 'React Docs: Queueing a Series of State Updates',
+        url: 'https://react.dev/learn/queueing-a-series-of-state-updates',
+      },
+      {
+        label: 'Geeks for Geeks: Is setState() method async?',
+        url: 'https://www.geeksforgeeks.org/reactjs/is-setstate-method-async/',
+      },
+      {
+        label:
+          'DHIwise: Understanding the Importance of State Updates in React Applications',
+        url: 'https://www.dhiwise.com/post/understanding-the-importance-of-state-updates-in-react',
+      },
+    ],
+  },
+  {
+    id: 'react-15',
+    categoryId: 'react',
+    question: 'Explain prop drilling and how to avoid it.',
+    answer:
+      'Prop drilling happens when props are passed through multiple components unnecessarily. It can be avoided using Context API, Redux, or component composition.',
+    code: '',
+    hint: 'Think deeply nested components and passing props down many levels.',
+    expanded:
+      'Prop drilling occurs when data has to be passed through several layers of components that don’t need it, just to reach a deeply nested child.\n\n' +
+      '**Ways to avoid it:**\n' +
+      '- **Context API**: Provide the value at a higher level and consume it directly.\n' +
+      '- **Redux or global state**: Centralize state access.\n' +
+      '- **Component composition / render props**: Structure components to reduce unnecessary prop passing.\n',
+    tags: ['react', 'props', 'state-management', 'context'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: What is Prop Drilling and How to Avoid it?',
+        url: 'https://www.geeksforgeeks.org/reactjs/what-is-prop-drilling-and-how-to-avoid-it/',
+      },
+      {
+        label: 'freeCodeCamp: How to Avoid Prop Drilling in React',
+        url: 'https://www.freecodecamp.org/news/avoid-prop-drilling-in-react/',
+      },
+    ],
+  },
+  {
+    id: 'react-16',
+    categoryId: 'react',
+    question: 'How would you optimize a slow React application?',
+    answer:
+      'Optimize by memoizing components, using React.memo, useCallback, and useMemo, splitting code, lazy loading, avoiding unnecessary re-renders, and profiling with React DevTools.',
+    code: '',
+    hint: 'Think memoization, code splitting, lazy loading, and profiling.',
+    expanded:
+      'Performance optimization strategies:\n' +
+      '- **React.memo**: Prevent re-rendering of functional components when props haven’t changed.\n' +
+      '- **useCallback / useMemo**: Memoize functions and computed values.\n' +
+      '- **Code splitting & lazy loading**: Load components only when needed.\n' +
+      '- **Avoid unnecessary renders**: Key props correctly, reduce inline object creation.\n' +
+      '- **React DevTools profiler**: Identify bottlenecks.\n',
+    tags: ['react', 'performance', 'optimization', 'memoization'],
+    reference: [
+      {
+        label:
+          'Reddit: Performance Optimization Strategies for Large-Scale React Applications',
+        url: 'https://www.reddit.com/r/reactjs/comments/1f6abzy/performance_optimization_strategies_for/',
+      },
+      {
+        label: 'Medium: React Optimization Techniques',
+        url: 'https://medium.com/@onix_react/react-optimization-techniques-e384b1ceb794',
+      },
+    ],
+  },
+  {
+    id: 'react-17',
+    categoryId: 'react',
+    question: 'What is React.memo and when should you use it?',
+    answer:
+      'React.memo is a higher-order component that memoizes functional components to prevent unnecessary re-renders when props do not change.',
+    code: '',
+    hint: 'Think caching functional components based on props.',
+    expanded:
+      'React.memo is a performance optimization for functional components.\n\n' +
+      'Example:\n' +
+      '```jsx\n' +
+      'const MyComponent = React.memo(function({ value }) {\n' +
+      '  return <div>{value}</div>;\n' +
+      '});\n' +
+      '``` \n' +
+      '- Use it when a component renders often with the same props and is expensive to render.\n',
+    tags: ['react', 'performance', 'memo', 'functional-components'],
+    reference: [
+      {
+        label: 'React Docs: React.memo',
+        url: 'https://react.dev/reference/react/memo',
+      },
+      {
+        label:
+          'Geeks for Geeks: Explain new features of React Memo in React v16.6',
+        url: 'https://www.geeksforgeeks.org/reactjs/explain-new-features-of-react-memo-in-react-v16-6/',
+      },
+    ],
+  },
+  {
+    id: 'react-18',
+    categoryId: 'react',
+    question: 'Explain useCallback and useMemo and their differences.',
+    answer:
+      'useCallback memoizes a function, useMemo memoizes a computed value. Both prevent unnecessary re-computation or re-renders in React components.',
+    code: '',
+    hint: 'Think caching functions vs values.',
+    expanded:
+      'Hooks for optimization:\n\n' +
+      '- **useCallback(fn, deps)**: Returns a memoized version of the callback function.\n' +
+      '- **useMemo(fn, deps)**: Returns a memoized value returned by a function.\n\n' +
+      'Example:\n' +
+      '```jsx\n' +
+      'const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);\n' +
+      'const memoizedCallback = useCallback(() => doSomething(a), [a]);\n' +
+      '```',
+    tags: ['react', 'hooks', 'performance', 'memoization'],
+    reference: [
+      {
+        label:
+          "freeCodeCamp: What's the Difference Between the useMemo and useCallback Hooks?",
+        url: 'https://www.freecodecamp.org/news/difference-between-usememo-and-usecallback-hooks/',
+      },
+      {
+        label:
+          'Geeks for Geeks: When to use useCallback, useMemo and useEffect?',
+        url: 'https://www.geeksforgeeks.org/reactjs/when-to-use-usecallback-usememo-and-useeffect/',
+      },
+    ],
+  },
+  {
+    id: 'react-19',
+    categoryId: 'react',
+    question: 'What is code splitting and lazy loading?',
+    answer:
+      'Code splitting breaks code into smaller bundles loaded on demand. Lazy loading allows React components to load only when needed, improving performance.',
+    code: '',
+    hint: 'Think smaller bundles, dynamic imports, and React.lazy.',
+    expanded:
+      'Code splitting allows loading parts of the app only when required.\n\n' +
+      'In React:\n' +
+      '- **React.lazy:** Load components lazily.\n' +
+      '- **Suspense:** Show fallback while component loads.\n\n' +
+      'Example:\n' +
+      '```jsx\n' +
+      "const LazyComponent = React.lazy(() => import('./MyComponent'));\n" +
+      '<Suspense fallback={<div>Loading...</div>}>\n' +
+      '  <LazyComponent />\n' +
+      '</Suspense>\n' +
+      '```',
+    tags: ['react', 'performance', 'lazy-loading', 'code-splitting'],
+    reference: [
+      {
+        label:
+          'Great Frontend: Implementing Code Splitting and Lazy Loading in React',
+        url: 'https://www.greatfrontend.com/blog/code-splitting-and-lazy-loading-in-react',
+      },
+      {
+        label: 'Geeks for Geeks: Code Splitting in React',
+        url: 'https://www.geeksforgeeks.org/reactjs/code-splitting-in-react/',
+      },
+    ],
+  },
+  {
+    id: 'react-20',
+    categoryId: 'react',
+    question: 'How do you prevent unnecessary re-renders in React?',
+    answer:
+      'Use React.memo for functional components, useCallback/useMemo to memoize functions and values, avoid creating new objects/arrays inline, and manage state properly.',
+    code: '',
+    hint: 'Think memoization and proper state handling.',
+    expanded:
+      'Strategies to prevent unnecessary re-renders:\n' +
+      '- **React.memo**: Memoize functional components.\n' +
+      '- **useCallback / useMemo**: Avoid re-creating functions/values every render.\n' +
+      '- **Immutable updates**: Prevent unnecessary object/array references from changing.\n' +
+      '- **Avoid inline functions/objects in JSX** unless memoized.\n',
+    tags: ['react', 'performance', 'memoization', 're-render'],
+    reference: [
+      {
+        label:
+          'Geeks for Geeks: Optimizing Re-Rendering in React: Best Practices for Beginners',
+        url: 'https://www.geeksforgeeks.org/reactjs/optimizing-re-rendering-in-react-best-practices-for-beginners/',
+      },
+      {
+        label:
+          'Medium: React re-renders guide: preventing unnecessary re-renders',
+        url: 'https://adevnadia.medium.com/react-re-renders-guide-preventing-unnecessary-re-renders-8a3d2acbdba3',
       },
     ],
   },
