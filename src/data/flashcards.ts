@@ -2065,6 +2065,278 @@ export const flashcards: Flashcard[] = [
     ],
   },
 
+  //  React --------------------------------------------------------------------
+
+  {
+    id: 'react-1',
+    categoryId: 'react',
+    question:
+      'What is React, and why would you use it over vanilla JavaScript?',
+    answer:
+      'React is a JavaScript library for building user interfaces using a component-based approach. It allows for efficient UI updates with a virtual DOM, reusable components, and declarative syntax, making large-scale apps easier to maintain than vanilla JS.',
+    code: '',
+    hint: 'Think components, virtual DOM, and declarative UI.',
+    expanded:
+      'React is a library created by Facebook for building UIs in a declarative and component-based way.\n\n' +
+      '**Why use React over vanilla JS:**\n' +
+      '- **Componentization:** Break UI into reusable, testable pieces.\n' +
+      '- **Virtual DOM:** Efficient updates without manipulating the real DOM directly.\n' +
+      '- **Declarative syntax:** Easier to understand how UI should look at any state.\n' +
+      '- **Ecosystem:** Works well with modern tools like Redux, React Router, and Next.js.\n',
+    tags: ['react', 'fundamentals', 'virtual-dom', 'component-based'],
+    reference: [
+      {
+        label: 'React Official Docs',
+        url: 'https://reactjs.org/docs/getting-started.html',
+      },
+      {
+        label: 'MDN: React Overview',
+        url: 'https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started',
+      },
+    ],
+  },
+  {
+    id: 'react-2',
+    categoryId: 'react',
+    question: 'Explain the difference between state and props in React.',
+    answer:
+      'Props are immutable inputs passed to a component, while state is a mutable object managed inside a component that can trigger re-renders when updated.',
+    code: '',
+    hint: 'Props come from parent, state comes from within the component.',
+    expanded:
+      'In React:\n\n' +
+      '- **Props:** Read-only data passed from a parent component to a child. They cannot be changed by the child.\n' +
+      '- **State:** Data that lives inside a component and can change over time. Updating state triggers a re-render.\n\n' +
+      'Example:\n' +
+      '```jsx\n' +
+      'function Counter({ initial }) {\n' +
+      '  const [count, setCount] = useState(initial);\n' +
+      '  return <button onClick={() => setCount(count + 1)}>{count}</button>;\n' +
+      '}\n' +
+      '```',
+    tags: ['react', 'state', 'props', 'component'],
+    reference: [
+      {
+        label: 'React Docs: State and Lifecycle',
+        url: 'https://reactjs.org/docs/state-and-lifecycle.html',
+      },
+    ],
+  },
+  {
+    id: 'react-3',
+    categoryId: 'react',
+    question: 'What is JSX, and why is it used in React?',
+    answer:
+      'JSX is a syntax extension for JavaScript that looks like HTML. It is used to describe the UI structure in a declarative way and is transpiled to `React.createElement` calls.',
+    code: '',
+    hint: "Looks like HTML, but it's JavaScript under the hood.",
+    expanded:
+      'JSX stands for JavaScript XML. It allows you to write HTML-like syntax directly in JavaScript.\n\n' +
+      '**Why JSX is used:**\n' +
+      '- Makes UI code easier to read and write.\n' +
+      '- Allows embedding JavaScript expressions using `{}`.\n' +
+      '- Transpiled by Babel into `React.createElement` calls, which create the virtual DOM elements.\n\n' +
+      'Example:\n' +
+      '```jsx\n' +
+      'const element = <h1>Hello, world!</h1>;\n' +
+      '```',
+    tags: ['react', 'jsx', 'syntax', 'declarative-ui'],
+    reference: [
+      {
+        label: 'W3Schools:  What is JSX?',
+        url: 'https://www.w3schools.com/react/react_jsx.asp',
+      },
+      {
+        label: 'Sanity: Understanding JSX ',
+        url: 'https://www.sanity.io/glossary/jsx',
+      },
+    ],
+  },
+  {
+    id: 'react-4',
+    categoryId: 'react',
+    question:
+      'What is the difference between controlled and uncontrolled components in React?',
+    answer:
+      'Controlled components have their state managed by React via props, while uncontrolled components manage their own state internally (often using refs).',
+    code: '',
+    hint: 'Controlled = React handles input, Uncontrolled = DOM handles input.',
+    expanded:
+      'In React forms:\n\n' +
+      '- **Controlled components:** Form input values are bound to state, and changes are handled with `onChange` handlers.\n' +
+      '- **Uncontrolled components:** Form inputs maintain their own internal state; you read values using refs.\n\n' +
+      'Example (Controlled):\n' +
+      '```jsx\n' +
+      "const [value, setValue] = useState('');\n" +
+      '<input value={value} onChange={e => setValue(e.target.value)} />\n' +
+      '```',
+    tags: ['react', 'forms', 'controlled', 'uncontrolled'],
+    reference: [
+      {
+        label:
+          'Geeks for Geeks: Controlled vs Uncontrolled Components in ReactJS',
+        url: 'https://www.geeksforgeeks.org/reactjs/controlled-vs-uncontrolled-components-in-reactjs/',
+      },
+      {
+        label:
+          'Free Code Camp: Controlled vs Uncontrolled Components in ReactJS',
+        url: 'https://www.freecodecamp.org/news/what-are-controlled-and-uncontrolled-components-in-react/',
+      },
+    ],
+  },
+  {
+    id: 'react-5',
+    categoryId: 'react',
+    question:
+      'Explain the virtual DOM and how React uses it to improve performance.',
+    answer:
+      'The virtual DOM is an in-memory representation of the actual DOM. React compares changes in the virtual DOM (diffing) and only updates the real DOM where necessary, minimizing costly DOM operations.',
+    code: '',
+    hint: 'Think diffing, reconciliation, minimizing DOM updates.',
+    expanded:
+      'The **virtual DOM (VDOM)** is a lightweight copy of the real DOM.\n\n' +
+      '**How React uses it:**\n' +
+      '- When state changes, React updates the virtual DOM first.\n' +
+      '- It compares the new virtual DOM to the previous one (diffing).\n' +
+      '- Only applies the necessary updates to the real DOM (reconciliation), improving performance.\n',
+    tags: ['react', 'virtual-dom', 'performance', 'reconciliation'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: ReactJS Virtual DOM',
+        url: 'https://www.geeksforgeeks.org/reactjs/reactjs-virtual-dom/',
+      },
+      {
+        label: 'Sanity: Virtual DOM definition',
+        url: 'https://www.sanity.io/glossary/virtual-dom',
+      },
+    ],
+  },
+  {
+    id: 'react-6',
+    categoryId: 'react',
+    question: 'What are React hooks and why were they introduced?',
+    answer:
+      'Hooks are functions that let you use state and lifecycle features in functional components. They were introduced to avoid class components and enable code reuse with custom hooks.',
+    code: '',
+    hint: 'Think state, side effects, functional components.',
+    expanded:
+      'React hooks allow functional components to have state and side effects.\n\n' +
+      '**Why introduced:**\n' +
+      '- Avoid boilerplate and complexity of class components.\n' +
+      '- Enable logic reuse through custom hooks.\n' +
+      '- Simplify code and make it more readable.\n\n' +
+      'Common hooks include `useState`, `useEffect`, `useRef`, `useContext`.\n',
+    tags: ['react', 'hooks', 'functional-components'],
+    reference: [
+      {
+        label:
+          'Geeks for Geeks: What are React Hooks, and why were they added to React?',
+        url: 'https://www.geeksforgeeks.org/reactjs/what-are-react-hooks-and-why-were-they-added-to-react/',
+      },
+      {
+        label: 'React Docs: Hooks',
+        url: 'https://react.dev/reference/react/hooks',
+      },
+    ],
+  },
+  {
+    id: 'react-7',
+    categoryId: 'react',
+    question: 'Explain useState and useEffect hooks with examples.',
+    answer:
+      '`useState` allows managing state in functional components. `useEffect` allows side effects like fetching data or updating the DOM after render.',
+    code: '',
+    hint: 'useState = state, useEffect = side effects after render.',
+    expanded:
+      'Examples:\n\n' +
+      '**useState:**\n' +
+      '```jsx\n' +
+      'const [count, setCount] = useState(0);\n' +
+      '``` \n' +
+      '**useEffect:**\n' +
+      '```jsx\n' +
+      'useEffect(() => {\n' +
+      '  document.title = `Count: ${count}`;\n' +
+      '}, [count]); // runs when count changes\n' +
+      '```',
+    tags: ['react', 'hooks', 'useState', 'useEffect'],
+    reference: [
+      {
+        label:
+          'Geeks for Geeks: Difference Between useState and useEffect Hook in ReactJS',
+        url: 'https://www.geeksforgeeks.org/reactjs/difference-between-usestate-and-useeffect-hook-in-reactjs/',
+      },
+      {
+        label:
+          'freeCodeCamp: React Hooks – How to Use the useState & useEffect Hooks in Your Project',
+        url: 'https://www.freecodecamp.org/news/how-to-use-the-usestate-and-useeffect-hooks-in-your-project/',
+      },
+    ],
+  },
+  {
+    id: 'react-8',
+    categoryId: 'react',
+    question: 'What are custom hooks and why would you create one?',
+    answer:
+      'Custom hooks are reusable functions that encapsulate logic using existing hooks. They allow you to share stateful logic between components without repeating code.',
+    code: '',
+    hint: 'Think reusing stateful logic across multiple components.',
+    expanded:
+      'Custom hooks let you extract and reuse logic.\n\n' +
+      '**Example:**\n' +
+      '```jsx\n' +
+      'function useWindowWidth() {\n' +
+      '  const [width, setWidth] = useState(window.innerWidth);\n' +
+      '  useEffect(() => {\n' +
+      '    const handleResize = () => setWidth(window.innerWidth);\n' +
+      "    window.addEventListener('resize', handleResize);\n" +
+      "    return () => window.removeEventListener('resize', handleResize);\n" +
+      '  }, []);\n' +
+      '  return width;\n' +
+      '}\n' +
+      '```',
+    tags: ['react', 'hooks', 'custom-hooks', 'reusability'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: React custom hooks',
+        url: 'https://www.geeksforgeeks.org/reactjs/reactjs-custom-hooks/',
+      },
+      {
+        label:
+          "Geeks for Geeks: What's the concept of custom hooks, and why do we use them?",
+        url: 'https://www.geeksforgeeks.org/reactjs/whats-the-concept-of-custom-hooks-and-why-do-we-use-them/',
+      },
+    ],
+  },
+
+  {
+    id: 'react-9',
+    categoryId: 'react',
+    question: 'Explain lifting state up and when to use it.',
+    answer:
+      'Lifting state up means moving shared state to the closest common ancestor of components that need it. It’s used to synchronize data between multiple components.',
+    code: '',
+    hint: 'Think shared state between sibling components.',
+    expanded:
+      'Lifting State Up:\n\n' +
+      '- When two or more components need the same state, move it to their parent.\n' +
+      '- Pass state down via props and provide callbacks to update it.\n\n' +
+      'Example:\n' +
+      'Parent component holds state:\n' +
+      '```jsx\n' +
+      "const [value, setValue] = useState('');\n" +
+      '<Child1 value={value} onChange={setValue} />\n' +
+      '<Child2 value={value} />\n' +
+      '```',
+    tags: ['react', 'state-management', 'lifting-state-up', 'props'],
+    reference: [
+      {
+        label: 'React Docs: Lifting State Up',
+        url: 'https://reactjs.org/docs/lifting-state-up.html',
+      },
+    ],
+  },
+
   // Libraries ------------------------------------------------------------------
 
   {
@@ -7306,6 +7578,591 @@ async function findDuplicates(files) {
         label:
           'Atlassian: Advantages of microservices and disadvantages to know',
         url: 'https://www.atlassian.com/microservices/cloud-computing/advantages-of-microservices',
+      },
+    ],
+  },
+
+  // Security --------------------------------------------
+
+  {
+    id: 'security-1',
+    categoryId: 'security',
+    question:
+      "How do you write secure code? In your opinion, is it one of the developer's duties, or does it require a specialized role in the company? And why?",
+    answer:
+      "Writing secure code involves following secure coding practices, validating inputs, avoiding common vulnerabilities, and using security tools. It is both a developer's duty and a specialized role's responsibility, as security is a shared concern requiring multiple layers of oversight.",
+    code: '',
+    hint: 'Think about secure coding best practices and the division of responsibilities between developers and security experts.',
+    expanded:
+      'To write secure code, developers should:\n' +
+      '- **Validate all inputs:** Prevent SQL injection, XSS, and other injection attacks.\n' +
+      '- **Use parameterized queries and ORM safeguards:** Avoid building queries through string concatenation.\n' +
+      '- **Follow least privilege principles:** Limit access rights for code, databases, and APIs.\n' +
+      '- **Handle errors securely:** Avoid exposing stack traces or sensitive details in responses.\n' +
+      '- **Apply secure defaults:** Use HTTPS, enable security headers, and store passwords hashed and salted.\n' +
+      '- **Use static and dynamic analysis tools:** Detect vulnerabilities early.\n' +
+      '- **Stay updated on security advisories:** Patch dependencies promptly.\n\n' +
+      '**Responsibility:**\n' +
+      '- Developers must apply these practices in day-to-day coding, since insecure code at the source is hard to fix later.\n' +
+      '- Security specialists (e.g., application security engineers) are needed for deeper threat modeling, penetration testing, and security audits.\n' +
+      '- Security should be seen as **shared responsibility**, with developers embedding it into the code and specialists ensuring overall system resilience.\n\n' +
+      'A healthy approach is integrating security into the SDLC ("Shift Left Security"), so it\'s addressed early and continuously.',
+    tags: [
+      'security',
+      'secure-coding',
+      'best-practices',
+      'responsibility',
+      'devsecops',
+    ],
+    reference: [
+      {
+        label: 'OWASP: Secure Coding Practices',
+        url: 'https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/stable-en/02-checklist/05-checklist',
+      },
+      {
+        label: 'DevSecOps - Red Hat',
+        url: 'https://www.redhat.com/en/topics/devops/what-is-devsecops',
+      },
+    ],
+  },
+  {
+    id: 'security-2',
+    categoryId: 'security',
+    question:
+      'Why is it said that cryptography is not something you should try to invent or design yourself?',
+    answer:
+      'Because cryptography is complex and easy to get wrong. Designing secure algorithms requires deep expertise, rigorous peer review, and years of analysis. Using well-established, vetted algorithms is safer and more reliable than rolling your own.',
+    code: '',
+    hint: 'Think about the difficulty of ensuring security, the risks of subtle flaws, and the importance of peer review in cryptographic design.',
+    expanded:
+      'Cryptography is notoriously difficult to implement and design correctly. Even small mistakes in algorithm design or implementation can lead to catastrophic security failures. Here’s why you should not design your own:\n' +
+      '- **Complexity:** Modern cryptographic security relies on advanced mathematics, probability, and number theory. Small oversights can introduce vulnerabilities.\n' +
+      '- **Subtle flaws:** Attacks often exploit tiny weaknesses — incorrect padding, predictable random numbers, or side-channel leaks.\n' +
+      '- **Peer review necessity:** Secure cryptographic primitives and protocols (e.g., AES, RSA, TLS) have been extensively vetted by the global security community over many years.\n' +
+      '- **History of failures:** Many “homegrown” cryptosystems that seemed secure at first were later broken in hours or minutes.\n' +
+      '- **Better alternatives:** There are standard, open, and proven libraries (OpenSSL, libsodium, Bouncy Castle) that implement vetted algorithms and handle edge cases safely.\n\n' +
+      'In summary: cryptography should be implemented by specialists and based on established standards, because creating your own is far more likely to introduce weaknesses than to improve security.',
+    tags: [
+      'security',
+      'cryptography',
+      'best-practices',
+      'crypto-mistakes',
+      'peer-review',
+    ],
+    reference: [
+      {
+        label:
+          'Reddit Post: Hell Is Overconfident Developers Writing Encryption Code',
+        url: 'https://www.reddit.com/r/programming/comments/1iexqgv/hell_is_overconfident_developers_writing/',
+      },
+      {
+        label: 'Schneier: Schneier’s Law',
+        url: 'https://www.schneier.com/crypto-gram/archives/2000/0215.html#Why_You_Should_Never_Trust_a_Proprietary_Crypto_Algorithm',
+      },
+      {
+        label: 'OWASP:  Cryptographic Storage Cheat Sheet',
+        url: 'https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html',
+      },
+    ],
+  },
+  {
+    id: 'security-3',
+    categoryId: 'security',
+    question:
+      'What is two factor authentication? How would you implement it in an existing web application?',
+    answer:
+      'Two-factor authentication (2FA) is a security mechanism that requires two different forms of verification from separate categories, typically something you know (password) and something you have (OTP code or hardware token). Implementation in an existing web app involves adding a second verification step after password login.',
+    code: '',
+    hint: 'Think about “something you know” + “something you have” (or “something you are”) and integration with existing login flows.',
+    expanded:
+      'Two-factor authentication (2FA) adds an extra layer of security by requiring two different types of verification before granting access. It reduces the risk of unauthorized access if one factor (like a password) is compromised.\n' +
+      '- **Factors:** Usually combine:\n' +
+      '  1. **Something you know** – password, PIN\n' +
+      '  2. **Something you have** – a time-based one-time password (TOTP) app, SMS code, hardware security key\n' +
+      '  3. *(Optional extra)* **Something you are** – biometrics such as fingerprints or facial recognition\n\n' +
+      '**Implementation steps in an existing web application:**\n' +
+      '1. **User enrollment:** Allow users to register a second factor (e.g., scan a QR code with an authenticator app or register a hardware key).\n' +
+      '2. **Modify login flow:** After verifying username/password, prompt for the second factor.\n' +
+      '3. **Generate and verify OTPs:** Use a library for TOTP (RFC 6238) or HOTP (RFC 4226) generation and verification.\n' +
+      '4. **Backup codes:** Provide single-use backup codes in case the user loses access to their second factor.\n' +
+      '5. **Secure storage:** Store 2FA secrets encrypted and tied to the user.\n' +
+      '6. **Graceful fallback:** Allow users to reset their 2FA with secure identity verification if they lose access.\n' +
+      '7. **Session handling:** Mark the session as 2FA-verified only after both factors pass.\n\n' +
+      '**Security note:** Avoid using SMS as the only second factor due to SIM-swapping risks — prefer app-based TOTP or hardware tokens.',
+    tags: ['security', '2fa', 'authentication', 'otp', 'web-app-security'],
+    reference: [
+      {
+        label: 'Microsoft: What is two-factor authentication?',
+        url: 'https://www.microsoft.com/en-us/security/business/security-101/what-is-two-factor-authentication-2fa',
+      },
+      {
+        label: 'OWASP: Authentication Cheat Sheet',
+        url: 'https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html',
+      },
+    ],
+  },
+  {
+    id: 'security-4',
+    categoryId: 'security',
+    question:
+      'If not carefully handled, there is always a risk of logs containing sensitive information, such as passwords. How would you deal with this?',
+    answer:
+      'Sensitive information should never be logged in plain text. Use logging best practices such as redacting sensitive data, encrypting logs if necessary, and configuring proper log levels to avoid accidental exposure.',
+    code: '',
+    hint: 'Consider what data should be hidden and how to avoid storing secrets in logs.',
+    expanded:
+      'Logs can be extremely useful for debugging, monitoring, and auditing, but they can also expose sensitive information if not handled carefully.\n\n' +
+      '**Best practices for handling sensitive information in logs:**\n' +
+      '1. **Redact sensitive data:** Replace passwords, API keys, tokens, and other secrets with placeholders or masked values before logging.\n' +
+      '2. **Avoid logging secrets:** Do not log raw passwords, full credit card numbers, or personal identifying information (PII).\n' +
+      '3. **Use proper log levels:** Restrict sensitive information to higher log levels (e.g., debug) and avoid printing them in production logs.\n' +
+      '4. **Secure log storage:** Encrypt logs at rest and restrict access to only authorized personnel.\n' +
+      '5. **Review logging libraries:** Ensure your logging framework supports masking and filtering of sensitive data.\n' +
+      '6. **Audit and monitor logs:** Regularly review logs for accidental inclusion of sensitive data.\n\n' +
+      '**Security note:** Treat logs as potentially sensitive data — they should be protected just like a database of secrets.',
+    tags: [
+      'security',
+      'logging',
+      'sensitive-data',
+      'passwords',
+      'web-app-security',
+    ],
+    reference: [
+      {
+        label: 'OWASP: Logging Cheat Sheet',
+        url: 'https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html',
+      },
+      {
+        label: 'Crowdstrick: Secure Logging Practices',
+        url: 'https://www.crowdstrike.com/en-us/cybersecurity-101/next-gen-siem/logging-best-practices/',
+      },
+    ],
+  },
+  {
+    id: 'security-5',
+    categoryId: 'security',
+    question:
+      'Write down a snippet of code affected by SQL injection and fix it.',
+    answer:
+      'SQL injection occurs when user input is directly concatenated into SQL queries. Use parameterized queries or prepared statements to prevent it.',
+    code: `// Vulnerable to SQL Injection
+const userInput = req.body.username;
+const query = "SELECT * FROM users WHERE username = '" + userInput + "'";
+db.query(query, (err, results) => {
+  if (err) throw err;
+  console.log(results);
+});
+
+// Fixed with parameterized query
+const userInput = req.body.username;
+const query = "SELECT * FROM users WHERE username = ?";
+db.query(query, [userInput], (err, results) => {
+  if (err) throw err;
+  console.log(results);
+});`,
+    hint: 'Think about user input being directly inserted into a query versus using prepared statements.',
+    expanded:
+      'SQL injection is a common security vulnerability that allows attackers to execute arbitrary SQL code by manipulating input fields.\n\n' +
+      '**Vulnerable code example:**\n' +
+      '- Concatenating user input directly into SQL strings allows attackers to inject SQL commands.\n\n' +
+      '**Fixed code example:**\n' +
+      '- Use parameterized queries or prepared statements to ensure user input is treated as data, not executable code.\n' +
+      '- Many libraries (like `mysql2`, `pg`, or ORMs) support parameterized queries.\n\n' +
+      '**Best practices:**\n' +
+      '1. Always validate and sanitize user input.\n' +
+      '2. Prefer ORM or database libraries that handle parameterization.\n' +
+      '3. Do not reveal SQL errors directly to users — log them securely instead.\n' +
+      '4. Regularly review and test your code for injection vulnerabilities.',
+    tags: [
+      'security',
+      'sql-injection',
+      'database-security',
+      'prepared-statements',
+      'web-app-security',
+    ],
+    reference: [
+      {
+        label: 'OWASP: SQL Injection',
+        url: 'https://owasp.org/www-community/attacks/SQL_Injection',
+      },
+      {
+        label: 'MDN: SQL Injection Prevention',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/SQL_injection',
+      },
+    ],
+  },
+  {
+    id: 'security-6',
+    categoryId: 'security',
+    question:
+      "How would it be possible to detect SQL injection via static code analysis? I don't expect you to write an algorithm capable of doing this, as it is probably a huge topic, but let's discuss a general approach.",
+    answer:
+      'By analyzing code statically, you can trace how user input flows through the application into database queries. If input is concatenated into queries without parameterization, it indicates a potential SQL injection vulnerability.',
+    code: '',
+    hint: 'Think about tracking data flow from sources (user input) to sinks (database queries).',
+    expanded:
+      'Static code analysis for SQL injection focuses on **detecting unsafe patterns in code before execution**.\n\n' +
+      '**General approach:**\n' +
+      '1. **Identify sources:** Mark places where user input enters the application (e.g., request parameters, form data, headers).\n' +
+      '2. **Identify sinks:** Detect where queries are executed (e.g., calls to `db.query()`, raw SQL execution functions).\n' +
+      '3. **Data flow analysis:** Trace the path of data from sources to sinks.\n' +
+      '   - If user input is directly concatenated into a query string → flag as potential SQL injection.\n' +
+      '   - If input passes through sanitization or parameterization → lower risk.\n' +
+      '4. **Pattern matching:** Look for string concatenation or template literals building SQL commands.\n' +
+      '5. **Context awareness:** Ensure the analysis understands SQL syntax, so it can differentiate safe vs unsafe query-building.\n\n' +
+      '**Limitations:**\n' +
+      '- False positives: Not all string concatenations are vulnerable.\n' +
+      '- False negatives: Some injection risks might be missed if the analyzer cannot trace complex data flows.\n\n' +
+      '**Best practices:**\n' +
+      '- Combine static analysis with dynamic testing (fuzzing, penetration tests).\n' +
+      '- Use tools like SonarQube, CodeQL, or custom linters that track input-to-query flows.',
+    tags: [
+      'security',
+      'sql-injection',
+      'static-analysis',
+      'code-review',
+      'web-app-security',
+    ],
+    reference: [
+      {
+        label: 'OWASP: Static Code Analysis',
+        url: 'https://owasp.org/www-community/controls/Static_Code_Analysis',
+      },
+      {
+        label: 'Semgrep: Detecting SQL Injection',
+        url: 'https://semgrep.dev/docs/writing-rules/detecting-sql-injection/',
+      },
+      {
+        label: 'GitHub CodeQL for SQL Injection',
+        url: 'https://codeql.github.com/docs/codeql-language-guides/codeql-for-sql-injection/',
+      },
+    ],
+  },
+  {
+    id: 'security-7',
+    categoryId: 'security',
+    question:
+      "What do you know about Cross-Site Scripting? If you don't remember it, let's review online its definition and let's discuss it.",
+    answer:
+      'Cross-Site Scripting (XSS) is a vulnerability where attackers inject malicious scripts into web pages that are then executed in a victim’s browser. It can lead to session hijacking, data theft, or defacement.',
+    code: `// Vulnerable example (unsanitized user input rendered in HTML)
+app.get('/greet', (req, res) => {
+  const name = req.query.name;
+  res.send("<h1>Hello " + name + "</h1>");
+});
+
+// Safe example (escaping user input)
+app.get('/greet', (req, res) => {
+  const name = req.query.name;
+  res.send("<h1>Hello " + escapeHtml(name) + "</h1>");
+});`,
+    hint: 'Think about injecting JavaScript into a webpage and why output encoding or sanitization matters.',
+    expanded:
+      'Cross-Site Scripting (XSS) allows an attacker to run arbitrary scripts in another user’s browser by exploiting improper handling of user-supplied data.\n\n' +
+      '**Types of XSS:**\n' +
+      '1. **Stored XSS:** Malicious script is permanently stored on the server (e.g., in a database) and served to multiple users.\n' +
+      '2. **Reflected XSS:** Malicious script comes from a crafted URL or request and is reflected back in the response.\n' +
+      '3. **DOM-based XSS:** Occurs entirely on the client side when JavaScript modifies the DOM unsafely.\n\n' +
+      '**Risks:**\n' +
+      '- Session hijacking (stealing cookies)\n' +
+      '- Keylogging or credential theft\n' +
+      '- Defacing websites or redirecting users\n\n' +
+      '**Defenses:**\n' +
+      '1. **Output encoding:** Escape HTML/JavaScript before rendering user input.\n' +
+      '2. **Input validation & sanitization:** Reject unexpected inputs.\n' +
+      '3. **Content Security Policy (CSP):** Restrict what scripts can run.\n' +
+      '4. **Use secure frameworks:** Modern frameworks (React, Angular, Vue) escape output by default.\n\n' +
+      '**Security note:** XSS is one of the OWASP Top 10 vulnerabilities and should be considered in all stages of web development.',
+    tags: [
+      'security',
+      'xss',
+      'cross-site-scripting',
+      'web-security',
+      'owasp-top-10',
+    ],
+    reference: [
+      {
+        label: 'OWASP: Cross-Site Scripting (XSS)',
+        url: 'https://owasp.org/www-community/attacks/xss/',
+      },
+      {
+        label: 'PortSwigger: What is XSS?',
+        url: 'https://portswigger.net/web-security/cross-site-scripting',
+      },
+      {
+        label: 'Mozilla: XSS Prevention',
+        url: 'https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting',
+      },
+    ],
+  },
+  {
+    id: 'security-8',
+    categoryId: 'security',
+    question:
+      "What do you know about Cross-Site Forgery Attack? If you don't remember it, let's review online its definition and let's discuss it.",
+    answer:
+      'Cross-Site Request Forgery (CSRF) is an attack that tricks a logged-in user’s browser into performing unintended actions using their active session.',
+    code: '',
+    hint: 'Think about forcing a logged-in user to perform an unwanted action using their session.',
+    expanded:
+      'Cross-Site Request Forgery (CSRF) exploits the trust a site has in an authenticated user.\n\n' +
+      '**How it works:**\n' +
+      '1. Victim is logged into a trusted site.\n' +
+      '2. Attacker tricks the victim into submitting a malicious request (via hidden form, image, or link).\n' +
+      '3. The browser automatically includes session cookies, making the request look legitimate.\n\n' +
+      '**Risks:**\n' +
+      '- Unauthorized fund transfers\n' +
+      '- Changing account details\n' +
+      '- Performing admin actions\n\n' +
+      '**Defenses:**\n' +
+      '- CSRF tokens\n' +
+      '- SameSite cookies\n' +
+      '- Double-submit cookies\n' +
+      '- Re-authentication for critical actions',
+    tags: ['security', 'csrf', 'cross-site-request-forgery', 'web-security'],
+    reference: [
+      {
+        label: 'OWASP: Cross-Site Request Forgery (CSRF)',
+        url: 'https://owasp.org/www-community/attacks/csrf',
+      },
+      {
+        label: 'PortSwigger: What is CSRF?',
+        url: 'https://portswigger.net/web-security/csrf',
+      },
+    ],
+  },
+  {
+    id: 'security-9',
+    categoryId: 'security',
+    question: 'How does HTTPS work?',
+    answer:
+      'HTTPS secures communication between a browser and a server using TLS/SSL, which provides encryption, authentication, and data integrity.',
+    code: '',
+    hint: 'Think about TLS, certificates, and encryption of requests/responses.',
+    expanded:
+      'HTTPS (Hypertext Transfer Protocol Secure) is HTTP over TLS/SSL. It ensures that data sent between the client and server is encrypted and cannot be easily intercepted or modified.\n\n' +
+      '**How it works:**\n' +
+      '1. **TLS Handshake:**\n' +
+      '   - Browser connects to the server on port 443.\n' +
+      '   - Server presents its SSL/TLS certificate (issued by a trusted Certificate Authority).\n' +
+      '   - Browser verifies the certificate to ensure authenticity.\n' +
+      '2. **Key Exchange:**\n' +
+      '   - Client and server agree on encryption algorithms.\n' +
+      '   - They securely exchange keys (asymmetric cryptography).\n' +
+      '   - Session keys are generated for symmetric encryption.\n' +
+      '3. **Secure Communication:**\n' +
+      '   - All HTTP requests and responses are encrypted with the session key.\n' +
+      '   - Provides confidentiality (data is encrypted), integrity (detects tampering), and authentication (trusted server identity).\n\n' +
+      '**Benefits:**\n' +
+      '- Protects against eavesdropping (MITM attacks).\n' +
+      '- Ensures users are talking to the legitimate server.\n' +
+      '- Required for modern web features (HTTP/2, Service Workers).\n\n' +
+      '**Security note:** HTTPS depends on the trustworthiness of Certificate Authorities (CAs). Misissued or compromised certificates can undermine its security.',
+    tags: ['security', 'https', 'tls', 'ssl', 'encryption', 'web-security'],
+    reference: [
+      {
+        label: 'How HTTPS Works (Cloudflare)',
+        url: 'https://www.cloudflare.com/learning/ssl/what-is-https/',
+      },
+      {
+        label: 'MDN: HTTPS',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#https',
+      },
+    ],
+  },
+  {
+    id: 'security-10',
+    categoryId: 'security',
+    question:
+      "What's a man-in-the-middle Attack, and why does HTTPS help protect against it?",
+    answer:
+      'A Man-in-the-Middle (MITM) attack is when an attacker intercepts and possibly alters communication between two parties. HTTPS helps prevent this by encrypting traffic and authenticating the server via TLS certificates.',
+    code: '',
+    hint: 'Think about interception, tampering, and how encryption plus authentication stops it.',
+    expanded:
+      'A Man-in-the-Middle (MITM) attack happens when an attacker secretly relays or modifies communication between two parties who believe they are directly communicating with each other.\n\n' +
+      '**How it works:**\n' +
+      '- Attacker intercepts traffic (e.g., via open Wi-Fi, ARP spoofing, DNS poisoning).\n' +
+      '- Without protection, they can read sensitive data (passwords, messages) or alter requests/responses.\n\n' +
+      '**Why HTTPS helps:**\n' +
+      '1. **Encryption (TLS):** All data is encrypted, so an interceptor cannot read the contents.\n' +
+      '2. **Authentication:** Server presents a certificate signed by a trusted CA, ensuring the client is talking to the real server.\n' +
+      '3. **Integrity:** TLS ensures that if data is altered in transit, the modification is detected.\n\n' +
+      '**Limitations:**\n' +
+      '- If a user ignores certificate warnings or if a Certificate Authority is compromised, HTTPS protections may fail.\n' +
+      '- MITM attacks can still target DNS (before the HTTPS handshake) unless DNSSEC or secure DNS resolvers are used.\n\n' +
+      '**Security note:** HTTPS greatly reduces the risk of MITM attacks, but users must still be cautious with untrusted networks and invalid certificate warnings.',
+    tags: ['security', 'mitm', 'https', 'tls', 'ssl', 'web-security'],
+    reference: [
+      {
+        label: 'SSH Academy: Man-in-the-Middle (MITM) Attacks',
+        url: 'https://www.ssh.com/academy/attack/man-in-the-middle',
+      },
+      {
+        label: 'Cloudflare: What is a MITM attack?',
+        url: 'https://www.cloudflare.com/learning/security/threats/man-in-the-middle-attack/',
+      },
+      {
+        label: 'MDN: HTTPS and TLS',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security',
+      },
+    ],
+  },
+  {
+    id: 'security-11',
+    categoryId: 'security',
+    question:
+      "How can you prevent the user's session from being stolen? Chances are you remember what session or cookie hijacking is, otherwise we can read its Wikipedia page together.",
+    answer:
+      "Session hijacking is when an attacker steals a user's session ID (often stored in cookies) to impersonate them. You can prevent it by encrypting traffic with HTTPS, using secure cookie attributes, regenerating session IDs, and limiting session exposure.",
+    code: '',
+    hint: 'Think about HTTPS, cookie flags (HttpOnly, Secure, SameSite), and good session management practices.',
+    expanded:
+      "Session hijacking (or cookie hijacking) occurs when an attacker gains unauthorized access to a user's session ID, allowing them to impersonate the victim.\n\n" +
+      '**Common attack vectors:**\n' +
+      '- Sniffing unencrypted traffic (e.g., on open Wi-Fi)\n' +
+      '- Cross-Site Scripting (stealing cookies)\n' +
+      '- Session fixation\n' +
+      '- Predictable session IDs\n\n' +
+      '**How to prevent it:**\n' +
+      '1. **Always use HTTPS:** Encrypts traffic, preventing cookie theft via sniffing.\n' +
+      '2. **Secure cookies:** Use `HttpOnly` (not accessible to JavaScript), `Secure` (only sent over HTTPS), and `SameSite` (helps prevent CSRF).\n' +
+      '3. **Session ID management:** Regenerate session IDs after login, and use strong, random IDs.\n' +
+      '4. **Short session lifetime:** Expire sessions quickly, and invalidate them on logout.\n' +
+      '5. **Re-authentication:** Require the user to log in again for sensitive actions.\n' +
+      '6. **Protect against XSS:** Since XSS can steal cookies, follow secure coding and input sanitization practices.\n\n' +
+      '**Security note:** Protecting sessions is critical, since a stolen session often bypasses even strong authentication.',
+    tags: ['security', 'session-hijacking', 'cookies', 'https', 'web-security'],
+    reference: [
+      {
+        label: 'OWASP: Session Management Cheat Sheet',
+        url: 'https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html',
+      },
+      {
+        label: 'Wikipedia: Session hijacking',
+        url: 'https://en.wikipedia.org/wiki/Session_hijacking',
+      },
+      {
+        label: 'MDN: Set-Cookie',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie',
+      },
+    ],
+  },
+  {
+    id: 'security-12',
+    categoryId: 'security',
+    question:
+      'Is developing software an art, a craftsmanship or an engineering endeavour? Your opinion.',
+    answer:
+      'Developing software is a combination of all three: art, craftsmanship, and engineering. Art comes in creative problem solving and designing elegant solutions. Craftsmanship is in writing clean, maintainable code and refining your skills over time. Engineering is applying systematic methods, processes, and tools to ensure reliability, scalability, and correctness.',
+    code: '',
+    hint: 'Consider creativity, skill development, and systematic problem-solving.',
+    expanded:
+      'Software development combines multiple dimensions:\n\n' +
+      '**Art:** The creative aspect of designing solutions, user experiences, and elegant code structures.\n' +
+      '**Craftsmanship:** Skillful coding, refactoring, and attention to detail. This is developed over time through practice and experience.\n' +
+      '**Engineering:** Applying formal methods, testing, documentation, and processes to produce reliable, maintainable, and scalable software.\n\n' +
+      'Your opinion may vary, but most experienced developers see software development as an intersection of these three, where creativity, skill, and discipline work together.',
+    tags: [
+      'software-development',
+      'opinion',
+      'art',
+      'craftsmanship',
+      'engineering',
+    ],
+    reference: [
+      {
+        label: 'Medium: Is Softward Development an Art?',
+        url: 'https://medium.com/engineering-managers-journal/is-software-development-an-art-or-just-work-e82110af3d28',
+      },
+
+      {
+        label: 'Wikipedia: Software engineering',
+        url: 'https://en.wikipedia.org/wiki/Software_engineering',
+      },
+    ],
+  },
+  {
+    id: 'security-13',
+    categoryId: 'security',
+    question:
+      '"People who like this also like..." How would you implement this feature in an e-commerce shop?',
+    answer:
+      'You can implement this feature using collaborative filtering, content-based filtering, or a hybrid approach. Collaborative filtering looks at user behavior (e.g., purchases, views) and recommends products liked by similar users. Content-based filtering uses product attributes (e.g., category, tags) to suggest similar items. Hybrid approaches combine both for better accuracy.',
+    code: '',
+    hint: 'Think about user behavior patterns, product similarity, and recommendation algorithms.',
+    expanded:
+      "To implement a 'People who like this also like...' feature:\n\n" +
+      '**1. Collaborative Filtering:**\n' +
+      '- Collect user-product interactions (views, purchases, ratings).\n' +
+      '- Find users with similar behavior and recommend products they liked.\n' +
+      '- Can be user-based or item-based.\n\n' +
+      '**2. Content-Based Filtering:**\n' +
+      '- Analyze product attributes (category, tags, brand, price).\n' +
+      '- Recommend products similar to the one currently viewed.\n\n' +
+      '**3. Hybrid Approach:**\n' +
+      '- Combine both collaborative and content-based filtering for better recommendations.\n\n',
+
+    tags: [
+      'ecommerce',
+      'recommendation-system',
+      'collaborative-filtering',
+      'content-based',
+      'hybrid',
+    ],
+    reference: [
+      {
+        label: 'Reddit: Recommendation Systems',
+        url: 'https://www.reddit.com/r/MachineLearning/comments/waf8yw/how_to_approach_recommendation_system_project_p/',
+      },
+      {
+        label: 'Wikipedia: Recommender system',
+        url: 'https://en.wikipedia.org/wiki/Recommender_system',
+      },
+    ],
+  },
+  {
+    id: 'security-14',
+    categoryId: 'security',
+    question: 'Why are corporations slower than startups in innovating?',
+    answer:
+      'Corporations are often slower because of hierarchical decision-making, legacy systems, risk aversion, and bureaucratic processes. Startups can move faster due to flatter structures, fewer approvals, more experimentation, and a stronger focus on rapid iteration.',
+    code: '',
+    hint: 'Consider bureaucracy, risk tolerance, company size, and organizational structure.',
+    expanded:
+      'Corporations vs Startups in Innovation:\n\n' +
+      '**1. Hierarchy and Bureaucracy:**\n' +
+      '- Decisions often require multiple layers of approval, slowing execution.\n' +
+      '- Processes and compliance checks can delay experiments.\n\n' +
+      '**2. Legacy Systems:**\n' +
+      '- Older technology stacks and infrastructure can make adopting new solutions harder.\n' +
+      '- Integration with existing systems requires careful planning.\n\n' +
+      '**3. Risk Aversion:**\n' +
+      '- Large companies have more to lose; mistakes can be costly, so innovation is more cautious.\n' +
+      '- Startups can afford to experiment, fail fast, and iterate.\n\n' +
+      '**4. Resource Allocation:**\n' +
+      '- Innovation projects may compete with core business priorities for funding.\n' +
+      '- Startups focus nearly all resources on their core idea.\n\n' +
+      '**5. Organizational Culture:**\n' +
+      '- Corporations may have entrenched mindsets, reducing willingness to change.\n' +
+      '- Startups encourage creative problem-solving and adaptability.\n\n' +
+      '**Conclusion:**\n' +
+      'Speed of innovation is influenced by structure, risk tolerance, resource focus, and culture. Startups benefit from agility, while corporations benefit from scale and stability but move more slowly.',
+    tags: [
+      'innovation',
+      'corporation',
+      'startup',
+      'business',
+      'organizational-behavior',
+    ],
+    reference: [
+      {
+        label: 'CEO Insider: Why Are Big Companies Losing to Startups?',
+        url: 'https://ceoworld.biz/2022/12/15/why-are-big-companies-losing-to-startups/',
+      },
+      {
+        label: 'Lazy Hacker: Why Big Companies Move Slow',
+        url: 'https://blog.lazyhacker.com/2025/04/why-big-companies-move-slow.html',
       },
     ],
   },

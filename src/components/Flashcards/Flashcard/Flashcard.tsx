@@ -29,7 +29,15 @@ const Flashcard: React.FC<FlashcardProps> = ({
   const renderOverlayContent = () => {
     if (!activeOverlay) return null;
     if (activeOverlay === 'hint') return <p>{hint}</p>;
-    if (activeOverlay === 'expanded') return <p>{expanded}</p>;
+    if (activeOverlay === 'expanded' && expanded) {
+      return (
+        <>
+          {expanded.split('\n').map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
+        </>
+      );
+    }
     if (activeOverlay === 'reference') {
       return (
         <ul className="flashcard__reference-list">
@@ -137,7 +145,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
         <div className="flashcard__bar">
           {expanded && (
             <span
-              className="flashcard__icon icon-flip"
+              className="flashcard__icon"
               onClick={(e) => {
                 e.stopPropagation();
                 setActiveOverlay('expanded');

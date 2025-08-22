@@ -73,4 +73,8 @@ export const categories: Category[] = [
     id: 'soa-microservices',
     name: 'Service Oriented Architecture and Microservices',
   },
+  {
+    id: 'security',
+    name: 'Security',
+  },
 ];
