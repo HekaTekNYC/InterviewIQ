@@ -2684,6 +2684,236 @@ export const flashcards: Flashcard[] = [
       },
     ],
   },
+  {
+    id: 'react-21',
+    categoryId: 'react',
+    question: 'How do you implement routing in React?',
+    answer:
+      'Routing in React is typically implemented using libraries like React Router. You define Routes to map paths to components and use Link or NavLink for navigation.',
+    code: "```jsx\nimport { BrowserRouter, Routes, Route, Link } from 'react-router-dom';\n\n<BrowserRouter>\n  <Link to='/home'>Home</Link>\n  <Routes>\n    <Route path='/home' element={<Home />} />\n    <Route path='/about' element={<About />} />\n  </Routes>\n</BrowserRouter>\n```",
+    hint: 'Think React Router, Route, Link, and navigation between pages.',
+    expanded:
+      'React does not include routing out of the box, so libraries like React Router are commonly used. You define routes to map URLs to components and use Link or NavLink components for navigation. Nested and dynamic routes are also supported.',
+    tags: ['react', 'routing', 'react-router'],
+    reference: [
+      { label: 'React Router Docs', url: 'https://reactrouter.com/home' },
+      {
+        label: 'Geeks for Geeks: React Router',
+        url: 'https://www.geeksforgeeks.org/reactjs/reactjs-router/',
+      },
+    ],
+  },
+  {
+    id: 'react-22',
+    categoryId: 'react',
+    question: 'Explain dynamic routes and nested routes in React Router.',
+    answer:
+      'Dynamic routes allow parameters in the URL (e.g., /user/:id). Nested routes allow components to render child routes inside parent layouts.',
+    code: "```jsx\n<Route path='/user/:id' element={<User />} />\n<Route path='/dashboard' element={<Dashboard />}>\n  <Route path='settings' element={<Settings />} />\n</Route>\n```",
+    hint: 'Think parameters and layout nesting in routes.',
+    expanded:
+      'Dynamic routes use parameters in the URL to render different content based on the value. Nested routes let a parent component render shared layout while child components render additional content inside it.',
+    tags: ['react', 'routing', 'dynamic-routes', 'nested-routes'],
+    reference: [
+      {
+        label: 'React Router Docs: Nested Routes',
+        url: 'https://reactrouter.com/en/main/start/overview#nested-routes',
+      },
+      {
+        label: 'Geeks for Geeks: Explain Nested Routes',
+        url: 'https://www.geeksforgeeks.org/reactjs/explain-nested-routes-in-react/',
+      },
+      {
+        label:
+          'DHIWise: Dynamic Routing for Building Flexible And Scalable Applications',
+        url: 'https://www.dhiwise.com/post/dynamic-routing-for-building-flexible-and-scalable-react-apps',
+      },
+    ],
+  },
+  {
+    id: 'react-23',
+    categoryId: 'react',
+    question: 'How would you manage forms and validation in React?',
+    answer:
+      'Forms can be managed using controlled components, libraries like Formik or React Hook Form, and validation can be handled manually or with libraries like Yup.',
+    code: "```jsx\nconst { register, handleSubmit, errors } = useForm();\n<form onSubmit={handleSubmit(onSubmit)}>\n  <input {...register('name', { required: true })} />\n</form>\n```",
+    hint: 'Think controlled components, form libraries, and validation schemas.',
+    expanded:
+      'Form management involves controlling the input values via state (controlled components) or using libraries like Formik/React Hook Form. Validation can be handled manually or with schema-based libraries like Yup to ensure inputs meet certain criteria.',
+    tags: ['react', 'forms', 'validation', 'formik', 'react-hook-form'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: Form Validation in React',
+        url: 'https://www.geeksforgeeks.org/reactjs/how-to-perform-form-validation-in-react/',
+      },
+      {
+        label: 'DhiWise: React Form Best Practices',
+        url: 'https://www.dhiwise.com/post/react-form-validation-best-practices-with-tips-and-tricks',
+      },
+      {
+        label: 'React Docs: Form',
+        url: 'https://react.dev/reference/react-dom/components/form',
+      },
+    ],
+  },
+  {
+    id: 'react-24',
+    categoryId: 'react',
+    question:
+      'How do you handle controlled forms vs uncontrolled forms in large apps?',
+    answer:
+      'Controlled forms give predictable behavior and easy validation; uncontrolled forms may be used for simpler, performance-critical inputs. In large apps, controlled forms are generally preferred.',
+    code: "```jsx\n// Controlled\n<input value={value} onChange={e => setValue(e.target.value)} />\n\n// Uncontrolled\n<input defaultValue='text' ref={inputRef} />\n```",
+    hint: 'Controlled = React manages state; Uncontrolled = DOM manages state.',
+    expanded:
+      'Controlled components store input values in React state, giving predictable behavior and easy validation. Uncontrolled components rely on the DOM for value storage and may be simpler or slightly faster. For large applications, controlled forms are usually preferred for maintainability.',
+    tags: ['react', 'forms', 'controlled', 'uncontrolled'],
+    reference: [
+      {
+        label:
+          'Dev Community: Handling Forms in React: Controlled vs. Uncontrolled Components',
+        url: 'https://dev.to/hasunnilupul/handling-forms-in-react-controlled-vs-uncontrolled-components-27nh',
+      },
+      {
+        label: 'Reddit: Controlled or Uncontrolled form elements?',
+        url: 'https://www.reddit.com/r/reactjs/comments/1e4jj3n/controlled_or_uncontrolled_form_elements/',
+      },
+    ],
+  },
+  {
+    id: 'react-25',
+    categoryId: 'react',
+    question: 'How do you test React components?',
+    answer:
+      'React components can be tested with unit tests using Jest and React Testing Library, focusing on rendering, props, state, events, and DOM updates.',
+    code: "```jsx\nrender(<Button text='Click me' />);\nexpect(screen.getByText('Click me')).toBeInTheDocument();\n```",
+    hint: 'Think Jest + React Testing Library, not e2e for now.',
+    expanded:
+      'Unit tests verify that a component renders correctly and behaves as expected. Integration tests check multiple components working together. React Testing Library focuses on testing components through their rendered output, simulating user interactions.',
+    tags: ['react', 'testing', 'jest', 'react-testing-library'],
+    reference: [
+      {
+        label: 'Jest: Testing React Apps',
+        url: 'https://jestjs.io/docs/tutorial-react',
+      },
+      {
+        label: 'React Testing Library Docs',
+        url: 'https://testing-library.com/docs/react-testing-library/intro/',
+      },
+    ],
+  },
+  {
+    id: 'react-26',
+    categoryId: 'react',
+    question:
+      'Explain the difference between unit, integration, and end-to-end testing in React.',
+    answer:
+      'Unit tests check individual components, integration tests check interactions between components, and end-to-end tests simulate user flows in the full app.',
+    code: '',
+    hint: 'Think small vs multiple components vs full user workflow.',
+    expanded:
+      'Unit tests verify individual components or functions in isolation. Integration tests ensure multiple components interact correctly. End-to-end (E2E) tests simulate real user interactions and flows across the entire application using tools like Cypress or Selenium.',
+    tags: ['react', 'testing', 'unit-testing', 'integration-testing', 'e2e'],
+    reference: [
+      {
+        label: 'Testing Library Docs',
+        url: 'https://testing-library.com/docs/',
+      },
+      { label: 'Cypress Docs', url: 'https://docs.cypress.io/' },
+      {
+        label:
+          'Geeks for Geeks: Difference between Unit Testing and Integration Testing',
+        url: 'https://www.geeksforgeeks.org/software-engineering/difference-between-unit-testing-and-integration-testing/',
+      },
+    ],
+  },
+  {
+    id: 'react-27',
+    categoryId: 'react',
+    question: 'How would you test a component that uses hooks like useEffect?',
+    answer:
+      'You can test hook effects by rendering the component with React Testing Library and asserting DOM changes or side effects. Mock timers or async operations if necessary.',
+    code: "```jsx\njest.useFakeTimers();\nrender(<Timer />);\njest.runAllTimers();\nexpect(screen.getByText('Time: 0')).toBeInTheDocument();\n```",
+    hint: 'Think render, assert DOM, mock async or timers.',
+    expanded:
+      'Hooks like useEffect run after render, so tests need to render the component and assert expected changes. Mocking timers or async calls ensures deterministic behavior for effects.',
+    tags: ['react', 'testing', 'hooks', 'useEffect', 'jest'],
+    reference: [
+      {
+        label: 'React Testing Library Docs',
+        url: 'https://testing-library.com/docs/react-testing-library/intro/',
+      },
+      {
+        label: 'Epic React: How to Test React.useEffect',
+        url: 'https://www.epicreact.dev/how-to-test-react-use-effect',
+      },
+    ],
+  },
+  {
+    id: 'react-28',
+    categoryId: 'react',
+    question: 'What are render props and when would you use them?',
+    answer:
+      'Render props are a pattern where a component receives a function as a prop to determine what it renders. Useful for sharing logic between components.',
+    code: '```jsx\nfunction DataProvider({ render }) {\n  const data = fetchData();\n  return render(data);\n}\n<DataProvider render={data => <Display data={data} />} />\n```',
+    hint: 'Think of a function prop that returns JSX.',
+    expanded:
+      'Render props separate logic from presentation. The parent component provides a function that defines what to render, letting you reuse behavior while keeping components flexible.',
+    tags: ['react', 'render-props', 'component-patterns', 'reusability'],
+    reference: [
+      {
+        label: 'Geeks for Geeks: ReactJS Render Props',
+        url: 'https://www.geeksforgeeks.org/reactjs/react-js-render-props/',
+      },
+      {
+        label: 'Dev Community: Render Props in React, Frontend System Design',
+        url: 'https://dev.to/jeetvora331/render-props-in-react-frontend-system-design-3f3b',
+      },
+    ],
+  },
+  {
+    id: 'react-29',
+    categoryId: 'react',
+    question:
+      'What is the difference between server-side rendering (SSR), client-side rendering (CSR), and static site generation (SSG) in React?',
+    answer:
+      'SSR renders the app on the server per request, CSR renders entirely in the browser, and SSG generates static HTML at build time for fast delivery.',
+    code: '',
+    hint: 'Think Next.js and rendering timing.',
+    expanded:
+      'SSR improves SEO and first-load performance but adds server load. CSR reduces server work but may have slower initial load. SSG pre-builds pages for fast delivery and can be combined with hydration for interactivity.',
+    tags: ['react', 'ssr', 'csr', 'ssg', 'performance'],
+    reference: [
+      {
+        label: 'Next.js Docs: SSR & SSG',
+        url: 'https://nextjs.org/docs/basic-features/pages',
+      },
+    ],
+  },
+  {
+    id: 'react-30',
+    categoryId: 'react',
+    question:
+      'How would you improve the performance of a large React application?',
+    answer:
+      'You can optimize by code splitting, lazy loading, memoizing components, using useCallback/useMemo, avoiding unnecessary renders, and optimizing context usage.',
+    code: '',
+    hint: 'Think React performance patterns, memo, and lazy.',
+    expanded:
+      'Key performance strategies include:\n' +
+      '- Code splitting and lazy loading to reduce bundle size.\n' +
+      '- React.memo to prevent re-renders of pure components.\n' +
+      '- useCallback and useMemo to avoid re-creating functions/values.\n' +
+      '- Avoiding excessive context updates.\n' +
+      '- Optimizing lists with keys and virtualization for large datasets.',
+    tags: ['react', 'performance', 'optimization', 'memo', 'lazy'],
+    reference: [
+      {
+        label: 'React Docs: Optimizing Performance',
+        url: 'https://reactjs.org/docs/optimizing-performance.html',
+      },
+    ],
+  },
 
   // Libraries ------------------------------------------------------------------
 
