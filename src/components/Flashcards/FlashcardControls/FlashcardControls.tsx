@@ -42,6 +42,8 @@ const FlashcardControls: React.FC<FlashcardControlsProps> = ({
             version="1.1"
             x="0px"
             y="0px"
+            width="24"
+            height="17"
             viewBox="20 29 59.04 41.52"
           >
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -80,6 +82,8 @@ const FlashcardControls: React.FC<FlashcardControlsProps> = ({
             version="1.1"
             x="0px"
             y="0px"
+            width="24"
+            height="17"
             viewBox="20 29 59.04 41.52"
           >
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
