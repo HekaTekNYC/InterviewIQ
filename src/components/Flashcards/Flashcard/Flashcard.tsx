@@ -4,6 +4,7 @@ import type { Flashcard as FlashcardType } from '@/types';
 import Link from '../../../assets/icons/link.svg?react';
 import Expand from '../../../assets/icons/expand.svg?react';
 import Bulb from '../../../assets/icons/bulb.svg?react';
+import X from '../../../assets/icons/x-icon.svg?react';
 import './flashcard.css';
 
 type OverlayType = 'hint' | 'reference' | 'expanded' | null;
@@ -75,7 +76,6 @@ const Flashcard: React.FC<FlashcardProps> = ({
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           handleFlip(e);
-          console.log('isflipped?', isFlipped);
         }
       }}
     >
@@ -97,7 +97,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
               className="flashcard__overlay-close"
               onClick={() => setActiveOverlay(null)}
             >
-              ✕
+              <X width={16} height={16} />
             </button>
             {renderOverlayContent()}
           </div>

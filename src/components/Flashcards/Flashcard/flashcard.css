@@ -170,7 +170,7 @@
 
 .flashcard__overlay-close {
   position: absolute;
-  top: 7px;
+  top: 14px;
   right: 14px;
   background: none;
   border: none;
@@ -225,4 +225,7 @@
 
 .flashcard__reference-link:hover {
   text-decoration: underline;
+}
+
+@media screen {
 }
